@@ -1,0 +1,28 @@
+{
+  "albums": [
+    {
+      "id": "sample-bookstores",
+      "title": "Indie Bookstores",
+      "description": "San Francisco's beloved independent bookshops",
+      "coverMap": "bookstores-map",
+      "coverImage": "bookstores-photo",
+      "dataFile": "albums/sample-bookstores.geojson"
+    },
+    {
+      "id": "sample-parks",
+      "title": "City Parks",
+      "description": "Green spaces and urban oases",
+      "coverMap": "parks-map",
+      "coverImage": "parks-photo",
+      "dataFile": "albums/sample-parks.geojson"
+    },
+    {
+      "id": "sample-transit",
+      "title": "Historic Streetcars",
+      "description": "San Francisco's heritage transit lines",
+      "coverMap": "transit-map",
+      "coverImage": "transit-photo",
+      "dataFile": "albums/sample-streetcar.geojson"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-122.4270, 37.7610],
+          [-122.4260, 37.7582],
+          [-122.4218, 37.7592],
+          [-122.4228, 37.7620],
+          [-122.4270, 37.7610]
+        ]]
+      },
+      "properties": {
+        "name": "Dolores Park",
+        "layerType": "area",
+        "category": "park",
+        "metadata": {
+          "hours": "6am-10pm",
+          "notes": "Iconic SF park with city views"
+        }
+      }
+    }
+  ]
+}

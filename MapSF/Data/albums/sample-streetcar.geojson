@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-122.4350, 37.7625],
+          [-122.4315, 37.7643],
+          [-122.4270, 37.7665],
+          [-122.4225, 37.7687],
+          [-122.4180, 37.7710],
+          [-122.4140, 37.7730],
+          [-122.4100, 37.7750],
+          [-122.4050, 37.7775],
+          [-122.4000, 37.7800],
+          [-122.3955, 37.7825],
+          [-122.3935, 37.7940],
+          [-122.3940, 37.7980],
+          [-122.3945, 37.8020],
+          [-122.3960, 37.8060],
+          [-122.4000, 37.8080],
+          [-122.4100, 37.8075],
+          [-122.4170, 37.8075],
+          [-122.4180, 37.8070]
+        ]
+      },
+      "properties": {
+        "name": "F Market & Wharves",
+        "layerType": "segment",
+        "category": "transit",
+        "metadata": {
+          "type": "Historic Streetcar",
+          "operator": "SFMTA",
+          "notes": "Heritage streetcars from Castro to Fisherman's Wharf"
+        }
+      }
+    }
+  ]
+}

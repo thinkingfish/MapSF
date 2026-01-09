@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4634, 37.7851]
+      },
+      "properties": {
+        "name": "Green Apple Books",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "hours": "10am-10pm",
+          "notes": "SF institution since 1967"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4224, 37.7599]
+      },
+      "properties": {
+        "name": "Dog Eared Books",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "hours": "10am-8pm",
+          "notes": "Castro neighborhood favorite"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4194, 37.7749]
+      },
+      "properties": {
+        "name": "City Lights",
+        "layerType": "poi",
+        "category": ["bookstore", "landmark"],
+        "metadata": {
+          "hours": "10am-midnight",
+          "notes": "Beat Generation landmark"
+        }
+      }
+    }
+  ]
+}
