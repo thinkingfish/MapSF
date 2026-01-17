@@ -1,0 +1,231 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4634, 37.7851]
+      },
+      "properties": {
+        "name": "Green Apple Books",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "506 Clement St",
+          "neighborhood": "Inner Richmond",
+          "hours": "10am-10pm",
+          "note": "SF institution since 1967",
+          "link": "https://greenapplebooks.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4224, 37.7599]
+      },
+      "properties": {
+        "name": "Fabulosa Books",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "489 Castro St",
+          "neighborhood": "Castro",
+          "hours": "10am-8pm",
+          "note": "LGBTQ+ literature focus",
+          "link": "https://fabulosabooks.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4212, 37.7574]
+      },
+      "properties": {
+        "name": "Dog Eared Books",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "900 Valencia St",
+          "neighborhood": "Mission",
+          "hours": "10am-10pm",
+          "note": "Since 1992, new & used books",
+          "link": "https://dogearedbooks.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4066, 37.7976]
+      },
+      "properties": {
+        "name": "City Lights",
+        "layerType": "poi",
+        "category": ["bookstore", "landmark"],
+        "metadata": {
+          "address": "261 Columbus Ave",
+          "neighborhood": "North Beach",
+          "hours": "10am-midnight",
+          "note": "Beat Generation landmark since 1953",
+          "link": "https://citylights.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4528, 37.7695]
+      },
+      "properties": {
+        "name": "Borderlands Books",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "1740 Haight St",
+          "neighborhood": "Haight",
+          "hours": "11am-6pm",
+          "note": "Sci-fi, fantasy, horror specialty. Has resident Sphynx cats",
+          "link": "https://borderlands-books.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4524, 37.7694]
+      },
+      "properties": {
+        "name": "The Booksmith",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "1727 Haight St",
+          "neighborhood": "Haight",
+          "hours": "11am-7pm",
+          "note": "Since 1976. Hosted Hunter S. Thompson, Ray Bradbury",
+          "link": "https://booksmith.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.5050, 37.7595]
+      },
+      "properties": {
+        "name": "Black Bird Bookstore",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "4541 Irving St",
+          "neighborhood": "Outer Sunset",
+          "hours": "9am-7pm",
+          "note": "Bookstore + cafe with backyard hammock",
+          "link": "https://blackbirdsf.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4267, 37.7476]
+      },
+      "properties": {
+        "name": "Omnivore Books",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "3885A Cesar Chavez St",
+          "neighborhood": "Noe Valley",
+          "hours": "11am-6pm",
+          "note": "Culinary specialty. New & vintage cookbooks",
+          "link": "https://omnivorebooks.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4173, 37.7524]
+      },
+      "properties": {
+        "name": "Adobe Books",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "3130 24th St",
+          "neighborhood": "Mission",
+          "note": "Worker-owned cooperative since 2013. Books + art gallery",
+          "link": "https://adobebooks.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4182, 37.7523]
+      },
+      "properties": {
+        "name": "Alley Cat Books",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "3036 24th St",
+          "neighborhood": "Mission",
+          "note": "Dog Eared's sister store. New & used since 2011",
+          "link": "https://alleycatbookshop.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4335, 37.7892]
+      },
+      "properties": {
+        "name": "Browser Books",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "2195 Fillmore St",
+          "neighborhood": "Pacific Heights",
+          "hours": "10am-8pm",
+          "note": "Since 1980. Now part of Green Apple family",
+          "link": "https://greenapplebooks.com/store/3"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4380, 37.8005]
+      },
+      "properties": {
+        "name": "Books Inc.",
+        "layerType": "poi",
+        "category": "bookstore",
+        "metadata": {
+          "address": "2251 Chestnut St",
+          "neighborhood": "Marina",
+          "hours": "10am-9pm",
+          "note": "West's oldest indie chain, founded 1851",
+          "link": "https://booksinc.net"
+        }
+      }
+    }
+  ]
+}

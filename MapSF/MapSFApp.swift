@@ -15,6 +15,12 @@ struct MapSFApp: App {
                 .onAppear {
                     locationManager.requestPermission()
                 }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didReceiveMemoryWarningNotification)) { _ in
+                    // Evict all caches on memory warning
+                    albumLoader.evictAllCaches()
+                    mapState.clearAll()
+                    clearCoverImageCache()
+                }
         }
     }
 }

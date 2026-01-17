@@ -8,16 +8,20 @@ enum POICategory: String, CaseIterable, Codable {
     case coffee
     case bar
     case landmark
+    case streetcarStop = "streetcar-stop"
+    case playground
 
     var icon: String {
         switch self {
-        case .bookstore: return "book.fill"
-        case .iceCream: return "snowflake"
+        case .bookstore: return "📚"
+        case .iceCream: return "🍦"
         case .burger: return "fork.knife"
         case .bathroom: return "toilet.fill"
         case .coffee: return "cup.and.saucer.fill"
         case .bar: return "wineglass.fill"
         case .landmark: return "star.fill"
+        case .streetcarStop: return "tram.fill"
+        case .playground: return "🛝"
         }
     }
 
@@ -30,6 +34,8 @@ enum POICategory: String, CaseIterable, Codable {
         case .coffee: return "Coffee"
         case .bar: return "Bar"
         case .landmark: return "Landmark"
+        case .streetcarStop: return "Streetcar Stop"
+        case .playground: return "Playground"
         }
     }
 }

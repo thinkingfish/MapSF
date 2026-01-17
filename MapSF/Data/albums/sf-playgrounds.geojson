@@ -1,0 +1,203 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4583, 37.7693]
+      },
+      "properties": {
+        "name": "Koret Children's Quarter",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "320 Bowling Green Dr",
+          "neighborhood": "Golden Gate Park",
+          "note": "Historic 1888, famous concrete slide, carousel",
+          "link": "https://sfrecpark.org/648/Koret-Childrens-Quarter"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4268, 37.7597]
+      },
+      "properties": {
+        "name": "Helen Diller Playground",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "Dolores Park, Church St",
+          "neighborhood": "Mission Dolores",
+          "note": "45-foot super slide, fully accessible, city views",
+          "link": "https://sfrecpark.org/648/Mission-Dolores---Helen-Diller-Playgroun"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4536, 37.8049]
+      },
+      "properties": {
+        "name": "Outpost Playground",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "210 Lincoln Blvd",
+          "neighborhood": "Presidio",
+          "note": "2-acre nature playground, Golden Gate views",
+          "link": "https://presidio.gov/explore/attractions/outpost-playground"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4365, 37.7915]
+      },
+      "properties": {
+        "name": "Alta Plaza Playground",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "Jackson St & Steiner St",
+          "neighborhood": "Pacific Heights",
+          "note": "Hilltop with Alcatraz views, tennis courts",
+          "link": "https://sfrecpark.org/facilities/facility/details/Alta-Plaza-Park-147"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4070, 37.7940]
+      },
+      "properties": {
+        "name": "Willie Woo Woo Wong Playground",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "830 Sacramento St",
+          "neighborhood": "Chinatown",
+          "note": "AIA Award 2022. Dragon sculpture, Chinese mythology theme",
+          "link": "https://sfrecpark.org/facilities/facility/details/Willie-Woo-Woo-Wong-Playground-271"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4102, 37.8018]
+      },
+      "properties": {
+        "name": "Joe DiMaggio Playground",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "651 Lombard St",
+          "neighborhood": "North Beach",
+          "note": "Metal slides, pool, bocce courts",
+          "link": "https://sfrecpark.org/565/Joe-DiMaggio-Playground"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.3962, 37.7960]
+      },
+      "properties": {
+        "name": "Sue Bierman Playground",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "253 Washington St",
+          "neighborhood": "Embarcadero",
+          "note": "Pirate-themed, near Ferry Building, Coit Tower views",
+          "link": "https://sfrecpark.org/facilities/facility/details/Sue-Bierman-Park-378"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4560, 37.7888]
+      },
+      "properties": {
+        "name": "Presidio Wall Playground",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "W Pacific Ave & Spruce St",
+          "neighborhood": "Presidio Heights",
+          "note": "Paris-inspired design, Golden Gate views",
+          "link": "https://sfrecpark.org/facilities/facility/details/Presidio-Wall-Playground-251"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4295, 37.7920]
+      },
+      "properties": {
+        "name": "Lafayette Playground",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "Laguna & Washington St",
+          "neighborhood": "Pacific Heights",
+          "note": "Water sensory stream, shaded picnic areas",
+          "link": "https://sfrecpark.org/512/Lafayette-Park"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4710, 37.7875]
+      },
+      "properties": {
+        "name": "Mountain Lake Playground",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "1000 Lake St",
+          "neighborhood": "Presidio",
+          "note": "Renovated 2017, terraced design by age, lakeside setting",
+          "link": "https://sfrecpark.org/facilities/facility/details/Mountain-Lake-Park-189"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4205, 37.7185]
+      },
+      "properties": {
+        "name": "McLaren Park - Redwood Grove",
+        "layerType": "poi",
+        "category": "playground",
+        "metadata": {
+          "address": "Philosopher's Way Trail",
+          "neighborhood": "Excelsior",
+          "note": "Wooden jungle gym with views, SF's 2nd largest park",
+          "link": "https://sfrecpark.org/716/McLaren-Park"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,815 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.417324,
+            37.807132
+          ],
+          [
+            -122.4173,
+            37.8080
+          ],
+          [
+            -122.4165,
+            37.8081
+          ],
+          [
+            -122.415514,
+            37.80832
+          ],
+          [
+            -122.413357,
+            37.808594
+          ],
+          [
+            -122.410287,
+            37.808351
+          ],
+          [
+            -122.409056,
+            37.808102
+          ],
+          [
+            -122.407314,
+            37.80737
+          ],
+          [
+            -122.406236,
+            37.806852
+          ],
+          [
+            -122.405721,
+            37.80662
+          ],
+          [
+            -122.404792,
+            37.806146
+          ],
+          [
+            -122.404506,
+            37.805941
+          ],
+          [
+            -122.40344,
+            37.805182
+          ],
+          [
+            -122.401984,
+            37.804066
+          ],
+          [
+            -122.4014,
+            37.803433
+          ],
+          [
+            -122.400586,
+            37.802531
+          ],
+          [
+            -122.399131,
+            37.800889
+          ],
+          [
+            -122.397676,
+            37.799229
+          ],
+          [
+            -122.396519,
+            37.797952
+          ],
+          [
+            -122.395408,
+            37.796676
+          ],
+          [
+            -122.393048,
+            37.794257
+          ],
+          [
+            -122.393404,
+            37.793989
+          ],
+          [
+            -122.393794,
+            37.793686
+          ],
+          [
+            -122.394756,
+            37.794472
+          ],
+          [
+            -122.395628,
+            37.793776
+          ],
+          [
+            -122.396305,
+            37.79325
+          ],
+          [
+            -122.396511,
+            37.793089
+          ],
+          [
+            -122.397394,
+            37.792403
+          ],
+          [
+            -122.398266,
+            37.791707
+          ],
+          [
+            -122.399149,
+            37.791012
+          ],
+          [
+            -122.399482,
+            37.790735
+          ],
+          [
+            -122.400067,
+            37.790298
+          ],
+          [
+            -122.401386,
+            37.789255
+          ],
+          [
+            -122.402074,
+            37.788711
+          ],
+          [
+            -122.402911,
+            37.788078
+          ],
+          [
+            -122.403439,
+            37.787632
+          ],
+          [
+            -122.404586,
+            37.786722
+          ],
+          [
+            -122.405836,
+            37.785741
+          ],
+          [
+            -122.408072,
+            37.783984
+          ],
+          [
+            -122.408955,
+            37.783279
+          ],
+          [
+            -122.410297,
+            37.782227
+          ],
+          [
+            -122.411627,
+            37.781183
+          ],
+          [
+            -122.411982,
+            37.780898
+          ],
+          [
+            -122.412521,
+            37.78047
+          ],
+          [
+            -122.414746,
+            37.778713
+          ],
+          [
+            -122.415927,
+            37.777785
+          ],
+          [
+            -122.416294,
+            37.777491
+          ],
+          [
+            -122.417509,
+            37.776536
+          ],
+          [
+            -122.41869,
+            37.775582
+          ],
+          [
+            -122.419263,
+            37.775145
+          ],
+          [
+            -122.420261,
+            37.774351
+          ],
+          [
+            -122.420708,
+            37.774003
+          ],
+          [
+            -122.421017,
+            37.773771
+          ],
+          [
+            -122.421293,
+            37.773548
+          ],
+          [
+            -122.421946,
+            37.773031
+          ],
+          [
+            -122.422175,
+            37.772852
+          ],
+          [
+            -122.422622,
+            37.772496
+          ],
+          [
+            -122.42362,
+            37.771711
+          ],
+          [
+            -122.423987,
+            37.771425
+          ],
+          [
+            -122.424858,
+            37.770738
+          ],
+          [
+            -122.426314,
+            37.769605
+          ],
+          [
+            -122.426944,
+            37.769106
+          ],
+          [
+            -122.427357,
+            37.768776
+          ],
+          [
+            -122.428664,
+            37.767741
+          ],
+          [
+            -122.42895,
+            37.767509
+          ],
+          [
+            -122.43083,
+            37.766019
+          ],
+          [
+            -122.431036,
+            37.765868
+          ],
+          [
+            -122.433077,
+            37.764199
+          ],
+          [
+            -122.433088,
+            37.763994
+          ],
+          [
+            -122.432951,
+            37.76262
+          ],
+          [
+            -122.434062,
+            37.762558
+          ],
+          [
+            -122.434945,
+            37.762504
+          ]
+        ]
+      },
+      "properties": {
+        "name": "F Market & Wharves",
+        "layerType": "segment",
+        "metadata": {
+          "type": "Historic Streetcar",
+          "route": "Castro to Fisherman's Wharf",
+          "link": "https://streetcar.live",
+          "note": "Vintage streetcars from around the world, runs daily"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.434621,
+          37.762524
+        ]
+      },
+      "properties": {
+        "name": "17th St & Castro St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "F-line terminus, Castro Station"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.433059,
+          37.764213
+        ]
+      },
+      "properties": {
+        "name": "Market St & Noe St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.43096,
+          37.765924
+        ]
+      },
+      "properties": {
+        "name": "Market St & Sanchez St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.428599,
+          37.767792
+        ]
+      },
+      "properties": {
+        "name": "Market St & Church St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "Transfer to J Church"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.427151,
+          37.76894
+        ]
+      },
+      "properties": {
+        "name": "Market St & Dolores St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.42501,
+          37.77062
+        ]
+      },
+      "properties": {
+        "name": "Market St & Guerrero St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.421975,
+          37.773008
+        ]
+      },
+      "properties": {
+        "name": "Market St & Gough St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.419342,
+          37.775082
+        ]
+      },
+      "properties": {
+        "name": "Market St & Van Ness Ave",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "Near SF City Hall"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.416362,
+          37.777438
+        ]
+      },
+      "properties": {
+        "name": "Market St & 9th St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "Near Main Library"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.414847,
+          37.778633
+        ]
+      },
+      "properties": {
+        "name": "Market St & 8th St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.412546,
+          37.78045
+        ]
+      },
+      "properties": {
+        "name": "Market St & 7th St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.410421,
+          37.782129
+        ]
+      },
+      "properties": {
+        "name": "Market St & 6th St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.408072,
+          37.783984
+        ]
+      },
+      "properties": {
+        "name": "Market St & 5th St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "Powell St cable car turntable nearby"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.405914,
+          37.785679
+        ]
+      },
+      "properties": {
+        "name": "Market St & 4th St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.40338,
+          37.787682
+        ]
+      },
+      "properties": {
+        "name": "Market St & 3rd St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.402178,
+          37.788633
+        ]
+      },
+      "properties": {
+        "name": "Market St & New Montgomery St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.399212,
+          37.79096
+        ]
+      },
+      "properties": {
+        "name": "Market St & 1st St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.396634,
+          37.792993
+        ]
+      },
+      "properties": {
+        "name": "Market St & Main St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.393486,
+          37.793925
+        ]
+      },
+      "properties": {
+        "name": "Don Chee Way & Steuart St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "SF Railway Museum nearby"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.394012,
+          37.795245
+        ]
+      },
+      "properties": {
+        "name": "Ferry Building",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "Historic Ferry Building, food hall"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.395444,
+          37.796718
+        ]
+      },
+      "properties": {
+        "name": "Embarcadero & Washington St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.397693,
+          37.799248
+        ]
+      },
+      "properties": {
+        "name": "Embarcadero & Broadway",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.399143,
+          37.800903
+        ]
+      },
+      "properties": {
+        "name": "Embarcadero & Green St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.40109,
+          37.80309
+        ]
+      },
+      "properties": {
+        "name": "Embarcadero & Greenwich St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.403036,
+          37.804872
+        ]
+      },
+      "properties": {
+        "name": "Embarcadero & Sansome St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {}
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.40625,
+          37.806859
+        ]
+      },
+      "properties": {
+        "name": "Embarcadero & Bay St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "Alcatraz Landing (Pier 33) nearby"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.410287,
+          37.808351
+        ]
+      },
+      "properties": {
+        "name": "Embarcadero & Stockton St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "Pier 39"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.413357,
+          37.808594
+        ]
+      },
+      "properties": {
+        "name": "Jefferson St & Powell St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "Fisherman's Wharf"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.415514,
+          37.80832
+        ]
+      },
+      "properties": {
+        "name": "Jefferson St & Taylor St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "Heart of Fisherman's Wharf"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.417324,
+          37.807132
+        ]
+      },
+      "properties": {
+        "name": "Jones St & Beach St",
+        "layerType": "poi",
+        "category": "streetcar-stop",
+        "metadata": {
+          "note": "F-line terminus, near Powell-Hyde cable car"
+        }
+      }
+    }
+  ]
+}

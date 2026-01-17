@@ -111,9 +111,19 @@ struct ProximityQuery {
 }
 
 extension CLLocationCoordinate2D {
+    /// Haversine distance - no heap allocations, ~0.1% error at city scale
     func distance(to other: CLLocationCoordinate2D) -> CLLocationDistance {
-        let loc1 = CLLocation(latitude: latitude, longitude: longitude)
-        let loc2 = CLLocation(latitude: other.latitude, longitude: other.longitude)
-        return loc1.distance(from: loc2)
+        let earthRadius: Double = 6_371_000 // meters
+
+        let lat1 = latitude * .pi / 180
+        let lat2 = other.latitude * .pi / 180
+        let dLat = (other.latitude - latitude) * .pi / 180
+        let dLon = (other.longitude - longitude) * .pi / 180
+
+        let a = sin(dLat / 2) * sin(dLat / 2) +
+                cos(lat1) * cos(lat2) * sin(dLon / 2) * sin(dLon / 2)
+        let c = 2 * atan2(sqrt(a), sqrt(1 - a))
+
+        return earthRadius * c
     }
 }

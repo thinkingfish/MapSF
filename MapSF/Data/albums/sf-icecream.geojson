@@ -1,0 +1,270 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4228168, 37.7442234]
+      },
+      "properties": {
+        "name": "Mitchell's Ice Cream",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Bernal Heights",
+          "address": "688 San Jose Ave",
+          "note": "SF classic since 1953, tropical flavors",
+          "link": "https://mitchellsicecream.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4257161, 37.7615761]
+      },
+      "properties": {
+        "name": "Bi-Rite Creamery",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Mission",
+          "address": "3692 18th St",
+          "note": "Across from Dolores Park, famous salted caramel",
+          "link": "https://biritemarket.com/creamery"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.5050, 37.7540]
+      },
+      "properties": {
+        "name": "Marco Polo Italian Ice Cream",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Outer Sunset",
+          "address": "3886 Noriega St",
+          "note": "Artisan gelato since 1982"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4204045, 37.7587269]
+      },
+      "properties": {
+        "name": "Garden Creamery",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Mission",
+          "address": "3566 20th St",
+          "note": "Small batch organic, chimney cones Saturdays",
+          "link": "https://gardencreamery.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4318659, 37.7848509]
+      },
+      "properties": {
+        "name": "Matcha Cafe Maiko",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Japantown",
+          "address": "1581 Webster St",
+          "note": "Premium Uji matcha from Kyoto",
+          "link": "https://matchacafe-maiko.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4503678, 37.7664445]
+      },
+      "properties": {
+        "name": "The Ice Cream Bar",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Cole Valley",
+          "address": "815 Cole St",
+          "note": "1930s soda fountain, boozy floats",
+          "link": "https://theicecreambarsf.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.3890, 37.7572]
+      },
+      "properties": {
+        "name": "Humphry Slocombe",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Dogpatch",
+          "address": "699 22nd St",
+          "note": "Creative flavors, Secret Breakfast",
+          "link": "https://humphryslocombe.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4191699, 37.7990753]
+      },
+      "properties": {
+        "name": "Swensen's",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Russian Hill",
+          "address": "1999 Hyde St",
+          "note": "Original 1948 location, last US Swensen's"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4341815, 37.7899517]
+      },
+      "properties": {
+        "name": "Salt & Straw",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Pacific Heights",
+          "address": "2201 Fillmore St",
+          "note": "Portland-based artisanal, seasonal flavors",
+          "link": "https://saltandstraw.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4318659, 37.7848509]
+      },
+      "properties": {
+        "name": "Uji Time Dessert",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Japantown",
+          "address": "22 Peace Plz",
+          "note": "Taiyaki soft serve, first in Bay Area",
+          "link": "https://ujitimedessert.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4002, 37.7649]
+      },
+      "properties": {
+        "name": "Milkbomb Ice Cream",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Potrero Hill",
+          "address": "1717 17th St",
+          "note": "Donut ice cream sandwiches",
+          "link": "https://milkbombsf.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4324748, 37.7830681]
+      },
+      "properties": {
+        "name": "Miyako Old Fashioned Ice Cream",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Japantown",
+          "address": "1470 Fillmore St",
+          "note": "Since 1993, 100+ flavors, cash only"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4093193, 37.7998618]
+      },
+      "properties": {
+        "name": "Lush Gelato",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "North Beach",
+          "address": "520 Columbus Ave",
+          "note": "Micro-dairy since 2009, local ingredients",
+          "link": "https://lushgelato.com"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4156, 37.7558]
+      },
+      "properties": {
+        "name": "La Copa Loca Gelato",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "Mission",
+          "address": "3150 22nd St",
+          "note": "Authentic Italian gelato"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4369299, 37.7716307]
+      },
+      "properties": {
+        "name": "Powder Shaved Snow",
+        "layerType": "poi",
+        "category": "ice-cream",
+        "metadata": {
+          "neighborhood": "NoPa",
+          "address": "260 Divisadero St",
+          "note": "Taiwanese shaved snow"
+        }
+      }
+    }
+  ]
+}

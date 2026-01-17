@@ -1,28 +1,44 @@
 {
   "albums": [
     {
-      "id": "sample-bookstores",
+      "id": "sf-bookstores",
       "title": "Indie Bookstores",
       "description": "San Francisco's beloved independent bookshops",
       "coverMap": "bookstores-map",
-      "coverImage": "bookstores-photo",
-      "dataFile": "albums/sample-bookstores.geojson"
+      "coverImage": "covers/bookstore",
+      "dataFile": "albums/sf-bookstores.geojson"
     },
     {
-      "id": "sample-parks",
-      "title": "City Parks",
-      "description": "Green spaces and urban oases",
+      "id": "sf-parks",
+      "title": "SF Parks",
+      "description": "Top 10 largest parks from SF Recreation & Parks",
       "coverMap": "parks-map",
-      "coverImage": "parks-photo",
-      "dataFile": "albums/sample-parks.geojson"
+      "coverImage": "covers/parks",
+      "dataFile": "albums/sf-parks.geojson"
     },
     {
-      "id": "sample-transit",
+      "id": "sf-streetcar",
       "title": "Historic Streetcars",
       "description": "San Francisco's heritage transit lines",
       "coverMap": "transit-map",
-      "coverImage": "transit-photo",
-      "dataFile": "albums/sample-streetcar.geojson"
+      "coverImage": "covers/streetcar",
+      "dataFile": "albums/sf-streetcar.geojson"
+    },
+    {
+      "id": "sf-icecream",
+      "title": "Ice Cream Shops",
+      "description": "SF's best ice cream, gelato, and frozen treats",
+      "coverMap": "icecream-map",
+      "coverImage": "covers/ice-cream",
+      "dataFile": "albums/sf-icecream.geojson"
+    },
+    {
+      "id": "sf-playgrounds",
+      "title": "Top Playgrounds",
+      "description": "SF's best-rated playgrounds for kids",
+      "coverMap": "playgrounds-map",
+      "coverImage": "covers/playground",
+      "dataFile": "albums/sf-playgrounds.geojson"
     }
   ]
 }
