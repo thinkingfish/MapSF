@@ -5,7 +5,8 @@ import MapLibre
 enum PMTilesSource {
     /// URL for the bundled SF tiles PMTiles file
     static var sfTilesURL: URL? {
-        Bundle.main.url(forResource: "sf-tiles", withExtension: "pmtiles", subdirectory: "Resources/BaseMap")
+        // Files are bundled at root level (not in subdirectory) due to Xcode file system sync
+        Bundle.main.url(forResource: "sf-tiles", withExtension: "pmtiles")
     }
 
     /// Register the PMTiles URL scheme with MapLibre

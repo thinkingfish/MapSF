@@ -27,6 +27,7 @@
 		209736A12F115D4E00F95597 /* State */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = State; sourceTree = "<group>"; };
 		209736A12F115D4E00F95598 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		20F834B82F18C1F400E8B74D /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
+		A0RESOURCES0000000000001 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +54,7 @@
 			children = (
 				20F834B82F18C1F400E8B74D /* Data */,
 				209736A12F115D4E00F95595 /* Models */,
+				A0RESOURCES0000000000001 /* Resources */,
 				209736A12F115D4E00F95596 /* Services */,
 				209736A12F115D4E00F95597 /* State */,
 				209736A12F115D4E00F95598 /* Views */,
@@ -97,6 +99,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				209736A12F115D4E00F95595 /* Models */,
+				A0RESOURCES0000000000001 /* Resources */,
 				209736A12F115D4E00F95596 /* Services */,
 				209736A12F115D4E00F95597 /* State */,
 				209736A12F115D4E00F95598 /* Views */,
