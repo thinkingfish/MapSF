@@ -24,3 +24,6 @@ Package.resolved
 
 # Claude Code
 .claude/settings.local.json
+
+# Worktrees
+.worktrees/
