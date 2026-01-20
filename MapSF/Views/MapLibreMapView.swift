@@ -14,7 +14,7 @@ struct MapLibreMapView: UIViewRepresentable {
     private static let defaultCenter = CLLocationCoordinate2D(latitude: 37.7610, longitude: -122.4410)
     private static let defaultZoom: Double = 12.0
 
-    /// Create style URL with local HTTP server for tiles
+    /// Create style URL with native mbtiles:// protocol
     private static func createStyleURL() -> URL? {
         // Find the mbtiles file
         guard let tilesURL = Bundle.main.url(forResource: "sf-tiles", withExtension: "mbtiles", subdirectory: "Resources/BaseMap")
@@ -24,16 +24,8 @@ struct MapLibreMapView: UIViewRepresentable {
             return nil
         }
 
-        let tilesPath = tilesURL.path
-
-        // Start local tile server
-        guard let serverURL = MBTilesServer.shared.start(mbtilesPath: tilesPath) else {
-            print("[MapLibre] ERROR: Could not start tile server")
-            return nil
-        }
-
-        // Build tile URL template using local HTTP server
-        let tileURL = "\(serverURL)/{z}/{x}/{y}.pbf"
+        // Use native mbtiles:// protocol - MapLibre handles SQLite internally
+        let tileURL = "mbtiles://\(tilesURL.path)"
 
         let styleJSON = """
         {
@@ -62,7 +54,7 @@ struct MapLibreMapView: UIViewRepresentable {
         }
         """
 
-        // Write style JSON to temp file (data URLs may not work reliably)
+        // Write style JSON to temp file for MapLibre to load
         let tempDir = FileManager.default.temporaryDirectory
         let styleFile = tempDir.appendingPathComponent("mapstyle.json")
 
