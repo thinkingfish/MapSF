@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		209591E22F1F74CA00FA54AC /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = A0MAPLIBRE00000000000002 /* MapLibre */; };
 		A01234560000000000000001 /* MapSFApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01234560000000000000011 /* MapSFApp.swift */; };
 		A01234560000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01234560000000000000012 /* ContentView.swift */; };
 		A01234560000000000000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A01234560000000000000013 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		209592472F1FD5D900FA54AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A01234560000000000000010 /* MapSF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01234560000000000000011 /* MapSFApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSFApp.swift; sourceTree = "<group>"; };
 		A01234560000000000000012 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -22,6 +24,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		2095923F2F1F78D700FA54AC /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 		209736A12F115D4E00F95595 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
 		209736A12F115D4E00F95596 /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
 		209736A12F115D4E00F95597 /* State */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = State; sourceTree = "<group>"; };
@@ -35,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				209591E22F1F74CA00FA54AC /* MapLibre in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +56,8 @@
 		A01234560000000000000031 /* MapSF */ = {
 			isa = PBXGroup;
 			children = (
+				209592472F1FD5D900FA54AC /* Info.plist */,
+				2095923F2F1F78D700FA54AC /* Resources */,
 				20F834B82F18C1F400E8B74D /* Data */,
 				209736A12F115D4E00F95595 /* Models */,
 				A0RESOURCES0000000000001 /* Resources */,
@@ -98,12 +104,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				2095923F2F1F78D700FA54AC /* Resources */,
 				209736A12F115D4E00F95595 /* Models */,
-				A0RESOURCES0000000000001 /* Resources */,
 				209736A12F115D4E00F95596 /* Services */,
 				209736A12F115D4E00F95597 /* State */,
 				209736A12F115D4E00F95598 /* Views */,
 				20F834B82F18C1F400E8B74D /* Data */,
+				A0RESOURCES0000000000001 /* Resources */,
 			);
 			name = MapSF;
 			packageProductDependencies = (
@@ -304,6 +311,7 @@
 				DEVELOPMENT_TEAM = 2PG4Z3FFS5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MapSF/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MapSF uses your location to show what's nearby";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -334,6 +342,7 @@
 				DEVELOPMENT_TEAM = 2PG4Z3FFS5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MapSF/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MapSF uses your location to show what's nearby";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -14,13 +14,76 @@ struct MapLibreMapView: UIViewRepresentable {
     private static let defaultCenter = CLLocationCoordinate2D(latitude: 37.7610, longitude: -122.4410)
     private static let defaultZoom: Double = 12.0
 
+    /// Create style URL with local HTTP server for tiles
+    private static func createStyleURL() -> URL? {
+        // Find the mbtiles file
+        guard let tilesURL = Bundle.main.url(forResource: "sf-tiles", withExtension: "mbtiles", subdirectory: "Resources/BaseMap")
+                ?? Bundle.main.url(forResource: "sf-tiles", withExtension: "mbtiles", subdirectory: "BaseMap")
+                ?? Bundle.main.url(forResource: "sf-tiles", withExtension: "mbtiles") else {
+            print("[MapLibre] ERROR: Could not find sf-tiles.mbtiles")
+            return nil
+        }
+
+        let tilesPath = tilesURL.path
+
+        // Start local tile server
+        guard let serverURL = MBTilesServer.shared.start(mbtilesPath: tilesPath) else {
+            print("[MapLibre] ERROR: Could not start tile server")
+            return nil
+        }
+
+        // Build tile URL template using local HTTP server
+        let tileURL = "\(serverURL)/{z}/{x}/{y}.pbf"
+
+        let styleJSON = """
+        {
+          "version": 8,
+          "name": "MapSF Muted",
+          "sources": {
+            "protomaps": {
+              "type": "vector",
+              "tiles": ["\(tileURL)"],
+              "minzoom": 10,
+              "maxzoom": 15,
+              "attribution": "© OpenStreetMap contributors"
+            }
+          },
+          "glyphs": "https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf",
+          "layers": [
+            {"id": "background", "type": "background", "paint": {"background-color": "#f0f0f0"}},
+            {"id": "earth", "type": "fill", "source": "protomaps", "source-layer": "earth", "paint": {"fill-color": "#f0f0f0"}},
+            {"id": "landuse-park", "type": "fill", "source": "protomaps", "source-layer": "landuse", "filter": ["==", "kind", "park"], "paint": {"fill-color": "#e0e8e0"}},
+            {"id": "water", "type": "fill", "source": "protomaps", "source-layer": "water", "paint": {"fill-color": "#d4e4ec"}},
+            {"id": "buildings", "type": "fill", "source": "protomaps", "source-layer": "buildings", "paint": {"fill-color": "#e8e8e8"}},
+            {"id": "roads-minor", "type": "line", "source": "protomaps", "source-layer": "roads", "filter": ["in", "kind", "minor_road", "other", "path"], "paint": {"line-color": "#fafafa", "line-width": 1}},
+            {"id": "roads-major-casing", "type": "line", "source": "protomaps", "source-layer": "roads", "filter": ["in", "kind", "highway", "major_road"], "paint": {"line-color": "#dedede", "line-width": 6}},
+            {"id": "roads-major", "type": "line", "source": "protomaps", "source-layer": "roads", "filter": ["in", "kind", "highway", "major_road"], "paint": {"line-color": "#ffffff", "line-width": 4}}
+          ]
+        }
+        """
+
+        // Write style JSON to temp file (data URLs may not work reliably)
+        let tempDir = FileManager.default.temporaryDirectory
+        let styleFile = tempDir.appendingPathComponent("mapstyle.json")
+
+        do {
+            try styleJSON.write(to: styleFile, atomically: true, encoding: .utf8)
+            return styleFile
+        } catch {
+            print("[MapLibre] ERROR writing style: \(error)")
+            return nil
+        }
+    }
+
     func makeUIView(context: Context) -> MLNMapView {
         let mapView = MLNMapView(frame: .zero)
         mapView.delegate = context.coordinator
 
-        // Load local style
-        if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json", subdirectory: "Resources/BaseMap") {
+        // Load style with tile server URL
+        if let styleURL = Self.createStyleURL() {
             mapView.styleURL = styleURL
+        } else {
+            print("[MapLibre] ERROR: Could not create style!")
         }
 
         // Set initial camera
@@ -53,11 +116,16 @@ struct MapLibreMapView: UIViewRepresentable {
         Coordinator(mapState: mapState, albumLoader: albumLoader)
     }
 
+    /// Custom annotation that stores POI data for icon lookup
+    class POIAnnotation: MLNPointAnnotation {
+        var poi: POIData?
+    }
+
     class Coordinator: NSObject, MLNMapViewDelegate {
         private var mapState: MapState
         private var albumLoader: AlbumLoader
         private var overlaySourcesAdded = false
-        private var poiAnnotations: [MLNPointAnnotation] = []
+        private var poiAnnotations: [POIAnnotation] = []
 
         init(mapState: MapState, albumLoader: AlbumLoader) {
             self.mapState = mapState
@@ -229,10 +297,11 @@ struct MapLibreMapView: UIViewRepresentable {
 
             // Add new annotations
             for poi in pois {
-                let annotation = MLNPointAnnotation()
+                let annotation = POIAnnotation()
                 annotation.coordinate = poi.coordinate
                 annotation.title = poi.name
                 annotation.subtitle = poi.categories.first?.displayName
+                annotation.poi = poi
                 poiAnnotations.append(annotation)
             }
 
@@ -240,23 +309,42 @@ struct MapLibreMapView: UIViewRepresentable {
         }
 
         func mapView(_ mapView: MLNMapView, viewFor annotation: MLNAnnotation) -> MLNAnnotationView? {
-            guard annotation is MLNPointAnnotation else { return nil }
+            guard let poiAnnotation = annotation as? POIAnnotation,
+                  let poi = poiAnnotation.poi else { return nil }
 
             let reuseIdentifier = "poi-marker"
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
 
             if annotationView == nil {
                 annotationView = MLNAnnotationView(reuseIdentifier: reuseIdentifier)
-                annotationView?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+                annotationView?.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
             }
 
-            let marker = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-            marker.backgroundColor = UIColor.systemPink.withAlphaComponent(0.8)
-            marker.layer.cornerRadius = 15
-            marker.layer.borderWidth = 2
-            marker.layer.borderColor = UIColor.white.cgColor
+            // Clear previous subviews
+            annotationView?.subviews.forEach { $0.removeFromSuperview() }
 
-            annotationView?.addSubview(marker)
+            // Get icon from category
+            let icon = poi.categories.first?.icon ?? "📍"
+
+            // Create label for emoji or SF Symbol
+            if icon.unicodeScalars.first?.properties.isEmoji == true && icon.count <= 2 {
+                // It's an emoji - use UILabel
+                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
+                label.text = icon
+                label.font = .systemFont(ofSize: 28)
+                label.textAlignment = .center
+                annotationView?.addSubview(label)
+            } else {
+                // It's an SF Symbol - use UIImageView
+                let config = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
+                if let image = UIImage(systemName: icon, withConfiguration: config) {
+                    let imageView = UIImageView(image: image)
+                    imageView.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+                    imageView.contentMode = .center
+                    imageView.tintColor = .systemPink
+                    annotationView?.addSubview(imageView)
+                }
+            }
 
             return annotationView
         }
@@ -268,21 +356,12 @@ struct MapLibreMapView: UIViewRepresentable {
         // MARK: - MLNMapViewDelegate
 
         func mapView(_ mapView: MLNMapView, didFinishLoading style: MLNStyle) {
-            // Fix the PMTiles source URL to use file:// protocol
-            if let tilesURL = Bundle.main.url(forResource: "sf-tiles", withExtension: "pmtiles", subdirectory: "Resources/BaseMap") {
-                let pmtilesURL = URL(string: "pmtiles://file://\(tilesURL.path)")!
-
-                // Remove the placeholder source and add with correct URL
-                if let existingSource = style.source(withIdentifier: "protomaps") {
-                    style.removeSource(existingSource)
-                }
-
-                let source = MLNVectorTileSource(identifier: "protomaps", configurationURL: pmtilesURL)
-                style.addSource(source)
-            }
-
             addOverlayLayers(to: style)
             updateOverlays(on: mapView, mapState: mapState)
+        }
+
+        func mapViewDidFailLoadingMap(_ mapView: MLNMapView, withError error: Error) {
+            print("[MapLibre] ERROR: \(error)")
         }
     }
 }
