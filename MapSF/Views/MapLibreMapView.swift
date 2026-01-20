@@ -3,6 +3,7 @@ import MapLibre
 
 struct MapLibreMapView: UIViewRepresentable {
     @Environment(MapState.self) private var mapState
+    @Environment(AlbumLoader.self) private var albumLoader
 
     // SF bounds for camera constraints
     private static let sfBounds = MLNCoordinateBounds(
@@ -49,15 +50,18 @@ struct MapLibreMapView: UIViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(mapState: mapState)
+        Coordinator(mapState: mapState, albumLoader: albumLoader)
     }
 
     class Coordinator: NSObject, MLNMapViewDelegate {
         private var mapState: MapState
+        private var albumLoader: AlbumLoader
         private var overlaySourcesAdded = false
+        private var poiAnnotations: [MLNPointAnnotation] = []
 
-        init(mapState: MapState) {
+        init(mapState: MapState, albumLoader: AlbumLoader) {
             self.mapState = mapState
+            self.albumLoader = albumLoader
         }
 
         @objc func handleTap(_ gesture: UITapGestureRecognizer) {
@@ -147,7 +151,67 @@ struct MapLibreMapView: UIViewRepresentable {
 
         func updateOverlays(on mapView: MLNMapView, mapState: MapState) {
             self.mapState = mapState
-            // Overlay rendering will be implemented in Task 5
+
+            guard mapView.style != nil else { return }
+
+            // Get data from active albums
+            for (index, album) in mapState.activeAlbums.enumerated() {
+                let color = UIColor(mapState.color(for: index))
+
+                let segments = albumLoader.segments(for: album)
+                updateSegments(segments, color: color, on: mapView)
+
+                let areas = albumLoader.areas(for: album)
+                updateAreas(areas, on: mapView)
+
+                let pois = albumLoader.pois(for: album)
+                updatePOIs(pois, color: color, on: mapView)
+            }
+        }
+
+        func updatePOIs(_ pois: [POIData], color: UIColor, on mapView: MLNMapView) {
+            // Remove existing annotations
+            if !poiAnnotations.isEmpty {
+                mapView.removeAnnotations(poiAnnotations)
+                poiAnnotations.removeAll()
+            }
+
+            // Add new annotations
+            for poi in pois {
+                let annotation = MLNPointAnnotation()
+                annotation.coordinate = poi.coordinate
+                annotation.title = poi.name
+                annotation.subtitle = poi.categories.first?.displayName
+                poiAnnotations.append(annotation)
+            }
+
+            mapView.addAnnotations(poiAnnotations)
+        }
+
+        func mapView(_ mapView: MLNMapView, viewFor annotation: MLNAnnotation) -> MLNAnnotationView? {
+            guard annotation is MLNPointAnnotation else { return nil }
+
+            let reuseIdentifier = "poi-marker"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+
+            if annotationView == nil {
+                annotationView = MLNAnnotationView(reuseIdentifier: reuseIdentifier)
+                annotationView?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            }
+
+            let marker = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            marker.backgroundColor = UIColor.systemPink.withAlphaComponent(0.8)
+            marker.layer.cornerRadius = 15
+            marker.layer.borderWidth = 2
+            marker.layer.borderColor = UIColor.white.cgColor
+
+            annotationView?.addSubview(marker)
+
+            return annotationView
+        }
+
+        func mapView(_ mapView: MLNMapView, didSelect annotation: MLNAnnotation) {
+            // Selection handling placeholder
         }
 
         // MARK: - MLNMapViewDelegate
@@ -162,4 +226,5 @@ struct MapLibreMapView: UIViewRepresentable {
 #Preview {
     MapLibreMapView()
         .environment(MapState())
+        .environment(AlbumLoader())
 }
