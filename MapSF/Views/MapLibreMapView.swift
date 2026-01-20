@@ -80,6 +80,71 @@ struct MapLibreMapView: UIViewRepresentable {
             mapState.clearSelection()
         }
 
+        private func addOverlayLayers(to style: MLNStyle) {
+            guard !overlaySourcesAdded else { return }
+
+            // Segments source and layer
+            let segmentsSource = MLNShapeSource(identifier: "segments-source", shapes: [], options: nil)
+            style.addSource(segmentsSource)
+
+            let segmentsLayer = MLNLineStyleLayer(identifier: "overlay-segments", source: segmentsSource)
+            segmentsLayer.lineWidth = NSExpression(forConstantValue: 4)
+            segmentsLayer.lineColor = NSExpression(forConstantValue: UIColor.systemPink)
+            segmentsLayer.lineCap = NSExpression(forConstantValue: "round")
+            segmentsLayer.lineJoin = NSExpression(forConstantValue: "round")
+            style.addLayer(segmentsLayer)
+
+            // Areas source and layer
+            let areasSource = MLNShapeSource(identifier: "areas-source", shapes: [], options: nil)
+            style.addSource(areasSource)
+
+            let areasFillLayer = MLNFillStyleLayer(identifier: "overlay-areas-fill", source: areasSource)
+            areasFillLayer.fillColor = NSExpression(forConstantValue: UIColor(red: 230/255, green: 150/255, blue: 50/255, alpha: 0.2))
+            style.addLayer(areasFillLayer)
+
+            let areasStrokeLayer = MLNLineStyleLayer(identifier: "overlay-areas-stroke", source: areasSource)
+            areasStrokeLayer.lineWidth = NSExpression(forConstantValue: 2)
+            areasStrokeLayer.lineColor = NSExpression(forConstantValue: UIColor(red: 230/255, green: 150/255, blue: 50/255, alpha: 1.0))
+            style.addLayer(areasStrokeLayer)
+
+            overlaySourcesAdded = true
+        }
+
+        func updateSegments(_ segments: [SegmentData], color: UIColor, on mapView: MLNMapView) {
+            guard let style = mapView.style,
+                  let source = style.source(withIdentifier: "segments-source") as? MLNShapeSource else { return }
+
+            let features = segments.map { segment -> MLNPolylineFeature in
+                var coords = segment.coordinates
+                let feature = MLNPolylineFeature(coordinates: &coords, count: UInt(coords.count))
+                feature.identifier = segment.id.uuidString
+                feature.attributes = ["name": segment.name]
+                return feature
+            }
+
+            source.shape = MLNShapeCollectionFeature(shapes: features)
+
+            // Update line color
+            if let layer = style.layer(withIdentifier: "overlay-segments") as? MLNLineStyleLayer {
+                layer.lineColor = NSExpression(forConstantValue: color)
+            }
+        }
+
+        func updateAreas(_ areas: [AreaData], on mapView: MLNMapView) {
+            guard let style = mapView.style,
+                  let source = style.source(withIdentifier: "areas-source") as? MLNShapeSource else { return }
+
+            let features = areas.map { area -> MLNPolygonFeature in
+                var coords = area.boundary
+                let feature = MLNPolygonFeature(coordinates: &coords, count: UInt(coords.count))
+                feature.identifier = area.id.uuidString
+                feature.attributes = ["name": area.name]
+                return feature
+            }
+
+            source.shape = MLNShapeCollectionFeature(shapes: features)
+        }
+
         func updateOverlays(on mapView: MLNMapView, mapState: MapState) {
             self.mapState = mapState
             // Overlay rendering will be implemented in Task 5
@@ -88,7 +153,8 @@ struct MapLibreMapView: UIViewRepresentable {
         // MARK: - MLNMapViewDelegate
 
         func mapView(_ mapView: MLNMapView, didFinishLoading style: MLNStyle) {
-            // Style loaded, ready for overlays
+            addOverlayLayers(to: style)
+            updateOverlays(on: mapView, mapState: mapState)
         }
     }
 }
