@@ -8,6 +8,7 @@
       "attribution": "© OpenStreetMap contributors"
     }
   },
+  "glyphs": "https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
@@ -17,12 +18,12 @@
       }
     },
     {
-      "id": "water",
+      "id": "earth",
       "type": "fill",
       "source": "protomaps",
-      "source-layer": "water",
+      "source-layer": "earth",
       "paint": {
-        "fill-color": "#d4e4ec"
+        "fill-color": "#f0f0f0"
       }
     },
     {
@@ -30,9 +31,28 @@
       "type": "fill",
       "source": "protomaps",
       "source-layer": "landuse",
-      "filter": ["==", "pmap:kind", "park"],
+      "filter": ["==", "kind", "park"],
       "paint": {
         "fill-color": "#e0e8e0"
+      }
+    },
+    {
+      "id": "landuse-other",
+      "type": "fill",
+      "source": "protomaps",
+      "source-layer": "landuse",
+      "filter": ["!=", "kind", "park"],
+      "paint": {
+        "fill-color": "#f5f5f5"
+      }
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "protomaps",
+      "source-layer": "water",
+      "paint": {
+        "fill-color": "#d4e4ec"
       }
     },
     {
@@ -49,7 +69,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
-      "filter": ["in", "pmap:kind", "minor_road", "other"],
+      "filter": ["in", "kind", "minor_road", "other", "path"],
       "paint": {
         "line-color": "#fafafa",
         "line-width": 1
@@ -60,11 +80,10 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
-      "filter": ["in", "pmap:kind", "highway", "major_road"],
+      "filter": ["in", "kind", "highway", "major_road"],
       "paint": {
         "line-color": "#dedede",
-        "line-width": 6,
-        "line-gap-width": 0
+        "line-width": 6
       }
     },
     {
@@ -72,7 +91,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
-      "filter": ["in", "pmap:kind", "highway", "major_road"],
+      "filter": ["in", "kind", "highway", "major_road"],
       "paint": {
         "line-color": "#ffffff",
         "line-width": 4
@@ -85,7 +104,7 @@
       "source-layer": "roads",
       "filter": ["has", "name"],
       "layout": {
-        "text-field": "{name}",
+        "text-field": ["get", "name"],
         "text-font": ["Noto Sans Regular"],
         "text-size": 10,
         "symbol-placement": "line"
@@ -101,9 +120,9 @@
       "type": "symbol",
       "source": "protomaps",
       "source-layer": "places",
-      "filter": ["in", "pmap:kind", "neighbourhood", "locality"],
+      "filter": ["in", "kind", "neighbourhood", "locality", "neighborhood"],
       "layout": {
-        "text-field": "{name}",
+        "text-field": ["get", "name"],
         "text-font": ["Noto Sans Regular"],
         "text-size": 12
       },
