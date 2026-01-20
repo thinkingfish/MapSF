@@ -268,6 +268,19 @@ struct MapLibreMapView: UIViewRepresentable {
         // MARK: - MLNMapViewDelegate
 
         func mapView(_ mapView: MLNMapView, didFinishLoading style: MLNStyle) {
+            // Fix the PMTiles source URL to use file:// protocol
+            if let tilesURL = Bundle.main.url(forResource: "sf-tiles", withExtension: "pmtiles", subdirectory: "Resources/BaseMap") {
+                let pmtilesURL = URL(string: "pmtiles://file://\(tilesURL.path)")!
+
+                // Remove the placeholder source and add with correct URL
+                if let existingSource = style.source(withIdentifier: "protomaps") {
+                    style.removeSource(existingSource)
+                }
+
+                let source = MLNVectorTileSource(identifier: "protomaps", configurationURL: pmtilesURL)
+                style.addSource(source)
+            }
+
             addOverlayLayers(to: style)
             updateOverlays(on: mapView, mapState: mapState)
         }
