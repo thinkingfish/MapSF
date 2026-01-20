@@ -1,5 +1,5 @@
 import SwiftUI
-import MapLibre
+import CoreLocation
 
 struct MapExplorerView: View {
     let initialAlbum: Album
