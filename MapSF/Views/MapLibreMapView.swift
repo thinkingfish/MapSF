@@ -68,8 +68,9 @@ struct MapLibreMapView: UIViewRepresentable {
             guard let mapView = gesture.view as? MLNMapView else { return }
             let point = gesture.location(in: mapView)
 
-            // Query features at tap point
-            let features = mapView.visibleFeatures(at: point, styleLayerIdentifiers: ["overlay-segments", "overlay-areas", "overlay-pois"])
+            // Query features at tap point with tolerance for lines
+            let rect = CGRect(x: point.x - 22, y: point.y - 22, width: 44, height: 44)
+            let features = mapView.visibleFeatures(in: rect, styleLayerIdentifiers: ["overlay-segments", "overlay-areas-fill"])
 
             if let feature = features.first {
                 handleFeatureSelection(feature)
@@ -79,8 +80,28 @@ struct MapLibreMapView: UIViewRepresentable {
         }
 
         private func handleFeatureSelection(_ feature: MLNFeature) {
-            // Feature selection will be implemented when overlays are added
-            // For now, just clear selection on any tap
+            guard let identifier = feature.identifier as? String,
+                  let uuid = UUID(uuidString: identifier) else {
+                mapState.clearSelection()
+                return
+            }
+
+            // Try to find matching segment, area, or poi
+            for album in mapState.activeAlbums {
+                if let segment = albumLoader.segments(for: album).first(where: { $0.id == uuid }) {
+                    mapState.select(segment: segment)
+                    return
+                }
+                if let area = albumLoader.areas(for: album).first(where: { $0.id == uuid }) {
+                    mapState.select(area: area)
+                    return
+                }
+                if let poi = albumLoader.pois(for: album).first(where: { $0.id == uuid }) {
+                    mapState.select(poi: poi)
+                    return
+                }
+            }
+
             mapState.clearSelection()
         }
 
@@ -152,9 +173,39 @@ struct MapLibreMapView: UIViewRepresentable {
         func updateOverlays(on mapView: MLNMapView, mapState: MapState) {
             self.mapState = mapState
 
-            guard mapView.style != nil else { return }
+            guard let style = mapView.style else { return }
 
-            // Get data from active albums
+            // Update segment selection styling
+            if let segmentsLayer = style.layer(withIdentifier: "overlay-segments") as? MLNLineStyleLayer {
+                let selectedId = mapState.selectedSegment?.id.uuidString
+                if let selectedId = selectedId {
+                    // Highlight selected, dim others
+                    segmentsLayer.lineWidth = NSExpression(format: "TERNARY(identifier == %@, 6, 4)", selectedId)
+                    segmentsLayer.lineOpacity = NSExpression(format: "TERNARY(identifier == %@, 1.0, 0.3)", selectedId)
+                } else if mapState.hasSelection {
+                    // Something else selected, dim all segments
+                    segmentsLayer.lineOpacity = NSExpression(forConstantValue: 0.3)
+                    segmentsLayer.lineWidth = NSExpression(forConstantValue: 4)
+                } else {
+                    // Nothing selected, full opacity
+                    segmentsLayer.lineOpacity = NSExpression(forConstantValue: 1.0)
+                    segmentsLayer.lineWidth = NSExpression(forConstantValue: 4)
+                }
+            }
+
+            // Similar for areas
+            if let areasFillLayer = style.layer(withIdentifier: "overlay-areas-fill") as? MLNFillStyleLayer {
+                let selectedId = mapState.selectedArea?.id.uuidString
+                if let selectedId = selectedId {
+                    areasFillLayer.fillOpacity = NSExpression(format: "TERNARY(identifier == %@, 0.3, 0.1)", selectedId)
+                } else if mapState.hasSelection {
+                    areasFillLayer.fillOpacity = NSExpression(forConstantValue: 0.1)
+                } else {
+                    areasFillLayer.fillOpacity = NSExpression(forConstantValue: 0.2)
+                }
+            }
+
+            // Update data
             for (index, album) in mapState.activeAlbums.enumerated() {
                 let color = UIColor(mapState.color(for: index))
 
