@@ -1,6 +1,6 @@
 # MapSF
 
-![MapSF Cover](MapSF/Assets/mapsf_cover-320.png)
+![MapSF Cover](assets/cover-480.png)
 
 An offline-first iOS map explorer for San Francisco, featuring curated albums of places, routes, and areas with proximity-based discovery.
 

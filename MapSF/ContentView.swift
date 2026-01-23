@@ -1,8 +1,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showSplash = true
+    @State private var contentReady = false
+
     var body: some View {
-        AlbumGalleryView()
+        ZStack {
+            AlbumGalleryView()
+                .onAppear {
+                    contentReady = true
+                }
+
+            if showSplash {
+                SplashView(isVisible: $showSplash, contentReady: $contentReady)
+                    .transition(.move(edge: .top))
+                    .zIndex(1)
+            }
+        }
     }
 }
 
