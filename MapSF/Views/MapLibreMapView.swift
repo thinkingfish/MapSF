@@ -125,6 +125,12 @@ struct MapLibreMapView: UIViewRepresentable {
 
     static func dismantleUIView(_ mapView: MLNMapView, coordinator: Coordinator) {
         coordinator.cleanup(mapView: mapView)
+        // Remove gesture recognizers to break retain cycle with coordinator
+        mapView.gestureRecognizers?.forEach { gesture in
+            if gesture is UITapGestureRecognizer {
+                mapView.removeGestureRecognizer(gesture)
+            }
+        }
         mapView.delegate = nil
     }
 
@@ -174,7 +180,13 @@ struct MapLibreMapView: UIViewRepresentable {
                     let viewPoint = gesture.location(in: view)
                     if view.bounds.contains(viewPoint) {
                         if let poi = annotation.poi {
-                            mapState.select(poi: poi)
+                            // Toggle: deselect if already selected
+                            if mapState.selectedPOI?.id == poi.id {
+                                mapState.clearSelection()
+                            } else {
+                                mapState.select(poi: poi)
+                            }
+                            refreshOverlaysAfterSelection(on: mapView)
                         }
                         return
                     }
@@ -186,16 +198,18 @@ struct MapLibreMapView: UIViewRepresentable {
             let features = mapView.visibleFeatures(in: rect, styleLayerIdentifiers: ["overlay-segments", "overlay-areas-fill"])
 
             if let feature = features.first {
-                handleFeatureSelection(feature)
+                handleFeatureSelection(feature, mapView: mapView)
             } else {
                 mapState.clearSelection()
+                refreshOverlaysAfterSelection(on: mapView)
             }
         }
 
-        private func handleFeatureSelection(_ feature: MLNFeature) {
+        private func handleFeatureSelection(_ feature: MLNFeature, mapView: MLNMapView) {
             guard let identifier = feature.identifier as? String,
                   let uuid = UUID(uuidString: identifier) else {
                 mapState.clearSelection()
+                refreshOverlaysAfterSelection(on: mapView)
                 return
             }
 
@@ -203,19 +217,30 @@ struct MapLibreMapView: UIViewRepresentable {
             for album in mapState.activeAlbums {
                 if let segment = albumLoader.segments(for: album).first(where: { $0.id == uuid }) {
                     mapState.select(segment: segment)
+                    refreshOverlaysAfterSelection(on: mapView)
                     return
                 }
                 if let area = albumLoader.areas(for: album).first(where: { $0.id == uuid }) {
                     mapState.select(area: area)
+                    refreshOverlaysAfterSelection(on: mapView)
                     return
                 }
                 if let poi = albumLoader.pois(for: album).first(where: { $0.id == uuid }) {
                     mapState.select(poi: poi)
+                    refreshOverlaysAfterSelection(on: mapView)
                     return
                 }
             }
 
             mapState.clearSelection()
+            refreshOverlaysAfterSelection(on: mapView)
+        }
+
+        private func refreshOverlaysAfterSelection(on mapView: MLNMapView) {
+            // Refresh POI annotations to update opacity
+            guard !poiAnnotations.isEmpty else { return }
+            mapView.removeAnnotations(poiAnnotations)
+            mapView.addAnnotations(poiAnnotations)
         }
 
         private func addOverlayLayers(to style: MLNStyle) {
@@ -299,33 +324,6 @@ struct MapLibreMapView: UIViewRepresentable {
                                    currentPOIId != lastSelectedPOIId
 
             if selectionChanged {
-                // Update segment selection styling
-                if let segmentsLayer = style.layer(withIdentifier: "overlay-segments") as? MLNLineStyleLayer {
-                    let selectedId = mapState.selectedSegment?.id.uuidString
-                    if let selectedId = selectedId {
-                        segmentsLayer.lineWidth = NSExpression(format: "TERNARY(identifier == %@, 6, 4)", selectedId)
-                        segmentsLayer.lineOpacity = NSExpression(format: "TERNARY(identifier == %@, 1.0, 0.3)", selectedId)
-                    } else if mapState.hasSelection {
-                        segmentsLayer.lineOpacity = NSExpression(forConstantValue: 0.3)
-                        segmentsLayer.lineWidth = NSExpression(forConstantValue: 4)
-                    } else {
-                        segmentsLayer.lineOpacity = NSExpression(forConstantValue: 1.0)
-                        segmentsLayer.lineWidth = NSExpression(forConstantValue: 4)
-                    }
-                }
-
-                // Update area selection styling
-                if let areasFillLayer = style.layer(withIdentifier: "overlay-areas-fill") as? MLNFillStyleLayer {
-                    let selectedId = mapState.selectedArea?.id.uuidString
-                    if let selectedId = selectedId {
-                        areasFillLayer.fillOpacity = NSExpression(format: "TERNARY(identifier == %@, 0.3, 0.1)", selectedId)
-                    } else if mapState.hasSelection {
-                        areasFillLayer.fillOpacity = NSExpression(forConstantValue: 0.1)
-                    } else {
-                        areasFillLayer.fillOpacity = NSExpression(forConstantValue: 0.2)
-                    }
-                }
-
                 // Update POI annotation opacity
                 updatePOIOpacity(on: mapView, selectedPOIId: currentPOIId, hasSelection: mapState.hasSelection)
 
@@ -375,17 +373,11 @@ struct MapLibreMapView: UIViewRepresentable {
         }
 
         func updatePOIOpacity(on mapView: MLNMapView, selectedPOIId: UUID?, hasSelection: Bool) {
-            for annotation in poiAnnotations {
-                guard let view = mapView.view(for: annotation) else { continue }
-                let isSelected = annotation.poi?.id == selectedPOIId
-                if isSelected {
-                    view.alpha = 1.0
-                } else if hasSelection {
-                    view.alpha = 0.3
-                } else {
-                    view.alpha = 1.0
-                }
-            }
+            // Force MapLibre to recreate annotation views by removing and re-adding
+            // This ensures the alpha is applied via mapView(_:viewFor:)
+            guard !poiAnnotations.isEmpty else { return }
+            mapView.removeAnnotations(poiAnnotations)
+            mapView.addAnnotations(poiAnnotations)
         }
 
         func mapView(_ mapView: MLNMapView, viewFor annotation: MLNAnnotation) -> MLNAnnotationView? {
@@ -457,14 +449,30 @@ struct MapLibreMapView: UIViewRepresentable {
                 }
             }
 
+            // Set alpha based on current selection state
+            let isSelected = poi.id == mapState.selectedPOI?.id
+            if isSelected {
+                annotationView?.alpha = 1.0
+            } else if mapState.hasSelection {
+                annotationView?.alpha = 0.3
+            } else {
+                annotationView?.alpha = 1.0
+            }
+
             return annotationView
         }
 
         func mapView(_ mapView: MLNMapView, didSelect annotation: MLNAnnotation) {
             guard let poiAnnotation = annotation as? POIAnnotation,
                   let poi = poiAnnotation.poi else { return }
-            mapState.select(poi: poi)
+            // Toggle: deselect if already selected
+            if mapState.selectedPOI?.id == poi.id {
+                mapState.clearSelection()
+            } else {
+                mapState.select(poi: poi)
+            }
             mapView.deselectAnnotation(annotation, animated: false)
+            refreshOverlaysAfterSelection(on: mapView)
         }
 
         // MARK: - MLNMapViewDelegate

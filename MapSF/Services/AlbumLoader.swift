@@ -5,14 +5,25 @@ class AlbumLoader {
     private(set) var albums: [Album] = []
     private var loadedCurations: [String: [Curation]] = [:] // Cache by album id
 
+    // Cached filtered results to avoid repeated iteration
+    private var cachedSegments: [String: [SegmentData]] = [:]
+    private var cachedPOIs: [String: [POIData]] = [:]
+    private var cachedAreas: [String: [AreaData]] = [:]
+
     /// Evict cached curations for an album to free memory
     func evictCache(for albumId: String) {
         loadedCurations.removeValue(forKey: albumId)
+        cachedSegments.removeValue(forKey: albumId)
+        cachedPOIs.removeValue(forKey: albumId)
+        cachedAreas.removeValue(forKey: albumId)
     }
 
     /// Evict all cached curations
     func evictAllCaches() {
         loadedCurations.removeAll()
+        cachedSegments.removeAll()
+        cachedPOIs.removeAll()
+        cachedAreas.removeAll()
     }
 
     init() {
@@ -68,23 +79,38 @@ class AlbumLoader {
     }
 
     func segments(for album: Album) -> [SegmentData] {
-        loadCurations(for: album).compactMap { curation in
+        if let cached = cachedSegments[album.id] {
+            return cached
+        }
+        let result = loadCurations(for: album).compactMap { curation in
             if case .segment(let segment) = curation { return segment }
             return nil
         }
+        cachedSegments[album.id] = result
+        return result
     }
 
     func pois(for album: Album) -> [POIData] {
-        loadCurations(for: album).compactMap { curation in
+        if let cached = cachedPOIs[album.id] {
+            return cached
+        }
+        let result = loadCurations(for: album).compactMap { curation in
             if case .poi(let poi) = curation { return poi }
             return nil
         }
+        cachedPOIs[album.id] = result
+        return result
     }
 
     func areas(for album: Album) -> [AreaData] {
-        loadCurations(for: album).compactMap { curation in
+        if let cached = cachedAreas[album.id] {
+            return cached
+        }
+        let result = loadCurations(for: album).compactMap { curation in
             if case .area(let area) = curation { return area }
             return nil
         }
+        cachedAreas[album.id] = result
+        return result
     }
 }
