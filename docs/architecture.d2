@@ -1,0 +1,122 @@
+# MapSF Architecture Diagram
+
+direction: down
+
+# App Entry Point
+app: MapSFApp {
+  shape: hexagon
+  style.fill: "#E8F5E9"
+}
+
+# Views Layer
+views: Views {
+  style.fill: "#E3F2FD"
+
+  content: ContentView
+  gallery: AlbumGalleryView
+  cover: AlbumCoverView
+  explorer: MapExplorerView {
+    style.fill: "#BBDEFB"
+  }
+  panel: CurationInfoPanel
+  query: QuerySheet
+
+  content -> gallery: wraps
+  gallery -> cover: renders
+  gallery -> explorer: navigates to
+  explorer -> panel: contains
+  explorer -> query: presents
+}
+
+# Models Layer
+models: Models {
+  style.fill: "#FFF3E0"
+
+  album: Album
+  curation: Curation {
+    shape: diamond
+  }
+  poi: POIData
+  segment: SegmentData
+  area: AreaData
+  category: POICategory
+
+  curation -> poi: case
+  curation -> segment: case
+  curation -> area: case
+  poi -> category: has
+}
+
+# Services Layer
+services: Services {
+  style.fill: "#F3E5F5"
+
+  loader: AlbumLoader {
+    style.fill: "#E1BEE7"
+  }
+  parser: GeoJSONParser
+  location: LocationManager
+  proximity: ProximityQuery
+
+  loader -> parser: uses
+}
+
+# State Layer
+state: State {
+  style.fill: "#FFEBEE"
+
+  mapState: MapState {
+    style.fill: "#FFCDD2"
+    selection: "Selection State"
+    query: "Query State"
+    colors: "Color Palette"
+  }
+}
+
+# Data Layer
+data: Data {
+  style.fill: "#F5F5F5"
+  shape: cylinder
+
+  albums_json: albums.json
+  geojson: "GeoJSON Files" {
+    bookstores: sf-bookstores
+    parks: sf-parks
+    streetcar: sf-streetcar
+    icecream: sf-icecream
+    playgrounds: sf-playgrounds
+  }
+  covers: "Cover Images"
+}
+
+# Environment Injection
+app -> views.content: WindowGroup
+app -> services.loader: "@State + .environment()"
+app -> state.mapState: "@State + .environment()"
+app -> services.location: "@State + .environment()"
+
+# View Dependencies (via @Environment)
+views.explorer -> state.mapState: "@Environment" {style.stroke-dash: 3}
+views.explorer -> services.loader: "@Environment" {style.stroke-dash: 3}
+views.panel -> state.mapState: "@Environment" {style.stroke-dash: 3}
+views.panel -> services.loader: "@Environment" {style.stroke-dash: 3}
+views.gallery -> services.loader: "@Environment" {style.stroke-dash: 3}
+views.query -> state.mapState: "@Environment" {style.stroke-dash: 3}
+
+# Data Flow
+services.loader -> data.albums_json: loads
+services.loader -> data.geojson: loads
+services.parser -> models.curation: produces
+views.cover -> data.covers: displays
+
+# Model Usage
+services.loader -> models.album: manages
+services.loader -> models.curation: caches
+state.mapState -> models.album: tracks active
+state.mapState -> models.poi: selection
+state.mapState -> models.segment: selection
+state.mapState -> models.area: selection
+
+# Query/Filter Flow
+services.proximity -> models.poi: filters
+views.explorer -> services.proximity: uses for filtering

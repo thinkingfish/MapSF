@@ -5,14 +5,15 @@ struct MapLibreMapView: UIViewRepresentable {
     @Environment(MapState.self) private var mapState
     @Environment(AlbumLoader.self) private var albumLoader
 
-    // SF bounds for camera constraints
+    // Tile coverage bounds - extended south beyond strict intersection for full SF view
+    // Note: may show grey void at z13+ when panned to far south edge
     private static let sfBounds = MLNCoordinateBounds(
-        sw: CLLocationCoordinate2D(latitude: 37.708, longitude: -122.5155),
-        ne: CLLocationCoordinate2D(latitude: 37.8324, longitude: -122.357)
+        sw: CLLocationCoordinate2D(latitude: 37.6896, longitude: -122.5525),
+        ne: CLLocationCoordinate2D(latitude: 37.8662, longitude: -122.3438)
     )
 
-    private static let defaultCenter = CLLocationCoordinate2D(latitude: 37.7610, longitude: -122.4410)
-    private static let defaultZoom: Double = 12.0
+    private static let defaultCenter = CLLocationCoordinate2D(latitude: 37.7648, longitude: -122.4378)
+    private static let defaultZoom: Double = 10.7
 
     /// Create style URL with native mbtiles:// protocol
     private static func createStyleURL() -> URL? {
@@ -47,9 +48,9 @@ struct MapLibreMapView: UIViewRepresentable {
             {"id": "landuse-park", "type": "fill", "source": "protomaps", "source-layer": "landuse", "filter": ["==", "kind", "park"], "paint": {"fill-color": "#e0e8e0"}},
             {"id": "water", "type": "fill", "source": "protomaps", "source-layer": "water", "paint": {"fill-color": "#d4e4ec"}},
             {"id": "buildings", "type": "fill", "source": "protomaps", "source-layer": "buildings", "paint": {"fill-color": "#e8e8e8"}},
-            {"id": "roads-minor", "type": "line", "source": "protomaps", "source-layer": "roads", "filter": ["in", "kind", "minor_road", "other", "path"], "paint": {"line-color": "#fafafa", "line-width": 1}},
-            {"id": "roads-major-casing", "type": "line", "source": "protomaps", "source-layer": "roads", "filter": ["in", "kind", "highway", "major_road"], "paint": {"line-color": "#dedede", "line-width": 6}},
-            {"id": "roads-major", "type": "line", "source": "protomaps", "source-layer": "roads", "filter": ["in", "kind", "highway", "major_road"], "paint": {"line-color": "#ffffff", "line-width": 4}}
+            {"id": "roads-minor", "type": "line", "source": "protomaps", "source-layer": "roads", "filter": ["in", "kind", "minor_road", "other", "path"], "paint": {"line-color": "#fafafa", "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.3, 14, 0.8, 16, 1.5]}},
+            {"id": "roads-major-casing", "type": "line", "source": "protomaps", "source-layer": "roads", "filter": ["in", "kind", "highway", "major_road"], "paint": {"line-color": "#e8e8e8", "line-width": ["interpolate", ["linear"], ["zoom"], 10, 1, 14, 4, 16, 8]}},
+            {"id": "roads-major", "type": "line", "source": "protomaps", "source-layer": "roads", "filter": ["in", "kind", "highway", "major_road"], "paint": {"line-color": "#ffffff", "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.5, 14, 2.5, 16, 5]}}
           ]
         }
         """
@@ -81,12 +82,12 @@ struct MapLibreMapView: UIViewRepresentable {
         // Set initial camera
         mapView.setCenter(Self.defaultCenter, zoomLevel: Self.defaultZoom, animated: false)
 
-        // Camera bounds (SF only)
-        mapView.setVisibleCoordinateBounds(Self.sfBounds, animated: false)
-
-        // Zoom limits (z10-16 equivalent)
-        mapView.minimumZoomLevel = 10
+        // Zoom limits (z10.7-16, matches default view)
+        mapView.minimumZoomLevel = 10.7
         mapView.maximumZoomLevel = 16
+
+        // Constrain panning/zooming to tile coverage area
+        mapView.maximumScreenBounds = Self.sfBounds
 
         // UI settings
         mapView.compassView.isHidden = false
@@ -97,11 +98,35 @@ struct MapLibreMapView: UIViewRepresentable {
         let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap(_:)))
         mapView.addGestureRecognizer(tapGesture)
 
+        // Debug label for zoom/coordinates
+        #if DEBUG
+        let debugLabel = UILabel()
+        debugLabel.tag = 999
+        debugLabel.font = .monospacedSystemFont(ofSize: 11, weight: .medium)
+        debugLabel.textColor = .darkGray
+        debugLabel.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        debugLabel.layer.cornerRadius = 4
+        debugLabel.clipsToBounds = true
+        debugLabel.textAlignment = .center
+        debugLabel.translatesAutoresizingMaskIntoConstraints = false
+        mapView.addSubview(debugLabel)
+        NSLayoutConstraint.activate([
+            debugLabel.topAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.topAnchor, constant: 8),
+            debugLabel.centerXAnchor.constraint(equalTo: mapView.centerXAnchor)
+        ])
+        context.coordinator.updateDebugLabel(mapView)
+        #endif
+
         return mapView
     }
 
     func updateUIView(_ mapView: MLNMapView, context: Context) {
         context.coordinator.updateOverlays(on: mapView, mapState: mapState)
+    }
+
+    static func dismantleUIView(_ mapView: MLNMapView, coordinator: Coordinator) {
+        coordinator.cleanup(mapView: mapView)
+        mapView.delegate = nil
     }
 
     func makeCoordinator() -> Coordinator {
@@ -111,6 +136,7 @@ struct MapLibreMapView: UIViewRepresentable {
     /// Custom annotation that stores POI data for icon lookup
     class POIAnnotation: MLNPointAnnotation {
         var poi: POIData?
+        var color: UIColor = .systemPink
     }
 
     class Coordinator: NSObject, MLNMapViewDelegate {
@@ -119,14 +145,42 @@ struct MapLibreMapView: UIViewRepresentable {
         private var overlaySourcesAdded = false
         private var poiAnnotations: [POIAnnotation] = []
 
+        // Track last state to avoid redundant updates
+        private var lastActiveAlbumIds: Set<String> = []
+        private var lastSelectedSegmentId: UUID?
+        private var lastSelectedAreaId: UUID?
+        private var lastSelectedPOIId: UUID?
+
         init(mapState: MapState, albumLoader: AlbumLoader) {
             self.mapState = mapState
             self.albumLoader = albumLoader
         }
 
+        func cleanup(mapView: MLNMapView) {
+            // Remove all annotations to break retain cycles
+            if !poiAnnotations.isEmpty {
+                mapView.removeAnnotations(poiAnnotations)
+                poiAnnotations.removeAll()
+            }
+            overlaySourcesAdded = false
+        }
+
         @objc func handleTap(_ gesture: UITapGestureRecognizer) {
             guard let mapView = gesture.view as? MLNMapView else { return }
             let point = gesture.location(in: mapView)
+
+            // Check if tap hit a POI annotation
+            for annotation in poiAnnotations {
+                if let view = mapView.view(for: annotation) {
+                    let viewPoint = gesture.location(in: view)
+                    if view.bounds.contains(viewPoint) {
+                        if let poi = annotation.poi {
+                            mapState.select(poi: poi)
+                        }
+                        return
+                    }
+                }
+            }
 
             // Query features at tap point with tolerance for lines
             let rect = CGRect(x: point.x - 22, y: point.y - 22, width: 44, height: 44)
@@ -184,12 +238,12 @@ struct MapLibreMapView: UIViewRepresentable {
             style.addSource(areasSource)
 
             let areasFillLayer = MLNFillStyleLayer(identifier: "overlay-areas-fill", source: areasSource)
-            areasFillLayer.fillColor = NSExpression(forConstantValue: UIColor(red: 230/255, green: 150/255, blue: 50/255, alpha: 0.2))
+            areasFillLayer.fillColor = NSExpression(forConstantValue: UIColor(red: 34/255, green: 120/255, blue: 60/255, alpha: 0.15))
             style.addLayer(areasFillLayer)
 
             let areasStrokeLayer = MLNLineStyleLayer(identifier: "overlay-areas-stroke", source: areasSource)
             areasStrokeLayer.lineWidth = NSExpression(forConstantValue: 2)
-            areasStrokeLayer.lineColor = NSExpression(forConstantValue: UIColor(red: 230/255, green: 150/255, blue: 50/255, alpha: 1.0))
+            areasStrokeLayer.lineColor = NSExpression(forConstantValue: UIColor(red: 34/255, green: 120/255, blue: 60/255, alpha: 1.0))
             style.addLayer(areasStrokeLayer)
 
             overlaySourcesAdded = true
@@ -235,48 +289,68 @@ struct MapLibreMapView: UIViewRepresentable {
 
             guard let style = mapView.style else { return }
 
-            // Update segment selection styling
-            if let segmentsLayer = style.layer(withIdentifier: "overlay-segments") as? MLNLineStyleLayer {
-                let selectedId = mapState.selectedSegment?.id.uuidString
-                if let selectedId = selectedId {
-                    // Highlight selected, dim others
-                    segmentsLayer.lineWidth = NSExpression(format: "TERNARY(identifier == %@, 6, 4)", selectedId)
-                    segmentsLayer.lineOpacity = NSExpression(format: "TERNARY(identifier == %@, 1.0, 0.3)", selectedId)
-                } else if mapState.hasSelection {
-                    // Something else selected, dim all segments
-                    segmentsLayer.lineOpacity = NSExpression(forConstantValue: 0.3)
-                    segmentsLayer.lineWidth = NSExpression(forConstantValue: 4)
-                } else {
-                    // Nothing selected, full opacity
-                    segmentsLayer.lineOpacity = NSExpression(forConstantValue: 1.0)
-                    segmentsLayer.lineWidth = NSExpression(forConstantValue: 4)
+            let currentAlbumIds = Set(mapState.activeAlbums.map { $0.id })
+            let currentSegmentId = mapState.selectedSegment?.id
+            let currentAreaId = mapState.selectedArea?.id
+            let currentPOIId = mapState.selectedPOI?.id
+
+            // Only update selection styling if selection changed
+            let selectionChanged = currentSegmentId != lastSelectedSegmentId ||
+                                   currentAreaId != lastSelectedAreaId ||
+                                   currentPOIId != lastSelectedPOIId
+
+            if selectionChanged {
+                // Update segment selection styling
+                if let segmentsLayer = style.layer(withIdentifier: "overlay-segments") as? MLNLineStyleLayer {
+                    let selectedId = mapState.selectedSegment?.id.uuidString
+                    if let selectedId = selectedId {
+                        segmentsLayer.lineWidth = NSExpression(format: "TERNARY(identifier == %@, 6, 4)", selectedId)
+                        segmentsLayer.lineOpacity = NSExpression(format: "TERNARY(identifier == %@, 1.0, 0.3)", selectedId)
+                    } else if mapState.hasSelection {
+                        segmentsLayer.lineOpacity = NSExpression(forConstantValue: 0.3)
+                        segmentsLayer.lineWidth = NSExpression(forConstantValue: 4)
+                    } else {
+                        segmentsLayer.lineOpacity = NSExpression(forConstantValue: 1.0)
+                        segmentsLayer.lineWidth = NSExpression(forConstantValue: 4)
+                    }
                 }
+
+                // Update area selection styling
+                if let areasFillLayer = style.layer(withIdentifier: "overlay-areas-fill") as? MLNFillStyleLayer {
+                    let selectedId = mapState.selectedArea?.id.uuidString
+                    if let selectedId = selectedId {
+                        areasFillLayer.fillOpacity = NSExpression(format: "TERNARY(identifier == %@, 0.3, 0.1)", selectedId)
+                    } else if mapState.hasSelection {
+                        areasFillLayer.fillOpacity = NSExpression(forConstantValue: 0.1)
+                    } else {
+                        areasFillLayer.fillOpacity = NSExpression(forConstantValue: 0.2)
+                    }
+                }
+
+                // Update POI annotation opacity
+                updatePOIOpacity(on: mapView, selectedPOIId: currentPOIId, hasSelection: mapState.hasSelection)
+
+                lastSelectedSegmentId = currentSegmentId
+                lastSelectedAreaId = currentAreaId
+                lastSelectedPOIId = currentPOIId
             }
 
-            // Similar for areas
-            if let areasFillLayer = style.layer(withIdentifier: "overlay-areas-fill") as? MLNFillStyleLayer {
-                let selectedId = mapState.selectedArea?.id.uuidString
-                if let selectedId = selectedId {
-                    areasFillLayer.fillOpacity = NSExpression(format: "TERNARY(identifier == %@, 0.3, 0.1)", selectedId)
-                } else if mapState.hasSelection {
-                    areasFillLayer.fillOpacity = NSExpression(forConstantValue: 0.1)
-                } else {
-                    areasFillLayer.fillOpacity = NSExpression(forConstantValue: 0.2)
+            // Only update data if albums changed
+            if currentAlbumIds != lastActiveAlbumIds {
+                for (index, album) in mapState.activeAlbums.enumerated() {
+                    let color = UIColor(mapState.color(for: index))
+
+                    let segments = albumLoader.segments(for: album)
+                    updateSegments(segments, color: color, on: mapView)
+
+                    let areas = albumLoader.areas(for: album)
+                    updateAreas(areas, on: mapView)
+
+                    let pois = albumLoader.pois(for: album)
+                    updatePOIs(pois, color: color, on: mapView)
                 }
-            }
 
-            // Update data
-            for (index, album) in mapState.activeAlbums.enumerated() {
-                let color = UIColor(mapState.color(for: index))
-
-                let segments = albumLoader.segments(for: album)
-                updateSegments(segments, color: color, on: mapView)
-
-                let areas = albumLoader.areas(for: album)
-                updateAreas(areas, on: mapView)
-
-                let pois = albumLoader.pois(for: album)
-                updatePOIs(pois, color: color, on: mapView)
+                lastActiveAlbumIds = currentAlbumIds
             }
         }
 
@@ -294,47 +368,93 @@ struct MapLibreMapView: UIViewRepresentable {
                 annotation.title = poi.name
                 annotation.subtitle = poi.categories.first?.displayName
                 annotation.poi = poi
+                annotation.color = color
                 poiAnnotations.append(annotation)
             }
 
             mapView.addAnnotations(poiAnnotations)
         }
 
+        func updatePOIOpacity(on mapView: MLNMapView, selectedPOIId: UUID?, hasSelection: Bool) {
+            for annotation in poiAnnotations {
+                guard let view = mapView.view(for: annotation) else { continue }
+                let isSelected = annotation.poi?.id == selectedPOIId
+                if isSelected {
+                    view.alpha = 1.0
+                } else if hasSelection {
+                    view.alpha = 0.3
+                } else {
+                    view.alpha = 1.0
+                }
+            }
+        }
+
         func mapView(_ mapView: MLNMapView, viewFor annotation: MLNAnnotation) -> MLNAnnotationView? {
             guard let poiAnnotation = annotation as? POIAnnotation,
                   let poi = poiAnnotation.poi else { return nil }
 
-            let reuseIdentifier = "poi-marker"
+            let icon = poi.categories.first?.icon ?? "📍"
+            let isEmoji = icon.unicodeScalars.first?.properties.isEmoji == true && icon.count <= 2
+            let isCircle = icon == "circle.fill"
+
+            let reuseIdentifier: String
+            if isCircle {
+                reuseIdentifier = "poi-circle"
+            } else if isEmoji {
+                reuseIdentifier = "poi-emoji"
+            } else {
+                reuseIdentifier = "poi-symbol"
+            }
+
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
 
             if annotationView == nil {
                 annotationView = MLNAnnotationView(reuseIdentifier: reuseIdentifier)
-                annotationView?.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
-            }
+                annotationView?.isEnabled = true
 
-            // Clear previous subviews
-            annotationView?.subviews.forEach { $0.removeFromSuperview() }
-
-            // Get icon from category
-            let icon = poi.categories.first?.icon ?? "📍"
-
-            // Create label for emoji or SF Symbol
-            if icon.unicodeScalars.first?.properties.isEmoji == true && icon.count <= 2 {
-                // It's an emoji - use UILabel
-                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
-                label.text = icon
-                label.font = .systemFont(ofSize: 28)
-                label.textAlignment = .center
-                annotationView?.addSubview(label)
-            } else {
-                // It's an SF Symbol - use UIImageView
-                let config = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
-                if let image = UIImage(systemName: icon, withConfiguration: config) {
-                    let imageView = UIImageView(image: image)
-                    imageView.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+                if isCircle {
+                    // Circle markers: slightly larger than line width (4pt line → 8pt circle)
+                    annotationView?.frame = CGRect(x: 0, y: 0, width: 12, height: 12)
+                    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
+                    imageView.tag = 100
                     imageView.contentMode = .center
                     imageView.tintColor = .systemPink
                     annotationView?.addSubview(imageView)
+                } else if isEmoji {
+                    annotationView?.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+                    let label = UILabel(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
+                    label.tag = 100
+                    label.font = .systemFont(ofSize: 28)
+                    label.textAlignment = .center
+                    annotationView?.addSubview(label)
+                } else {
+                    annotationView?.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+                    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
+                    imageView.tag = 100
+                    imageView.contentMode = .center
+                    imageView.tintColor = .systemPink
+                    annotationView?.addSubview(imageView)
+                }
+            }
+
+            // Update content without recreating views
+            if isCircle {
+                if let imageView = annotationView?.viewWithTag(100) as? UIImageView {
+                    let config = UIImage.SymbolConfiguration(pointSize: 8, weight: .bold)
+                    let image = UIImage(systemName: icon, withConfiguration: config)?
+                        .withTintColor(poiAnnotation.color, renderingMode: .alwaysOriginal)
+                    imageView.image = image
+                }
+            } else if isEmoji {
+                if let label = annotationView?.viewWithTag(100) as? UILabel {
+                    label.text = icon
+                }
+            } else {
+                if let imageView = annotationView?.viewWithTag(100) as? UIImageView {
+                    let config = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
+                    let image = UIImage(systemName: icon, withConfiguration: config)?
+                        .withTintColor(poiAnnotation.color, renderingMode: .alwaysOriginal)
+                    imageView.image = image
                 }
             }
 
@@ -342,7 +462,10 @@ struct MapLibreMapView: UIViewRepresentable {
         }
 
         func mapView(_ mapView: MLNMapView, didSelect annotation: MLNAnnotation) {
-            // Selection handling placeholder
+            guard let poiAnnotation = annotation as? POIAnnotation,
+                  let poi = poiAnnotation.poi else { return }
+            mapState.select(poi: poi)
+            mapView.deselectAnnotation(annotation, animated: false)
         }
 
         // MARK: - MLNMapViewDelegate
@@ -355,6 +478,22 @@ struct MapLibreMapView: UIViewRepresentable {
         func mapViewDidFailLoadingMap(_ mapView: MLNMapView, withError error: Error) {
             print("[MapLibre] ERROR: \(error)")
         }
+
+        func mapView(_ mapView: MLNMapView, regionDidChangeAnimated animated: Bool) {
+            #if DEBUG
+            updateDebugLabel(mapView)
+            #endif
+        }
+
+        func updateDebugLabel(_ mapView: MLNMapView) {
+            #if DEBUG
+            guard let label = mapView.viewWithTag(999) as? UILabel else { return }
+            let center = mapView.centerCoordinate
+            let zoom = mapView.zoomLevel
+            label.text = String(format: " z%.1f  (%.4f, %.4f) ", zoom, center.latitude, center.longitude)
+            #endif
+        }
+
     }
 }
 

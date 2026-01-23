@@ -20,7 +20,7 @@ enum POICategory: String, CaseIterable, Codable {
         case .coffee: return "cup.and.saucer.fill"
         case .bar: return "wineglass.fill"
         case .landmark: return "star.fill"
-        case .streetcarStop: return "tram.fill"
+        case .streetcarStop: return "circle.fill"
         case .playground: return "🛝"
         }
     }
