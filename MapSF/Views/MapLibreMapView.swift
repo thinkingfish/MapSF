@@ -5,7 +5,7 @@ struct MapLibreMapView: UIViewRepresentable {
     @Environment(MapState.self) private var mapState
     @Environment(AlbumLoader.self) private var albumLoader
 
-    // Tile coverage bounds - the outer limit of available tiles
+    // Tile coverage bounds
     private static let sfBounds = MLNCoordinateBounds(
         sw: CLLocationCoordinate2D(latitude: 37.6896, longitude: -122.5525),
         ne: CLLocationCoordinate2D(latitude: 37.8662, longitude: -122.3438)
@@ -13,48 +13,6 @@ struct MapLibreMapView: UIViewRepresentable {
 
     private static let defaultCenter = CLLocationCoordinate2D(latitude: 37.7648, longitude: -122.4378)
     private static let defaultZoom: Double = 10.7
-
-    /// Calculate navigation bounds that prevent grey void at screen edges.
-    /// Insets sfBounds by half the visible span at current zoom level.
-    static func navBounds(for zoom: Double, screenSize: CGSize) -> MLNCoordinateBounds {
-        // Degrees per pixel at given zoom (assuming 512px tiles)
-        let degreesPerPixel = 360.0 / (512.0 * pow(2.0, zoom))
-
-        // Visible span in degrees
-        let visibleLon = screenSize.width * degreesPerPixel
-        let visibleLat = screenSize.height * degreesPerPixel / cos(37.77 * .pi / 180) // Mercator correction
-
-        // Inset by half the visible span so edges stay within tile coverage
-        let latInset = visibleLat / 2.0
-        let lonInset = visibleLon / 2.0
-
-        // Calculate inset bounds (ensure valid - don't invert)
-        let halfLatSpan = (sfBounds.ne.latitude - sfBounds.sw.latitude) / 2.0
-        let halfLonSpan = (sfBounds.ne.longitude - sfBounds.sw.longitude) / 2.0
-
-        // If inset exceeds half the span, collapse to center (no room to pan)
-        let effectiveLatInset = min(latInset, halfLatSpan)
-        let effectiveLonInset = min(lonInset, halfLonSpan)
-
-        return MLNCoordinateBounds(
-            sw: CLLocationCoordinate2D(
-                latitude: sfBounds.sw.latitude + effectiveLatInset,
-                longitude: sfBounds.sw.longitude + effectiveLonInset
-            ),
-            ne: CLLocationCoordinate2D(
-                latitude: sfBounds.ne.latitude - effectiveLatInset,
-                longitude: sfBounds.ne.longitude - effectiveLonInset
-            )
-        )
-    }
-
-    /// Clamp a coordinate to stay within bounds
-    static func clamp(_ coord: CLLocationCoordinate2D, to bounds: MLNCoordinateBounds) -> CLLocationCoordinate2D {
-        CLLocationCoordinate2D(
-            latitude: min(max(coord.latitude, bounds.sw.latitude), bounds.ne.latitude),
-            longitude: min(max(coord.longitude, bounds.sw.longitude), bounds.ne.longitude)
-        )
-    }
 
     /// Create style URL with native mbtiles:// protocol
     private static func createStyleURL() -> URL? {
@@ -189,7 +147,6 @@ struct MapLibreMapView: UIViewRepresentable {
         // Track last state to avoid redundant updates
         private var lastActiveAlbumIds: Set<String> = []
         private var lastSelectedSegmentId: UUID?
-        private var isEnforcingBounds = false
         private var lastSelectedAreaId: UUID?
         private var lastSelectedPOIId: UUID?
 
@@ -525,34 +482,6 @@ struct MapLibreMapView: UIViewRepresentable {
             #if DEBUG
             updateDebugLabel(mapView)
             #endif
-        }
-
-        /// Called continuously during pan/zoom gestures - enforce bounds in real-time
-        func mapViewRegionIsChanging(_ mapView: MLNMapView) {
-            enforceNavBounds(on: mapView, animated: false)
-        }
-
-        /// Enforce navigation bounds - clamp center to prevent grey void at edges
-        private func enforceNavBounds(on mapView: MLNMapView, animated: Bool) {
-            guard !isEnforcingBounds else { return }
-
-            let screenSize = mapView.bounds.size
-            guard screenSize.width > 0, screenSize.height > 0 else { return }
-
-            let zoom = mapView.zoomLevel
-            let navBounds = MapLibreMapView.navBounds(for: zoom, screenSize: screenSize)
-            let center = mapView.centerCoordinate
-
-            let clamped = MapLibreMapView.clamp(center, to: navBounds)
-
-            // Only adjust if actually outside bounds
-            let tolerance = 0.0001
-            if abs(clamped.latitude - center.latitude) > tolerance ||
-               abs(clamped.longitude - center.longitude) > tolerance {
-                isEnforcingBounds = true
-                mapView.setCenter(clamped, animated: animated)
-                isEnforcingBounds = false
-            }
         }
 
         func updateDebugLabel(_ mapView: MLNMapView) {
