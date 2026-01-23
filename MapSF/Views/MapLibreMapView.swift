@@ -29,8 +29,6 @@ struct MapLibreMapView: UIViewRepresentable {
         let lonInset = visibleLon / 2.0
 
         // Calculate inset bounds (ensure valid - don't invert)
-        let centerLat = (sfBounds.sw.latitude + sfBounds.ne.latitude) / 2.0
-        let centerLon = (sfBounds.sw.longitude + sfBounds.ne.longitude) / 2.0
         let halfLatSpan = (sfBounds.ne.latitude - sfBounds.sw.latitude) / 2.0
         let halfLonSpan = (sfBounds.ne.longitude - sfBounds.sw.longitude) / 2.0
 
@@ -527,13 +525,15 @@ struct MapLibreMapView: UIViewRepresentable {
             #if DEBUG
             updateDebugLabel(mapView)
             #endif
-
-            // Enforce navigation bounds to prevent grey void at edges
-            enforceNavBounds(on: mapView)
         }
 
-        /// Snap camera back if center is outside navigation bounds
-        private func enforceNavBounds(on mapView: MLNMapView) {
+        /// Called continuously during pan/zoom gestures - enforce bounds in real-time
+        func mapViewRegionIsChanging(_ mapView: MLNMapView) {
+            enforceNavBounds(on: mapView, animated: false)
+        }
+
+        /// Enforce navigation bounds - clamp center to prevent grey void at edges
+        private func enforceNavBounds(on mapView: MLNMapView, animated: Bool) {
             guard !isEnforcingBounds else { return }
 
             let screenSize = mapView.bounds.size
@@ -545,16 +545,13 @@ struct MapLibreMapView: UIViewRepresentable {
 
             let clamped = MapLibreMapView.clamp(center, to: navBounds)
 
-            // Only animate back if actually outside bounds (with small tolerance)
+            // Only adjust if actually outside bounds
             let tolerance = 0.0001
             if abs(clamped.latitude - center.latitude) > tolerance ||
                abs(clamped.longitude - center.longitude) > tolerance {
                 isEnforcingBounds = true
-                mapView.setCenter(clamped, animated: true)
-                // Reset flag after animation completes
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-                    self?.isEnforcingBounds = false
-                }
+                mapView.setCenter(clamped, animated: animated)
+                isEnforcingBounds = false
             }
         }
 
