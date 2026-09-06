@@ -21,25 +21,45 @@ An offline-first iOS map explorer for San Francisco, featuring curated albums of
 
 ## Architecture
 
-![Architecture Diagram](docs/architecture.svg)
+![MapSF code structure](docs/architecture.svg)
 
-### Layers
+MapSF ships one iOS app target. Its Swift source groups contain the UI,
+observable state, services, and data models; MapLibre is the linked Swift package
+product. Albums, GeoJSON, covers, and MBTiles are bundled with the app. These
+folders are organizational groups, not separate modules or strict dependency layers.
 
-| Layer | Purpose |
-|-------|---------|
-| **Views** | SwiftUI views - gallery, map explorer, info panel, query sheet |
-| **State** | `MapState` - selection state, active albums, query filters |
-| **Services** | `AlbumLoader`, `GeoJSONParser`, `LocationManager`, `ProximityQuery` |
-| **Models** | `Album`, `Curation` (POI/Segment/Area), `POICategory` |
-| **Data** | Bundled JSON albums, GeoJSON files, cover images, mbtiles |
+![MapSF runtime paths](docs/architecture-runtime.svg)
 
-### Data Flow
+1. `MapSFApp` injects `AlbumLoader`, `MapState`, and `LocationManager` through the
+   SwiftUI environment. `ContentView` shows the gallery and launch splash; choosing
+   an album opens `MapExplorerView`.
+2. `AlbumLoader` decodes `albums.json`, then lazily parses GeoJSON with
+   `GeoJSONParser`. It caches curations and typed POI, segment, and area arrays.
+   `MapLibreMapView.Coordinator` reads these models to build overlays.
+3. Map taps update `MapState`; `CurationInfoPanel` reads the selection and the map
+   updates its selection styling.
+4. `MapLibreMapView` writes a temporary `mapstyle.json`. MapLibre loads that style
+   and reads bundled `sf-tiles.mbtiles` through native `mbtiles://` access.
+   The bundled `style.json` is not used by this path. The generated style declares
+   a remote glyph URL, although its current layers contain no text symbols.
+5. `QuerySheet` edits query settings. `ProximityQuery` exists, but
+   `MapExplorerView.insidePOIIds` is not consumed and the active MapLibre renderer
+   does not apply those results. `LocationManager` requests one-shot locations;
+   the PMTiles helper has no callers.
+6. Covers use a separate `NSCache`. Memory warnings clear album caches, cover
+   caches, and map state; leaving the explorer also clears state and evicts the
+   initial album's cached content.
 
-1. `MapSFApp` injects `AlbumLoader`, `MapState`, and `LocationManager` via SwiftUI environment
-2. `AlbumLoader` parses `albums.json` and lazily loads GeoJSON content
-3. `MapExplorerView` renders overlays based on `MapState.activeAlbums`
-4. User taps propagate through `MapState` selection, updating the info panel
-5. `ProximityQuery` filters POIs by distance from query center
+Regenerate both diagrams with Python 3 (standard library only):
+
+```bash
+python3 scripts/generate-architecture.py
+python3 scripts/generate-architecture.py --check
+```
+
+The generator derives source membership from the Xcode project and checks runtime
+claims against Swift source. CI rejects stale SVGs. See the
+[diagram maintenance notes](docs/architecture.md) for scope, checks, and review guidance.
 
 ## Project Structure
 

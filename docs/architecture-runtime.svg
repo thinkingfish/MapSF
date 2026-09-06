@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1160" viewBox="0 0 1100 1160" role="img" aria-labelledby="title desc">
+<title id="title">MapSF / runtime paths</title><desc id="desc">Selected in-process flows · arrows show data or state propagation</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#566575"/></marker></defs>
+<rect width="1100" height="1160" fill="#fff"/>
+<text x="40" y="46" font-family="DejaVu Sans, sans-serif" font-size="28" font-weight="600" text-anchor="start" fill="#243447">MapSF / runtime paths</text>
+<text x="40" y="79" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#243447">Selected in-process flows · arrows show data or state propagation</text>
+<text x="40" y="128" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="600" text-anchor="start" fill="#243447">01 / Load album content</text>
+<rect x="40" y="153" width="312" height="132" rx="10" fill="#B3CDE3" stroke="#b2bac2"/>
+<text x="196.0" y="198.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#243447">Bundled album data</text>
+<text x="196.0" y="225.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">albums.json</text>
+<text x="196.0" y="252.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">albums/*.geojson</text>
+<rect x="394" y="153" width="312" height="132" rx="10" fill="#CCEBC5" stroke="#b2bac2"/>
+<text x="550.0" y="198.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#243447">AlbumLoader</text>
+<text x="550.0" y="225.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">GeoJSONParser</text>
+<text x="550.0" y="252.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">Decode on cache miss</text>
+<rect x="748" y="153" width="312" height="132" rx="10" fill="#B3CDE3" stroke="#b2bac2"/>
+<text x="904.0" y="198.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#243447">Curation caches</text>
+<text x="904.0" y="225.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">loadedCurations</text>
+<text x="904.0" y="252.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">POIs / segments / areas</text>
+<path d="M352 219.0 H394" fill="none" stroke="#566575" stroke-width="1.4" marker-end="url(#arrow)"/>
+<path d="M706 219.0 H748" fill="none" stroke="#566575" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="40" y="318" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#243447">MapLibreMapView.Coordinator reads the cached models to create map overlays.</text>
+<text x="40" y="372" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="600" text-anchor="start" fill="#243447">02 / Select a map feature</text>
+<rect x="40" y="397" width="312" height="132" rx="10" fill="#FBB4AE" stroke="#b2bac2"/>
+<text x="196.0" y="442.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#243447">MapLibreMapView</text>
+<text x="196.0" y="469.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">Coordinator.handleTap</text>
+<text x="196.0" y="496.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">POI / segment / area</text>
+<rect x="394" y="397" width="312" height="132" rx="10" fill="#B3CDE3" stroke="#b2bac2"/>
+<text x="550.0" y="442.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#243447">MapState</text>
+<text x="550.0" y="469.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">select / clearSelection</text>
+<text x="550.0" y="496.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">Observable selection</text>
+<rect x="748" y="397" width="312" height="132" rx="10" fill="#FBB4AE" stroke="#b2bac2"/>
+<text x="904.0" y="442.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#243447">CurationInfoPanel</text>
+<text x="904.0" y="469.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">Reads selected item</text>
+<text x="904.0" y="496.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">Displays item details</text>
+<path d="M352 463.0 H394" fill="none" stroke="#566575" stroke-width="1.4" marker-end="url(#arrow)"/>
+<path d="M706 463.0 H748" fill="none" stroke="#566575" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="40" y="562" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#243447">MapState also drives selection styling in MapLibreMapView.</text>
+<text x="40" y="616" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="600" text-anchor="start" fill="#243447">03 / Load the basemap</text>
+<rect x="40" y="641" width="312" height="132" rx="10" fill="#B3CDE3" stroke="#b2bac2"/>
+<text x="196.0" y="686.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#243447">sf-tiles.mbtiles</text>
+<text x="196.0" y="713.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">Bundled vector tiles</text>
+<text x="196.0" y="740.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">Native mbtiles:// access</text>
+<rect x="394" y="641" width="312" height="132" rx="10" fill="#CCEBC5" stroke="#b2bac2"/>
+<text x="550.0" y="686.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#243447">MapLibre</text>
+<text x="550.0" y="713.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">MLNMapView</text>
+<text x="550.0" y="740.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">Renders tile geometry</text>
+<rect x="748" y="641" width="312" height="132" rx="10" fill="#FBB4AE" stroke="#b2bac2"/>
+<text x="904.0" y="686.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#243447">Map surface</text>
+<text x="904.0" y="713.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">Basemap + app overlays</text>
+<text x="904.0" y="740.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">UIKit inside SwiftUI</text>
+<path d="M352 707.0 H394" fill="none" stroke="#566575" stroke-width="1.4" marker-end="url(#arrow)"/>
+<path d="M706 707.0 H748" fill="none" stroke="#566575" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="394" y="830" width="312" height="86" rx="10" fill="#B3CDE3" stroke="#b2bac2"/>
+<text x="550.0" y="865.5" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#243447">mapstyle.json</text>
+<text x="550.0" y="892.5" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#243447">Temporary style file</text>
+<path d="M550.0 830 V773" fill="none" stroke="#566575" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="40" y="950" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#243447">The generated style references local tiles; no app-owned HTTP tile server is used.</text>
+<text x="40" y="982" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#243447">QuerySheet edits query settings, but proximity results do not reach this renderer.</text>
+<text x="40" y="1014" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#243447">LocationManager requests one-shot locations. PMTilesSource has no callers.</text>
+<text x="40" y="1046" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#243447">Cover images use a separate NSCache; memory warnings evict app caches and state.</text>
+<text x="40" y="1082" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#243447">Pink = interface   Blue = state / storage   Green = processing   Gray = foundations</text>
+<text x="40" y="1114" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#243447">Scope: app-level wiring. MapLibre&#x27;s internal threads are not modeled.</text>
+</svg>

@@ -1,0 +1,13 @@
+name: Architecture diagrams
+on:
+  pull_request:
+  push:
+permissions:
+  contents: read
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify source claims and committed SVGs
+        run: python3 scripts/generate-architecture.py --check
