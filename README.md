@@ -50,11 +50,11 @@ folders are organizational groups, not separate modules or strict dependency lay
    caches, and map state; leaving the explorer also clears state and evicts the
    initial album's cached content.
 
-Regenerate both diagrams with Python 3 (standard library only):
+Regenerate both diagrams with Node.js 22+ (no npm packages required):
 
 ```bash
-python3 scripts/generate-architecture.py
-python3 scripts/generate-architecture.py --check
+node scripts/generate-architecture.mjs
+node scripts/generate-architecture.mjs --check
 ```
 
 The generator derives source membership from the Xcode project and checks runtime

@@ -8,8 +8,8 @@ artifacts separate source structure from runtime behavior:
 - `architecture-runtime.svg`: selected album loading, selection, and basemap flows.
 
 The README embeds both with adjacent textual equivalents. The old hand-maintained
-D2 diagram is superseded by `scripts/generate-architecture.py`; edit the generator,
-not the SVG output. Run `python3 scripts/generate-architecture.py` to regenerate
+D2 diagram is superseded by `scripts/generate-architecture.mjs`; edit the generator,
+not the SVG output. Run `node scripts/generate-architecture.mjs` to regenerate
 both, or add `--check` to fail on stale output. CI runs the latter on pushes and PRs.
 
 ## Ground truth and limitations
@@ -34,10 +34,10 @@ The diagrams do not claim to model MapLibre's internal scheduler or every UI eve
 - This is a source composition view, not a package dependency graph. MapSF has one
   target; its folders are not modules. Alphabetical lists avoid implying a
   topological order. No thread model or thread swimlanes are inferred from SDK code.
-- Python's standard library emits deterministic SVG directly. This is a small
-  documentation-tool dependency, chosen because Swift/Xcode are unavailable on the
-  Linux documentation runner. There is no renderer installation required to
-  regenerate or check. The generator reads the checked-in build manifest instead
+- A JavaScript ES module emits deterministic SVG using only Node.js built-ins,
+  matching the planned Astro tooling. Node.js 22+ is the only runtime requirement;
+  no npm packages or renderer installation are needed to regenerate or check.
+  The generator reads the checked-in build manifest instead
   of querying `xcodebuild`; it does not replace a macOS build validation.
 - Runtime panels show three scoped flows, not an exhaustive process graph. Colors
   identify each box's role; literal Swift owner names bridge the two artifacts
@@ -50,15 +50,17 @@ The diagrams do not claim to model MapLibre's internal scheduler or every UI eve
 - Arrow direction means data/state propagation. Captions describe the transferred
   content and consumers; uniform short arrows carry no inline labels. Section
   numbers identify independent paths, not a total execution sequence.
-- Automated checks cover SVG validity, deterministic freshness, box containment,
+- Automated checks cover deterministic freshness, box containment,
   sibling separation, centered multiline labels, connector alignment, and
   conservative text/connector collision bounds. Text estimates are not actual font
-  metrics; rendered review remains necessary.
+  metrics; rendered review remains necessary. SVG uses fixed markup templates with
+  escaped text; the generator does not include an XML parser.
 
 ## Visual review
 
 The repository owner is the visual reviewer. Inspect both SVGs at README size and
 full size whenever changing the generator. Approval applies to that revision only.
-The initial redesign was rasterized with CairoSVG and visually inspected by the
-agent; the repository owner has also opened both SVGs for inspection. CairoSVG
-is optional preview software, not a regeneration or CI dependency.
+The initial redesign was rasterized and visually inspected by the agent; the
+repository owner has also opened both SVGs for inspection. The JavaScript migration
+was byte-compared against those SVGs. A browser can open the SVGs directly; no
+Python tooling is required.
