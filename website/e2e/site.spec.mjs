@@ -1,0 +1,81 @@
+import { test, expect } from '@playwright/test';
+import { feed, clock } from './fixtures.mjs';
+
+async function load(page, snapshot = feed) {
+  await page.clock.install({ time: clock });
+  await page.route('**/events.json', route => route.fulfill({ json: snapshot }));
+  await page.goto('/');
+  await expect(page.locator('#event-list')).toHaveAttribute('aria-busy', 'false');
+}
+
+test('SF today, search, free filter and all geometry types work in another timezone', async ({ page }) => {
+  await load(page);
+  await expect(page.getByLabel('Choose event date')).toHaveValue('2026-09-06');
+  for (const event of feed.events) await expect(page.locator('#event-list')).toContainText(event.title);
+  await page.getByLabel('Free only').check();
+  await expect(page.locator('#event-list')).toContainText(feed.events[0].title);
+  await expect(page.locator('#event-list')).not.toContainText(feed.events[1].title);
+  await expect(page.locator('#event-list')).not.toContainText(feed.events[2].title);
+  await page.getByLabel('Free only').uncheck();
+  for (const [label, index] of [['Routes',1],['Areas',2],['Places',0]]) {
+    await page.getByRole('button', { name: label, exact: true }).click();
+    await expect(page.locator('#event-list')).toContainText(feed.events[index].title);
+    await expect(page.locator('#event-list')).not.toContainText(feed.events[(index+1)%3].title);
+  }
+  await page.getByRole('button', { name: 'Everything', exact: true }).click();
+  await page.getByRole('searchbox').fill('waterfront');
+  await expect(page.locator('#event-list')).toContainText(feed.events[1].title);
+  await expect(page.locator('#event-list')).not.toContainText(feed.events[0].title);
+  await page.getByRole('searchbox').fill('nothing matches this query');
+  await expect(page.locator('#event-list')).not.toContainText(feed.events[1].title);
+});
+
+test('unpublished feed is honest and map failure leaves a usable list', async ({ page }) => {
+  await page.route('https://tile.openstreetmap.org/**', route => route.abort());
+  await load(page, { schemaVersion: 1, generatedAt: null, sources: [], events: [] });
+  await expect(page.locator('#event-list')).toContainText('No listings published yet');
+  await expect(page.locator('#event-list')).not.toContainText('Example:');
+  await page.unroute('**/events.json');
+  await page.route('**/events.json', route => route.fulfill({ json: feed }));
+  await page.reload();
+  await expect(page.locator('#event-list')).toContainText(feed.events[0].title);
+});
+
+test('mobile layout fits viewport and Map/List controls move focus', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await load(page);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.getByRole('button', { name: 'List', exact: true }).click();
+  await expect(page.locator('#event-results')).toBeFocused();
+  await page.getByRole('button', { name: 'Map', exact: true }).click();
+  await expect(page.locator('#map-panel')).toBeFocused();
+});
+
+test('production map renderer loads and event selection exposes source details', async ({ page }) => {
+  // Local solid-color tiles keep this renderer test independent of external tile uptime.
+  await page.route('https://tile.openstreetmap.org/**', route => route.fulfill({
+    contentType: 'image/png',
+    body: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALUlEQVR4AeyTsQ0AAAjCCP9f6mD8QOMNDCyQsDI0lDW9SgkxGQDCIAxeI/8PDgAA//9lCVeGAAAABklEQVQDAC/yPJEMiKmVAAAAAElFTkSuQmCC', 'base64'),
+  }));
+  const timedFeed = structuredClone(feed);
+  timedFeed.events[0].startAt = '2026-09-06T11:00:00-07:00';
+  timedFeed.events[0].endAt = '2026-09-06T12:00:30-07:00';
+  await load(page, timedFeed);
+  await expect(page.locator('canvas.maplibregl-canvas')).toBeVisible();
+  await expect(page.locator('#map-status')).toBeHidden({ timeout: 15000 });
+  const route = page.locator('article[data-event-id="route-event"]');
+  await route.locator('button').click();
+  await expect(route.locator('button')).toHaveAttribute('aria-expanded', 'true');
+  await route.locator('button').click();
+  await expect(route.locator('button')).toHaveAttribute('aria-expanded', 'false');
+  await page.clock.fastForward(60_000);
+  await expect(route.locator('button')).toHaveAttribute('aria-expanded', 'false');
+  await route.locator('button').click();
+  await expect(route.locator('button')).toHaveAttribute('aria-expanded', 'true');
+  await expect(route.getByRole('link')).toHaveAttribute('href', feed.events[1].source.url);
+  await expect(route).toContainText('Embarcadero route');
+  const area = page.locator('article[data-event-id="area-event"]');
+  await area.locator('button').click();
+  await expect(area.locator('button')).toHaveAttribute('aria-expanded', 'true');
+  await expect(route.locator('button')).toHaveAttribute('aria-expanded', 'false');
+});
