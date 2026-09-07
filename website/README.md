@@ -1,0 +1,208 @@
+# MapSF Today
+
+An Astro companion to the MapSF iOS app: today's San Francisco events on a map
+and in a list, with places, routes, and areas. It builds to a static site for
+Cloudflare. All application and collection code is JavaScript; no Python required.
+
+## Run locally
+
+Requires Node.js 22.12 or later (the repository pins 22.23.2) and pnpm 12.3.4.
+The `packageManager` field pins pnpm for this project. If pnpm is not installed,
+bootstrap it once with `npm install --global pnpm@12.3.4`.
+
+```sh
+cd website
+pnpm install --frozen-lockfile
+pnpm run dev
+```
+
+Open the URL printed by Astro. Verify and build with:
+
+```sh
+pnpm test
+pnpm run build
+pnpm run preview
+```
+
+Browser checks use test-only fixtures (never public event data):
+
+```sh
+pnpm exec playwright install chromium
+pnpm run test:browser
+```
+
+## Choose the sources
+
+Record your decisions in the [source review checklist](SOURCE-REVIEW.md).
+Its approval boxes do not automatically enable collection.
+
+All ten sources in [config/sources.mjs](config/sources.mjs) have your recorded
+approval. Collection requires both `approved: true` and `enabled: true`.
+The integration status is documented in [SOURCE-STATUS.md](SOURCE-STATUS.md).
+
+SFPL, SF Rec & Parks, and Mission Local are enabled with verified publisher
+fixtures. The other seven sources are approved but await complete extraction or
+verified venue geometry. Approval and working collection are separate states.
+
+Only enabled sources are collected. Incomplete or cancelled listings are excluded.
+Collection preserves source attribution and explicit time ranges. Unknown cost
+appears as “Cost not listed”; it never silently becomes free. Missing coordinates,
+route paths, or area boundaries need source-provided geometry or your manual
+curation, not an invented location. A new source's adapter needs a validated
+fixture before enabling it; the candidate registry does not imply complete site
+coverage or a universal scraper.
+
+The refresh also applies the configurable `publicationBounds` in
+[config/sources.mjs](config/sources.mjs). This rectangle matches the useful map
+area (`west -122.53, south 37.70, east -122.348, north 37.835`); it is not a
+precise legal boundary for the City and County of San Francisco. Points must be
+inside it. Routes and areas are included when their full geometry intersects it,
+including paths that cross the rectangle and polygons that enclose it. The feed
+retains the original full route or area instead of clipping it. The same gate
+applies to collected, manually curated, and failure-preserved events.
+
+Run a refresh after editing the registry or manual events:
+
+```sh
+pnpm run refresh
+pnpm test
+pnpm run build
+```
+
+The committed snapshot contains real collected listings. Refresh it before deployment
+and let the scheduled workflow keep it current. Test fixtures never become fallback
+public content. Fetched listings link to publisher pages without copying article
+bodies; optional descriptions can be supplied through manual curation.
+
+## Manual curation and shared geometry
+
+[data/manual-events.json](data/manual-events.json) contains `events` and
+`overrides`. Overrides use an event's stable `id` and replace fields such as a
+verified cost or complete `curation` feature. Manual entries still reference an
+enabled registry source; source approval is not bypassed by manual entry.
+
+The public `/events.json` feed has `schemaVersion`, `generatedAt`, per-source
+freshness/status, `coverage: { dates: ["YYYY-MM-DD", ...] }`, and `events`. Each event has an `id`, `title`, explicit-offset
+`startAt` and `endAt`, `cost: { label, isFree }`, `source: { id, name, url }`, and
+`curation`. Optional descriptions and image URLs can accompany a listing.
+
+`curation` uses the GeoJSON convention already read by the iOS `GeoJSONParser`:
+
+| Visitor label | `properties.layerType` | Geometry | iOS model |
+| --- | --- | --- | --- |
+| Place | `poi` | `Point` | `POIData` |
+| Route | `segment` | `LineString` | `SegmentData` |
+| Area | `area` | `Polygon` | `AreaData` |
+
+Feature properties include `name` and optional `category` and string-valued
+`metadata` (including an address). Coordinates use `[longitude, latitude]`.
+Polygon exterior rings must close. Event timing and source data live alongside
+geometry so the iOS app can consume the same feed later. Full route and area
+geometry is rendered and used when fitting the map to an event.
+
+## Calendar date coverage
+
+The calendar enables only dates explicitly present in the feed's `coverage.dates`.
+A covered date means an approved, enabled publisher was checked for that date;
+it does not promise a complete inventory of every event in San Francisco.
+A covered date can have no matching events. Gaps between checked dates stay
+unavailable, and recurring place schedules do not extend event-feed coverage.
+
+Each enabled source records `coverage: { dates, checkedAt }` only after completing
+the entire 30-day query. SFPL and Rec & Parks check dated calendar views; Mission
+Local uses its public date-range API. Pagination, response date scope, empty
+results, and request guards are verified before enabling the window.
+Coverage is established before cost, cancellation, or geometry filtering. A
+successfully checked date stays available even when its listings are empty or
+none qualify for publication. Incomplete pagination, exhausted request budgets,
+unexpected response dates, or unknown listing schemas fail the collection and
+cannot establish a fresh 30-day window.
+
+Offset timestamps are converted to Pacific dates, including overnight spans with
+an exclusive ending instant. Invalid dates are ignored; coverage is bounded to
+30 Pacific calendar dates starting today (today through today + 29), and spans
+longer than 366 days are not expanded. Published events must overlap this window.
+SFPL and Rec & Parks skip detail requests clearly beyond it based on listing dates.
+A collection failure adds no coverage and retains useful prior dates with their
+original `checkedAt`. A completed publisher check keeps fresh coverage even when
+all records fail publication validation; existing event fallback and error status
+are retained. Disabled or unapproved sources contribute nothing. Past
+dates are removed because snapshots prune ended events; legacy snapshots without
+coverage remain unknown. A successful refresh replaces that source's prior dates.
+Manual events and overrides do not prove an automated publisher check and cannot
+extend coverage; their source authorization and validation still apply.
+
+## Daily updates
+
+[Refresh SF events](../.github/workflows/refresh-events.yml) runs daily at 13:17 UTC
+(05:17 PDT / 06:17 PST) and supports manual dispatch on `main`. To refresh weekly,
+change the cron to `17 13 * * 1`. GitHub schedules run from the default branch,
+can be delayed, and can be disabled after inactivity in public repositories.
+See [GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+
+The workflow validates and builds before committing only `website/public/events.json`
+to `main`. Repository rules must permit the workflow's content write; otherwise
+use the manual refresh command and commit through your normal review process.
+A failed source keeps its previous validated events and original successful-refresh
+timestamp. The interface uses San Francisco's current date, not the build date,
+and does not show previous-day events as today's listings when a job fails.
+Per-source `cancelledInstances` metadata keeps an unexpired cancelled
+`id`/start/end instance suppressed through later source failures. If a
+cancellation omits its dates, the collector uses a matching validated previous or
+manual event's dates. Entries expire at their event end time, so a recurring event
+can reuse the same source ID.
+
+Connect Cloudflare's Git integration to `main` and include `website/**` in its
+build watch paths so refreshed data is deployed. A local refresh alone does not
+update the public site: its data must be committed and deployed. No Cloudflare
+credentials are needed by the collection job with that setup.
+
+## Deploy on Cloudflare
+
+Cloudflare recommends Workers for new projects; this project uses Workers static
+assets with no server runtime or database. See the
+[Cloudflare static assets guide](https://developers.cloudflare.com/workers/static-assets/get-started/)
+and [Astro Cloudflare guide](https://docs.astro.build/en/guides/deploy/cloudflare/).
+
+In Cloudflare Workers & Pages, connect this repository and configure:
+
+| Setting | Value |
+| --- | --- |
+| Root directory | `website` |
+| Build command | `pnpm run build` |
+| Deploy command | `pnpm exec wrangler deploy` |
+| Production branch | `main` |
+| Node version | `22.23.2` |
+| Build environment variable | `PNPM_VERSION=12.3.4` |
+
+Commit only `pnpm-lock.yaml` as the dependency lockfile. CI uses
+`pnpm install --frozen-lockfile`; `pnpm-workspace.yaml` records the native build
+scripts required by the toolchain. The optional macOS `fsevents` rebuild is skipped
+to avoid introducing a Python/node-gyp prerequisite.
+
+`wrangler.jsonc` points to `dist/`. Set its `name` to your chosen Cloudflare Worker
+name before deploying. For a manual deployment, authenticate with Cloudflare and
+run from `website/`:
+
+```sh
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm exec wrangler deploy
+```
+
+If you already use Cloudflare Pages, use the same root and build command with
+`dist` as the output directory. This static Astro build needs no Cloudflare
+adapter. The repository contains deployment configuration; it does not create
+an account, public deployment, or custom domain on your behalf.
+
+## Recurring places
+
+Verified garden admission schedules live in `config/places.mjs`; museums have their own `config/museums.mjs` catalog and [museum review list](MUSEUM-REVIEW.md). See [PLACES.md](PLACES.md) for eligibility, seasonal hours, closures, and review expiry. These cards follow one-off events and remain available when the event feed fails. Resident-only admission and ended entry windows are explicitly labeled.
+
+The initial catalog includes the Botanical Garden, Japanese Tea Garden, Conservatory of Flowers, and Asian Art Museum first Sundays. Search and map-type filter controls are removed; date selection and the free-only checkbox remain.
+
+## Sources and map tiles
+
+The public `/sources/` page describes all approved event publishers, planned integrations, official recurring admission sources, and collection methodology. Its footer links come from the same registry and venue catalogs as the site.
+
+The current web basemap uses normal browser requests to the OSM raster tile service. Attribution is always visible. All automated browser tests intercept tile requests with local fixtures; do not use community tiles for bulk downloading or offline archives. The iOS app’s 12.9 MiB Protomaps MBTiles archive is a candidate for a separate PMTiles/Cloudflare R2 migration, including the needed font assets.

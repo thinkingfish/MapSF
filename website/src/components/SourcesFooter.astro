@@ -1,0 +1,9 @@
+---
+import { sourceGuide } from '../../config/source-guide.mjs';
+---
+<footer class="sources-footer" aria-labelledby="footer-sources-title">
+  <div class="sources-footer-heading"><h2 id="footer-sources-title"><a href="/sources/">Sources</a></h2><a href="/sources/#methodology">How we gather listings ↗</a></div>
+  <p>Collected and planned sources, plus official admission schedules.</p>
+  <ul class="source-footer-links">{sourceGuide.map(source => <li><a href={`/sources/#${source.id}`}>{source.name}</a></li>)}</ul>
+  <div class="site-footer"><span>Made for a little more San Francisco.</span><span>Times shown in Pacific time</span></div>
+</footer>

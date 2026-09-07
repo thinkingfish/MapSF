@@ -1,0 +1,146 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { collectSfpl } from '../scripts/adapters/sfpl.mjs';
+const fixture = async (name) => readFile(new URL(`./fixtures/sfpl/${name}`, import.meta.url), 'utf8');
+const source = { listingUrl: 'https://sfpl.org/events', maxDetailPages: 4, maxEvents: 100 };
+async function run(change = {}, options = {}) {
+  const pages = { listing: await fixture('listing.html'), detail: await fixture('detail.html'), calendar: await fixture('calendar.ics'), ...change };
+  const calls = [];
+  const fetch = async (url) => {
+    calls.push(String(url));
+    const kind = String(url).includes('add-to-calendar') ? 'calendar' : new URL(url).pathname === '/events' ? 'listing' : 'detail';
+    return { ok: true, text: async () => pages[kind] };
+  };
+  return { events: await collectSfpl({ ...source, ...options }, fetch, new Date('2026-09-06T02:00:00Z')), calls };
+}
+test('SFPL joins exact source branch coordinates and uses UTC calendar times over ambiguous display', async () => {
+  const { events, calls } = await run();
+  assert.equal(events.length, 1);
+  const {record, pageUrl} = events[0];
+  assert.equal(record.startDate, '2026-09-08T16:00:00Z');
+  assert.equal(record.endDate, '2026-09-09T00:00:00Z');
+  assert.equal(record.location.name, 'Main Library');
+  assert.deepEqual(record.location.geo, { latitude: 37.779081, longitude: -122.415771 });
+  assert.match(record.location.address, /100 Larkin Street/);
+  assert.equal(record.identifier, '162171@sfpl.org');
+  assert.equal(record.url, pageUrl);
+  assert.equal(record.offers, undefined);
+  assert.match(calls[0], /date-end-after=2026-09-05/);
+});
+test('missing dates, geometry, and non-UTC timestamps are rejected without inference', async () => {
+  const calendar = await fixture('calendar.ics');
+  assert.equal((await run({ calendar: calendar.replace(/^DTSTART:.*\n/m, '') })).events.length, 0);
+  assert.equal((await run({ calendar: calendar.replace('DTSTART:20260908T160000Z', 'DTSTART:20260908T160000') })).events.length, 0);
+  assert.equal((await run({ listing: (await fixture('listing.html')).replace('data-lat="37.779081"', '') })).events.length, 0);
+});
+test('cancelled publisher calendar is retained as cancelled for normalization', async () => {
+  const { events } = await run({calendar: (await fixture('calendar.ics')).replace('BEGIN:VEVENT', 'BEGIN:VEVENT\nSTATUS:CANCELLED')});
+  assert.equal(events[0].record.eventStatus, 'https://schema.org/EventCancelled');
+});
+test('request budget covers both detail and calendar requests; ended events omitted', async () => {
+  assert.equal((await run({}, {maxDetailPages:1})).calls.length, 1);
+  assert.equal((await run({}, {maxDetailPages:2})).calls.length, 3);
+  const calendar = (await fixture('calendar.ics')).replaceAll('20260908', '20260901').replaceAll('20260909', '20260902');
+  assert.equal((await run({calendar})).events.length, 0);
+});
+test('actual SFPL Canceled title convention marks cancellation even without ICS STATUS', async () => {
+  const detail = (await fixture('detail.html')).replace(/<h1\b[^>]*>[\s\S]*?<\/h1>/, await fixture('cancelled-title.html'));
+  const { events } = await run({detail});
+  assert.equal(events[0].record.eventStatus, 'https://schema.org/EventCancelled');
+});
+test('listing starts at current SF wall time so ended daytime events cannot exhaust request budget', async () => {
+  const { calls } = await run();
+  assert.equal(new URL(calls[0]).searchParams.get('date-end-after'), '2026-09-05 19:00:00');
+});
+test('cancelled titles produce stable tombstones when venue and calendar dates are missing', async () => {
+  const detail = (await fixture('detail.html')).replace(/<h1\b[^>]*>[\s\S]*?<\/h1>/, await fixture('cancelled-title.html'));
+  const { events } = await run({detail, listing: (await fixture('listing.html')).replace('data-lat="37.779081"', ''), calendar:''});
+  assert.equal(events[0].record.identifier, '162171@sfpl.org');
+  assert.equal(events[0].record.eventStatus, 'https://schema.org/EventCancelled');
+});
+test('ICS cancellation survives missing geometry', async () => {
+  const { events } = await run({listing:(await fixture('listing.html')).replace('data-lat="37.779081"',''), calendar:(await fixture('calendar.ics')).replace('BEGIN:VEVENT','BEGIN:VEVENT\nSTATUS:CANCELLED')});
+  assert.equal(events[0].record.identifier, '162171@sfpl.org');
+  assert.equal(events[0].record.eventStatus, 'https://schema.org/EventCancelled');
+});
+test('free cost requires the explicit publisher listing policy', async () => {
+  const { events } = await run({listing:(await fixture('listing.html')) + await fixture('free-policy.html')});
+  assert.equal(events[0].record.isAccessibleForFree, true);
+  assert.equal((await run()).events[0].record.isAccessibleForFree, undefined);
+});
+
+test('SFPL coverage retains visited rejected detail days but excludes unvisited budget links', async () => {
+  const listing = await fixture('listing.html');
+  const rejected = await run({ listing: listing.replace('data-lat="37.779081"', '') });
+  assert.equal(rejected.events.length, 0);
+  assert.ok(rejected.events.coverageDates.includes('2026-09-08'));
+  const skipped = await run({}, { maxDetailPages: 1 });
+  assert.deepEqual(skipped.events.coverageDates, []);
+});
+test('SFPL only requests dated details inside the 30-day forward window', async () => {
+  const listing = await fixture('listing.html');
+  // run() uses September 5 in Pacific time, so October 4 is its final day.
+  const inside = listing.replaceAll('/events/2026/09/08/', '/events/2026/10/04/');
+  const outside = listing.replaceAll('/events/2026/09/08/', '/events/2026/10/05/');
+  const { calls } = await run({ listing: outside + inside });
+  assert.ok(calls.some(url => url.includes('/events/2026/10/04/')));
+  assert.ok(calls.every(url => !url.includes('/events/2026/10/05/')));
+});
+
+async function monthRun({ failDay, malformedDay, budget, pages = 1, cycle = false, ignoredDateFilters = false, malformedDetail = false, malformedCalendar = false, now = '2026-09-06T02:00:00Z' } = {}) {
+  const listing = await fixture('listing.html');
+  const detail = await fixture('detail.html');
+  const calendar = await fixture('calendar.ics');
+  const fetch = async value => {
+    const url = new URL(value);
+    if (url.pathname === '/events') {
+      const day = url.searchParams.get('date-from')?.slice(0, 10);
+      assert.equal(url.searchParams.get('date-from'), day + ' 00:00:00');
+      assert.equal(url.searchParams.get('date-to'), day + ' 23:59:59');
+      if (failDay && day === failDay) return { ok: false, status: 503 };
+      if (malformedDay && day === malformedDay) return { ok: true, text: async () => '<html>Maintenance</html>' };
+      let body = '<div class="view view-events view-id-events page-events-list">';
+      body += `<input name="date-from" value="${ignoredDateFilters ? '' : url.searchParams.get('date-from')}"><input name="date-to" value="${ignoredDateFilters ? '' : url.searchParams.get('date-to')}">`;
+      if (day === '2026-10-04') {
+        body += listing.replaceAll('/2026/09/08/', '/2026/10/04/').replaceAll('financial-counselor', `financial-counselor-${url.searchParams.get('page') || 0}`);
+        if (Number(url.searchParams.get('page') || 0) + 1 < pages) {
+          url.searchParams.set('page', cycle ? 0 : Number(url.searchParams.get('page') || 0) + 1);
+          body += `<a rel="next" href="${url.href.replaceAll('&', '&amp;')}">Next</a>`;
+        }
+      } else body += '<div class="view-empty"><h2>No events found. Try changing your search criteria.</h2></div>';
+      return { ok: true, text: async () => body + '</div>' };
+    }
+    return { ok: true, text: async () => url.pathname.includes('add-to-calendar') ? (malformedCalendar ? '<html>Maintenance</html>' : calendar.replaceAll('20260908', '20261004').replaceAll('20260909', '20261005')) : (malformedDetail ? '<html>Maintenance</html>' : detail) };
+  };
+  return collectSfpl({ ...source, collectionWindowDays: 30, maxEvents: 3000, ...(budget === undefined ? {} : { maxRequestsPerDay: budget }) }, fetch, new Date(now));
+}
+test('monthly SFPL checks all 30 Pacific days including empty dates and paginates the far end', async () => {
+  const events = await monthRun({ pages: 2 });
+  assert.equal(events.length, 2);
+  assert.equal(events.coverageComplete, true);
+  assert.equal(events.coverageDates.length, 30);
+  assert.equal(events.coverageDates[0], '2026-09-05');
+  assert.equal(events.coverageDates.at(-1), '2026-10-04');
+});
+test('monthly SFPL never claims failed, malformed or request-truncated dates as covered', async () => {
+  await assert.rejects(monthRun({ failDay: '2026-09-07' }), /monthly collection incomplete.*2026-09-07/);
+  await assert.rejects(monthRun({ malformedDay: '2026-09-08' }), /Unexpected SFPL listing/);
+  await assert.rejects(monthRun({ budget: 2, pages: 2 }), /request limit/);
+});
+test('monthly SFPL calendar arithmetic covers 30 distinct days across Pacific DST', async () => {
+  const events = await monthRun({ now: '2026-10-25T12:00:00Z' });
+  assert.equal(events.coverageDates.length, 30);
+  assert.equal(events.coverageDates.at(-1), '2026-11-23');
+});
+
+test('monthly SFPL fails safely on pagination cycles, page limits and malformed detail resources', async () => {
+  await assert.rejects(monthRun({ pages: 2, cycle: true }), /pagination limit or cycle/);
+  await assert.rejects(monthRun({ pages: 31 }), /pagination limit or cycle/);
+  await assert.rejects(monthRun({ malformedDetail: true }), /Unexpected SFPL event document/);
+  await assert.rejects(monthRun({ malformedCalendar: true }), /Unexpected SFPL calendar document/);
+});
+
+test('monthly SFPL rejects listings whose form does not confirm the requested date scope', async () => {
+  await assert.rejects(monthRun({ ignoredDateFilters: true }), /date scope/);
+});

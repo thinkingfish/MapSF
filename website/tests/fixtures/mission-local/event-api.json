@@ -1,0 +1,40 @@
+{
+  "id": 868554,
+  "status": "publish",
+  "url": "https://missionlocal.org/event/community-music-center-aqui-les-va-un-cuento-with-cascada-de-flores/",
+  "title": "Community Music Center: ¡Aqui-les va… un cuento! with Cascada de Flores",
+  "start_date": "2026-09-06 10:00:00",
+  "end_date": "2026-09-06 12:00:00",
+  "utc_start_date": "2026-09-06 17:00:00",
+  "utc_end_date": "2026-09-06 19:00:00",
+  "timezone": "America/Los_Angeles",
+  "cost": "",
+  "venue": {
+    "id": 201323,
+    "author": "51",
+    "status": "publish",
+    "date": "2012-09-07 23:45:52",
+    "date_utc": "2012-09-08 06:45:52",
+    "modified": "2017-09-28 03:28:03",
+    "modified_utc": "2017-09-28 10:28:03",
+    "url": "https://missionlocal.org/venue/community-music-center/",
+    "venue": "Community Music Center",
+    "slug": "community-music-center",
+    "address": "544 Capp St",
+    "city": "San Francisco",
+    "country": "United States",
+    "state": "CA",
+    "zip": "94110",
+    "phone": "(415) 647-6015",
+    "website": "http://sfcmc.org/",
+    "stateprovince": "CA",
+    "geo_lat": 37.7579453,
+    "geo_lng": -122.4182226,
+    "show_map": false,
+    "show_map_link": true,
+    "global_id": "missionlocal.org?id=201323",
+    "global_id_lineage": [
+      "missionlocal.org?id=201323"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+name: Website
+on:
+  pull_request:
+    paths: ['website/**', '.github/workflows/website.yml', '.github/workflows/refresh-events.yml']
+  push:
+    branches: [main]
+    paths: ['website/**', '.github/workflows/website.yml', '.github/workflows/refresh-events.yml']
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: website/package.json
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: website/.node-version
+          cache: pnpm
+          cache-dependency-path: website/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm run test:browser

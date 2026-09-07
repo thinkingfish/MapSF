@@ -4,6 +4,12 @@
 
 An offline-first iOS map explorer for San Francisco, featuring curated albums of places, routes, and areas with proximity-based discovery.
 
+## Website
+
+[MapSF Today](website/README.md) is a separate Astro companion for today’s SF events,
+with linked map/list views and the same POI, route, and area geometry as the iOS app.
+Its source registry is owner-vetted and its static build is prepared for Cloudflare.
+
 ## Features
 
 - **Offline Vector Tiles**: SF map tiles (z10-16) bundled with the app via MapLibre

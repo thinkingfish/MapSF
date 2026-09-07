@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:SFPL Web Calendar
+BEGIN:VEVENT
+UID:162171@sfpl.org
+DTSTAMP:20260908T160000Z
+DTSTART:20260908T160000Z
+DTEND:20260909T000000Z
+SUMMARY:Tutorial: Meet One-on-One with a Financial Counselor
+DESCRIPTION:<p><a href="https://fecpublic.my.site.com/fecbot/s/referral?c__city=0016f00002bs3BzAAI">Make an appointment</a>&nbsp;for free, confidential&nbsp;basic financial guidance for anyone living, working or receiving services in San Francisco regardless of citizenship status. Coaches are fluent in English, Spanish and Mandarin, with additional translation services as requested.&nbsp;Counseling sessions are in-person or virtual.</p><p><strong>Appointments are available Monday through Thursday from 9 a.m. to 5 p.m. either in person at the Main Library or virtually. On Fridays from 9 a.m. to 5 p.m., only virtual appointments are offered.</strong><br>&nbsp;</p><p>Learn to:</p><ul><li>Establish or improve your credit score&nbsp;</li><li>Increase your savings</li><li>Open a safe and affordable bank account&nbsp;&nbsp;</li><li>Assess your public benefit options</li><li>Navigate any changes in your income or expenses&nbsp;&nbsp;</li><li>Communicate with loan servicers and debt collectors</li><li>Manage and reduce your debt&nbsp;</li><li>Investing and retirement advice is not provided</li></ul><p>&nbsp;</p><p>San Francisco Financial Counseling is provided by the&nbsp;<a href="https://treasurer.sf.gov/economicjustice/">San Francisco Economic Justice Center</a></p><p><a href="https://treasurer.sf.gov/economicjustice/"><img src="https://sfpl.org/admin/events/lib/external/responsive_filemanager/source/SF%20Economic%20Justice%20Center%20small.png" alt="Economic Justice Center logo"></a></p>
+LOCATION:Main Library - Study Room 439
+CLASS:PUBLIC
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Event Reminder - Tutorial: Meet One-on-One with a Financial Counselor
+END:VALARM
+END:VCALENDAR

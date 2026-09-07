@@ -1,0 +1,6 @@
+# Build scripts required by the existing native toolchain.
+allowBuilds:
+  esbuild: true
+  workerd: true
+  # Optional macOS watcher rebuild needs node-gyp; use its packaged binary/fallback.
+  fsevents: false
