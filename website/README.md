@@ -212,3 +212,39 @@ The public `/sources/` page describes all approved event publishers, planned int
 The current web basemap uses normal browser requests to the OSM raster tile service. Attribution is always visible. All automated browser tests intercept tile requests with local fixtures; do not use community tiles for bulk downloading or offline archives. The iOS app’s 12.9 MiB Protomaps MBTiles archive is a candidate for a separate PMTiles/Cloudflare R2 migration, including the needed font assets.
 
 Venue-based price defaults live in `config/free-event-venues.mjs` and the reviewed city-park inventory in `config/city-park-names.mjs`. They cover SFPL branches, outdoor city parks, named Golden Gate Park meadows, and public street celebrations. They fill missing event prices and retain inference metadata; an explicit publisher price wins. These venues do not create recurring destination cards.
+
+## Agent mode
+
+`/agent/index.md` is a plain-text entry point for agents and readers who do not
+want to run JavaScript. The site footer links it, HTML pages advertise it with an
+alternate link, and `/llms.txt` provides discovery instructions.
+
+Every Astro build generates 30 dated Markdown documents at
+`/agent/YYYY-MM-DD.md`, plus matching JSON at `/agent/YYYY-MM-DD.json` and
+`/agent/sources.md`. The documents reuse event validation, deduplication,
+venue-price hints, coverage, and curated Free Places schedules. They require no
+server runtime or extra collection job; successful event refresh deployments
+regenerate them along with the site.
+
+Dates are San Francisco calendar dates. These exports cover the entire day,
+including ended events, and do not apply the interactive site's source, price,
+or map-viewport filters. Agents should compare event end times with the current
+time. Dated paths deliberately avoid a build-time `/today` alias that could become
+misleading after midnight or a failed deployment. Missing dates and unchecked
+dates are not evidence that no events exist. Each file records both its build
+time and the event feed generation time, source collection status, and coverage.
+
+Daily JSON uses `schemaVersion: 1`, `date`, `timeZone`, `builtAt`, `generatedAt`,
+`coverage` (`checked` or `not checked`), `freshness`, `fullDay`, `sources`, `events`,
+and `freePlaces`. Both listing arrays use the existing event/curation schema,
+including complete GeoJSON Point, LineString, and Polygon geometry. Free Places
+retain eligibility, admission notes, and review validity; the browser-only
+`entryEnded` flag is omitted because it would become stale. `cost.isFree` is not
+a claim that every visitor qualifies: preserve eligibility and inferred-price
+metadata. The original `/events.json` remains an event-only snapshot.
+
+Publisher text is escaped in Markdown and descriptions are quoted as source
+content. Cloudflare `_headers` serves Markdown as UTF-8 plain text with a
+five-minute cache policy. Unit tests cover date/coverage semantics, admission
+conditions, freshness, escaping, and geometry; HTTP tests read the built content
+without a browser or JavaScript.
