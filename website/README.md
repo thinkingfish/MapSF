@@ -6,7 +6,10 @@ Cloudflare. All application and collection code is JavaScript; no Python require
 
 ## Run locally
 
-Requires Node.js 22.12 or later (the repository pins 22.23.2) and pnpm 12.3.4.
+Requires Node.js 24.20.0 or later and pnpm 12.3.4.
+The project pins Node.js 24.20.0 through `devEngines.runtime`; pnpm downloads
+and uses this runtime for local scripts, including builds, tests, and refreshes.
+The `.node-version` file keeps CI and Cloudflare builds on the same version.
 The `packageManager` field pins pnpm for this project. If pnpm is not installed,
 bootstrap it once with `npm install --global pnpm@12.3.4`.
 
@@ -173,7 +176,7 @@ In Cloudflare Workers & Pages, connect this repository and configure:
 | Build command | `pnpm run build` |
 | Deploy command | `pnpm exec wrangler deploy` |
 | Production branch | `main` |
-| Node version | `22.23.2` |
+| Node version | `24.20.0` |
 | Build environment variable | `PNPM_VERSION=12.3.4` |
 
 Commit only `pnpm-lock.yaml` as the dependency lockfile. CI uses
