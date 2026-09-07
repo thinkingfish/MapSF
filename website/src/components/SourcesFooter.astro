@@ -1,9 +1,8 @@
 ---
-import { sourceGuide } from '../../config/source-guide.mjs';
+import { eventSourceGuide, placeSourceGuide, mapSourceGuide } from '../../config/source-guide.mjs';
 ---
 <footer class="sources-footer" aria-labelledby="footer-sources-title">
   <div class="sources-footer-heading"><h2 id="footer-sources-title"><a href="/sources/">Sources</a></h2><a href="/sources/#methodology">How we gather listings ↗</a></div>
-  <p>Collected and planned sources, plus official admission schedules.</p>
-  <ul class="source-footer-links">{sourceGuide.map(source => <li><a href={`/sources/#${source.id}`}>{source.name}</a></li>)}</ul>
+  {[["Event publishers", eventSourceGuide], ["Free Places schedule providers", placeSourceGuide], ["Map data", mapSourceGuide]].map(([title, sources]) => <div class="source-footer-group"><h3>{title}</h3><ul class="source-footer-links">{sources.map(source => <li><a href={`/sources/#${source.id}`}>{source.name}</a></li>)}</ul></div>)}
   <div class="site-footer"><span>Made for a little more San Francisco.</span><span>Times shown in Pacific time</span></div>
 </footer>

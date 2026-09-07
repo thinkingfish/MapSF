@@ -1,3 +1,4 @@
+import { applyVenuePriceHint } from '../lib/venue-pricing.mjs';
 import { createCalendar, checkedDates } from "./calendar.mjs";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import {
@@ -6,7 +7,7 @@ import {
   validateEvent,
   dedupeEvents,
 } from "../lib/events.mjs";
-import { filterEvents, geometryBounds } from "./view-model.mjs";
+import { filterEvents } from "./view-model.mjs";
 
 import { scheduledPlacesForDay } from "../lib/places.mjs";
 
@@ -14,11 +15,15 @@ const $ = (id) => document.getElementById(id);
 const state = {
   events: [],
   visible: [],
+  mapped: [],
   selected: null,
+  sectionsOpen: { events: true, places: false },
   selectionCleared: false,
   day: sfDate(),
   followToday: true,
   freeOnly: false,
+  sourceIds: [],
+  mapBounds: null,
   feed: null,
   error: false,
 };
@@ -38,6 +43,9 @@ const dateFormat = new Intl.DateTimeFormat("en-US", {
 let map;
 let mapReady = false;
 let mapTimeout;
+let mappedDataSignature;
+let paintedSelection;
+let gestureHintTimer;
 const sfBounds = [
   [-122.53, 37.7],
   [-122.348, 37.835],
@@ -98,11 +106,11 @@ function sourceStatus() {
   }
 }
 
-function renderEmpty() {
+function renderEmpty(target = list) {
   const empty = element("div", "empty-state");
   empty.append(emptyIcon.cloneNode(true));
   const hasFilters =
-    state.freeOnly;
+    state.freeOnly || state.sourceIds.length > 0 || Boolean(state.mapBounds);
   const dayChecked = checkedDates(state.feed?.coverage).has(state.day);
   const title = state.error
     ? "Let’s try that again."
@@ -120,7 +128,7 @@ function renderEmpty() {
       : !state.events.length
       ? "We checked our sources. Try another available date for more listings."
       : hasFilters
-        ? "Clear the free-only filter to see all listings."
+        ? "Zoom out or clear the filters to see more listings."
         : "No upcoming listings for this date. Choose another day to see what’s coming up.";
   empty.append(element("h3", "", title), element("p", "", description));
   if (state.error || hasFilters) {
@@ -133,7 +141,7 @@ function renderEmpty() {
     button.addEventListener("click", state.error ? loadFeed : resetFilters);
     empty.append(button);
   }
-  list.append(empty);
+  target.append(empty);
 }
 
 function renderCard(event) {
@@ -182,6 +190,7 @@ function renderCard(event) {
     banner.addEventListener("error", () => banner.remove());
     details.append(banner);
   }
+  if (event.cost.inferredFromVenue) details.append(element("p", "admission-note", "Price inferred from the venue or event type; confirm with the organizer."));
   if (event.admissionNote || event.description)
     details.append(element("p", "event-description", event.admissionNote || event.description));
   details.append(element("p", "event-time", event.hoursLabel || eventTime(event, true)));
@@ -211,28 +220,54 @@ function renderCard(event) {
 }
 
 function renderList() {
-  const scrollTop = list.scrollTop;
+  const scrollPositions = Object.fromEntries(["events", "places"].map(kind => [kind, $(kind + "-entries")?.scrollTop || 0]));
+  const active = list.contains(document.activeElement) ? document.activeElement : null;
+  const activeId = active?.id;
+  const activeEvent = active?.closest("article")?.dataset.eventId;
+  const events = state.visible.filter(event => !event.recurring);
+  const places = state.visible.filter(event => event.recurring);
   list.replaceChildren();
-  if (!state.visible.length) renderEmpty();
-  else {
-    const events = state.visible.filter(event => !event.recurring);
-    const places = state.visible.filter(event => event.recurring);
-    events.forEach(event => list.append(renderCard(event)));
-    if (places.length) {
-      if (state.error) {
-        const notice = element("div", "places-intro", "Event listings couldn’t be loaded. These recurring places are still available to browse. ");
-        const retry = element("button", "", "Try again");
-        retry.type = "button";
-        retry.addEventListener("click", loadFeed);
-        notice.append(retry);
-        list.append(notice);
-      } else if (!events.length) list.append(element("p", "places-intro", checkedDates(state.feed?.coverage).has(state.day) ? "No one-off events listed for this day." : "Event listings haven’t been checked for this day."));
-      list.append(element("h3", "places-heading", state.day === sfDate() ? "More to do today" : "Places to explore"));
-      list.append(element("p", "places-intro", "Free days and resident admission. Check the conditions below."));
-      places.forEach(event => list.append(renderCard(event)));
+  for (const [kind, title, entries] of [["events", "Events", events], ["places", "Free Places", places]]) {
+    const section = element("section", "result-section");
+    section.dataset.expanded = String(state.sectionsOpen[kind]);
+    const heading = element("h2", "result-section-heading");
+    const button = element("button", "section-toggle");
+    button.id = kind + "-toggle";
+    button.type = "button";
+    button.setAttribute("aria-label", title);
+    button.setAttribute("aria-expanded", String(state.sectionsOpen[kind]));
+    button.setAttribute("aria-controls", kind + "-entries");
+    const count = element("span", "section-count", String(entries.length));
+    count.setAttribute("aria-label", entries.length + " " + kind);
+    const action = element("span", "section-action", state.sectionsOpen[kind] ? "Hide" : "Show");
+    action.setAttribute("aria-hidden", "true");
+    button.append(element("span", "section-title", title), count, action);
+    button.addEventListener("click", () => {
+      const open = !state.sectionsOpen[kind];
+      state.sectionsOpen = { events: false, places: false, [kind]: open };
+      renderList();
+    });
+    heading.append(button);
+    const body = element("div", "section-entries");
+    body.id = kind + "-entries";
+    body.hidden = !state.sectionsOpen[kind];
+    body.setAttribute("role", "region");
+    body.setAttribute("aria-labelledby", button.id);
+    if (kind === "events" && !entries.length) {
+      if (state.error || !places.length || state.freeOnly || state.sourceIds.length) renderEmpty(body);
+      else body.append(element("p", "places-intro", checkedDates(state.feed?.coverage).has(state.day)
+        ? "No one-off events listed for this day." : "Event listings haven’t been checked for this day."));
     }
+    if (kind === "places") body.append(element("p", "places-intro", entries.length
+      ? "Free access, free days, and resident admission. Check each place’s conditions."
+      : "No free places match this date and map view. Try zooming out or changing the filters."));
+    entries.forEach(event => body.append(renderCard(event)));
+    section.append(heading, body);
+    list.append(section);
+    body.scrollTop = scrollPositions[kind];
   }
-  list.scrollTop = scrollTop;
+  if (activeId) document.getElementById(activeId)?.focus({ preventScroll: true });
+  else if (activeEvent) [...list.querySelectorAll("article")].find(card => card.dataset.eventId === activeEvent)?.querySelector("button")?.focus({ preventScroll: true });
   list.setAttribute("aria-busy", "false");
 }
 
@@ -251,6 +286,34 @@ function updateDateShortcuts(now = new Date()) {
   }
 }
 
+const sourceNames = new Map();
+function updateSourceOptions(events) {
+  const options = $("source-options");
+  const sources = new Map(events.map(event => [event.source.id, event.source.name]));
+  for (const [id, name] of sources) sourceNames.set(id, name);
+  for (const id of state.sourceIds) if (!sources.has(id)) sources.set(id, sourceNames.get(id) || id);
+  const entries = [...sources].sort((a, b) => a[1].localeCompare(b[1]));
+  const signature = JSON.stringify(entries);
+  if (options.dataset.options !== signature) {
+    options.replaceChildren(...entries.map(([id, name]) => {
+      const label = element("label", "source-option");
+      const checkbox = element("input");
+      checkbox.type = "checkbox";
+      checkbox.value = id;
+      checkbox.addEventListener("change", () => {
+        state.sourceIds = checkbox.checked ? [...state.sourceIds, id] : state.sourceIds.filter(value => value !== id);
+        render();
+      });
+      label.append(checkbox, document.createTextNode(name));
+      return label;
+    }));
+    options.dataset.options = signature;
+  }
+  for (const checkbox of options.querySelectorAll("input")) checkbox.checked = state.sourceIds.includes(checkbox.value);
+  $("source-filter").textContent = state.sourceIds.length === 0 ? "All sources" : state.sourceIds.length === 1
+    ? sourceNames.get(state.sourceIds[0]) || state.sourceIds[0] : state.sourceIds.length + " sources";
+}
+
 function render() {
   const now = new Date();
   calendar.update(state.day, state.feed?.coverage);
@@ -258,7 +321,12 @@ function render() {
   const dayEvents = eventsForDay(state.events, state.day).filter(
     (event) => state.day !== sfDate(now) || new Date(event.endAt) > now,
   );
-  state.visible = filterEvents([...dayEvents, ...scheduledPlacesForDay(state.day, { now })], state);
+  const candidates = [...dayEvents, ...scheduledPlacesForDay(state.day, { now })];
+  updateSourceOptions(dayEvents);
+  state.mapped = filterEvents(candidates, { ...state, mapBounds: null });
+  state.visible = filterEvents(state.mapped, { mapBounds: state.mapBounds });
+  $("region-status").hidden = !state.mapBounds;
+  $("region-status").textContent = state.mapBounds ? "Showing listings in the current map view." : "";
   if (
     !state.selectionCleared &&
     !state.visible.some((event) => event.id === state.selected)
@@ -279,16 +347,13 @@ function selectEvent(id, origin) {
   const deselect = origin === "list" && state.selected === id;
   state.selected = deselect ? null : id;
   state.selectionCleared = deselect;
+  if (origin === "map") {
+    const event = state.visible.find(event => event.id === id);
+    if (event) state.sectionsOpen = { events: !event.recurring, places: Boolean(event.recurring) };
+  }
   renderList();
   updateMapSelection();
-  const selected = state.visible.find((event) => event.id === state.selected);
-  if (selected && mapReady)
-    map.fitBounds(geometryBounds(selected.curation.geometry), {
-      padding: 70,
-      maxZoom: 15,
-      duration: reduceMotion ? 0 : 650,
-    });
-  const card = Array.from(list.children).find(
+  const card = Array.from(list.querySelectorAll("article")).find(
     (card) => card.dataset.eventId === id,
   );
   if (origin === "map") {
@@ -301,8 +366,12 @@ function selectEvent(id, origin) {
 }
 
 function updateMapSelection() {
-  if (!mapReady) return;
+  if (!mapReady || paintedSelection === state.selected) return;
+  paintedSelection = state.selected;
   const selected = ["==", ["get", "eventId"], state.selected || ""];
+  // Several events can share a venue. Keep its selected marker above the others
+  // so their pale fill and white outlines cannot cover the deep pink center.
+  map.setLayoutProperty("event-points", "circle-sort-key", ["case", selected, 1, 0]);
   map.setPaintProperty("event-points", "circle-radius", [
     "case",
     selected,
@@ -339,13 +408,18 @@ function updateMapSelection() {
 function updateMap() {
   if (!mapReady) return;
   const source = map.getSource("events");
-  source.setData({
+  const data = {
     type: "FeatureCollection",
-    features: state.visible.map((event) => ({
+    features: state.mapped.map((event) => ({
       ...event.curation,
       properties: { ...event.curation.properties, eventId: event.id },
     })),
-  });
+  };
+  const signature = JSON.stringify(data);
+  if (signature !== mappedDataSignature) {
+    source.setData(data);
+    mappedDataSignature = signature;
+  }
   updateMapSelection();
 }
 
@@ -395,6 +469,15 @@ async function setupMap() {
       cooperativeGestures: true,
     });
     map.addControl(new NavigationControl({ showCompass: false }), "top-right");
+    // MapLibre removes its hint class after 100ms. Hold it through a wheel
+    // gesture burst so reduced-motion users do not get a flashing overlay.
+    map.on("cooperativegestureprevented", () => {
+      const hint = map.getContainer().querySelector(".maplibregl-cooperative-gesture-screen");
+      if (!hint) return;
+      clearTimeout(gestureHintTimer);
+      hint.classList.add("mapsf-gesture-hint");
+      gestureHintTimer = setTimeout(() => hint.classList.remove("mapsf-gesture-hint"), 1600);
+    });
     map.on("error", () =>
       mapMessage(
         "The map is having trouble loading. You can still explore the list.",
@@ -451,7 +534,16 @@ async function setupMap() {
       mapReady = true;
       if (!$("map-status").classList.contains("map-warning"))
         $("map-status").hidden = true;
-      updateMap();
+      const updateViewport = () => {
+        const bounds = map.getBounds();
+        const nextBounds = [[bounds.getWest(), bounds.getSouth()], [bounds.getEast(), bounds.getNorth()]];
+        if (JSON.stringify(nextBounds) === JSON.stringify(state.mapBounds)) return;
+        state.mapBounds = nextBounds;
+        render();
+      };
+      map.on("moveend", updateViewport);
+      map.on("resize", updateViewport);
+      updateViewport();
       const layers = ["event-points", "event-routes", "event-areas"];
       map.on("click", (event) => {
         const features = map.queryRenderedFeatures(event.point, { layers });
@@ -492,7 +584,7 @@ async function loadFeed() {
         !Number.isFinite(Date.parse(feed.generatedAt)))
     )
       throw new Error("Invalid feed");
-    state.events = dedupeEvents(feed.events.filter(validateEvent));
+    state.events = dedupeEvents(feed.events.filter(validateEvent)).map(applyVenuePriceHint);
     state.feed = feed;
   } catch {
     state.error = true;
@@ -502,7 +594,9 @@ async function loadFeed() {
 
 function resetFilters() {
   state.freeOnly = false;
+  state.sourceIds = [];
   $("free-only").checked = false;
+  if (mapReady) map.fitBounds(sfBounds, { padding: cityFitPadding(), duration: 0 });
   render();
 }
 
@@ -520,6 +614,16 @@ $("tomorrow-button").addEventListener("click", () => chooseDay(tomorrowDate()));
 $("free-only").addEventListener("change", (event) => {
   state.freeOnly = event.target.checked;
   render();
+});
+$("all-sources").addEventListener("click", () => { state.sourceIds = []; render(); });
+$("source-menu").addEventListener("toggle", event => {
+  $("source-filter").setAttribute("aria-expanded", String(event.newState === "open"));
+  if (event.newState === "open") {
+    const bounds = $("source-filter").getBoundingClientRect();
+    const panel = $("source-menu");
+    panel.style.left = Math.max(16, Math.min(bounds.left, innerWidth - panel.offsetWidth - 16)) + "px";
+    panel.style.top = Math.max(16, Math.min(bounds.bottom + 8, innerHeight - panel.offsetHeight - 16)) + "px";
+  }
 });
 $("reset-map").addEventListener("click", () => {
   if (mapReady)

@@ -1,0 +1,24 @@
+{
+  "title": "Johannes Schuster",
+  "objectID": "43272617",
+  "source_id": 1039137234,
+  "source_id_s": "1039137234",
+  "sources": [
+    "bandsintown"
+  ],
+  "start_date": "2026-09-06",
+  "start_time": "2026-09-06T22:00:00-07:00",
+  "end_time": "2026-09-07T02:00:00-07:00",
+  "venue": {
+    "name": "The Palace Of Fine Arts",
+    "address_1": "3601 Lyon St",
+    "address_2": null,
+    "town": "San Francisco",
+    "country": "United States",
+    "post_code": null,
+    "latitude": 37.8019913,
+    "longitude": -122.4486565
+  },
+  "prices": null,
+  "online_only": false
+}

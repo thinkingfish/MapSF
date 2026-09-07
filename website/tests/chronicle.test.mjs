@@ -40,3 +40,14 @@ test('mixed ticket tiers do not become free and virtual venues do not become poi
  const result=await collectChronicle(source,fetcher([{...fixture,online_only:true,prices:{Child:'USD 0.0',Adult:'USD 20.0'}}]),now);
  assert.equal(result[0].record.location.geo,undefined);assert.equal(result[0].record.isAccessibleForFree,undefined);assert.equal(result[0].record.offers,undefined);
 });
+
+test('Chronicle detail links retain the upstream source suffix (Schuster regression)',async()=>{
+ const schuster=JSON.parse(await readFile(new URL('./fixtures/chronicle/schuster.json',import.meta.url)));
+ const result=await collectChronicle(source,fetcher([schuster]),now);
+ assert.equal(new URL(result[0].pageUrl).searchParams.get('_evDiscoveryPath'),'/event/1039137234n');
+});
+test('object-based providers use the calendar object ID, and unknown providers fail closed',async()=>{
+ const result=await collectChronicle(source,fetcher([{...fixture,sources:['ticketmaster'],objectID:'tm-event-123'}]),now);
+ assert.equal(new URL(result[0].pageUrl).searchParams.get('_evDiscoveryPath'),'/event/tm-event-123t');
+ await assert.rejects(collectChronicle(source,fetcher([{...fixture,sources:['unknown']}]),now),/source/i);
+});

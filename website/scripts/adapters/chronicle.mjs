@@ -1,5 +1,23 @@
 import {pacificDay,validDay} from '../coverage.mjs';
 
+// Mirrors Evvnt discovery's event-link encoding: numeric external IDs need
+// their provider suffix; some providers instead use the calendar object ID.
+const eventProviders = {
+ evvnt: ['', false], migration: ['m', false], geotix: ['x', false],
+ enmotive: ['e', true], goldstar: ['g', false], ticketmaster: ['t', true],
+ bandsintown: ['n', false], eventbrite: ['b', false], axs: ['s', false],
+ active_network: ['a', true], run_sign_up: ['r', false], ticket_sign_up: ['u', false],
+ event_vesta: ['v', false], ticket_fairy: ['f', false], race_entry: ['c', false], meetup: ['p', false],
+};
+export function chronicleEventPath(event) {
+ const provider = event.sources?.[0];
+ if (!Object.hasOwn(eventProviders, provider)) throw new Error('Unknown Chronicle event source');
+ const [suffix, useObjectId] = eventProviders[provider];
+ const id = useObjectId ? event.objectID : (event.source_id_s ?? String(event.source_id));
+ if (typeof id !== 'string' || !(useObjectId ? /^[a-zA-Z0-9_-]+$/ : /^\d+$/).test(id)) throw new Error('Invalid Chronicle detail identity');
+ return `/event/${id}${suffix}`;
+}
+
 // Public browser API used by the Chronicle's Evvnt calendar (publisher 6745).
 // It exposes neither totals nor filter echoes. Check each date independently,
 // require a single large page and an empty confirmation page. Small pages
@@ -17,6 +35,7 @@ function record(event, pageUrl) {
   // A single unambiguous published rate is representable by the shared contract.
   // Multiple differing ticket tiers remain unknown rather than claiming free.
   const prices=[...new Set(Object.values(event.prices || {}))];
+  if (prices.length) output.hasExplicitPrice = true;
   const price=prices.length===1 && typeof prices[0]==='string' && /^USD (\d+(?:\.\d{1,2})?)$/.exec(prices[0]);
   if(price){output.offers={price:price[1],priceCurrency:'USD'};if(Number(price[1])===0)output.isAccessibleForFree=true;}
   return output;
@@ -48,7 +67,7 @@ export async function collectChronicle(source, fetchImpl=fetch, now=new Date()) 
         seen.add(event.objectID);
         if(seen.size>eventLimit)throw new Error('Chronicle event collection limit exhausted');
         const pageUrl=new URL(source.listingUrl);
-        pageUrl.searchParams.set('_evDiscoveryPath',`/event/${event.source_id}`);
+        pageUrl.searchParams.set('_evDiscoveryPath',chronicleEventPath(event));
         output.push({pageUrl:pageUrl.href,record:record(event,pageUrl.href)});
       }
     }
