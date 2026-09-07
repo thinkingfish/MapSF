@@ -18,14 +18,14 @@ jobs:
       run:
         working-directory: website
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: main
       - uses: pnpm/action-setup@v6
         with:
           package_json_file: website/package.json
           run_install: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: website/.node-version
           cache: pnpm
