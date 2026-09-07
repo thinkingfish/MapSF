@@ -42,6 +42,9 @@ const sfBounds = [
   [-122.53, 37.7],
   [-122.348, 37.835],
 ];
+const cityFitPadding = () => window.matchMedia('(max-width: 760px)').matches
+  ? { top: 60, bottom: 85, left: 10, right: 10 }
+  : 10;
 const reduceMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
@@ -233,10 +236,25 @@ function renderList() {
   list.setAttribute("aria-busy", "false");
 }
 
+// Advance the SF calendar date, including 23- and 25-hour days.
+function tomorrowDate(now = new Date()) {
+  const day = new Date(sfDate(now) + "T12:00:00Z");
+  day.setUTCDate(day.getUTCDate() + 1);
+  return day.toISOString().slice(0, 10);
+}
+
+function updateDateShortcuts(now = new Date()) {
+  const covered = checkedDates(state.feed?.coverage);
+  for (const [id, day] of [["today-button", sfDate(now)], ["tomorrow-button", tomorrowDate(now)]]) {
+    $(id).disabled = !covered.has(day);
+    $(id).setAttribute("aria-pressed", String(state.day === day));
+  }
+}
+
 function render() {
   const now = new Date();
   calendar.update(state.day, state.feed?.coverage);
-  $("today-button").disabled = !checkedDates(state.feed?.coverage).has(sfDate(now));
+  updateDateShortcuts(now);
   const dayEvents = eventsForDay(state.events, state.day).filter(
     (event) => state.day !== sfDate(now) || new Date(event.endAt) > now,
   );
@@ -252,10 +270,6 @@ function render() {
   // Noon UTC is on the same SF date throughout the year.
   $("day-label").textContent =
     `${state.day === sfDate() ? "TODAY" : "EXPLORE"} · ${dateFormat.format(new Date(`${state.day}T12:00:00Z`)).toUpperCase()}`;
-  $("today-button").setAttribute(
-    "aria-pressed",
-    String(state.day === sfDate()),
-  );
   sourceStatus();
   renderList();
   updateMap();
@@ -292,8 +306,8 @@ function updateMapSelection() {
   map.setPaintProperty("event-points", "circle-radius", [
     "case",
     selected,
-    10,
     7,
+    5,
   ]);
   map.setPaintProperty("event-points", "circle-color", [
     "case",
@@ -374,7 +388,7 @@ async function setupMap() {
         ],
       },
       bounds: sfBounds,
-      fitBoundsOptions: { padding: 10 },
+      fitBoundsOptions: { padding: cityFitPadding() },
       minZoom: 9,
       maxZoom: 18,
       attributionControl: { compact: false },
@@ -429,9 +443,9 @@ async function setupMap() {
         filter: ["==", ["geometry-type"], "Point"],
         paint: {
           "circle-color": "#f27890",
-          "circle-radius": 7,
+          "circle-radius": 5,
           "circle-stroke-color": "#ffffff",
-          "circle-stroke-width": 3,
+          "circle-stroke-width": 2,
         },
       });
       mapReady = true;
@@ -500,15 +514,16 @@ function chooseDay(day) {
 }
 const calendar = createCalendar({button: dateInput, panel: $("event-calendar"), onSelect: chooseDay});
 calendar.update(state.day, null);
-$("today-button").disabled = true;
+updateDateShortcuts();
 $("today-button").addEventListener("click", () => chooseDay(sfDate()));
+$("tomorrow-button").addEventListener("click", () => chooseDay(tomorrowDate()));
 $("free-only").addEventListener("change", (event) => {
   state.freeOnly = event.target.checked;
   render();
 });
 $("reset-map").addEventListener("click", () => {
   if (mapReady)
-    map.fitBounds(sfBounds, { padding: 10, duration: reduceMotion ? 0 : 650 });
+    map.fitBounds(sfBounds, { padding: cityFitPadding(), duration: reduceMotion ? 0 : 650 });
 });
 for (const [button, panel] of [
   ["show-map", "map-panel"],
@@ -534,7 +549,10 @@ setInterval(() => {
       state.visible.some((event) => new Date(event.endAt) <= new Date())
     )
       render();
-    else sourceStatus();
+    else {
+      updateDateShortcuts();
+      sourceStatus();
+    }
   }
 }, 60000);
 loadFeed();

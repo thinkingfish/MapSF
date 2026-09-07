@@ -210,12 +210,13 @@ This document records your approval; checking a box does not start collection.
 The operational source list remains [config/sources.mjs](config/sources.mjs),
 where all ten sources now have `approved: true`, reflecting your saved
 decisions and your approval of Marina Times and addition of Civic Joy Fund and Mission Science Workshop in conversation.
-SFPL, SF Rec & Parks, and Mission Local now have `enabled: true` following
-publisher-specific tests and live collection. The other seven remain disabled.
+SFPL, SF Rec & Parks, Mission Local, the Chronicle, and Civic Joy Fund have verified collectors.
+Mission Science Workshop has a reviewed Mission-site schedule shown with recurring
+places. Remaining integration details are tracked in SOURCE-STATUS.md.
 See [source integration status](SOURCE-STATUS.md) for evidence and remaining work.
 
 Approved sources need their extraction verified against sample event pages before
-being enabled in that registry. Three sources now meet that requirement. A listing must retain its source link, explicit event times,
+being enabled in that registry. Enabled collectors meet that requirement. A listing must retain its source link, explicit event times,
 cost label, and verified point, route, or area geometry. Missing information can
 be completed through [manual curation](data/manual-events.json).
 

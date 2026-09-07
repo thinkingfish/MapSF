@@ -86,3 +86,13 @@ These temporary artifacts support reproducibility during review; the event facts
 - `/tmp/valencia-organizer.html` — live organizer-page HTML.
 - `/tmp/valencia-centerlines.json` — 28 active Valencia centerline records returned by DataSF.
 - `/tmp/valencia-route-verified.json` — joined six-vertex route, CNN identifiers, date mapping, and provenance.
+
+## Civic Joy Fund integration update
+
+The approved Civic Joy Fund calendar now supplies the September 10 and October 8
+2026 occurrences and explicitly links the organizer page as its event details.
+Its public Google Calendar was discovered through the active Elfsight integration.
+The collector uses the above reviewed geometry as supplemental date-specific
+curation, retaining Civic Joy Fund calendar attribution and geometry provenance.
+The organizer is not added as a separate collection source. This supersedes the
+earlier ingestion-gap finding; unreviewed dates do not inherit this extent.

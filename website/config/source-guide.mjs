@@ -2,20 +2,20 @@ import { sources } from './sources.mjs';
 import { places } from './places.mjs';
 import { museums } from './museums.mjs';
 const descriptions = {
-  'mission-science-workshop': ['Hands-on science and engineering activities for youth and families, with community workshops in the Mission, Excelsior, and Bayview.', 'Planned: verify the current school-year drop-in schedule, holiday exceptions, and each workshop location before publishing occurrences.'],
+  'mission-science-workshop': ['Hands-on science and engineering activities for youth and families, with community workshops in the Mission, Excelsior, and Bayview.', 'We maintain the Mission site’s explicitly published 2026–27 community-day dates as a reviewed schedule. Other sites and weekly programs await complete date and location verification.'],
   sfpl: ['San Francisco’s public library calendar includes readings, workshops, performances, and activities at neighborhood branches.', 'We check each day in the 30-day window, including additional results pages, and use the library’s calendar timestamps and branch locations.'],
   'sf-rec-park': ['The city’s Recreation and Parks calendar lists public activities and events in its parks and facilities.', 'We check the daily calendars across the full window. Published listings currently focus on the Golden Gate Bandshell, where we have verified the venue coordinates.'],
   'mission-local': ['A local newsroom with an events calendar covering arts, music, community gatherings, and neighborhood life.', 'We use its public calendar API, following every page in the requested date range. Dates, venue coordinates, and any listed prices come from the publisher.'],
   funcheap: ['A guide to free and inexpensive events in San Francisco and the Bay Area.', 'Planned: we still need reliable venue coordinates before adding its listings to the map.'],
-  'sf-chronicle': ['The San Francisco Chronicle provides regional arts, entertainment, and event coverage.', 'Planned: its embedded event calendar needs a verified collection method.'],
+  'sf-chronicle': ['The San Francisco Chronicle provides regional arts, entertainment, and event coverage.', 'We query its public Evvnt calendar for each day, verify event dates and venue coordinates, and require complete results before recording coverage.'],
   'ingleside-light': ['A neighborhood publication covering Ingleside and surrounding communities, including things-to-do roundups.', 'Planned: individual event dates and locations need to be extracted and checked separately from article publication dates.'],
   'richmond-sunset-news': ['Neighborhood coverage from the Richmond Review and Sunset Beacon, including community activities on the west side of the city.', 'Planned: we are identifying reliable event listings and verifying dates and locations.'],
   'marina-times': ['A neighborhood publication with arts, culture, and calendar coverage for San Francisco’s northern neighborhoods.', 'Planned: current event coverage and the freshness of calendar entries need verification.'],
-  'civic-joy-fund': ['A community organization supporting public celebrations and neighborhood activities in San Francisco.', 'Planned: its embedded calendar needs a dedicated extractor and verified event locations.'],
+  'civic-joy-fund': ['A community organization supporting public celebrations and neighborhood activities in San Francisco.', 'We read the public Google Calendar behind its website, including recurring dates and exceptions. Linked organizer records verify cleanup meeting points, and city street data verifies festival intersection pins. Reviewed street geometry covers date-specific ValenciaLIVE events.'],
 };
 export const eventSourceGuide = sources.filter(source => source.approved).map(source => ({
   id: source.id, name: source.name, url: source.listingUrl,
-  status: source.enabled ? 'Collecting events' : 'Planned',
+  status: source.id === 'mission-science-workshop' ? 'Curated schedule' : source.enabled ? 'Collecting events' : 'Planned',
   description: descriptions[source.id]?.[0] ?? 'A source selected for local event coverage.',
   collection: descriptions[source.id]?.[1] ?? 'Collection details are being reviewed.',
 }));

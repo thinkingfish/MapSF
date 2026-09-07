@@ -40,9 +40,9 @@ All ten sources in [config/sources.mjs](config/sources.mjs) have your recorded
 approval. Collection requires both `approved: true` and `enabled: true`.
 The integration status is documented in [SOURCE-STATUS.md](SOURCE-STATUS.md).
 
-SFPL, SF Rec & Parks, and Mission Local are enabled with verified publisher
-fixtures. The other seven sources are approved but await complete extraction or
-verified venue geometry. Approval and working collection are separate states.
+SFPL, SF Rec & Parks, Mission Local, the Chronicle, and Civic Joy Fund have verified publisher
+collectors. Mission Science Workshop has a curated Mission-site community-day
+schedule. Other sources await complete extraction or verified venue geometry. Approval and working collection are separate states.
 
 Only enabled sources are collected. Incomplete or cancelled listings are excluded.
 Collection preserves source attribution and explicit time ranges. Unknown cost
@@ -110,7 +110,8 @@ unavailable, and recurring place schedules do not extend event-feed coverage.
 
 Each enabled source records `coverage: { dates, checkedAt }` only after completing
 the entire 30-day query. SFPL and Rec & Parks check dated calendar views; Mission
-Local uses its public date-range API. Pagination, response date scope, empty
+Local uses its public date-range API. Civic Joy Fund expands its public iCalendar
+feed, with recurrence exceptions and linked organizer venue verification. Pagination, response date scope, empty
 results, and request guards are verified before enabling the window.
 Coverage is established before cost, cancellation, or geometry filtering. A
 successfully checked date stays available even when its listings are empty or

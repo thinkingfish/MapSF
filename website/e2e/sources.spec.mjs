@@ -6,7 +6,9 @@ test('footer links every source to its description and explains planned sources 
  const footer=page.getByRole('contentinfo');
  for(const source of sourceGuide)await expect(footer.getByRole('link',{name:source.name,exact:true})).toHaveAttribute('href',`/sources/#${source.id}`);
  await footer.getByRole('link',{name:'Civic Joy Fund',exact:true}).click();
- await expect(page.locator('#civic-joy-fund')).toContainText('Planned');
+ await expect(page.locator('#civic-joy-fund')).toContainText('Collecting events');
+ await expect(page.locator('#mission-science-workshop')).toContainText('Curated schedule');
+ await expect(page.locator('#funcheap')).toContainText('Planned');
  await expect(page.locator('#sfpl')).toContainText('Collecting events');
  const rss = page.getByRole('region', {name:'Subscribe via RSS'});
  await expect(rss.getByRole('link')).toHaveCount(6);

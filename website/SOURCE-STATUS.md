@@ -10,13 +10,13 @@ switches remain in [config/sources.mjs](config/sources.mjs).
 | [SF Rec & Parks](https://sfrecpark.org/Calendar.aspx) | Enabled, limited venues | Calendar microdata supplies event dates and clock ranges. Currently accepts only Golden Gate Bandshell, matched to its exact official facility URL and verified coordinates. Unknown venues and ambiguous times are skipped. Checks all 30 daily calendar views, validates the requested date, and handles empty days and pagination explicitly. |
 | [Mission Local](https://missionlocal.org/events/) | Enabled | Public Events Calendar API supplies UTC timestamps, addresses, venue coordinates, and stable event IDs. A bounded date-range query follows every page, verifies the echoed range and totals, and records checked empty days only after full completion. |
 | [Funcheap](https://sf.funcheap.com/today/) | Pending geometry | Today's page and detail pages supply event times and costs. Sampled detail records supply addresses but no coordinates. Needs a verified venue mapping or geometry overrides before activation. The prior RSS URL redirects to FeedBurner; use the event-day page for future integration. |
-| [SF Chronicle](https://www.sfchronicle.com/entertainment/events/) | Pending adapter | The event-specific page loads an Evvnt discovery plugin. The sampled HTML does not contain JSON-LD Event records. Needs a verified public calendar data adapter. |
+| [SF Chronicle](https://www.sfchronicle.com/entertainment/events/) | Enabled | Public Evvnt calendar queries each of 30 dates with verified timestamps and venue coordinates. A large single page plus an empty confirmation page avoids observed unstable smaller-page sorting; nonempty continuation fails the run. See ../docs/pending-calendar-source-review.md. |
 | [The Ingleside Light](https://www.inglesidelight.com/tag/things-to-do/) | Pending adapter | Weekly editorial roundups need separate event extraction and verified venue coordinates. Article publication dates are not event dates. |
 | [Richmond Review / Sunset Beacon](https://richmondsunsetnews.com/) | Pending scope and adapter | Homepage mixes articles and opinion. Identify specific community-event coverage and verify event details and geometry. Detail discovery remains zero. |
 | [Marina Times](https://www.marinatimes.com/category/calendar) | Pending freshness and adapter | The inspected calendar archive includes older listings. Establish a current event endpoint and verify dates and geometry. Detail discovery remains zero. |
-| [Civic Joy Fund](https://civicjoyfund.org/events) | Pending adapter | User-provided community events page. Its calendar uses an Elfsight widget; sampled structured data contains WebSite/LocalBusiness but no Event records. Verify calendar extraction and location geometry before enabling. |
+| [Civic Joy Fund](https://civicjoyfund.org/events) | Enabled, verified venues and extents | Public Google Calendar ICS behind the publisher widget supplies recurring occurrences, exclusions, exceptions, and explicit times. Batched Civic Joy Fund Mobilize listings verify matching cleanup addresses and coordinates. September/October 2026 ValenciaLIVE uses reviewed street centerlines from 18th to 21st. Festivals with verified intersection points are included even without full extents; missing locations remain unpublished. |
 
-| [Mission Science Workshop](https://www.missionscienceworkshop.org/) | Pending schedule and geometry | Official programs page describes free community drop-in days at Mission, Excelsior, and Bayview workshops during the school year. Verify current dates, holiday exceptions, and each venue before publishing occurrences. |
+| [Mission Science Workshop](https://www.missionscienceworkshop.org/) | Curated Mission community days | Current 2026–27 flyer supplies explicit dates, hours, and public eligibility; venue coordinates verified separately. The Mission site appears with recurring places. Other sites and Tuesdays remain pending; see docs/mission-science-schedule-review.md. |
 
 Enabled collectors check the entire rolling 30-day window. Request guards fail
 closed instead of silently truncating a source. Publication still requires verified
@@ -26,7 +26,7 @@ contains the explicit all-programs-free policy. Fetched records retain links and
 details, without reproducing publisher article bodies.
 
 All supported feeds normalize into the same iOS-compatible GeoJSON contract.
-These live adapters currently provide points; manually curated routes and areas
+Civic Joy Fund supplies verified meeting points and a date-specific Valencia route; other curated routes and areas
 retain full LineString/Polygon geometry and use the same validation and rendering.
 
 Run `pnpm run refresh` from `website/` for per-source results. Successful collection
@@ -52,3 +52,5 @@ No RSS auto-discovery link was found on the checked SFPL events, Chronicle event
 Civic Joy Fund events, or Mission Science Workshop homepage. This is not evidence
 that those organizations have no feeds elsewhere. SFPL's current collector uses
 per-event ICS calendar files.
+
+Current pending-source investigations: [editorial sources](../docs/pending-editorial-source-review.md). Marina’s calendar RSS ends in May 2024; current Ingleside roundups and Richmond/Sunset street events still need exact event extraction and verified geometry.

@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
+    "ical.js": "2.2.1",
     "wrangler": "4.129.0"
   },
   "packageManager": "pnpm@12.3.4"

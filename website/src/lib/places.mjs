@@ -1,8 +1,9 @@
 import { places as gardenPlaces } from '../../config/places.mjs';
+import { scienceWorkshops } from '../../config/science-workshops.mjs';
 import { museums } from '../../config/museums.mjs';
 import { sfDate, validateEvent } from './events.mjs';
 
-const configuredPlaces = [...gardenPlaces, ...museums];
+const configuredPlaces = [...gardenPlaces, ...museums, ...scienceWorkshops];
 const offsetFormatter = new Intl.DateTimeFormat('en-US', {
   timeZone: 'America/Los_Angeles', timeZoneName: 'longOffset', hour: '2-digit',
 });
