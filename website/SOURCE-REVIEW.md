@@ -191,14 +191,27 @@ Scope or curation notes:
 
 > Add notes here.
 
+## Mission Science Workshop
+
+Registry ID: `mission-science-workshop`
+[Official website](https://www.missionscienceworkshop.org/) · [Programs](https://www.missionscienceworkshop.org/programs)
+Configured collection URL: `https://www.missionscienceworkshop.org/`
+
+- [X] Add Mission Science Workshop as a source, requested by Yao in conversation.
+- [ ] Verify current school-year drop-in dates, holiday exceptions, and venue geometry.
+
+Scope: public community drop-in activities at its Mission, Excelsior, and Bayview
+workshops. School/group bookings are not public drop-in events. Collection is
+pending schedule and location verification.
+
 ## Applying your decisions
 
 This document records your approval; checking a box does not start collection.
 The operational source list remains [config/sources.mjs](config/sources.mjs),
-where all nine sources now have `approved: true`, reflecting your saved
-decisions and your approval of Marina Times and addition of Civic Joy Fund in conversation.
+where all ten sources now have `approved: true`, reflecting your saved
+decisions and your approval of Marina Times and addition of Civic Joy Fund and Mission Science Workshop in conversation.
 SFPL, SF Rec & Parks, and Mission Local now have `enabled: true` following
-publisher-specific tests and live collection. The other six remain disabled.
+publisher-specific tests and live collection. The other seven remain disabled.
 See [source integration status](SOURCE-STATUS.md) for evidence and remaining work.
 
 Approved sources need their extraction verified against sample event pages before

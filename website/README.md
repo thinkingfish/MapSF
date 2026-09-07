@@ -36,12 +36,12 @@ pnpm run test:browser
 Record your decisions in the [source review checklist](SOURCE-REVIEW.md).
 Its approval boxes do not automatically enable collection.
 
-All nine sources in [config/sources.mjs](config/sources.mjs) have your recorded
+All ten sources in [config/sources.mjs](config/sources.mjs) have your recorded
 approval. Collection requires both `approved: true` and `enabled: true`.
 The integration status is documented in [SOURCE-STATUS.md](SOURCE-STATUS.md).
 
 SFPL, SF Rec & Parks, and Mission Local are enabled with verified publisher
-fixtures. The other six sources are approved but await complete extraction or
+fixtures. The other seven sources are approved but await complete extraction or
 verified venue geometry. Approval and working collection are separate states.
 
 Only enabled sources are collected. Incomplete or cancelled listings are excluded.

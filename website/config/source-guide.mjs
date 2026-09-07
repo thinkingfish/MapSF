@@ -2,6 +2,7 @@ import { sources } from './sources.mjs';
 import { places } from './places.mjs';
 import { museums } from './museums.mjs';
 const descriptions = {
+  'mission-science-workshop': ['Hands-on science and engineering activities for youth and families, with community workshops in the Mission, Excelsior, and Bayview.', 'Planned: verify the current school-year drop-in schedule, holiday exceptions, and each workshop location before publishing occurrences.'],
   sfpl: ['San Francisco’s public library calendar includes readings, workshops, performances, and activities at neighborhood branches.', 'We check each day in the 30-day window, including additional results pages, and use the library’s calendar timestamps and branch locations.'],
   'sf-rec-park': ['The city’s Recreation and Parks calendar lists public activities and events in its parks and facilities.', 'We check the daily calendars across the full window. Published listings currently focus on the Golden Gate Bandshell, where we have verified the venue coordinates.'],
   'mission-local': ['A local newsroom with an events calendar covering arts, music, community gatherings, and neighborhood life.', 'We use its public calendar API, following every page in the requested date range. Dates, venue coordinates, and any listed prices come from the publisher.'],

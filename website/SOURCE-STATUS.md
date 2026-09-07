@@ -1,6 +1,6 @@
 # Source integration status
 
-All nine publishers are approved by Yao in [SOURCE-REVIEW.md](SOURCE-REVIEW.md).
+All ten publishers are approved by Yao in [SOURCE-REVIEW.md](SOURCE-REVIEW.md).
 This file records collection evidence as of September 6, 2026. The operational
 switches remain in [config/sources.mjs](config/sources.mjs).
 
@@ -15,6 +15,8 @@ switches remain in [config/sources.mjs](config/sources.mjs).
 | [Richmond Review / Sunset Beacon](https://richmondsunsetnews.com/) | Pending scope and adapter | Homepage mixes articles and opinion. Identify specific community-event coverage and verify event details and geometry. Detail discovery remains zero. |
 | [Marina Times](https://www.marinatimes.com/category/calendar) | Pending freshness and adapter | The inspected calendar archive includes older listings. Establish a current event endpoint and verify dates and geometry. Detail discovery remains zero. |
 | [Civic Joy Fund](https://civicjoyfund.org/events) | Pending adapter | User-provided community events page. Its calendar uses an Elfsight widget; sampled structured data contains WebSite/LocalBusiness but no Event records. Verify calendar extraction and location geometry before enabling. |
+
+| [Mission Science Workshop](https://www.missionscienceworkshop.org/) | Pending schedule and geometry | Official programs page describes free community drop-in days at Mission, Excelsior, and Bayview workshops during the school year. Verify current dates, holiday exceptions, and each venue before publishing occurrences. |
 
 Enabled collectors check the entire rolling 30-day window. Request guards fail
 closed instead of silently truncating a source. Publication still requires verified
@@ -31,3 +33,22 @@ Run `pnpm run refresh` from `website/` for per-source results. Successful collec
 updates `public/events.json`; source failures retain validated, unexpired prior
 records and their original freshness timestamps. Saved fixtures are test inputs,
 not fallback listings for the public site.
+
+## RSS discovery
+
+Read-only checks on September 6, 2026 confirmed these RSS endpoints. They are
+candidates for discovery; existing collectors have not been switched to RSS.
+
+| Source | Feed | Observed scope |
+| --- | --- | --- |
+| SF Rec & Parks | [Calendar RSS](https://sfrecpark.org/RSSFeed.aspx?ModID=58&CID=All-calendar.xml) | 65 entries in the checked response, with calendar-specific date, time, and location fields. Category feeds are listed on the official RSS page. Verify full-window coverage before replacing dated queries. |
+| Mission Local | [Events RSS](https://missionlocal.org/events/feed/) | 31 event entries in the checked response. Keep the date-range API for verified full-month coverage. |
+| Funcheap | [RSS](https://sf.funcheap.com/feed/) | Redirects to FeedBurner; 10 recently added event entries in the checked response. Does not establish full-month coverage or verified geometry. |
+| The Ingleside Light | [RSS](https://www.inglesidelight.com/rss/) | News/roundup discovery; 15 entries in the checked response. Article publication dates are not event dates. |
+| Richmond Review / Sunset Beacon | [RSS](https://richmondsunsetnews.com/feed/) | News discovery; 15 entries in the checked response. Individual activities still need event extraction. |
+| Marina Times | [RSS](https://www.marinatimes.com/feed) | News discovery; 15 entries in the checked response. Verify freshness and individual event details. |
+
+No RSS auto-discovery link was found on the checked SFPL events, Chronicle events,
+Civic Joy Fund events, or Mission Science Workshop homepage. This is not evidence
+that those organizations have no feeds elsewhere. SFPL's current collector uses
+per-event ICS calendar files.

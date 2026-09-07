@@ -122,4 +122,15 @@ export const sources = [
     maxDetailPages: 0,
     maxEvents: 40,
   },
+  {
+    id: 'mission-science-workshop',
+    name: 'Mission Science Workshop',
+    listingUrl: 'https://www.missionscienceworkshop.org/',
+    approved: true, // Added at Yao's request in conversation.
+    enabled: false,
+    adapter: 'jsonld',
+    // Verify school-year drop-in dates, closures, and each workshop's geometry.
+    maxDetailPages: 0,
+    maxEvents: 40,
+  },
 ];
