@@ -7,13 +7,9 @@ const events = [
   { id: 'b', title: 'Waterfront run', cost: { isFree: false }, curation: { properties: { name: 'Embarcadero', layerType: 'segment' } } },
   { id: 'c', title: 'Reading', cost: { isFree: true }, curation: { properties: { name: 'Main Library', layerType: 'poi' } } },
 ];
-test('search finds venue and address, ignores case and surrounding whitespace', () => {
-  assert.deepEqual(filterEvents(events, { search: '  BOTANICAL ' }).map(e => e.id), ['a']);
-  assert.deepEqual(filterEvents(events, { search: '9th Avenue' }).map(e => e.id), ['a']);
-});
-test('free and geometry filters combine with the search', () => {
-  assert.deepEqual(filterEvents(events, { freeOnly: true, geometry: 'poi' }).map(e => e.id), ['c']);
-  assert.deepEqual(filterEvents(events, { freeOnly: true, search: 'Waterfront' }), []);
+test('free filter preserves all map element types', () => {
+  assert.deepEqual(filterEvents(events).map(e => e.id), ['a', 'b', 'c']);
+  assert.deepEqual(filterEvents(events, { freeOnly: true }).map(e => e.id), ['a', 'c']);
 });
 test('geometry bounds include every route vertex and polygon ring', () => {
   assert.deepEqual(geometryBounds({ type: 'LineString', coordinates: [[-122.5, 37.7], [-122.4, 37.8], [-122.45, 37.9]] }), [[-122.5, 37.7], [-122.4, 37.9]]);

@@ -7,6 +7,8 @@ import {
 } from "../lib/events.mjs";
 import { filterEvents, geometryBounds } from "./view-model.mjs";
 
+import { scheduledPlacesForDay } from "../lib/places.mjs";
+
 const $ = (id) => document.getElementById(id);
 const state = {
   events: [],
@@ -15,9 +17,7 @@ const state = {
   selectionCleared: false,
   day: sfDate(),
   followToday: true,
-  search: "",
   freeOnly: false,
-  geometry: "all",
   feed: null,
   error: false,
 };
@@ -98,7 +98,7 @@ function renderEmpty() {
   const empty = element("div", "empty-state");
   empty.append(emptyIcon.cloneNode(true));
   const hasFilters =
-    state.search.trim() || state.freeOnly || state.geometry !== "all";
+    state.freeOnly;
   const title = state.error
     ? "Let’s try that again."
     : !state.events.length
@@ -111,7 +111,7 @@ function renderEmpty() {
     : !state.events.length
       ? "Good city days are on the way. Check back for local events, walks, and little discoveries."
       : hasFilters
-        ? "Try another search or clear your filters to see more of the city."
+        ? "Clear the free-only filter to see all listings."
         : "No upcoming listings for this date. Choose another day to see what’s coming up.";
   empty.append(element("h3", "", title), element("p", "", description));
   if (state.error || hasFilters) {
@@ -132,18 +132,19 @@ function renderCard(event) {
   const selected = state.selected === event.id;
   const card = element("article", `event-card${selected ? " selected" : ""}`);
   card.dataset.eventId = event.id;
+  if (event.recurring) card.dataset.recurring = "true";
   const button = element("button", "event-select");
   button.type = "button";
   button.setAttribute("aria-expanded", String(selected));
   button.setAttribute(
     "aria-label",
-    `${event.title}, ${eventTime(event)}, ${event.cost.label}`,
+    `${event.title}, ${event.hoursLabel || eventTime(event)}, ${event.cost.label}`,
   );
   const detailsId = `event-details-${state.visible.indexOf(event)}`;
   button.setAttribute("aria-controls", detailsId);
   const kicker = element("span", "event-kicker");
   kicker.append(
-    element("span", "", eventTime(event)),
+    element("span", "", event.hoursLabel || eventTime(event)),
     element(
       "span",
       `event-price${event.cost.isFree ? " free" : ""}`,
@@ -157,6 +158,8 @@ function renderCard(event) {
     element("span", "event-chevron", selected ? "−" : "+"),
   );
   button.append(kicker, element("span", "event-title", event.title), place);
+  if (event.eligibility) button.append(element("span", "admission-note", event.eligibility));
+  if (event.entryEnded) button.append(element("span", "admission-note", "Entry has ended today."));
   button.addEventListener("click", () => selectEvent(event.id, "list"));
   const details = element("div", "event-details");
   details.id = detailsId;
@@ -170,9 +173,9 @@ function renderCard(event) {
     banner.addEventListener("error", () => banner.remove());
     details.append(banner);
   }
-  if (event.description)
-    details.append(element("p", "event-description", event.description));
-  details.append(element("p", "event-time", eventTime(event, true)));
+  if (event.admissionNote || event.description)
+    details.append(element("p", "event-description", event.admissionNote || event.description));
+  details.append(element("p", "event-time", event.hoursLabel || eventTime(event, true)));
   if (properties.metadata?.address)
     details.append(element("p", "event-address", properties.metadata.address));
   const kind = { poi: "Place", segment: "Route", area: "Area" }[
@@ -202,7 +205,24 @@ function renderList() {
   const scrollTop = list.scrollTop;
   list.replaceChildren();
   if (!state.visible.length) renderEmpty();
-  else state.visible.forEach((event) => list.append(renderCard(event)));
+  else {
+    const events = state.visible.filter(event => !event.recurring);
+    const places = state.visible.filter(event => event.recurring);
+    events.forEach(event => list.append(renderCard(event)));
+    if (places.length) {
+      if (state.error) {
+        const notice = element("div", "places-intro", "Event listings couldn’t be loaded. These recurring places are still available to browse. ");
+        const retry = element("button", "", "Try again");
+        retry.type = "button";
+        retry.addEventListener("click", loadFeed);
+        notice.append(retry);
+        list.append(notice);
+      } else if (!events.length) list.append(element("p", "places-intro", "No one-off events listed for this day."));
+      list.append(element("h3", "places-heading", state.day === sfDate() ? "More to do today" : "Places to explore"));
+      list.append(element("p", "places-intro", "Free days and resident admission. Check the conditions below."));
+      places.forEach(event => list.append(renderCard(event)));
+    }
+  }
   list.scrollTop = scrollTop;
   list.setAttribute("aria-busy", "false");
 }
@@ -212,14 +232,15 @@ function render() {
   const dayEvents = eventsForDay(state.events, state.day).filter(
     (event) => state.day !== sfDate(now) || new Date(event.endAt) > now,
   );
-  state.visible = filterEvents(dayEvents, state);
+  state.visible = filterEvents([...dayEvents, ...scheduledPlacesForDay(state.day, { now })], state);
   if (
     !state.selectionCleared &&
     !state.visible.some((event) => event.id === state.selected)
   )
     state.selected = state.visible[0]?.id ?? null;
-  $("event-count").textContent =
-    `${state.visible.length} ${state.visible.length === 1 ? "event" : "events"}`;
+  const eventCount = state.visible.filter(event => !event.recurring).length;
+  const placeCount = state.visible.length - eventCount;
+  $("event-count").textContent = `${eventCount} ${eventCount === 1 ? "event" : "events"}${placeCount ? ` · ${placeCount} ${placeCount === 1 ? "place" : "places"}` : ""}`;
   // Noon UTC is on the same SF date throughout the year.
   $("day-label").textContent =
     `${state.day === sfDate() ? "TODAY" : "EXPLORE"} · ${dateFormat.format(new Date(`${state.day}T12:00:00Z`)).toUpperCase()}`;
@@ -458,16 +479,8 @@ async function loadFeed() {
 }
 
 function resetFilters() {
-  state.search = "";
   state.freeOnly = false;
-  state.geometry = "all";
-  $("event-search").value = "";
   $("free-only").checked = false;
-  document.querySelectorAll("[data-geometry]").forEach((button) => {
-    const active = button.dataset.geometry === "all";
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", String(active));
-  });
   render();
 }
 
@@ -490,25 +503,10 @@ $("today-button").addEventListener("click", () => {
   dateInput.value = state.day;
   render();
 });
-$("event-search").addEventListener("input", (event) => {
-  state.search = event.target.value;
-  render();
-});
 $("free-only").addEventListener("change", (event) => {
   state.freeOnly = event.target.checked;
   render();
 });
-document.querySelectorAll("[data-geometry]").forEach((button) =>
-  button.addEventListener("click", () => {
-    state.geometry = button.dataset.geometry;
-    document.querySelectorAll("[data-geometry]").forEach((item) => {
-      const active = item === button;
-      item.classList.toggle("active", active);
-      item.setAttribute("aria-pressed", String(active));
-    });
-    render();
-  }),
-);
 $("reset-map").addEventListener("click", () => {
   if (mapReady)
     map.fitBounds(sfBounds, { padding: 10, duration: reduceMotion ? 0 : 650 });

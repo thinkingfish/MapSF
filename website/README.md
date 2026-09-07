@@ -36,12 +36,12 @@ pnpm run test:browser
 Record your decisions in the [source review checklist](SOURCE-REVIEW.md).
 Its approval boxes do not automatically enable collection.
 
-All eight sources in [config/sources.mjs](config/sources.mjs) have your recorded
+All nine sources in [config/sources.mjs](config/sources.mjs) have your recorded
 approval. Collection requires both `approved: true` and `enabled: true`.
 The integration status is documented in [SOURCE-STATUS.md](SOURCE-STATUS.md).
 
 SFPL, SF Rec & Parks, and Mission Local are enabled with verified publisher
-fixtures. The other five sources are approved but await complete extraction or
+fixtures. The other six sources are approved but await complete extraction or
 verified venue geometry. Approval and working collection are separate states.
 
 Only enabled sources are collected. Incomplete or cancelled listings are excluded.
@@ -162,3 +162,9 @@ If you already use Cloudflare Pages, use the same root and build command with
 `dist` as the output directory. This static Astro build needs no Cloudflare
 adapter. The repository contains deployment configuration; it does not create
 an account, public deployment, or custom domain on your behalf.
+
+## Recurring places
+
+Verified garden admission schedules live in `config/places.mjs`; museums have their own `config/museums.mjs` catalog and [museum review list](MUSEUM-REVIEW.md). See [PLACES.md](PLACES.md) for eligibility, seasonal hours, closures, and review expiry. These cards follow one-off events and remain available when the event feed fails. Resident-only admission and ended entry windows are explicitly labeled.
+
+The initial catalog includes the Botanical Garden, Japanese Tea Garden, Conservatory of Flowers, and Asian Art Museum first Sundays. Search and map-type filter controls are removed; date selection and the free-only checkbox remain.

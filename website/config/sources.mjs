@@ -105,4 +105,15 @@ export const sources = [
     maxDetailPages: 0,
     maxEvents: 40,
   },
+  {
+    id: 'civic-joy-fund',
+    name: 'Civic Joy Fund',
+    listingUrl: 'https://civicjoyfund.org/events',
+    approved: true, // Added at Yao's request; recorded in SOURCE-REVIEW.md.
+    enabled: false,
+    adapter: 'jsonld',
+    // Provided page has no JSON-LD Event records; verify its event data adapter.
+    maxDetailPages: 0,
+    maxEvents: 40,
+  },
 ];

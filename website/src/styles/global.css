@@ -1,12 +1,12 @@
 @import "maplibre-gl/dist/maplibre-gl.css";
 :root {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #262c32;
+  color: #242a30;
   background: #f8f9fa;
   font-synthesis: none;
   --pink: #f27890;
-  --ink: #262c32;
-  --muted: #727a81;
+  --ink: #242a30;
+  --muted: #626b73;
   --line: #e8eaec;
   --radius: 12px;
 }
@@ -99,8 +99,8 @@ button:disabled {
 }
 .header-note,
 .city-label {
-  font-size: 12px;
-  color: #737b82;
+  font-size: 16px;
+  color: var(--muted);
   display: flex;
   align-items: center;
   gap: 9px;
@@ -130,14 +130,14 @@ main {
   gap: 24px;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.7px;
-  color: #777f87;
+  color: var(--muted);
   margin: 0 0 11px;
 }
 h1 {
-  font-size: clamp(29px, 3.1vw, 44px);
+  font-size: clamp(32px, 3.4vw, 48px);
   font-weight: 690;
   letter-spacing: -1.7px;
   line-height: 1.14;
@@ -148,7 +148,7 @@ h1 span {
 }
 .intro-copy {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
   margin: 14px 0 0;
   line-height: 1.6;
 }
@@ -159,9 +159,9 @@ h1 span {
   gap: 8px;
 }
 .date-control > label {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
-  color: #69727b;
+  color: var(--muted);
 }
 .date-input-row {
   display: flex;
@@ -173,13 +173,13 @@ h1 span {
   background: white;
   border: 1px solid #e1e4e6;
   border-radius: 8px;
-  font-size: 12px;
-  height: 37px;
+  font-size: 16px;
+  height: 44px;
   color: #3e4850;
-  max-width: 160px;
+  max-width: 180px;
 }
 .date-input-row button {
-  font-size: 11px;
+  font-size: 14px;
   background: #fbe6ec;
   border: 1px solid #f3d1da;
   color: #934255;
@@ -187,8 +187,8 @@ h1 span {
   padding: 10px;
 }
 .timezone-note {
-  font-size: 10px;
-  color: #899096;
+  font-size: 12px;
+  color: var(--muted);
 }
 .toolbar {
   display: flex;
@@ -196,69 +196,11 @@ h1 span {
   gap: 20px;
   margin: 0 0 22px;
 }
-.search-field {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  border: 1px solid #e4e7e9;
-  background: #fff;
-  border-radius: 10px;
-  padding: 12px 14px;
-  width: 340px;
-  flex: 1;
-  max-width: 400px;
-}
-.search-field svg {
-  width: 17px;
-  height: 17px;
-  color: #8b949b;
-  flex-shrink: 0;
-}
-.search-field input {
-  width: 100%;
-  min-width: 0;
-  font-size: 12px;
-  border: 0;
-  background: transparent;
-  outline: 0;
-  color: var(--ink);
-}
-.search-field:focus-within {
-  outline: 2px solid #b94261;
-  outline-offset: 2px;
-}
-.search-field input:focus-visible {
-  outline: 0;
-}
-.search-field input::placeholder {
-  color: #8b939b;
-}
-.filter-group {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.filter-button {
-  padding: 10px 15px;
-  background: transparent;
-  color: #737c85;
-  border-radius: 8px;
-  font-size: 12px;
-  white-space: nowrap;
-}
-.filter-button.active {
-  background: #fce7ed;
-  color: #a8415b;
-  font-weight: 600;
-}
-.filter-button:hover {
-  background: #f3edf0;
-}
 .free-filter {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 16px;
   color: #5f6870;
   cursor: pointer;
   margin-left: auto;
@@ -281,7 +223,7 @@ h1 span {
   color: transparent;
   display: grid;
   place-items: center;
-  font-size: 12px;
+  font-size: 16px;
 }
 .free-filter input:checked + .checkbox-icon {
   background: #b84e69;
@@ -325,7 +267,7 @@ h1 span {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 2px 12px #23312d0a;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   pointer-events: none;
 }
@@ -360,7 +302,7 @@ h1 span {
   display: flex;
   gap: 6px;
   align-items: center;
-  font-size: 10px;
+  font-size: 12px;
   color: #65716e;
 }
 .legend-point {
@@ -392,7 +334,7 @@ h1 span {
   border-radius: 12px;
   width: max-content;
   max-width: 80%;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.6;
   color: #64736f;
   text-align: center;
@@ -405,7 +347,7 @@ h1 span {
   top: auto;
   bottom: 84px;
   transform: translateX(-50%);
-  font-size: 11px;
+  font-size: 14px;
   padding: 9px 14px;
 }
 .results-panel {
@@ -425,28 +367,28 @@ h1 span {
   gap: 16px;
 }
 .results-heading .eyebrow {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 1.4px;
   margin-bottom: 8px;
 }
 .results-heading h2 {
-  font-size: 22px;
+  font-size: 26px;
   letter-spacing: -0.6px;
   margin: 0;
   font-weight: 650;
 }
 .event-count {
-  font-size: 11px;
+  font-size: 14px;
   background: #f5f6f7;
-  color: #69727b;
+  color: var(--muted);
   padding: 6px 9px;
   border-radius: 7px;
   white-space: nowrap;
 }
 .feed-status {
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.6;
-  color: #7c858c;
+  color: var(--muted);
   margin: 12px 24px 18px;
 }
 .feed-status.warning {
@@ -487,7 +429,7 @@ h1 span {
   height: 42px;
 }
 .empty-state h3 {
-  font-size: 17px;
+  font-size: 19px;
   line-height: 1.5;
   font-weight: 600;
   letter-spacing: -0.3px;
@@ -495,9 +437,9 @@ h1 span {
   margin: 0 0 10px;
 }
 .empty-state p {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.8;
-  color: #838b92;
+  color: var(--muted);
   max-width: 245px;
   margin: 0;
 }
@@ -508,7 +450,7 @@ h1 span {
   background: #fff5f7;
   color: #a14b62;
   padding: 10px 16px;
-  font-size: 12px;
+  font-size: 16px;
 }
 .list-footer {
   border-top: 1px solid #f0f1f2;
@@ -517,8 +459,8 @@ h1 span {
   justify-content: center;
   gap: 6px;
   padding: 16px 12px;
-  color: #8a9298;
-  font-size: 10px;
+  color: var(--muted);
+  font-size: 12px;
   line-height: 1.5;
 }
 .list-footer svg {
@@ -553,14 +495,14 @@ h1 span {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  font-size: 10px;
+  font-size: 12px;
   color: #946079;
   font-weight: 600;
   margin-bottom: 9px;
 }
 .event-price {
-  color: #6c757d;
-  font-size: 10px;
+  color: var(--muted);
+  font-size: 12px;
   font-weight: 500;
 }
 .event-price.free {
@@ -570,7 +512,7 @@ h1 span {
   padding: 3px 6px;
 }
 .event-title {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.4;
   font-weight: 620;
   letter-spacing: -0.25px;
@@ -581,8 +523,8 @@ h1 span {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 11px;
-  color: #7a838a;
+  font-size: 14px;
+  color: var(--muted);
   line-height: 1.5;
 }
 .place-marker {
@@ -595,7 +537,7 @@ h1 span {
 .event-chevron {
   margin-left: auto;
   color: #c78295;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 10px;
 }
 .event-details {
@@ -612,24 +554,24 @@ h1 span {
   margin: 0 0 12px;
 }
 .event-description {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.75;
-  color: #68727b;
+  color: var(--muted);
   margin: 0 0 12px;
   white-space: pre-line;
 }
 .event-address,
 .event-time {
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.6;
-  color: #77818a;
+  color: var(--muted);
   margin: 5px 0;
 }
 .source-link {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   color: #a84660;
   text-decoration: none;
@@ -646,8 +588,8 @@ h1 span {
   display: flex;
   justify-content: space-between;
   padding: 22px 0 26px;
-  font-size: 10px;
-  color: #8c949b;
+  font-size: 12px;
+  color: var(--muted);
   gap: 16px;
 }
 .site-footer span:last-child {
@@ -659,12 +601,12 @@ h1 span {
   display: none;
 }
 .noscript-note {
-  font-size: 12px;
+  font-size: 16px;
   padding: 15px;
   line-height: 1.7;
 }
 .maplibregl-ctrl-attrib {
-  font-size: 9px !important;
+  font-size: 11px !important;
 }
 .maplibregl-ctrl-logo {
   opacity: 0.65;
@@ -688,9 +630,6 @@ h1 span {
   .toolbar {
     gap: 12px;
   }
-  .filter-button {
-    padding: 10px;
-  }
   .header-note {
     display: none;
   }
@@ -698,17 +637,11 @@ h1 span {
     gap: 16px;
     grid-template-columns: minmax(0, 1.15fr) minmax(320px, 1fr);
   }
-  .search-field {
-    padding: 12px 10px;
-  }
-  .search-field input {
-    font-size: 11px;
-  }
   .results-heading {
     padding: 22px 20px 0;
   }
   .free-filter {
-    font-size: 11px;
+    font-size: 14px;
   }
 }
 @media (max-width: 760px) {
@@ -724,7 +657,7 @@ h1 span {
     height: 35px;
   }
   .city-label {
-    font-size: 10px;
+    font-size: 12px;
     gap: 5px;
   }
   main {
@@ -735,15 +668,15 @@ h1 span {
     display: block;
   }
   .eyebrow {
-    font-size: 9px;
+    font-size: 11px;
     margin-bottom: 10px;
   }
   h1 {
-    font-size: 32px;
+    font-size: 36px;
     letter-spacing: -1.25px;
   }
   .intro-copy {
-    font-size: 12px;
+    font-size: 16px;
     margin-top: 11px;
   }
   .date-control {
@@ -756,16 +689,16 @@ h1 span {
     flex-wrap: wrap;
   }
   .date-control > label {
-    font-size: 11px;
+    font-size: 14px;
   }
   .timezone-note {
     display: none;
   }
   .date-input-row input {
-    font-size: 11px;
-    height: 34px;
+    font-size: 14px;
+    height: 42px;
     padding: 7px 9px;
-    max-width: 148px;
+    max-width: 172px;
   }
   .date-input-row button {
     padding: 9px;
@@ -776,26 +709,8 @@ h1 span {
     gap: 15px 8px;
     margin-bottom: 16px;
   }
-  .search-field {
-    flex-basis: 100%;
-    max-width: none;
-    width: 100%;
-    padding: 13px;
-  }
-  .search-field input {
-    font-size: 12px;
-  }
-  .filter-group {
-    gap: 1px;
-    flex: 1;
-    justify-content: flex-start;
-  }
-  .filter-button {
-    font-size: 11px;
-    padding: 9px 11px;
-  }
   .free-filter {
-    font-size: 11px;
+    font-size: 14px;
     gap: 6px;
   }
   .checkbox-icon {
@@ -820,7 +735,7 @@ h1 span {
     padding: 9px;
     background: #fff;
     border-radius: 6px;
-    font-size: 11px;
+    font-size: 14px;
     box-shadow: 0 1px 3px #28323a08;
   }
   .mobile-view-controls svg {
@@ -842,7 +757,7 @@ h1 span {
     scroll-margin-top: 15px;
   }
   .map-heading {
-    font-size: 10px;
+    font-size: 12px;
     top: 13px;
     left: 13px;
     padding: 10px;
@@ -854,7 +769,7 @@ h1 span {
     gap: 12px;
   }
   .map-legend span {
-    font-size: 9px;
+    font-size: 11px;
   }
   .results-panel {
     min-height: 420px;
@@ -864,7 +779,7 @@ h1 span {
     padding: 23px 20px 0;
   }
   .results-heading h2 {
-    font-size: 21px;
+    font-size: 24px;
   }
   .feed-status {
     margin-left: 20px;
@@ -879,10 +794,10 @@ h1 span {
     padding: 35px 15px;
   }
   .list-footer {
-    font-size: 9px;
+    font-size: 11px;
   }
   .site-footer {
-    font-size: 9px;
+    font-size: 11px;
     line-height: 1.7;
     flex-direction: column;
     gap: 5px;
@@ -892,7 +807,7 @@ h1 span {
     padding: 17px;
   }
   .event-title {
-    font-size: 16px;
+    font-size: 18px;
   }
   .event-details {
     padding: 0 17px 17px;
@@ -904,3 +819,8 @@ h1 span {
     transition: none !important;
   }
 }
+
+.event-kicker { flex-wrap: wrap; }
+.admission-note { display: block; margin-top: 10px; font-size: 16px; color: var(--muted); line-height: 1.5; }
+.places-heading { margin: 28px 0 8px; font-size: 24px; }
+.places-intro { color: var(--muted); font-size: 16px; line-height: 1.5; margin-bottom: 18px; }

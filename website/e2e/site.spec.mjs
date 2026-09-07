@@ -8,7 +8,7 @@ async function load(page, snapshot = feed) {
   await expect(page.locator('#event-list')).toHaveAttribute('aria-busy', 'false');
 }
 
-test('SF today, search, free filter and all geometry types work in another timezone', async ({ page }) => {
+test('SF today, free filter and all geometry types work in another timezone', async ({ page }) => {
   await load(page);
   await expect(page.getByLabel('Choose event date')).toHaveValue('2026-09-06');
   for (const event of feed.events) await expect(page.locator('#event-list')).toContainText(event.title);
@@ -17,23 +17,14 @@ test('SF today, search, free filter and all geometry types work in another timez
   await expect(page.locator('#event-list')).not.toContainText(feed.events[1].title);
   await expect(page.locator('#event-list')).not.toContainText(feed.events[2].title);
   await page.getByLabel('Free only').uncheck();
-  for (const [label, index] of [['Routes',1],['Areas',2],['Places',0]]) {
-    await page.getByRole('button', { name: label, exact: true }).click();
-    await expect(page.locator('#event-list')).toContainText(feed.events[index].title);
-    await expect(page.locator('#event-list')).not.toContainText(feed.events[(index+1)%3].title);
-  }
-  await page.getByRole('button', { name: 'Everything', exact: true }).click();
-  await page.getByRole('searchbox').fill('waterfront');
-  await expect(page.locator('#event-list')).toContainText(feed.events[1].title);
-  await expect(page.locator('#event-list')).not.toContainText(feed.events[0].title);
-  await page.getByRole('searchbox').fill('nothing matches this query');
-  await expect(page.locator('#event-list')).not.toContainText(feed.events[1].title);
+  await expect(page.locator('[data-geometry]')).toHaveCount(0);
+  await expect(page.getByRole('searchbox')).toHaveCount(0);
 });
 
 test('unpublished feed is honest and map failure leaves a usable list', async ({ page }) => {
   await page.route('https://tile.openstreetmap.org/**', route => route.abort());
   await load(page, { schemaVersion: 1, generatedAt: null, sources: [], events: [] });
-  await expect(page.locator('#event-list')).toContainText('No listings published yet');
+  await expect(page.locator('#event-list')).toContainText('No one-off events listed for this day.');
   await expect(page.locator('#event-list')).not.toContainText('Example:');
   await page.unroute('**/events.json');
   await page.route('**/events.json', route => route.fulfill({ json: feed }));
@@ -78,4 +69,27 @@ test('production map renderer loads and event selection exposes source details',
   await area.locator('button').click();
   await expect(area.locator('button')).toHaveAttribute('aria-expanded', 'true');
   await expect(route.locator('button')).toHaveAttribute('aria-expanded', 'false');
+});
+
+
+test('recurring places follow one-offs and clearly state resident eligibility', async ({ page }) => {
+  await load(page);
+  const cards = page.locator('#event-list article');
+  expect(await cards.evaluateAll(nodes => nodes.map(n => n.dataset.recurring === 'true'))).toEqual([false, false, false, true, true, true, true]);
+  await expect(page.locator('[data-recurring]').filter({ hasText: 'Botanical' })).toContainText('bring ID or proof of residency');
+  await page.clock.fastForward(10 * 60 * 60 * 1000);
+  await expect(page.locator('[data-recurring]').first()).toContainText('Entry has ended today.');
+});
+
+test('failed event feed keeps recurring places and supports retry', async ({ page }) => {
+  await page.clock.install({ time: clock });
+  await page.route('**/events.json', route => route.abort());
+  await page.goto('/');
+  await expect(page.locator('[data-recurring]')).toHaveCount(4);
+  await expect(page.locator('#event-list')).not.toContainText('No one-off events listed');
+  await page.unroute('**/events.json');
+  await page.route('**/events.json', route => route.fulfill({ json: feed }));
+  await page.getByRole('button', { name: 'Try again', exact: true }).click();
+  await expect(page.locator('#event-list')).toContainText(feed.events[0].title);
+  await expect(page.getByRole('button', { name: 'Try again', exact: true })).toHaveCount(0);
 });

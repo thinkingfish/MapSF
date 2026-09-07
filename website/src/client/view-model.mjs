@@ -1,25 +1,5 @@
-export function filterEvents(
-  events,
-  { search = "", freeOnly = false, geometry = "all" } = {},
-) {
-  const query = search.trim().toLocaleLowerCase();
-  return events.filter((event) => {
-    const properties = event.curation.properties;
-    const searchable = [
-      event.title,
-      event.description,
-      properties.name,
-      properties.metadata?.address,
-    ]
-      .filter(Boolean)
-      .join(" ")
-      .toLocaleLowerCase();
-    return (
-      (!freeOnly || event.cost.isFree) &&
-      (geometry === "all" || properties.layerType === geometry) &&
-      (!query || searchable.includes(query))
-    );
-  });
+export function filterEvents(events, { freeOnly = false } = {}) {
+  return events.filter(event => !freeOnly || event.cost.isFree);
 }
 
 export function geometryBounds(geometry) {

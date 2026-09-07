@@ -174,14 +174,31 @@ Scope, exclusions, or reason to defer/reject:
 
 > Add notes here.
 
+## Civic Joy Fund
+
+Registry ID: `civic-joy-fund`
+[Browse events](https://civicjoyfund.org/events)
+Configured collection URL: `https://civicjoyfund.org/events`
+
+Community events across San Francisco. The provided page currently has no
+JSON-LD Event records; verify the calendar data, dates, and geometry before enabling
+collection.
+
+- [X] Add Civic Joy Fund as a source, requested by Yao in conversation.
+- [ ] Verify publisher-specific event extraction and source-provided locations.
+
+Scope or curation notes:
+
+> Add notes here.
+
 ## Applying your decisions
 
 This document records your approval; checking a box does not start collection.
 The operational source list remains [config/sources.mjs](config/sources.mjs),
-where all eight sources now have `approved: true`, reflecting your saved
-decisions and your approval of Marina Times in conversation.
+where all nine sources now have `approved: true`, reflecting your saved
+decisions and your approval of Marina Times and addition of Civic Joy Fund in conversation.
 SFPL, SF Rec & Parks, and Mission Local now have `enabled: true` following
-publisher-specific tests and live collection. The other five remain disabled.
+publisher-specific tests and live collection. The other six remain disabled.
 See [source integration status](SOURCE-STATUS.md) for evidence and remaining work.
 
 Approved sources need their extraction verified against sample event pages before

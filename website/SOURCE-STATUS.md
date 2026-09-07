@@ -1,6 +1,6 @@
 # Source integration status
 
-All eight publishers are approved by Yao in [SOURCE-REVIEW.md](SOURCE-REVIEW.md).
+All nine publishers are approved by Yao in [SOURCE-REVIEW.md](SOURCE-REVIEW.md).
 This file records collection evidence as of September 6, 2026. The operational
 switches remain in [config/sources.mjs](config/sources.mjs).
 
@@ -14,6 +14,7 @@ switches remain in [config/sources.mjs](config/sources.mjs).
 | [The Ingleside Light](https://www.inglesidelight.com/tag/things-to-do/) | Pending adapter | Weekly editorial roundups need separate event extraction and verified venue coordinates. Article publication dates are not event dates. |
 | [Richmond Review / Sunset Beacon](https://richmondsunsetnews.com/) | Pending scope and adapter | Homepage mixes articles and opinion. Identify specific community-event coverage and verify event details and geometry. Detail discovery remains zero. |
 | [Marina Times](https://www.marinatimes.com/category/calendar) | Pending freshness and adapter | The inspected calendar archive includes older listings. Establish a current event endpoint and verify dates and geometry. Detail discovery remains zero. |
+| [Civic Joy Fund](https://civicjoyfund.org/events) | Pending adapter | User-provided community events page. Its calendar uses an Elfsight widget; sampled structured data contains WebSite/LocalBusiness but no Event records. Verify calendar extraction and location geometry before enabling. |
 
 The collectors are intentionally bounded and do not promise complete publisher
 coverage. Dates, prices, and coordinates are never filled with guesses. Missing
