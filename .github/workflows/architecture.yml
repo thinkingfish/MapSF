@@ -8,9 +8,9 @@ jobs:
   freshness:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '22'
+          node-version-file: website/.node-version
       - name: Verify source claims and committed SVGs
         run: node scripts/generate-architecture.mjs --check
