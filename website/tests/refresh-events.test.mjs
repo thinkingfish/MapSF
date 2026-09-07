@@ -776,3 +776,25 @@ test('spring DST keeps the entire final Pacific calendar date inside the 30-day 
   ], { refresh: { now } });
   assert.deepEqual(snapshot.coverage.dates, ['2027-02-15', '2027-03-16']);
 });
+
+test('publisher addresses decode markup in both string and PostalAddress forms', async (t) => {
+  for (const address of [
+    '19th &amp; Dolores St, San Francisco, CA, 94110',
+    { streetAddress: '19th &amp; Dolores St', addressLocality: 'San Francisco', addressRegion: 'CA', postalCode: '94110' },
+  ]) {
+    const paths = await files(t);
+    const record = { '@type': 'Event', name: 'Park &amp; neighborhood event',
+      url: 'https://example.org/events/park', startDate: '2026-09-07T13:00:00-07:00', endDate: '2026-09-07T15:00:00-07:00',
+      location: {name: 'Dolores &#80;ark', address, geo: {latitude:37.7596,longitude:-122.4269}},
+    };
+    const snapshot = await refreshEvents({...paths,
+      sources:[{id:'demo',name:'Demo',listingUrl:'https://example.org/events',approved:true,enabled:true,adapter:'jsonld',maxDetailPages:0}],
+      now: new Date('2026-09-06T18:00:00Z'),
+      fetchImpl: async () => new Response(`<script type="application/ld+json">${JSON.stringify(record)}</script>`),
+    });
+    assert.equal(snapshot.events.length, 1);
+    assert.equal(snapshot.events[0].curation.properties.metadata.address, '19th & Dolores St, San Francisco, CA, 94110');
+    assert.equal(snapshot.events[0].title, 'Park & neighborhood event');
+    assert.equal(snapshot.events[0].curation.properties.name, 'Dolores Park');
+  }
+});

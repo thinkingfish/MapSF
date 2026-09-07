@@ -169,10 +169,10 @@ function stableId(source, record, eventUrl) {
 
 function addressText(location) {
   const address = location?.address;
-  if (typeof address === 'string') return text(address);
+  if (typeof address === 'string') return plainText(address);
   if (!isObject(address)) return '';
   return [address.streetAddress, address.addressLocality, address.addressRegion, address.postalCode]
-    .map(text)
+    .map(plainText)
     .filter(Boolean)
     .join(', ');
 }
