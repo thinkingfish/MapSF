@@ -200,10 +200,12 @@ an account, public deployment, or custom domain on your behalf.
 
 Verified garden admission schedules live in `config/places.mjs`; museums have their own `config/museums.mjs` catalog and [museum review list](MUSEUM-REVIEW.md). See [PLACES.md](PLACES.md) for eligibility, seasonal hours, closures, and review expiry. These cards follow one-off events and remain available when the event feed fails. Resident-only admission and ended entry windows are explicitly labeled.
 
-The initial catalog includes the Botanical Garden, Japanese Tea Garden, Conservatory of Flowers, and Asian Art Museum first Sundays. Search and map-type filter controls are removed; date selection and the free-only checkbox remain.
+The initial catalog includes the Botanical Garden, Japanese Tea Garden, Conservatory of Flowers, and Asian Art Museum first Sundays. The date controls, multi-select Event sources menu, and Free only checkbox narrow the listings. Event sources applies only to Events; Free Places uses separate schedule providers. Events and Free Places are matching accordion sections, with only one open at a time. Panning or zooming automatically filters the list to the current map view, including intersecting routes and areas. Selecting a marker or event opens details without moving the camera; the city-reset control restores the SF view.
 
 ## Sources and map tiles
 
 The public `/sources/` page describes all approved event publishers, planned integrations, official recurring admission sources, and collection methodology. Its footer links come from the same registry and venue catalogs as the site.
 
 The current web basemap uses normal browser requests to the OSM raster tile service. Attribution is always visible. All automated browser tests intercept tile requests with local fixtures; do not use community tiles for bulk downloading or offline archives. The iOS app’s 12.9 MiB Protomaps MBTiles archive is a candidate for a separate PMTiles/Cloudflare R2 migration, including the needed font assets.
+
+Venue-based price defaults live in `config/free-event-venues.mjs` and the reviewed city-park inventory in `config/city-park-names.mjs`. They cover SFPL branches, outdoor city parks, named Golden Gate Park meadows, and public street celebrations. They fill missing event prices and retain inference metadata; an explicit publisher price wins. These venues do not create recurring destination cards.

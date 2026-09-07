@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { applyVenuePriceHint } from '../src/lib/venue-pricing.mjs';
 
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
@@ -207,7 +208,10 @@ function explicitCost(record) {
     const currency = text(offer?.priceCurrency);
     return { label: currency ? `${currency} ${numeric}` : `$${numeric}`, isFree: false };
   }
-  return { ...UNKNOWN_COST };
+  const offers = Array.isArray(record.offers) ? record.offers : [record.offers];
+  const hasExplicitPrice = record.hasExplicitPrice === true || record.isAccessibleForFree === false
+    || offers.some(offer => isObject(offer) && offer.price !== undefined && offer.price !== null && text(offer.price) !== "");
+  return { ...UNKNOWN_COST, ...(hasExplicitPrice ? { hasExplicitPrice: true } : {}) };
 }
 
 function imageUrl(record, pageUrl) {
@@ -614,7 +618,8 @@ export async function refreshEvents({
       if (valid.length === 0 && source.allowEmpty !== true && !allCancelled && !(raw.coverageComplete === true && raw.length === 0)) {
         throw new Error('No valid events after validation');
       }
-      const publishable = valid.filter((event) => eventInPublicationBounds(event, publicationBounds));
+      const publishable = valid.filter((event) => eventInPublicationBounds(event, publicationBounds))
+    .map(applyVenuePriceHint);
       sourceEvents.push(...publishable);
       sourceResults.push(sourceMetadata(source, {
         status: 'ok',
