@@ -1,3 +1,4 @@
+import { createCalendar, checkedDates } from "./calendar.mjs";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import {
   sfDate,
@@ -99,17 +100,22 @@ function renderEmpty() {
   empty.append(emptyIcon.cloneNode(true));
   const hasFilters =
     state.freeOnly;
+  const dayChecked = checkedDates(state.feed?.coverage).has(state.day);
   const title = state.error
     ? "Let’s try that again."
-    : !state.events.length
-      ? "No listings published yet."
+    : !dayChecked
+      ? "This date hasn’t been checked yet."
+      : !state.events.length
+      ? "No events found for this day."
       : hasFilters
         ? "Nothing quite matches."
         : "A little room for spontaneity.";
   const description = state.error
     ? "We couldn’t reach the event listings. Your next city outing can wait a moment."
-    : !state.events.length
-      ? "Good city days are on the way. Check back for local events, walks, and little discoveries."
+    : !dayChecked
+      ? "Choose a checked date on the calendar to explore event listings."
+      : !state.events.length
+      ? "We checked our sources. Try another available date for more listings."
       : hasFilters
         ? "Clear the free-only filter to see all listings."
         : "No upcoming listings for this date. Choose another day to see what’s coming up.";
@@ -217,7 +223,7 @@ function renderList() {
         retry.addEventListener("click", loadFeed);
         notice.append(retry);
         list.append(notice);
-      } else if (!events.length) list.append(element("p", "places-intro", "No one-off events listed for this day."));
+      } else if (!events.length) list.append(element("p", "places-intro", checkedDates(state.feed?.coverage).has(state.day) ? "No one-off events listed for this day." : "Event listings haven’t been checked for this day."));
       list.append(element("h3", "places-heading", state.day === sfDate() ? "More to do today" : "Places to explore"));
       list.append(element("p", "places-intro", "Free days and resident admission. Check the conditions below."));
       places.forEach(event => list.append(renderCard(event)));
@@ -229,6 +235,8 @@ function renderList() {
 
 function render() {
   const now = new Date();
+  calendar.update(state.day, state.feed?.coverage);
+  $("today-button").disabled = !checkedDates(state.feed?.coverage).has(sfDate(now));
   const dayEvents = eventsForDay(state.events, state.day).filter(
     (event) => state.day !== sfDate(now) || new Date(event.endAt) > now,
   );
@@ -484,25 +492,16 @@ function resetFilters() {
   render();
 }
 
-dateInput.value = state.day;
-dateInput.addEventListener("change", () => {
-  if (
-    !/^\d{4}-\d{2}-\d{2}$/.test(dateInput.value) ||
-    !dateInput.validity.valid
-  ) {
-    dateInput.value = state.day;
-    return;
-  }
-  state.day = dateInput.value;
-  state.followToday = state.day === sfDate();
+function chooseDay(day) {
+  if (!checkedDates(state.feed?.coverage).has(day)) return;
+  state.day = day;
+  state.followToday = day === sfDate();
   render();
-});
-$("today-button").addEventListener("click", () => {
-  state.day = sfDate();
-  state.followToday = true;
-  dateInput.value = state.day;
-  render();
-});
+}
+const calendar = createCalendar({button: dateInput, panel: $("event-calendar"), onSelect: chooseDay});
+calendar.update(state.day, null);
+$("today-button").disabled = true;
+$("today-button").addEventListener("click", () => chooseDay(sfDate()));
 $("free-only").addEventListener("change", (event) => {
   state.freeOnly = event.target.checked;
   render();
@@ -527,7 +526,6 @@ setInterval(() => {
   const today = sfDate();
   if (state.followToday && today !== state.day) {
     state.day = today;
-    dateInput.value = today;
     loadFeed();
   } else if (state.feed) {
     // Keep keyboard focus and expanded details stable between event changes.

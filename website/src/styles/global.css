@@ -158,7 +158,7 @@ h1 span {
   align-items: flex-end;
   gap: 8px;
 }
-.date-control > label {
+.date-control > .date-label {
   font-size: 14px;
   font-weight: 600;
   color: var(--muted);
@@ -168,7 +168,7 @@ h1 span {
   gap: 6px;
   align-items: center;
 }
-.date-input-row input {
+.date-input-row #event-date {
   padding: 9px 11px;
   background: white;
   border: 1px solid #e1e4e6;
@@ -689,13 +689,13 @@ h1 span {
     gap: 10px;
     flex-wrap: wrap;
   }
-  .date-control > label {
+  .date-control > .date-label {
     font-size: 14px;
   }
   .timezone-note {
     display: none;
   }
-  .date-input-row input {
+  .date-input-row #event-date {
     font-size: 14px;
     height: 42px;
     padding: 7px 9px;
@@ -825,3 +825,18 @@ h1 span {
 .admission-note { display: block; margin-top: 10px; font-size: 16px; color: var(--muted); line-height: 1.5; }
 .places-heading { margin: 28px 0 8px; font-size: 24px; }
 .places-intro { color: var(--muted); font-size: 16px; line-height: 1.5; margin-bottom: 18px; }
+
+.date-input-row #event-date { max-width: none; height: auto; color: var(--ink); background: white; border-color: #e1e4e6; font-size: 16px; }
+.date-input-row button:disabled { background: #f0f1f2; border-color: #e1e4e6; color: #949ba1; cursor: default; }
+.event-calendar { position: fixed; inset: auto; margin: 0; width: min(340px, calc(100vw - 32px)); box-sizing: border-box; border: 1px solid #e1e4e6; border-radius: 12px; padding: 16px; color: var(--ink); background: white; box-shadow: 0 12px 40px #26323f26; }
+.calendar-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.calendar-header h2 { font-size: 18px; margin: 0; }
+.calendar-header button { padding: 6px 12px; background: transparent; color: var(--ink); border: 0; font-size: 26px; line-height: 1; }
+.calendar-days { width: 100%; table-layout: fixed; border-spacing: 0 5px; margin-top: 12px; }
+.calendar-days th { font-size: 12px; font-weight: 500; color: var(--muted); padding-bottom: 5px; }
+.calendar-days td { padding: 0; text-align: center; }
+.calendar-days button { display: block; width: 100%; min-height: 36px; background: transparent; border: 1px solid transparent; border-radius: 8px; font-size: 16px; color: var(--ink); }
+.calendar-days button:not(:disabled):hover { background: #fbe6ec; }
+.calendar-days button[aria-pressed="true"]:not(:disabled) { background: #fbe6ec; border-color: #c9748b; color: #934255; font-weight: 650; }
+.calendar-days button:disabled { color: #a1a7ac; background: #f6f7f8; cursor: default; }
+.calendar-note { font-size: 14px; line-height: 1.5; color: var(--muted); margin: 12px 0 0; }

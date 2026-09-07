@@ -8,7 +8,7 @@ const sample = (id, title, layerType, geometry, cost, name) => ({
   curation: { type: 'Feature', geometry, properties: { name, layerType, metadata: { address: 'San Francisco, CA' } } },
 });
 export const feed = {
-  schemaVersion: 1, generatedAt: '2026-09-06T13:17:00Z',
+  schemaVersion: 1, coverage: {dates: ['2026-09-06']}, generatedAt: '2026-09-06T13:17:00Z',
   sources: [{ id: 'sfpl', name: 'SF Public Library', url: 'https://sfpl.org/events', status: 'ok', lastSuccessfulAt: '2026-09-06T13:17:00Z', eventCount: 3 }],
   events: [
     sample('point-event', 'Example: Sunday at the library', 'poi', { type: 'Point', coordinates: [-122.4157,37.7793] }, { label: 'Free', isFree: true }, 'Main Library'),

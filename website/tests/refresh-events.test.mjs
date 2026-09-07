@@ -680,3 +680,99 @@ test('invalid manual data leaves the previous output file untouched', async (t) 
 
   assert.deepEqual(JSON.parse(await readFile(paths.outputPath, 'utf8')), previous);
 });
+
+const COVERAGE_SOURCE = { id: 'demo', name: 'Demo', listingUrl: 'https://example.org/events', approved: true, enabled: true, adapter: 'jsonld', allowEmpty: true };
+const COVERAGE_NOW = new Date('2026-09-07T02:00:00Z');
+async function coverageSnapshot(t, records = [], options = {}) {
+  const paths = await files(t, options);
+  return refreshEvents({ ...paths, sources: [COVERAGE_SOURCE], now: COVERAGE_NOW,
+    fetchImpl: async () => new Response('<script type="application/ld+json">' + JSON.stringify(records) + '</script>'),
+    ...options.refresh });
+}
+test('successful empty listing covers SF today, with explicit source check provenance', async (t) => {
+  const snapshot = await coverageSnapshot(t);
+  assert.deepEqual(snapshot.coverage, { dates: ['2026-09-06'] });
+  assert.deepEqual(snapshot.sources[0].coverage, { dates: ['2026-09-06'], checkedAt: COVERAGE_NOW.toISOString() });
+});
+test('coverage tracks rejected and cancelled raw dates without filling future holes', async (t) => {
+  const snapshot = await coverageSnapshot(t, [
+    { '@type': 'Event', name: 'Missing geometry', startDate: '2026-09-08T19:00:00-07:00', endDate: '2026-09-08T20:00:00-07:00' },
+    { '@type': 'Event', name: 'Cancelled', eventStatus: 'EventCancelled', startDate: '2026-09-10T19:00:00-07:00' },
+    { '@type': 'Event', startDate: '2026-02-30T12:00:00Z' },
+  ]);
+  assert.deepEqual(snapshot.events, []);
+  assert.deepEqual(snapshot.coverage.dates, ['2026-09-06', '2026-09-08', '2026-09-10']);
+});
+test('coverage expands overnight records in Pacific time with exclusive midnight ends', async (t) => {
+  const snapshot = await coverageSnapshot(t, [
+    { '@type': 'Event', startDate: '2026-09-09T06:00:00Z', endDate: '2026-09-09T09:00:00Z' },
+    { '@type': 'Event', startDate: '2026-09-12T06:00:00Z', endDate: '2026-09-12T07:00:00Z' },
+  ]);
+  assert.deepEqual(snapshot.coverage.dates, ['2026-09-06', '2026-09-08', '2026-09-09', '2026-09-11']);
+});
+test('failed refresh preserves only active prior coverage with original check time and drops past days', async (t) => {
+  const previous = { schemaVersion: 1, generatedAt: '2026-09-05T18:00:00Z', events: [], sources: [
+    { id: 'demo', coverage: { dates: ['2026-09-05', '2026-09-08', 'invalid'], checkedAt: '2026-09-05T18:00:00Z' } },
+    { id: 'disabled', coverage: { dates: ['2026-09-10'], checkedAt: '2026-09-05T18:00:00Z' } },
+  ] };
+  const snapshot = await coverageSnapshot(t, [], { previous, refresh: { fetchImpl: async () => { throw Error('unavailable'); } } });
+  assert.deepEqual(snapshot.coverage, { dates: ['2026-09-08'] });
+  assert.deepEqual(snapshot.sources[0].coverage, { dates: ['2026-09-08'], checkedAt: '2026-09-05T18:00:00Z' });
+});
+test('legacy snapshots, failed first fetches and all-disabled sources invent no coverage', async (t) => {
+  const previous = { schemaVersion: 1, generatedAt: null, events: [priorEvent()], sources: [{ id: 'demo' }] };
+  const failed = await coverageSnapshot(t, [], { previous, refresh: { fetchImpl: async () => { throw Error('unavailable'); } } });
+  assert.deepEqual(failed.coverage, { dates: [] });
+  const disabled = await coverageSnapshot(t, [], { previous, refresh: { sources: [] } });
+  assert.deepEqual(disabled.coverage, { dates: [] });
+});
+test('coverage rejects invalid and distant dates and bounds unreasonable spans', async (t) => {
+  const snapshot = await coverageSnapshot(t, [
+    { '@type': 'Event', startDate: '2027-02-30T12:00:00Z' },
+    { '@type': 'Event', startDate: '2099-09-06T12:00:00Z' },
+    { '@type': 'Event', startDate: '2026-09-08T12:00:00Z', endDate: '2099-09-08T12:00:00Z' },
+    { '@type': 'Event', startDate: '2026-09-09T12:00:00' },
+  ]);
+  assert.deepEqual(snapshot.coverage.dates, ['2026-09-06', '2026-09-08']);
+});
+test('a later detail failure discards partial newly checked coverage', async (t) => {
+  const snapshot = await coverageSnapshot(t, [], { refresh: {
+    sources: [{ ...COVERAGE_SOURCE, detailPathPattern: /^\/events\//, maxDetailPages: 2 }],
+    fetchImpl: async (url) => {
+      if (url.endsWith('/events')) return new Response('<a href="/events/first">First</a><a href="/events/second">Second</a>');
+      if (url.endsWith('/first')) return new Response('<script type="application/ld+json">{"@type":"Event","startDate":"2026-09-08T12:00:00Z"}</script>');
+      throw Error('second detail unavailable');
+    },
+  } });
+  assert.equal(snapshot.sources[0].status, 'failed');
+  assert.deepEqual(snapshot.coverage.dates, []);
+});
+test('a completed publisher check keeps fresh coverage when all events fail validation', async (t) => {
+  const snapshot = await coverageSnapshot(t, [{ '@type': 'Event', name: 'No geometry', startDate: '2026-09-09T12:00:00-07:00' }], {
+    refresh: { sources: [{ ...COVERAGE_SOURCE, allowEmpty: false }] },
+  });
+  assert.equal(snapshot.sources[0].status, 'failed');
+  assert.equal(snapshot.sources[0].error, 'No valid events after validation');
+  assert.deepEqual(snapshot.sources[0].coverage, { dates: ['2026-09-06', '2026-09-09'], checkedAt: COVERAGE_NOW.toISOString() });
+});
+test('30 Pacific calendar days bound published events and coverage across fall DST', async (t) => {
+  const now = new Date('2026-10-15T18:00:00Z');
+  const manual = { schemaVersion: 1, overrides: [], events: [
+    priorEvent({ id: 'demo:last', startAt: '2026-11-13T23:30:00-08:00', endAt: '2026-11-14T00:30:00-08:00' }),
+    priorEvent({ id: 'demo:outside', startAt: '2026-11-14T00:00:00-08:00', endAt: '2026-11-14T01:00:00-08:00' }),
+  ] };
+  const snapshot = await coverageSnapshot(t, [
+    { '@type': 'Event', startDate: '2026-11-13T23:30:00-08:00', endDate: '2026-11-14T00:30:00-08:00' },
+    { '@type': 'Event', startDate: '2026-11-14T00:00:00-08:00' },
+  ], { manual, refresh: { now } });
+  assert.deepEqual(snapshot.events.map(event => event.id), ['demo:last']);
+  assert.deepEqual(snapshot.coverage.dates, ['2026-10-15', '2026-11-13']);
+});
+test('spring DST keeps the entire final Pacific calendar date inside the 30-day window', async (t) => {
+  const now = new Date('2027-02-15T18:00:00Z');
+  const snapshot = await coverageSnapshot(t, [
+    { '@type': 'Event', startDate: '2027-03-17T06:30:00Z', endDate: '2027-03-17T07:30:00Z' },
+    { '@type': 'Event', startDate: '2027-03-17T07:30:00Z' },
+  ], { refresh: { now } });
+  assert.deepEqual(snapshot.coverage.dates, ['2027-02-15', '2027-03-16']);
+});

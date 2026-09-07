@@ -82,7 +82,7 @@ verified cost or complete `curation` feature. Manual entries still reference an
 enabled registry source; source approval is not bypassed by manual entry.
 
 The public `/events.json` feed has `schemaVersion`, `generatedAt`, per-source
-freshness/status, and `events`. Each event has an `id`, `title`, explicit-offset
+freshness/status, `coverage: { dates: ["YYYY-MM-DD", ...] }`, and `events`. Each event has an `id`, `title`, explicit-offset
 `startAt` and `endAt`, `cost: { label, isFree }`, `source: { id, name, url }`, and
 `curation`. Optional descriptions and image URLs can accompany a listing.
 
@@ -99,6 +99,36 @@ Feature properties include `name` and optional `category` and string-valued
 Polygon exterior rings must close. Event timing and source data live alongside
 geometry so the iOS app can consume the same feed later. Full route and area
 geometry is rendered and used when fitting the map to an event.
+
+## Calendar date coverage
+
+The calendar enables only dates explicitly present in the feed's `coverage.dates`.
+A covered date means an approved, enabled publisher was checked for that date;
+it does not promise a complete inventory of every event in San Francisco.
+A covered date can have no matching events. Gaps between checked dates stay
+unavailable, and recurring place schedules do not extend event-feed coverage.
+
+Each successful source records `coverage: { dates, checkedAt }`: San Francisco's
+current date plus dated records actually processed by its bounded collector.
+Dates are recorded before cost, cancellation, or geometry filtering. SFPL records
+visited dated detail links and ICS dates; Rec & Parks records dated listing/detail
+records only after the detail request succeeds. Links skipped by request or event
+budgets do not cover their dates. A successful empty listing covers today only.
+An unknown listing schema cannot establish future coverage.
+
+Offset timestamps are converted to Pacific dates, including overnight spans with
+an exclusive ending instant. Invalid dates are ignored; coverage is bounded to
+30 Pacific calendar dates starting today (today through today + 29), and spans
+longer than 366 days are not expanded. Published events must overlap this window.
+SFPL and Rec & Parks skip detail requests clearly beyond it based on listing dates.
+A collection failure adds no coverage and retains useful prior dates with their
+original `checkedAt`. A completed publisher check keeps fresh coverage even when
+all records fail publication validation; existing event fallback and error status
+are retained. Disabled or unapproved sources contribute nothing. Past
+dates are removed because snapshots prune ended events; legacy snapshots without
+coverage remain unknown. A successful refresh replaces that source's prior dates.
+Manual events and overrides do not prove an automated publisher check and cannot
+extend coverage; their source authorization and validation still apply.
 
 ## Daily updates
 

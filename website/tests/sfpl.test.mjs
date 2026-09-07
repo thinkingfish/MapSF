@@ -69,3 +69,21 @@ test('free cost requires the explicit publisher listing policy', async () => {
   assert.equal(events[0].record.isAccessibleForFree, true);
   assert.equal((await run()).events[0].record.isAccessibleForFree, undefined);
 });
+
+test('SFPL coverage retains visited rejected detail days but excludes unvisited budget links', async () => {
+  const listing = await fixture('listing.html');
+  const rejected = await run({ listing: listing.replace('data-lat="37.779081"', '') });
+  assert.equal(rejected.events.length, 0);
+  assert.ok(rejected.events.coverageDates.includes('2026-09-08'));
+  const skipped = await run({}, { maxDetailPages: 1 });
+  assert.deepEqual(skipped.events.coverageDates, []);
+});
+test('SFPL only requests dated details inside the 30-day forward window', async () => {
+  const listing = await fixture('listing.html');
+  // run() uses September 5 in Pacific time, so October 4 is its final day.
+  const inside = listing.replaceAll('/events/2026/09/08/', '/events/2026/10/04/');
+  const outside = listing.replaceAll('/events/2026/09/08/', '/events/2026/10/05/');
+  const { calls } = await run({ listing: outside + inside });
+  assert.ok(calls.some(url => url.includes('/events/2026/10/04/')));
+  assert.ok(calls.every(url => !url.includes('/events/2026/10/05/')));
+});

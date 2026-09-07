@@ -10,7 +10,7 @@ async function load(page, snapshot = feed) {
 
 test('SF today, free filter and all geometry types work in another timezone', async ({ page }) => {
   await load(page);
-  await expect(page.getByLabel('Choose event date')).toHaveValue('2026-09-06');
+  await expect(page.getByLabel('Choose event date')).toHaveText('September 6, 2026');
   for (const event of feed.events) await expect(page.locator('#event-list')).toContainText(event.title);
   await page.getByLabel('Free only').check();
   await expect(page.locator('#event-list')).toContainText(feed.events[0].title);
@@ -23,7 +23,7 @@ test('SF today, free filter and all geometry types work in another timezone', as
 
 test('unpublished feed is honest and map failure leaves a usable list', async ({ page }) => {
   await page.route('https://tile.openstreetmap.org/**', route => route.abort());
-  await load(page, { schemaVersion: 1, generatedAt: null, sources: [], events: [] });
+  await load(page, { schemaVersion: 1, generatedAt: null, coverage: {dates: ['2026-09-06']}, sources: [], events: [] });
   await expect(page.locator('#event-list')).toContainText('No one-off events listed for this day.');
   await expect(page.locator('#event-list')).not.toContainText('Example:');
   await page.unroute('**/events.json');

@@ -11,6 +11,8 @@ import {
 } from '../config/sources.mjs';
 import { dedupeEvents, validateEvent } from '../src/lib/events.mjs';
 
+import { eventInCoverageWindow, pacificDay, priorCoverage, recordCoverageDates, usefulCoverageDates } from './coverage.mjs';
+
 const WEBSITE_DIRECTORY = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DEFAULT_MANUAL_PATH = resolve(WEBSITE_DIRECTORY, 'data/manual-events.json');
 const DEFAULT_OUTPUT_PATH = resolve(WEBSITE_DIRECTORY, 'public/events.json');
@@ -484,6 +486,7 @@ export async function refreshEvents({
 } = {}) {
   if (!validPublicationBounds(publicationBounds)) throw new Error('Invalid publication bounds');
   const generatedAt = now.toISOString();
+  const today = pacificDay(now);
   const empty = { schemaVersion: 1, generatedAt: null, sources: [], events: [] };
   const previousCandidate = await readJson(previousPath, empty);
   const previous = validPrevious(previousCandidate) ? previousCandidate : empty;
@@ -521,6 +524,7 @@ export async function refreshEvents({
     );
     const currentCancellationKeys = new Set();
     const sourceUnscopedCancellationIds = new Set();
+    let checkedCoverage;
     try {
       let raw;
       if (source.adapter === 'jsonld') raw = await collectJsonLd(source, fetchImpl);
@@ -531,6 +535,12 @@ export async function refreshEvents({
         const { collectRecpark } = await import('./adapters/recpark.mjs');
         raw = await collectRecpark(source, fetchImpl, now);
       } else throw new Error(`Unsupported adapter: ${source.adapter}`);
+      // Collection completed: publication validation may still fail, but the
+      // publisher check itself is fresh. Partial HTTP failures never reach here.
+      checkedCoverage = {
+        dates: usefulCoverageDates([today, ...(raw.coverageDates ?? []), ...raw.flatMap(({ record }) => recordCoverageDates(record))], today),
+        checkedAt: generatedAt,
+      };
       for (const item of raw) {
         if (!cancelled(item.record)) continue;
         const id = recordId(source, item);
@@ -573,6 +583,7 @@ export async function refreshEvents({
       sourceEvents.push(...publishable);
       sourceResults.push(sourceMetadata(source, {
         status: 'ok',
+        coverage: checkedCoverage,
         lastSuccessfulAt: generatedAt,
         eventCount: publishable.length,
         ...cancellationMetadata(sourceCancellations),
@@ -589,6 +600,7 @@ export async function refreshEvents({
       sourceEvents.push(...preserved);
       sourceResults.push(sourceMetadata(source, {
         status: 'failed',
+        ...(checkedCoverage ? { coverage: checkedCoverage } : priorCoverage(priorSource, today)),
         lastSuccessfulAt: previousSources.get(source.id)?.lastSuccessfulAt ?? null,
         eventCount: preserved.length,
         error: error instanceof Error ? error.message : String(error),
@@ -606,6 +618,7 @@ export async function refreshEvents({
   ));
   const events = dedupeEvents([...manualEvents, ...sourceEvents])
     .filter((event) => Date.parse(event.endAt) > now.getTime())
+    .filter((event) => eventInCoverageWindow(event, today))
     .filter((event) => eventInPublicationBounds(event, publicationBounds));
   const didWork = enabled.length > 0
     || manual.events.length > 0
@@ -619,6 +632,7 @@ export async function refreshEvents({
     schemaVersion: 1,
     generatedAt: didWork ? generatedAt : previous.generatedAt,
     sources: countedSources,
+    coverage: { dates: usefulCoverageDates(countedSources.flatMap((source) => source.coverage?.dates ?? []), today) },
     events,
   };
   await writeSnapshot(outputPath, snapshot);

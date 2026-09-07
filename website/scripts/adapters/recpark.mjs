@@ -1,3 +1,5 @@
+import { lastCoverageDay, recordCoverageDates, validDay } from '../coverage.mjs';
+
 // CivicPlus publishes local Pacific wall times. Geometry is an exact facility
 // lookup, never a geocode of the calendar's imprecise street-only map link.
 // Verified 2026-09-06 against hdn_MapSearchResults on the official facility page;
@@ -83,6 +85,7 @@ export async function collectRecpark(source, fetchImpl, now = new Date()) {
   const html = await fetchHtml(source.listingUrl);
   const links = new Map();
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);
+  const latest = lastCoverageDay(today);
   const origin = new URL(source.listingUrl).origin;
   // Calendar repeats each link twice; canonical event IDs avoid wasting the cap.
   for (const match of html.matchAll(/<a\b[^>]*id=["']eventTitle_(\d+)["'][^>]*href=["']([^"']+)["'][^>]*>/gi)) {
@@ -92,12 +95,17 @@ export async function collectRecpark(source, fetchImpl, now = new Date()) {
     links.set(match[1], { pageUrl: `${origin}/Calendar.aspx?EID=${match[1]}`, start: property(nearby, 'startDate') });
   }
   const limit = Math.min(50, Math.max(0, Number.isInteger(source.maxDetailPages) ? source.maxDetailPages : 20));
-  const candidates = [...links.values()].filter(({ start }) => !/^\d{4}-\d{2}-\d{2}T/.test(start) || start.slice(0, 10) >= today).sort((a, b) => Number(!a.start.startsWith(today)) - Number(!b.start.startsWith(today)) || a.start.localeCompare(b.start)).slice(0, limit);
+  const candidates = [...links.values()].filter(({ start }) => !validDay(start.slice(0, 10)) || (start.slice(0, 10) >= today && start.slice(0, 10) <= latest)).sort((a, b) => Number(!a.start.startsWith(today)) - Number(!b.start.startsWith(today)) || a.start.localeCompare(b.start)).slice(0, limit);
   const records = [];
+  records.coverageDates = [];
   const maxEvents = Math.max(0, Number.isInteger(source.maxEvents) ? source.maxEvents : 100);
-  for (const { pageUrl } of candidates) {
+  for (const { pageUrl, start } of candidates) {
     if (records.length >= maxEvents) break;
-    const result = parseDetail(await fetchHtml(pageUrl), pageUrl);
+    const detail = await fetchHtml(pageUrl);
+    // A visited dated listing is still checked when its venue or price is rejected.
+    records.coverageDates.push(...recordCoverageDates({ startDate: pacificDateTime(start) }));
+    records.coverageDates.push(...recordCoverageDates({ startDate: pacificDateTime(property(detail, 'startDate')) }));
+    const result = parseDetail(detail, pageUrl);
     if (result) records.push(result);
   }
   return records;

@@ -1,3 +1,5 @@
+import { lastCoverageDay, pacificDay, recordCoverageDates, validDay } from '../coverage.mjs';
+
 // Publisher-specific adapter. See tests/fixtures/sfpl/README.md for provenance.
 // The HTML date range omits AM/PM: only the publisher's UTC ICS dates are used.
 function plain(value = '') {
@@ -52,12 +54,19 @@ export async function collectSfpl(source, fetchImpl = fetch, now = new Date()) {
   const venues = branchMap(listing);
   const freePolicy = listing.includes('All programs and events are free and open to the public.');
   const links = [...new Set([...listing.matchAll(/href="(\/events\/\d{4}\/\d{2}\/\d{2}\/[^"?#]+)"/g)].map(m => new URL(m[1], listingUrl).href))];
+  const latest = lastCoverageDay(pacificDay(now));
   const output = [];
+  output.coverageDates = [];
   let remaining = Math.min(50, Math.max(0, Math.floor(source.maxDetailPages ?? 24)));
   for (const pageUrl of links) {
+    const pathDate = new URL(pageUrl).pathname.match(/\/events\/(\d{4})\/(\d{2})\/(\d{2})\//);
+    const listedDay = pathDate?.slice(1).join('-');
+    if (validDay(listedDay) && listedDay > latest) continue;
     if (remaining < 2 || output.length >= (source.maxEvents ?? 100)) break;
     remaining--;
     const html = await documentAt(pageUrl, fetchImpl);
+    // Only visited detail pages count; links skipped by the request cap do not.
+    if (pathDate) output.coverageDates.push(listedDay);
     const article = html.slice(html.search(/<article\b[^>]*class="event event--full/));
     if (!article.startsWith('<article')) continue;
     const name = plain(article.match(/<h1\b[^>]*class="event__title"[^>]*>([\s\S]*?)<\/h1>/)?.[1]);
@@ -79,6 +88,7 @@ export async function collectSfpl(source, fetchImpl = fetch, now = new Date()) {
     const fields = calendarFields(await documentAt(new URL(calendarPath, listingUrl).href, fetchImpl));
     const startDate = utcDate(fields.get('DTSTART'));
     const endDate = utcDate(fields.get('DTEND'));
+    output.coverageDates.push(...recordCoverageDates({ startDate, endDate }));
     if (fields.get('STATUS') === 'CANCELLED' && fields.get('UID')) {
       output.push({pageUrl, record: {'@type':'Event', name, url:pageUrl,
         identifier:fields.get('UID'), startDate, endDate,

@@ -31,7 +31,9 @@ test('actual CivicPlus markup yields exact times, free cost and verified facilit
 test('missing time, unknown venue, or missing facility identity are omitted', async () => {
   const detail = await fixture('detail');
   for (const modified of [detail.replace('4:30 PM&thinsp;-&thinsp;7:30 PM', 'All Day'), detail.replaceAll('Golden Gate Bandshell', 'Unknown park'), detail.replace('Golden-Gate-Bandshell-436', 'Another-Park-999')]) {
-    assert.deepEqual((await collect(modified, await fixture('listing'))).result, []);
+    const { result } = await collect(modified, await fixture('listing'));
+    assert.equal(result.length, 0);
+    assert.ok(result.coverageDates.includes('2026-09-06'));
   }
 });
 test('cancelled events retain cancellation status for collector rejection', async () => {
@@ -50,7 +52,9 @@ test('winter dates use Pacific standard time', async () => {
 test('missing start and conflicting displayed time do not acquire invented timestamps', async () => {
   const detail = await fixture('detail');
   for (const modified of [detail.replace('2026-09-06T16:30:00', ''), detail.replace('2026-09-06T16:30:00', '2026-09-06T15:30:00')]) {
-    assert.deepEqual((await collect(modified, await fixture('listing'))).result, []);
+    const { result } = await collect(modified, await fixture('listing'));
+    assert.equal(result.length, 0);
+    assert.ok(result.coverageDates.includes('2026-09-06'));
   }
 });
 test('an earlier future listing cannot consume the cap ahead of today', async () => {
@@ -65,7 +69,8 @@ test('publisher HTTP failure fails the collection instead of claiming an empty d
 test('past events consume no detail requests', async () => {
   const { calls, result } = await collect(await fixture('detail'), (await fixture('listing')).replaceAll('2026-09-06', '2026-09-05'));
   assert.equal(calls.length, 1);
-  assert.deepEqual(result, []);
+  assert.equal(result.length, 0);
+  assert.deepEqual(result.coverageDates, []);
 });
 test('all publisher requests identify the collector and have an abort deadline', async () => {
   await collectRecpark(source, async (url, options) => {
@@ -104,4 +109,21 @@ test('maxEvents limits emitted records and stops further detail fetches', async 
   const { result, calls } = await collect(await fixture('detail'), listing + listing.replaceAll('10445', '10446'), { ...source, maxEvents: 1 });
   assert.equal(result.length, 1);
   assert.equal(calls.length, 2);
+});
+
+test('coverage excludes dated links skipped by request and event budgets', async () => {
+  const listing = await fixture('listing');
+  const future = listing.replaceAll('10445', '10446').replaceAll('2026-09-06', '2026-09-17');
+  for (const budget of [{ maxDetailPages: 1 }, { maxEvents: 1 }]) {
+    const { result } = await collect(await fixture('detail'), listing + future, { ...source, ...budget });
+    assert.deepEqual([...new Set(result.coverageDates)], ['2026-09-06']);
+  }
+});
+test('Rec & Parks skips details beyond day 30 but requests the final included day', async () => {
+  const listing = await fixture('listing');
+  const inside = listing.replaceAll('2026-09-06', '2026-10-05');
+  const outside = listing.replaceAll('10445', '10446').replaceAll('2026-09-06', '2026-10-06');
+  const { calls } = await collect(await fixture('detail'), outside + inside);
+  assert.equal(calls.length, 2);
+  assert.equal(calls[1], 'https://sfrecpark.org/Calendar.aspx?EID=10445');
 });
