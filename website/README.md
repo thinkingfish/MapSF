@@ -108,13 +108,15 @@ it does not promise a complete inventory of every event in San Francisco.
 A covered date can have no matching events. Gaps between checked dates stay
 unavailable, and recurring place schedules do not extend event-feed coverage.
 
-Each successful source records `coverage: { dates, checkedAt }`: San Francisco's
-current date plus dated records actually processed by its bounded collector.
-Dates are recorded before cost, cancellation, or geometry filtering. SFPL records
-visited dated detail links and ICS dates; Rec & Parks records dated listing/detail
-records only after the detail request succeeds. Links skipped by request or event
-budgets do not cover their dates. A successful empty listing covers today only.
-An unknown listing schema cannot establish future coverage.
+Each enabled source records `coverage: { dates, checkedAt }` only after completing
+the entire 30-day query. SFPL and Rec & Parks check dated calendar views; Mission
+Local uses its public date-range API. Pagination, response date scope, empty
+results, and request guards are verified before enabling the window.
+Coverage is established before cost, cancellation, or geometry filtering. A
+successfully checked date stays available even when its listings are empty or
+none qualify for publication. Incomplete pagination, exhausted request budgets,
+unexpected response dates, or unknown listing schemas fail the collection and
+cannot establish a fresh 30-day window.
 
 Offset timestamps are converted to Pacific dates, including overnight spans with
 an exclusive ending instant. Invalid dates are ignored; coverage is bounded to
@@ -198,3 +200,9 @@ an account, public deployment, or custom domain on your behalf.
 Verified garden admission schedules live in `config/places.mjs`; museums have their own `config/museums.mjs` catalog and [museum review list](MUSEUM-REVIEW.md). See [PLACES.md](PLACES.md) for eligibility, seasonal hours, closures, and review expiry. These cards follow one-off events and remain available when the event feed fails. Resident-only admission and ended entry windows are explicitly labeled.
 
 The initial catalog includes the Botanical Garden, Japanese Tea Garden, Conservatory of Flowers, and Asian Art Museum first Sundays. Search and map-type filter controls are removed; date selection and the free-only checkbox remain.
+
+## Sources and map tiles
+
+The public `/sources/` page describes all approved event publishers, planned integrations, official recurring admission sources, and collection methodology. Its footer links come from the same registry and venue catalogs as the site.
+
+The current web basemap uses normal browser requests to the OSM raster tile service. Attribution is always visible. All automated browser tests intercept tile requests with local fixtures; do not use community tiles for bulk downloading or offline archives. The iOS app’s 12.9 MiB Protomaps MBTiles archive is a candidate for a separate PMTiles/Cloudflare R2 migration, including the needed font assets.

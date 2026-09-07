@@ -87,3 +87,60 @@ test('SFPL only requests dated details inside the 30-day forward window', async 
   assert.ok(calls.some(url => url.includes('/events/2026/10/04/')));
   assert.ok(calls.every(url => !url.includes('/events/2026/10/05/')));
 });
+
+async function monthRun({ failDay, malformedDay, budget, pages = 1, cycle = false, ignoredDateFilters = false, malformedDetail = false, malformedCalendar = false, now = '2026-09-06T02:00:00Z' } = {}) {
+  const listing = await fixture('listing.html');
+  const detail = await fixture('detail.html');
+  const calendar = await fixture('calendar.ics');
+  const fetch = async value => {
+    const url = new URL(value);
+    if (url.pathname === '/events') {
+      const day = url.searchParams.get('date-from')?.slice(0, 10);
+      assert.equal(url.searchParams.get('date-from'), day + ' 00:00:00');
+      assert.equal(url.searchParams.get('date-to'), day + ' 23:59:59');
+      if (failDay && day === failDay) return { ok: false, status: 503 };
+      if (malformedDay && day === malformedDay) return { ok: true, text: async () => '<html>Maintenance</html>' };
+      let body = '<div class="view view-events view-id-events page-events-list">';
+      body += `<input name="date-from" value="${ignoredDateFilters ? '' : url.searchParams.get('date-from')}"><input name="date-to" value="${ignoredDateFilters ? '' : url.searchParams.get('date-to')}">`;
+      if (day === '2026-10-04') {
+        body += listing.replaceAll('/2026/09/08/', '/2026/10/04/').replaceAll('financial-counselor', `financial-counselor-${url.searchParams.get('page') || 0}`);
+        if (Number(url.searchParams.get('page') || 0) + 1 < pages) {
+          url.searchParams.set('page', cycle ? 0 : Number(url.searchParams.get('page') || 0) + 1);
+          body += `<a rel="next" href="${url.href.replaceAll('&', '&amp;')}">Next</a>`;
+        }
+      } else body += '<div class="view-empty"><h2>No events found. Try changing your search criteria.</h2></div>';
+      return { ok: true, text: async () => body + '</div>' };
+    }
+    return { ok: true, text: async () => url.pathname.includes('add-to-calendar') ? (malformedCalendar ? '<html>Maintenance</html>' : calendar.replaceAll('20260908', '20261004').replaceAll('20260909', '20261005')) : (malformedDetail ? '<html>Maintenance</html>' : detail) };
+  };
+  return collectSfpl({ ...source, collectionWindowDays: 30, maxEvents: 3000, ...(budget === undefined ? {} : { maxRequestsPerDay: budget }) }, fetch, new Date(now));
+}
+test('monthly SFPL checks all 30 Pacific days including empty dates and paginates the far end', async () => {
+  const events = await monthRun({ pages: 2 });
+  assert.equal(events.length, 2);
+  assert.equal(events.coverageComplete, true);
+  assert.equal(events.coverageDates.length, 30);
+  assert.equal(events.coverageDates[0], '2026-09-05');
+  assert.equal(events.coverageDates.at(-1), '2026-10-04');
+});
+test('monthly SFPL never claims failed, malformed or request-truncated dates as covered', async () => {
+  await assert.rejects(monthRun({ failDay: '2026-09-07' }), /monthly collection incomplete.*2026-09-07/);
+  await assert.rejects(monthRun({ malformedDay: '2026-09-08' }), /Unexpected SFPL listing/);
+  await assert.rejects(monthRun({ budget: 2, pages: 2 }), /request limit/);
+});
+test('monthly SFPL calendar arithmetic covers 30 distinct days across Pacific DST', async () => {
+  const events = await monthRun({ now: '2026-10-25T12:00:00Z' });
+  assert.equal(events.coverageDates.length, 30);
+  assert.equal(events.coverageDates.at(-1), '2026-11-23');
+});
+
+test('monthly SFPL fails safely on pagination cycles, page limits and malformed detail resources', async () => {
+  await assert.rejects(monthRun({ pages: 2, cycle: true }), /pagination limit or cycle/);
+  await assert.rejects(monthRun({ pages: 31 }), /pagination limit or cycle/);
+  await assert.rejects(monthRun({ malformedDetail: true }), /Unexpected SFPL event document/);
+  await assert.rejects(monthRun({ malformedCalendar: true }), /Unexpected SFPL calendar document/);
+});
+
+test('monthly SFPL rejects listings whose form does not confirm the requested date scope', async () => {
+  await assert.rejects(monthRun({ ignoredDateFilters: true }), /date scope/);
+});

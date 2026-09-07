@@ -22,9 +22,11 @@ export const sources = [
     approved: true, // Yao, 2026-09-06; recorded in SOURCE-REVIEW.md.
     enabled: true, // Verified publisher fixtures and live collection.
     adapter: 'sfpl',
+    collectionWindowDays: 30,
+    maxRequestsPerDay: 200,
     detailPathPattern: /^\/events\/[a-z0-9-]+(?:\/[a-z0-9-]+)*\/?$/i,
-    maxDetailPages: 8,
-    maxEvents: 100,
+    maxDetailPages: 8, // Legacy single-list mode only; monthly mode uses maxRequestsPerDay.
+    maxEvents: 3000,
   },
   {
     id: 'sf-rec-park',
@@ -33,9 +35,11 @@ export const sources = [
     approved: true, // Yao, 2026-09-06; recorded in SOURCE-REVIEW.md.
     enabled: true, // Verified publisher fixtures and live collection.
     adapter: 'recpark',
+    collectionWindowDays: 30,
+    maxListingPages: 90,
     detailPathPattern: /^\/Calendar\.aspx\?EID=\d+/i,
-    maxDetailPages: 12,
-    maxEvents: 100,
+    maxDetailPages: 300,
+    maxEvents: 1000,
   },
   {
     id: 'funcheap',
@@ -65,11 +69,13 @@ export const sources = [
     listingUrl: 'https://missionlocal.org/events/',
     approved: true, // Recorded in SOURCE-REVIEW.md.
     enabled: true,
-    adapter: 'jsonld',
-    // Verified live JSON-LD calendar; listing already contains event and venue data.
+    adapter: 'mission-local',
+    collectionWindowDays: 30,
+    maxListingPages: 20,
+    // Public date-range API supplies pagination, UTC times and venue coordinates.
     detailPathPattern: /^\/event\/[a-z0-9-]+(?:\/[a-z0-9-]+)*\/?$/i,
     maxDetailPages: 0,
-    maxEvents: 50,
+    maxEvents: 1000,
   },
   {
     id: 'ingleside-light',

@@ -46,29 +46,39 @@ async function documentAt(url, fetchImpl) {
   return response.text();
 }
 export async function collectSfpl(source, fetchImpl = fetch, now = new Date()) {
+  if (source.collectionWindowDays === 30) return collectMonth(source, fetchImpl, now);
   const listingUrl = new URL(source.listingUrl);
   const parts = new Intl.DateTimeFormat('en-CA', {timeZone: 'America/Los_Angeles', year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit', hourCycle:'h23'}).formatToParts(new Date(now));
   const part = (type) => parts.find(p => p.type === type).value;
   listingUrl.searchParams.set('date-end-after', `${part('year')}-${part('month')}-${part('day')} ${part('hour')}:${part('minute')}:${part('second')}`);
   const listing = await documentAt(listingUrl.href, fetchImpl);
+  return collectListing(source, fetchImpl, now, listingUrl, listing);
+}
+async function collectListing(source, fetchImpl, now, listingUrl, listing) {
   const venues = branchMap(listing);
   const freePolicy = listing.includes('All programs and events are free and open to the public.');
   const links = [...new Set([...listing.matchAll(/href="(\/events\/\d{4}\/\d{2}\/\d{2}\/[^"?#]+)"/g)].map(m => new URL(m[1], listingUrl).href))];
   const latest = lastCoverageDay(pacificDay(now));
   const output = [];
   output.coverageDates = [];
-  let remaining = Math.min(50, Math.max(0, Math.floor(source.maxDetailPages ?? 24)));
+  let remaining = Math.min(source.collectionWindowDays === 30 ? 2000 : 50, Math.max(0, Math.floor(source.maxDetailPages ?? 24)));
   for (const pageUrl of links) {
     const pathDate = new URL(pageUrl).pathname.match(/\/events\/(\d{4})\/(\d{2})\/(\d{2})\//);
     const listedDay = pathDate?.slice(1).join('-');
     if (validDay(listedDay) && listedDay > latest) continue;
-    if (remaining < 2 || output.length >= (source.maxEvents ?? 100)) break;
+    if (remaining < 2 || output.length >= (source.maxEvents ?? 100)) {
+      if (source.collectionWindowDays === 30) throw new Error('SFPL detail processing limit reached');
+      break;
+    }
     remaining--;
     const html = await documentAt(pageUrl, fetchImpl);
     // Only visited detail pages count; links skipped by the request cap do not.
     if (pathDate) output.coverageDates.push(listedDay);
     const article = html.slice(html.search(/<article\b[^>]*class="event event--full/));
-    if (!article.startsWith('<article')) continue;
+    if (!article.startsWith('<article')) {
+      if (source.collectionWindowDays === 30) throw new Error('Unexpected SFPL event document');
+      continue;
+    }
     const name = plain(article.match(/<h1\b[^>]*class="event__title"[^>]*>([\s\S]*?)<\/h1>/)?.[1]);
     const locationField = article.slice(article.indexOf('field--name-field-event-location'));
     const locationPath = locationField.match(/class="location--address-link" href="(\/locations\/[^"?#]+)"/)?.[1];
@@ -85,7 +95,9 @@ export async function collectSfpl(source, fetchImpl = fetch, now = new Date()) {
       continue;
     }
     remaining--;
-    const fields = calendarFields(await documentAt(new URL(calendarPath, listingUrl).href, fetchImpl));
+    const calendar = await documentAt(new URL(calendarPath, listingUrl).href, fetchImpl);
+    if (source.collectionWindowDays === 30 && !calendar.includes('BEGIN:VEVENT')) throw new Error('Unexpected SFPL calendar document');
+    const fields = calendarFields(calendar);
     const startDate = utcDate(fields.get('DTSTART'));
     const endDate = utcDate(fields.get('DTEND'));
     output.coverageDates.push(...recordCoverageDates({ startDate, endDate }));
@@ -105,5 +117,78 @@ export async function collectSfpl(source, fetchImpl = fetch, now = new Date()) {
       ...(cancelled ? {eventStatus: 'https://schema.org/EventCancelled'} : {}),
     }});
   }
+  return output;
+}
+
+// Date filters are publisher wall dates, so calendar arithmetic remains stable
+// across DST. Each worker owns a day's budget: busy days cannot starve day 30.
+async function collectMonth(source, fetchImpl, now) {
+  const today = pacificDay(now);
+  const days = Array.from({length: 30}, (_, index) => new Date(Date.parse(today + 'T00:00:00Z') + index * 86400000).toISOString().slice(0, 10));
+  const results = new Array(days.length);
+  const failures = [];
+  const cache = new Map();
+  let cursor = 0;
+  async function worker() {
+    while (cursor < days.length) {
+      const index = cursor++;
+      const day = days[index];
+      let remaining = Math.min(2000, Math.max(1, Math.floor(source.maxRequestsPerDay ?? 200)));
+      const request = async (url, options) => {
+        const key = String(url);
+        if (!cache.has(key)) {
+          if (remaining-- <= 0) throw new Error('SFPL daily request limit reached');
+          cache.set(key, (async () => {
+            const response = await fetchImpl(url, options);
+            const body = response.ok ? await response.text() : '';
+            return {ok: response.ok, status: response.status, text: async () => body};
+          })());
+        }
+        return cache.get(key);
+      };
+      try {
+        const listingUrl = new URL(source.listingUrl);
+        listingUrl.searchParams.delete('page');
+        listingUrl.searchParams.delete('date-end-after');
+        listingUrl.searchParams.set('date-from', day + ' 00:00:00');
+        listingUrl.searchParams.set('date-to', day + ' 23:59:59');
+        const visited = new Set();
+        const listings = [];
+        let next = listingUrl.href;
+        while (next) {
+          if (visited.has(next) || visited.size >= 30) throw new Error('SFPL pagination limit or cycle');
+          visited.add(next);
+          const html = await documentAt(next, request);
+          for (const name of ['date-from', 'date-to']) {
+            const input = [...html.matchAll(/<input\b[^>]*>/g)].map(match => match[0]).find(tag => tag.includes('name="' + name + '"'));
+            if (plain(input?.match(/value="([^"]*)"/)?.[1]) !== listingUrl.searchParams.get(name)) throw new Error('Unexpected SFPL listing: did not confirm requested date scope');
+          }
+          if (!/class="[^"]*\bview-id-events\b/.test(html)
+            || (!/href="\/events\/\d{4}\/\d{2}\/\d{2}\//.test(html) && !/class="view-empty"[\s\S]*?No events found/.test(html))) throw new Error('Unexpected SFPL listing document');
+          listings.push(html);
+          const nextTag = [...html.matchAll(/<a\b[^>]*>/g)].map(match => match[0]).find(tag => /rel="next"/.test(tag));
+          const href = nextTag?.match(/href="([^"]+)"/)?.[1];
+          next = null;
+          if (nextTag) {
+            if (!href) throw new Error('Invalid SFPL next page');
+            const url = new URL(href.replaceAll('&amp;', '&'), listingUrl);
+            if (url.origin !== listingUrl.origin || url.pathname !== listingUrl.pathname
+              || url.searchParams.get('date-from') !== listingUrl.searchParams.get('date-from')
+              || url.searchParams.get('date-to') !== listingUrl.searchParams.get('date-to')) throw new Error('SFPL pagination changed date scope');
+            next = url.href;
+          }
+        }
+        results[index] = await collectListing({...source, maxDetailPages: 2000}, request, now, listingUrl, listings.join('\n'));
+      } catch (error) {
+        failures.push(day + ': ' + error.message);
+      }
+    }
+  }
+  await Promise.all([worker(), worker()]);
+  if (failures.length) throw new Error('SFPL monthly collection incomplete: ' + failures.join('; '));
+  const output = results.flat();
+  if (output.length > (source.maxEvents ?? 3000)) throw new Error('SFPL monthly event limit reached');
+  output.coverageDates = days;
+  output.coverageComplete = true;
   return output;
 }

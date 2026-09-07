@@ -840,3 +840,28 @@ h1 span {
 .calendar-days button[aria-pressed="true"]:not(:disabled) { background: #fbe6ec; border-color: #c9748b; color: #934255; font-weight: 650; }
 .calendar-days button:disabled { color: #a1a7ac; background: #f6f7f8; cursor: default; }
 .calendar-note { font-size: 14px; line-height: 1.5; color: var(--muted); margin: 12px 0 0; }
+
+.sources-footer { border-top: 1px solid #e1e4e6; margin-top: 32px; padding-top: 24px; color: var(--muted); font-size: 16px; line-height: 1.6; }
+.sources-footer-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; }
+.sources-footer h2 { font-size: 24px; margin: 0; color: var(--ink); }
+.sources-footer a { text-underline-offset: 3px; }
+.sources-footer p { margin: 8px 0 16px; }
+.source-footer-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; gap: 10px 24px; padding: 0; margin: 0; }
+.info-page { max-width: 1120px; }
+.info-intro { padding: 48px 0 32px; }
+.info-page section { margin-bottom: 36px; }
+.info-page h2 { font-size: 28px; }
+.info-copy, .source-card p, .methodology p { font-size: 18px; line-height: 1.65; color: var(--muted); }
+.source-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.source-card { border: 1px solid #e1e4e6; border-radius: 12px; background: white; padding: 24px; scroll-margin-top: 24px; }
+.source-card h3 { margin: 10px 0 16px; font-size: 22px; line-height: 1.35; }
+.source-card h3 a { color: var(--ink); text-underline-offset: 4px; }
+.source-status { font-size: 14px; color: #934255; }
+.source-card p:last-child { margin-bottom: 0; }
+.methodology { max-width: 780px; scroll-margin-top: 24px; }
+.methodology h3 { font-size: 22px; margin-top: 28px; }
+@media (max-width: 760px) { .source-footer-links, .source-cards { grid-template-columns: 1fr; } .source-card { padding: 20px; } .info-page h1 { font-size: 36px; } }
+
+.sources-footer { max-width: 1480px; margin: 32px auto 0; padding: 24px 52px 0; box-sizing: border-box; }
+@media (max-width: 1050px) { .sources-footer { padding-left: 30px; padding-right: 30px; } }
+@media (max-width: 760px) { .sources-footer { padding-left: 20px; padding-right: 20px; } }

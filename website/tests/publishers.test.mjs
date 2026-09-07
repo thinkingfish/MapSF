@@ -11,7 +11,7 @@ test('approved Mission Local calendar publishes its real geometry and explicit e
   t.after(() => rm(directory, { recursive: true, force: true }));
   const manualPath = join(directory, 'manual.json');
   await writeFile(manualPath, JSON.stringify({ schemaVersion: 1, events: [], overrides: [] }));
-  const fixture = await readFile(new URL('./fixtures/mission-local/event.html', import.meta.url), 'utf8');
+  const fixture = JSON.parse(await readFile(new URL('./fixtures/mission-local/event-api.json', import.meta.url), 'utf8'));
   const source = sources.find((source) => source.id === 'mission-local');
   assert.equal(source.approved, true);
   assert.equal(source.enabled, true);
@@ -19,8 +19,8 @@ test('approved Mission Local calendar publishes its real geometry and explicit e
     sources: [source], manualPath, previousPath: join(directory, 'previous.json'),
     outputPath: join(directory, 'events.json'), now: new Date('2026-09-06T16:00:00Z'),
     fetchImpl: async (url) => {
-      assert.equal(url, 'https://missionlocal.org/events/');
-      return new Response(fixture);
+      assert.equal(new URL(url).pathname, '/wp-json/tribe/events/v1/events/');
+      return new Response(JSON.stringify({rest_url:url,total:1,total_pages:1,events:[fixture]}));
     },
   });
   assert.equal(snapshot.events.length, 1);
@@ -30,7 +30,7 @@ test('approved Mission Local calendar publishes its real geometry and explicit e
   assert.equal(event.endAt, '2026-09-06T12:00:00-07:00');
   assert.deepEqual(event.curation.geometry, { type: 'Point', coordinates: [-122.4182226, 37.7579453] });
   assert.equal(event.cost.isFree, false);
-  assert.equal(event.source.url, parseJsonLdEvents(fixture)[0].url);
+  assert.equal(event.source.url, fixture.url);
 });
 
 test('JSON-LD preserves embedded HTML entities until after parsing', () => {

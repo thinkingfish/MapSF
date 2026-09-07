@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './test.mjs';
 import { writeFile } from 'node:fs/promises';
 import { historicalFeed, sourceUrl } from './bay-to-breakers-fixture.mjs';
 
@@ -46,8 +46,6 @@ for (const [name, viewport] of [['desktop',{width:1440,height:1000}],['mobile',{
     await page.emulateMedia({reducedMotion:'reduce'});
     await page.clock.install({time:new Date('2026-05-17T14:00:00Z')});
     await page.route('**/events.json', route=>route.fulfill({json:historicalFeed}));
-    // CI uses local tiles; opt into real tiles for a visual review.
-    if (process.env.B2B_REAL_TILES !== '1') await page.route('https://tile.openstreetmap.org/**',route=>route.fulfill({contentType:'image/png',body:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALUlEQVR4AeyTsQ0AAAjCCP9f6mD8QOMNDCyQsDI0lDW9SgkxGQDCIAxeI/8PDgAA//9lCVeGAAAABklEQVQDAC/yPJEMiKmVAAAAAElFTkSuQmCC','base64')}));
     await page.goto('/');
     const card=page.locator('[data-event-id="historical-bay-to-breakers-2026"]');
     await expect(card).toBeVisible();

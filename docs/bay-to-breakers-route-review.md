@@ -22,10 +22,10 @@ Final result: **2 passed (3.8s)**, desktop 1440×1000 and mobile 390×844. Visua
 Reproduce after building `website` (the Playwright config starts/reuses port 4332):
 
 ```sh
-B2B_REAL_TILES=1 PLAYWRIGHT_BROWSERS_PATH=/tmp/mapsf-playwright pnpm --dir website exec playwright test e2e/bay-to-breakers.spec.mjs
+PLAYWRIGHT_BROWSERS_PATH=/tmp/mapsf-playwright pnpm --dir website exec playwright test e2e/bay-to-breakers.spec.mjs
 ```
 
-The default substitutes solid tiles for network-independent renderer checks; `B2B_REAL_TILES=1` enables the live basemap. The recorded screenshots and results above used real tiles. The test never adds application globals, exposes the map instance, or alters production renderer code.
+Automated tests always substitute local tiles and cannot opt into the community tile service. The earlier visual review image is retained as an artifact; future live-basemap inspection should use normal human browsing. The recorded screenshots and results above used real tiles. The test never adds application globals, exposes the map instance, or alters production renderer code.
 
 Saved review image (live basemap):
 

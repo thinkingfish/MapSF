@@ -127,3 +127,77 @@ test('Rec & Parks skips details beyond day 30 but requests the final included da
   assert.equal(calls.length, 2);
   assert.equal(calls[1], 'https://sfrecpark.org/Calendar.aspx?EID=10445');
 });
+
+const fullSource = { ...source, collectionWindowDays: 30, maxDetailPages: 300 };
+function dailyPage(url, entries = '', next = '') {
+  return '<form id="aspnetForm" action="' + new URL(url).pathname + new URL(url).search.replaceAll('&', '&amp;') + '"><div id="contentDiv" class="contentMain listView selfClear"><div class="calendars">' + entries + '</div>' + next + '</div></form>';
+}
+test('full collection checks every day across month boundary, including empty days and final-day events', async () => {
+  const calls = [];
+  const listing = (await fixture('listing')).replaceAll('2026-09-06', '2026-10-05');
+  const detail = (await fixture('detail')).replaceAll('2026-09-06', '2026-10-05');
+  const result = await collectRecpark(fullSource, async (url) => {
+    calls.push(url);
+    const query = new URL(url).searchParams;
+    return new Response(query.has('EID') ? detail : dailyPage(url, query.get('month') === '10' && query.get('day') === '5' ? listing : ''));
+  }, now);
+  assert.equal(calls.length, 31);
+  assert.equal(result.length, 1);
+  assert.equal(result[0].record.startDate, '2026-10-05T16:30:00-07:00');
+  assert.equal(result.coverageComplete, true);
+  assert.equal(result.coverageDates.length, 30);
+  assert.equal(result.coverageDates[0], '2026-09-06');
+  assert.equal(result.coverageDates.at(-1), '2026-10-05');
+});
+test('full collection rejects ignored date queries and unexpected HTML instead of claiming empty days', async () => {
+  for (const page of ['<html>unavailable</html>', dailyPage('https://sfrecpark.org/Calendar.aspx?view=list&year=2026&month=9&day=1')]) {
+    await assert.rejects(collectRecpark(fullSource, async () => new Response(page), now), /calendar|date/i);
+  }
+});
+test('full collection follows same-day pagination before recording coverage', async () => {
+  const listing = await fixture('listing');
+  const detail = await fixture('detail');
+  const calls = [];
+  const result = await collectRecpark(fullSource, async (url) => {
+    calls.push(url);
+    const query = new URL(url).searchParams;
+    if (query.has('EID')) return new Response(detail);
+    const firstDay = query.get('month') === '9' && query.get('day') === '6';
+    return new Response(dailyPage(url, firstDay && query.has('page') ? listing : '', firstDay && !query.has('page') ? '<a rel="next" href="' + url + '&page=2">Next</a>' : ''));
+  }, now);
+  assert.equal(result.length, 1);
+  assert.equal(calls.length, 32);
+  assert.equal(result.coverageDates.length, 30);
+});
+test('full collection fails closed on detail, event, listing budgets and HTTP failure', async () => {
+  const listing = await fixture('listing');
+  const detail = await fixture('detail');
+  for (const config of [{ maxDetailPages: 0 }, { maxEvents: 0 }, { maxListingPages: 1 }]) {
+    await assert.rejects(collectRecpark({ ...fullSource, ...config }, async (url) => new Response(new URL(url).searchParams.has('EID') ? detail : dailyPage(url, listing)), now), /limit|budget/i);
+  }
+  await assert.rejects(collectRecpark(fullSource, async (url) => new URL(url).searchParams.get('day') === '7' ? new Response('', { status: 503 }) : new Response(dailyPage(url)), now), /503/);
+});
+
+test('verbatim publisher daily and empty calendar excerpts are recognized', async () => {
+  for (const [name, date] of [['daily', '2026-10-05'], ['daily-empty', '2027-01-05']]) {
+    const html = await fixture(name);
+    const detail = (await fixture('detail')).replaceAll('Golden Gate Bandshell', 'Unknown park');
+    let first = true;
+    const result = await collectRecpark(fullSource, async (url) => {
+      if (new URL(url).searchParams.has('EID')) return new Response(detail);
+      const body = first ? html : dailyPage(url);
+      first = false;
+      return new Response(body);
+    }, new Date(date + 'T17:00:00Z'));
+    assert.equal(result.coverageDates.length, 30);
+    assert.equal(result.coverageDates[0], date);
+    assert.equal(result.length, 0);
+  }
+});
+test('full collection rejects pagination loops, external next links and unrecognized detail responses', async () => {
+  for (const next of [(url) => '<a rel="next" href="' + url + '">Next</a>', () => '<a rel="next" href="https://example.com/Calendar.aspx">Next</a>', () => '<nav class="pagination">unrecognized paging</nav>']) {
+    await assert.rejects(collectRecpark(fullSource, async (url) => new Response(dailyPage(url, '', next(url))), now), /pagination/);
+  }
+  const listing = await fixture('listing');
+  await assert.rejects(collectRecpark(fullSource, async (url) => new Response(new URL(url).searchParams.has('EID') ? '<html>temporary error</html>' : dailyPage(url, listing)), now), /detail markup/);
+});

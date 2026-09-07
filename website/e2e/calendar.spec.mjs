@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './test.mjs';
 import { feed, clock } from './fixtures.mjs';
 
 async function openCalendar(page, coverage = { dates: ['2026-09-06', '2026-09-08'] }) {

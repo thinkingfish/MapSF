@@ -798,3 +798,12 @@ test('publisher addresses decode markup in both string and PostalAddress forms',
     assert.equal(snapshot.events[0].curation.properties.name, 'Dolores Park');
   }
 });
+
+test('Mission Local stable API identity reconciles legacy cancellation before validation fallback', async t => {
+  const legacy = priorEvent({id:'mission-local:legacy-hash',title:'Workshop',startAt:'2026-09-07T13:00:00-07:00',endAt:'2026-09-07T15:00:00-07:00',source:{id:'mission-local',name:'Mission Local',url:'https://missionlocal.org/event/workshop/'}});
+  const paths=await files(t,{previous:{schemaVersion:1,generatedAt:'2026-09-06T17:00:00Z',sources:[{id:'mission-local',lastSuccessfulAt:'2026-09-06T17:00:00Z'}],events:[legacy]}});
+  const sample=(id,title,url)=>({id,status:'publish',title,url,start_date:'2026-09-07 13:00:00',end_date:'2026-09-07 15:00:00',utc_start_date:'2026-09-07 20:00:00',utc_end_date:'2026-09-07 22:00:00',venue:{}});
+  const snapshot=await refreshEvents({...paths,now:new Date('2026-09-06T18:00:00Z'),sources:[{id:'mission-local',name:'Mission Local',listingUrl:'https://missionlocal.org/events/',approved:true,enabled:true,adapter:'mission-local',collectionWindowDays:30}],fetchImpl:async url=>new Response(JSON.stringify({rest_url:url,total:2,total_pages:1,events:[sample(100,'Canceled: Workshop',legacy.source.url),sample(101,'Missing venue','https://missionlocal.org/event/unknown/')]}))});
+  assert.equal(snapshot.events.length,0);
+  assert.equal(snapshot.sources[0].cancelledInstances[0].id,'mission-local:100');
+});

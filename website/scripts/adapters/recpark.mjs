@@ -73,6 +73,77 @@ function parseDetail(html, pageUrl) {
   if (/^free$/i.test(property(html, 'price'))) record.offers = { '@type': 'Offer', price: 0, priceCurrency: 'USD' };
   return { record, pageUrl };
 }
+
+// The public list view honors an explicit year/month/day. A month-only default
+// response is not evidence that a day was checked, especially an empty day.
+async function collectWindow(source, fetchHtml, now) {
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);
+  const records = [];
+  records.coverageDates = [];
+  records.coverageComplete = true;
+  const seenDetails = new Set();
+  const budget = (key, fallback, ceiling) => Math.min(ceiling, Math.max(0, Number.isInteger(source[key]) ? source[key] : fallback));
+  const detailLimit = budget('maxDetailPages', 300, 1000);
+  const listingLimit = budget('maxListingPages', 90, 300);
+  const eventLimit = budget('maxEvents', 300, 1000);
+  let listingCount = 0;
+  const sameDay = (url, requested) => url.origin === requested.origin && url.pathname.toLowerCase() === '/calendar.aspx' && ['view', 'year', 'month', 'day'].every((key) => url.searchParams.get(key) === requested.searchParams.get(key));
+  for (let offset = 0; offset < 30; offset++) {
+    const day = new Date(Date.parse(today + 'T12:00:00Z') + offset * 86400000).toISOString().slice(0, 10);
+    const requested = new URL(source.listingUrl);
+    requested.search = new URLSearchParams({ view: 'list', year: day.slice(0, 4), month: String(Number(day.slice(5, 7))), day: String(Number(day.slice(8))) }).toString();
+    const pages = [requested.href];
+    const visited = new Set();
+    while (pages.length) {
+      const pageUrl = pages.shift();
+      if (visited.has(pageUrl)) throw new Error('Rec & Parks calendar pagination loop');
+      visited.add(pageUrl);
+      if (++listingCount > listingLimit) throw new Error('Rec & Parks listing request budget exceeded');
+      const html = await fetchHtml(pageUrl);
+      const form = [...html.matchAll(/<form\b[^>]*>/gi)].find(([tag]) => /\bid=["']aspnetForm["']/i.test(tag))?.[0];
+      const action = form?.match(/\baction=["']([^"']+)["']/i)?.[1];
+      if (!action || !sameDay(new URL(decode(action), pageUrl), requested) || !/\bclass=["'][^"']*\blistView\b/.test(html) || !/<div\b[^>]*class=["']calendars["'][^>]*>/.test(html)) throw new Error('Rec & Parks calendar date response is unexpected');
+      const anchors = [...html.matchAll(/<a\b[^>]*id=["']eventTitle_(\d+)["'][^>]*href=["']([^"']+)["'][^>]*>/gi)];
+      // An empty recognized container is the publisher's actual zero-results state.
+      if (!anchors.length && !/<div\b[^>]*class=["']calendars["'][^>]*>\s*<\/div>/i.test(html)) throw new Error('Rec & Parks calendar entries were not recognized');
+      for (const match of anchors) {
+        const url = new URL(decode(match[2]), pageUrl);
+        if (url.origin !== requested.origin || url.pathname.toLowerCase() !== '/calendar.aspx' || url.searchParams.get('EID') !== match[1]) throw new Error('Rec & Parks calendar event link is unexpected');
+        const end = html.indexOf('More Details', match.index);
+        if (end < 0) throw new Error('Rec & Parks calendar event markup is incomplete');
+        const nearby = html.slice(match.index, end);
+        const start = property(nearby, 'startDate');
+        if (validDay(start.slice(0, 10)) && start.slice(0, 10) !== day) throw new Error('Rec & Parks calendar date filter was not honored');
+        const venue = property(nearby.split(/itemprop=["']location["']/i)[1] ?? '', 'name');
+        const cancelled = /cancel(?:led|ed)/i.test(plain(nearby));
+        if (!cancelled && venue && venue !== 'Event Location' && venue !== BAND_SHELL.name) continue;
+        const id = match[1];
+        if (seenDetails.has(id)) continue;
+        if (seenDetails.size >= detailLimit) throw new Error('Rec & Parks detail request budget exceeded');
+        seenDetails.add(id);
+        const detailUrl = requested.origin + '/Calendar.aspx?EID=' + id;
+        const detail = await fetchHtml(detailUrl);
+        if (!/<h2\b[^>]*id=["'][^"']*_eventTitle["']/i.test(detail)) throw new Error('Rec & Parks event detail markup is unexpected');
+        const result = parseDetail(detail, detailUrl);
+        if (result) {
+          if (records.length >= eventLimit) throw new Error('Rec & Parks event limit exceeded');
+          records.push(result);
+        }
+      }
+      const next = [...html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].filter(([, attrs, label]) => /\brel=["']next["']/i.test(attrs) || (/\b(?:page|pagination|pager)\b/i.test(attrs) && /^next\b/i.test(plain(label))));
+      for (const [, attrs] of next) {
+        const href = attrs.match(/\bhref=["']([^"']+)["']/i)?.[1];
+        const url = href ? new URL(decode(href), pageUrl) : null;
+        if (!url || !sameDay(url, requested) || url.href === pageUrl) throw new Error('Rec & Parks calendar pagination is unsupported');
+        pages.push(url.href);
+      }
+      if (!next.length && /<(?:div|nav|ul)\b[^>]*class=["'][^"']*\b(?:pagination|pager)\b/i.test(html)) throw new Error('Rec & Parks calendar pagination is unexpected');
+    }
+    records.coverageDates.push(day);
+  }
+  return records;
+}
+
 export async function collectRecpark(source, fetchImpl, now = new Date()) {
   const fetchHtml = async (url) => {
     const response = await fetchImpl(url, {
@@ -82,6 +153,7 @@ export async function collectRecpark(source, fetchImpl, now = new Date()) {
     if (!response.ok) throw new Error(`Rec & Parks request failed: ${response.status ?? 'unknown status'} (${url})`);
     return response.text();
   };
+  if (source.collectionWindowDays === 30) return collectWindow(source, fetchHtml, now);
   const html = await fetchHtml(source.listingUrl);
   const links = new Map();
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);

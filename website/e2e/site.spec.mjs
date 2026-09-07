@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './test.mjs';
 import { feed, clock } from './fixtures.mjs';
 
 async function load(page, snapshot = feed) {

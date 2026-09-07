@@ -475,6 +475,28 @@ function sourceMetadata(source, details) {
   };
 }
 
+// Migrate the former JSON-LD hashes to the publisher's stable API IDs, including
+// stored cancellations and owner overrides. Date/URL matches avoid title drift.
+function reconcileMissionLocalIds(source, raw, previous, manual, cancellations) {
+  const aliases = new Map();
+  for (const {record, pageUrl} of raw) {
+    const url = absoluteHttpUrl(record.url, pageUrl);
+    if (!url || !identifierValue(record.identifier)) continue;
+    const canonical = stableId(source, record, url);
+    aliases.set(stableId(source, {...record, identifier: undefined}, url), canonical);
+    const matches = [...previous.events, ...manual.events].filter(event => event.source?.id === source.id && event.source.url === url);
+    const dated = matches.filter(event => Date.parse(event.startAt) === Date.parse(record.startDate) && Date.parse(event.endAt) === Date.parse(record.endDate));
+    for (const event of dated.length ? dated : !record.startDate && matches.length === 1 ? matches : []) aliases.set(event.id, canonical);
+  }
+  const migrate = event => aliases.has(event.id) ? {...event, id: aliases.get(event.id)} : event;
+  previous.events = previous.events.map(migrate);
+  manual.events = manual.events.map(migrate);
+  manual.overrides = manual.overrides.map(migrate);
+  const migrated = [...cancellations.values()].map(migrate);
+  cancellations.clear();
+  for (const instance of migrated) cancellations.set(cancellationKey(instance), instance);
+}
+
 export async function refreshEvents({
   sources = configuredSources,
   manualPath = DEFAULT_MANUAL_PATH,
@@ -534,11 +556,16 @@ export async function refreshEvents({
       } else if (source.adapter === 'recpark') {
         const { collectRecpark } = await import('./adapters/recpark.mjs');
         raw = await collectRecpark(source, fetchImpl, now);
+      } else if (source.adapter === 'mission-local') {
+        const { collectMissionLocal } = await import('./adapters/mission-local.mjs');
+        raw = await collectMissionLocal(source, fetchImpl, now);
       } else throw new Error(`Unsupported adapter: ${source.adapter}`);
+      if (source.collectionWindowDays === 30 && (raw.coverageComplete !== true || usefulCoverageDates(raw.coverageDates, today).length !== 30)) throw new Error('Incomplete 30-day source collection');
+      if (source.adapter === 'mission-local') reconcileMissionLocalIds(source, raw, previous, manual, sourceCancellations);
       // Collection completed: publication validation may still fail, but the
       // publisher check itself is fresh. Partial HTTP failures never reach here.
       checkedCoverage = {
-        dates: usefulCoverageDates([today, ...(raw.coverageDates ?? []), ...raw.flatMap(({ record }) => recordCoverageDates(record))], today),
+        dates: usefulCoverageDates(raw.coverageComplete === true ? raw.coverageDates : [today, ...(raw.coverageDates ?? []), ...raw.flatMap(({ record }) => recordCoverageDates(record))], today),
         checkedAt: generatedAt,
       };
       for (const item of raw) {
@@ -576,7 +603,7 @@ export async function refreshEvents({
         && !sourceCancellations.has(cancellationKey(event))
       ));
       const allCancelled = raw.length > 0 && raw.every(({ record }) => cancelled(record));
-      if (valid.length === 0 && source.allowEmpty !== true && !allCancelled) {
+      if (valid.length === 0 && source.allowEmpty !== true && !allCancelled && !(raw.coverageComplete === true && raw.length === 0)) {
         throw new Error('No valid events after validation');
       }
       const publishable = valid.filter((event) => eventInPublicationBounds(event, publicationBounds));

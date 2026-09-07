@@ -1,0 +1,31 @@
+---
+import '../styles/global.css';
+import SourcesFooter from '../components/SourcesFooter.astro';
+import { eventSourceGuide, placeSourceGuide, mapSourceGuide } from '../../config/source-guide.mjs';
+---
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="Meet MapSF’s event sources and learn how we collect, verify, and refresh local listings." /><meta name="theme-color" content="#F8F9FA" /><title>Sources & methodology — MapSF</title></head>
+  <body>
+    <a class="skip-link" href="#source-guide">Skip to sources</a>
+    <header class="site-header"><a class="brand" href="/" aria-label="MapSF home"><span>Map<span class="brand-sf">SF</span></span></a><a href="/">Back to events</a></header>
+    <main class="info-page" id="source-guide">
+      <section class="info-intro"><p class="eyebrow">LOCAL KNOWLEDGE, CLEAR SOURCES</p><h1>Sources & methodology<span>.</span></h1><p class="intro-copy">A smaller, carefully checked selection of things to do in San Francisco. Every listing links back to its original source.</p></section>
+      <section aria-labelledby="event-source-heading"><h2 id="event-source-heading">Event sources</h2><p class="info-copy">“Collecting events” means a source is connected. “Planned” sources are on our curated list, but their events are not yet included.</p>
+        <div class="source-cards">{eventSourceGuide.map(source => <article class="source-card" id={source.id}><span class="source-status">{source.status}</span><h3><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a></h3><p>{source.description}</p><p>{source.collection}</p></article>)}</div>
+      </section>
+      <section aria-labelledby="place-source-heading"><h2 id="place-source-heading">Museums & gardens</h2><p class="info-copy">Recurring admission opportunities appear after the day’s one-off events.</p><div class="source-cards">{placeSourceGuide.map(source => <article class="source-card" id={source.id}><span class="source-status">{source.status}</span><h3><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a></h3><p>{source.description}</p><p>{source.collection}</p></article>)}</div></section>
+      <section aria-labelledby="map-source-heading"><h2 id="map-source-heading">Map data</h2>{mapSourceGuide.map(source => <article class="source-card" id={source.id}><h3><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a></h3><p>{source.description}</p><p>{source.collection}</p><p><a href="https://operations.osmfoundation.org/policies/tiles/" target="_blank" rel="noopener noreferrer">Tile usage policy ↗</a></p></article>)}</section>
+      <section id="methodology" class="methodology" aria-labelledby="methodology-heading"><h2 id="methodology-heading">How we gather and check listings</h2>
+        <h3>A rolling 30-day window</h3><p>Our scheduled collection runs daily and checks today plus the next 29 days in San Francisco time. We follow calendar pages or query a publisher’s public event API across that window, including extra pages of results. We mark dates as checked only after collection completes. A checked date can have no qualifying events; gray dates have not been checked in the available feed.</p>
+        <h3>Public information, carefully collected</h3><p>We use public calendar APIs when available. For other sources, we read the event information in public calendar and detail pages—a process often called scraping. Requests have limits, duplicate pages are reused within a run, and failed or incomplete requests do not count as a completed date range.</p>
+        <h3>Quality before quantity</h3><p>We keep event titles, dates, times, places, prices when stated, and links to the original source. We do not reproduce news articles. Listings need usable dates and verified map locations in San Francisco. Missing or ambiguous information can keep an event out of the list, even when we have checked that date.</p>
+        <h3>Costs and eligibility stay explicit</h3><p>A missing price is shown as “Cost not listed.” We only label an event free when the source says so. Resident admission, proof of residency, special-exhibition exclusions, and other conditions are shown separately.</p>
+        <h3>Places, routes, and areas</h3><p>Most calendars supply a venue point. A route or area needs verified streets or boundaries for that specific event; we do not guess a festival’s extent from a venue pin. Reviewed route and area records retain their full shape on the map.</p>
+        <h3>Updates, cancellations, and limits</h3><p>We remove ended events, reconcile duplicates, and honor cancellations we can identify. If a source fails, previously verified upcoming listings may remain with their original freshness information. We cannot guarantee that every event or last-minute change is captured, so check the linked publisher before heading out.</p>
+        <h3>Reviewed recurring schedules</h3><p>Museum and garden admission rules are maintained separately from event collection. We record their official sources, conditions, seasonal hours, known closures, and review expiry. These schedules do not make an unchecked event date count as checked.</p>
+      </section>
+    </main>
+    <SourcesFooter />
+  </body>
+</html>

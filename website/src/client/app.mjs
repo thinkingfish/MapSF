@@ -377,7 +377,7 @@ async function setupMap() {
       fitBoundsOptions: { padding: 10 },
       minZoom: 9,
       maxZoom: 18,
-      attributionControl: { compact: true },
+      attributionControl: { compact: false },
       cooperativeGestures: true,
     });
     map.addControl(new NavigationControl({ showCompass: false }), "top-right");
