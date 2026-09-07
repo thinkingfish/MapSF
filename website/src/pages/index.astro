@@ -24,7 +24,7 @@ import SourcesFooter from '../components/SourcesFooter.astro';
     <main>
       <section class="intro" aria-labelledby="page-title">
         <div><p class="eyebrow">YOUR CITY. YOUR DAY.</p><h1 id="page-title">Out in San Francisco<span>.</span></h1><p class="intro-copy">A few good reasons to take the long way home.</p></div>
-        <div class="date-control"><span class="date-label">Make a day of it</span><div class="date-input-row"><button id="event-date" type="button" aria-label="Choose event date" aria-haspopup="dialog" aria-expanded="false" popovertarget="event-calendar">Choose a date</button><div id="event-calendar" class="event-calendar" popover role="dialog" aria-label="Choose a checked date"></div><button id="today-button" type="button">Today</button></div><span class="timezone-note">San Francisco local time</span></div>
+        <div class="date-control"><span class="date-label">Make a day of it</span><div class="date-input-row"><button id="event-date" type="button" aria-label="Choose event date" aria-haspopup="dialog" aria-expanded="false" popovertarget="event-calendar">Choose a date</button><div id="event-calendar" class="event-calendar" popover role="dialog" aria-label="Choose a checked date"></div><span class="date-shortcuts"><button id="today-button" type="button">Today</button><button id="tomorrow-button" type="button">Tomorrow</button></span></div><span class="timezone-note">San Francisco local time</span></div>
       </section>
       <section class="explore" aria-label="Explore events">
         <div class="toolbar">
@@ -34,7 +34,6 @@ import SourcesFooter from '../components/SourcesFooter.astro';
         <div class="explore-grid">
           <section id="map-panel" class="map-panel" aria-label="San Francisco event map" tabindex="-1">
             <div id="map" aria-label="Interactive map of event locations"></div>
-            <div class="map-heading"><span class="status-dot" aria-hidden="true"></span> Around the city</div>
             <button id="reset-map" class="reset-map" type="button" aria-label="Show all of San Francisco" title="Show all of San Francisco"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4m0 10v4M1 10h4m10 0h4" stroke="currentColor" stroke-width="1.5"/></svg></button>
             <div id="map-status" class="map-status" role="status">Finding our way around…</div>
             <div class="map-legend" aria-label="Map legend"><span><i class="legend-point"></i>Place</span><span><i class="legend-route"></i>Route</span><span><i class="legend-area"></i>Area</span></div>

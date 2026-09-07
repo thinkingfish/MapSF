@@ -61,3 +61,29 @@ test('dates beyond the 30-day window remain disabled even in an old or oversized
   await expect(page.getByRole('button', {name:'October 5, 2026 — checked',exact:true})).toBeEnabled();
   await expect(page.getByRole('button', {name:'October 6, 2026 — not checked',exact:true})).toBeDisabled();
 });
+
+test('Tomorrow selects a checked empty day and Today returns to the SF date', async ({page}) => {
+  await openCalendar(page, {dates:['2026-09-06','2026-09-07']});
+  await page.keyboard.press('Escape');
+  await page.getByRole('button', {name:'Tomorrow',exact:true}).click();
+  await expect(page.locator('#day-label')).toContainText('SEP 7');
+  await expect(page.locator('#event-list')).toContainText('No one-off events listed');
+  await expect(page.locator('#tomorrow-button')).toHaveAttribute('aria-pressed','true');
+  await page.getByRole('button', {name:'Today',exact:true}).click();
+  await expect(page.locator('#day-label')).toContainText('TODAY');
+  await expect(page.locator('#tomorrow-button')).toHaveAttribute('aria-pressed','false');
+});
+
+test('Tomorrow is disabled when the next SF date has not been checked', async ({page}) => {
+  await openCalendar(page);
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('button', {name:'Tomorrow',exact:true})).toBeDisabled();
+});
+
+test('Tomorrow advances the SF calendar date across the fall daylight-saving change', async ({page}) => {
+  await page.clock.install({time:new Date('2026-11-01T07:30:00Z')});
+  await page.route('**/events.json', route => route.fulfill({json:{...feed,coverage:{dates:['2026-11-01','2026-11-02']}}}));
+  await page.goto('/');
+  await page.getByRole('button', {name:'Tomorrow',exact:true}).click();
+  await expect(page.locator('#day-label')).toContainText('NOV 2');
+});

@@ -256,21 +256,6 @@ h1 span {
   inset: 0;
   background: #eaf0ee;
 }
-.map-heading {
-  position: absolute;
-  top: 17px;
-  left: 17px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 13px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 2px 12px #23312d0a;
-  font-size: 14px;
-  font-weight: 600;
-  pointer-events: none;
-}
 .reset-map {
   position: absolute;
   right: 10px;
@@ -757,12 +742,6 @@ h1 span {
     min-height: 420px;
     scroll-margin-top: 15px;
   }
-  .map-heading {
-    font-size: 12px;
-    top: 13px;
-    left: 13px;
-    padding: 10px;
-  }
   .map-legend {
     bottom: 34px;
     left: 12px;
@@ -870,3 +849,11 @@ h1 span {
 .rss-links li { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 12px 0; }
 .rss-links a { text-underline-offset: 3px; }
 .rss-links span { color: var(--muted); }
+
+.date-input-row { flex-wrap: wrap; }
+.date-shortcuts { display: inline-flex; gap: 6px; }
+#tomorrow-button:not(:disabled) {
+  background: #e3f1e7;
+  border-color: #c5dfce;
+  color: #326547;
+}
