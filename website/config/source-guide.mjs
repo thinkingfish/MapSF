@@ -19,6 +19,9 @@ export const eventSourceGuide = sources.filter(source => source.approved).map(so
   description: descriptions[source.id]?.[0] ?? 'A source selected for local event coverage.',
   collection: descriptions[source.id]?.[1] ?? 'Collection details are being reviewed.',
 }));
+export const rssSourceGuide = sources.filter(source => source.approved && source.rss).map(source => ({
+  id: source.id, name: source.name, ...source.rss,
+}));
 const operators = [...new Map([...places, ...museums].map(place => [place.source.id, place.source])).values()];
 export const placeSourceGuide = operators.map(source => ({...source,
   status: 'Curated schedule',

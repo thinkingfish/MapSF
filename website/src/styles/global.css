@@ -865,3 +865,8 @@ h1 span {
 .sources-footer { max-width: 1480px; margin: 32px auto 0; padding: 24px 52px 0; box-sizing: border-box; }
 @media (max-width: 1050px) { .sources-footer { padding-left: 30px; padding-right: 30px; } }
 @media (max-width: 760px) { .sources-footer { padding-left: 20px; padding-right: 20px; } }
+
+.rss-links { list-style: none; padding: 0; font-size: 18px; line-height: 1.65; }
+.rss-links li { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 12px 0; }
+.rss-links a { text-underline-offset: 3px; }
+.rss-links span { color: var(--muted); }

@@ -30,6 +30,7 @@ export const sources = [
   },
   {
     id: 'sf-rec-park',
+    rss: { url: 'https://sfrecpark.org/RSSFeed.aspx?ModID=58&CID=All-calendar.xml', kind: 'Events' },
     name: 'San Francisco Recreation and Parks',
     listingUrl: 'https://sfrecpark.org/Calendar.aspx',
     approved: true, // Yao, 2026-09-06; recorded in SOURCE-REVIEW.md.
@@ -43,6 +44,7 @@ export const sources = [
   },
   {
     id: 'funcheap',
+    rss: { url: 'https://sf.funcheap.com/feed/', kind: 'Recently added events' },
     name: 'Funcheap',
     listingUrl: 'https://sf.funcheap.com/today/',
     approved: true, // Yao, 2026-09-06; recorded in SOURCE-REVIEW.md.
@@ -65,6 +67,7 @@ export const sources = [
   },
   {
     id: 'mission-local',
+    rss: { url: 'https://missionlocal.org/events/feed/', kind: 'Events' },
     name: 'Mission Local',
     listingUrl: 'https://missionlocal.org/events/',
     approved: true, // Recorded in SOURCE-REVIEW.md.
@@ -79,6 +82,7 @@ export const sources = [
   },
   {
     id: 'ingleside-light',
+    rss: { url: 'https://www.inglesidelight.com/rss/', kind: 'Neighborhood news' },
     name: 'The Ingleside Light',
     listingUrl: 'https://www.inglesidelight.com/tag/things-to-do/',
     approved: true, // Recorded in SOURCE-REVIEW.md.
@@ -91,6 +95,7 @@ export const sources = [
   },
   {
     id: 'richmond-sunset-news',
+    rss: { url: 'https://richmondsunsetnews.com/feed/', kind: 'Neighborhood news' },
     name: 'Richmond Review / Sunset Beacon',
     listingUrl: 'https://richmondsunsetnews.com/',
     approved: true, // Recorded in SOURCE-REVIEW.md.
@@ -102,6 +107,7 @@ export const sources = [
   },
   {
     id: 'marina-times',
+    rss: { url: 'https://www.marinatimes.com/feed', kind: 'Neighborhood news' },
     name: 'Marina Times',
     listingUrl: 'https://www.marinatimes.com/category/calendar',
     approved: true, // Approved by Yao in conversation; recorded in SOURCE-REVIEW.md.

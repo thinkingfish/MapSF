@@ -8,6 +8,11 @@ test('footer links every source to its description and explains planned sources 
  await footer.getByRole('link',{name:'Civic Joy Fund',exact:true}).click();
  await expect(page.locator('#civic-joy-fund')).toContainText('Planned');
  await expect(page.locator('#sfpl')).toContainText('Collecting events');
+ const rss = page.getByRole('region', {name:'Subscribe via RSS'});
+ await expect(rss.getByRole('link')).toHaveCount(6);
+ await expect(rss.getByRole('link', {name:'Mission Local RSS',exact:true})).toHaveAttribute('href','https://missionlocal.org/events/feed/');
+ await expect(rss).toContainText('Neighborhood news');
+ await expect(rss).toContainText('paste it into your reader');
  await expect(page.locator('#methodology')).toContainText('30-day window');
  await expect(page.locator('#methodology')).toContainText('scraping');
  await expect(page.locator('#methodology')).toContainText('Cost not listed');

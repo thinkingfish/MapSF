@@ -34,6 +34,8 @@ test('missing or malformed coverage does not infer coverage from event dates or 
 test('calendar fits a narrow screen and checked days support keyboard selection', async ({page}) => {
   await page.setViewportSize({width:320,height:700});
   await openCalendar(page);
+  // Wait for the popover's asynchronous opening/focus handler before moving focus.
+  await expect(page.getByRole('button', {name:'Choose event date',exact:true})).toHaveAttribute('aria-expanded','true');
   const day = page.getByRole('button', {name:'September 8, 2026 — checked',exact:true});
   await day.focus();
   await page.keyboard.press('Enter');
@@ -46,6 +48,7 @@ test('calendar retains keyboard focus across the periodic event refresh', async 
   await page.keyboard.press('Escape');
   await page.clock.fastForward(10 * 60 * 60 * 1000);
   await page.getByRole('button', {name:'Choose event date',exact:true}).click();
+  await expect(page.getByRole('button', {name:'Choose event date',exact:true})).toHaveAttribute('aria-expanded','true');
   const day = page.getByRole('button', {name:'September 8, 2026 — checked',exact:true});
   await day.focus();
   await page.clock.fastForward(60_000);
