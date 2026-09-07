@@ -15,12 +15,16 @@ jobs:
         working-directory: website
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: website/package.json
+          run_install: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: website/.node-version
-          cache: npm
-          cache-dependency-path: website/package-lock.json
-      - run: npm ci
-      - run: npm test
-      - run: npx playwright install --with-deps chromium
-      - run: npm run test:browser
+          cache: pnpm
+          cache-dependency-path: website/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm run test:browser

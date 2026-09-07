@@ -6,27 +6,29 @@ Cloudflare. All application and collection code is JavaScript; no Python require
 
 ## Run locally
 
-Requires Node.js 22.12 or later (the repository pins 22.23.2).
+Requires Node.js 22.12 or later (the repository pins 22.23.2) and pnpm 12.3.4.
+The `packageManager` field pins pnpm for this project. If pnpm is not installed,
+bootstrap it once with `npm install --global pnpm@12.3.4`.
 
 ```sh
 cd website
-npm ci
-npm run dev
+pnpm install --frozen-lockfile
+pnpm run dev
 ```
 
 Open the URL printed by Astro. Verify and build with:
 
 ```sh
-npm test
-npm run build
-npm run preview
+pnpm test
+pnpm run build
+pnpm run preview
 ```
 
 Browser checks use test-only fixtures (never public event data):
 
 ```sh
-npx playwright install chromium
-npm run test:browser
+pnpm exec playwright install chromium
+pnpm run test:browser
 ```
 
 ## Choose the sources
@@ -62,9 +64,9 @@ applies to collected, manually curated, and failure-preserved events.
 Run a refresh after editing the registry or manual events:
 
 ```sh
-npm run refresh
-npm test
-npm run build
+pnpm run refresh
+pnpm test
+pnpm run build
 ```
 
 The committed snapshot contains real collected listings. Refresh it before deployment
@@ -135,19 +137,25 @@ In Cloudflare Workers & Pages, connect this repository and configure:
 | Setting | Value |
 | --- | --- |
 | Root directory | `website` |
-| Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
+| Build command | `pnpm run build` |
+| Deploy command | `pnpm exec wrangler deploy` |
 | Production branch | `main` |
 | Node version | `22.23.2` |
+| Build environment variable | `PNPM_VERSION=12.3.4` |
+
+Commit only `pnpm-lock.yaml` as the dependency lockfile. CI uses
+`pnpm install --frozen-lockfile`; `pnpm-workspace.yaml` records the native build
+scripts required by the toolchain. The optional macOS `fsevents` rebuild is skipped
+to avoid introducing a Python/node-gyp prerequisite.
 
 `wrangler.jsonc` points to `dist/`. Set its `name` to your chosen Cloudflare Worker
 name before deploying. For a manual deployment, authenticate with Cloudflare and
 run from `website/`:
 
 ```sh
-npm ci
-npm run build
-npx wrangler deploy
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm exec wrangler deploy
 ```
 
 If you already use Cloudflare Pages, use the same root and build command with

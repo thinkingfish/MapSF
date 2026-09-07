@@ -25,7 +25,7 @@ All supported feeds normalize into the same iOS-compatible GeoJSON contract.
 These live adapters currently provide points; manually curated routes and areas
 retain full LineString/Polygon geometry and use the same validation and rendering.
 
-Run `npm run refresh` from `website/` for per-source results. Successful collection
+Run `pnpm run refresh` from `website/` for per-source results. Successful collection
 updates `public/events.json`; source failures retain validated, unexpired prior
 records and their original freshness timestamps. Saved fixtures are test inputs,
 not fallback listings for the public site.
