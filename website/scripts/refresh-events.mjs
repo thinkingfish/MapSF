@@ -40,7 +40,12 @@ function decodeMarkup(value) {
     .replace(/&quot;/gi, '"')
     .replace(/&#39;|&apos;/gi, "'")
     .replace(/&lt;/gi, '<')
-    .replace(/&gt;/gi, '>');
+    .replace(/&gt;/gi, '>')
+    .replace(/&#(x[0-9a-f]+|[0-9]+);/gi, (match, value) => {
+      const code = value[0].toLowerCase() === 'x' ? parseInt(value.slice(1), 16) : Number(value);
+      return code > 0 && code <= 0x10ffff && !(code >= 0xd800 && code <= 0xdfff)
+        ? String.fromCodePoint(code) : match;
+    });
 }
 
 function plainText(value) {
@@ -70,7 +75,7 @@ export function parseJsonLdEvents(document) {
   const scriptPattern = /<script\b[^>]*type\s*=\s*["']application\/ld\+json(?:;[^"']*)?["'][^>]*>([\s\S]*?)<\/script\s*>/gi;
   for (const match of document.matchAll(scriptPattern)) {
     try {
-      flattenJsonLd(JSON.parse(decodeMarkup(match[1]).trim()), events);
+      flattenJsonLd(JSON.parse(match[1].trim()), events);
     } catch {
       // A page can contain unrelated malformed structured-data blocks.
     }
@@ -286,7 +291,7 @@ function normalizeJsonLd(source, { record, pageUrl }) {
   const address = addressText(location);
   const locationName = plainText(location?.name) || title;
   const category = Array.isArray(record.eventType) ? record.eventType[0] : record.eventType;
-  const description = plainText(record.description);
+  // Keep publisher prose on its original page; manual curation may add a summary.
   const image = imageUrl(record, pageUrl);
   const event = {
     id: stableId(source, record, eventUrl),
@@ -308,7 +313,6 @@ function normalizeJsonLd(source, { record, pageUrl }) {
       geometry,
     };
   }
-  if (description) event.description = description;
   if (image) event.imageUrl = image;
   return event;
 }
@@ -485,7 +489,7 @@ export async function refreshEvents({
   const previous = validPrevious(previousCandidate) ? previousCandidate : empty;
   const manual = await readJson(manualPath, null);
   if (!validManual(manual)) throw new Error('Invalid manual events file');
-  const enabled = sources.filter((source) => source.enabled === true);
+  const enabled = sources.filter((source) => source.approved === true && source.enabled === true);
   const enabledSourceIds = new Set(enabled.map((source) => source.id));
   for (const event of manual.events) {
     if (!validateEvent(event)) throw new Error(`Invalid manual event: ${event?.id ?? '(missing id)'}`);
@@ -518,8 +522,15 @@ export async function refreshEvents({
     const currentCancellationKeys = new Set();
     const sourceUnscopedCancellationIds = new Set();
     try {
-      if (source.adapter !== 'jsonld') throw new Error(`Unsupported adapter: ${source.adapter}`);
-      const raw = await collectJsonLd(source, fetchImpl);
+      let raw;
+      if (source.adapter === 'jsonld') raw = await collectJsonLd(source, fetchImpl);
+      else if (source.adapter === 'sfpl') {
+        const { collectSfpl } = await import('./adapters/sfpl.mjs');
+        raw = await collectSfpl(source, fetchImpl, now);
+      } else if (source.adapter === 'recpark') {
+        const { collectRecpark } = await import('./adapters/recpark.mjs');
+        raw = await collectRecpark(source, fetchImpl, now);
+      } else throw new Error(`Unsupported adapter: ${source.adapter}`);
       for (const item of raw) {
         if (!cancelled(item.record)) continue;
         const id = recordId(source, item);
@@ -633,7 +644,12 @@ function parseArguments(arguments_) {
 
 const invokedPath = process.argv[1] ? resolve(process.argv[1]) : '';
 if (invokedPath === fileURLToPath(import.meta.url)) {
-  refreshEvents(parseArguments(process.argv.slice(2))).catch((error) => {
+  refreshEvents(parseArguments(process.argv.slice(2))).then((snapshot) => {
+    for (const source of snapshot.sources) {
+      console.log(`${source.name}: ${source.status}, ${source.eventCount} events${source.error ? ' (' + source.error + ')' : ''}`);
+    }
+    console.log(`Published ${snapshot.events.length} verified events.`);
+  }).catch((error) => {
     console.error(error instanceof Error ? error.message : error);
     process.exitCode = 1;
   });

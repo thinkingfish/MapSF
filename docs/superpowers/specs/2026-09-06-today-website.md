@@ -30,8 +30,10 @@ This feed can be consumed by iOS later without coupling the two UI implementatio
 ## Sources and refresh
 
 The owner vets sources; a repository-owned JavaScript registry contains candidates
-SF Rec & Parks, SFPL, Funcheap, SF Chronicle. Candidates start disabled. Only
-explicitly enabled sources are fetched. Quality over quantity: bounded collection,
+SF Rec & Parks, SFPL, Funcheap, SF Chronicle, Mission Local, The Ingleside Light,
+Richmond Review / Sunset Beacon, and Marina Times. Candidates start disabled. Only
+explicitly approved and enabled sources are fetched. Current adapter coverage and
+remaining source work are tracked in website/SOURCE-STATUS.md. Quality over quantity: bounded collection,
 source attribution, explicit times, actual geometry, no guessing free admission,
 no fabricated geocoding. Incomplete or cancelled events are excluded. Allow manual
 curation for trusted listings and geometry where feeds cannot provide it. Keep

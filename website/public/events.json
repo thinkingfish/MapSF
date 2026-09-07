@@ -1,6 +1,456 @@
 {
   "schemaVersion": 1,
-  "generatedAt": null,
-  "sources": [],
-  "events": []
+  "generatedAt": "2026-09-07T00:36:23.678Z",
+  "sources": [
+    {
+      "id": "sfpl",
+      "name": "San Francisco Public Library",
+      "url": "https://sfpl.org/events",
+      "status": "ok",
+      "lastSuccessfulAt": "2026-09-07T00:36:23.678Z",
+      "eventCount": 3
+    },
+    {
+      "id": "sf-rec-park",
+      "name": "San Francisco Recreation and Parks",
+      "url": "https://sfrecpark.org/Calendar.aspx",
+      "status": "ok",
+      "lastSuccessfulAt": "2026-09-07T00:36:23.678Z",
+      "eventCount": 2
+    },
+    {
+      "id": "mission-local",
+      "name": "Mission Local",
+      "url": "https://missionlocal.org/events/",
+      "status": "ok",
+      "lastSuccessfulAt": "2026-09-07T00:36:23.678Z",
+      "eventCount": 8
+    }
+  ],
+  "events": [
+    {
+      "id": "mission-local:7ac5b62723d09582",
+      "title": "Community Music Center: Argentine Tango Workshop",
+      "startAt": "2026-09-06T10:00:00-07:00",
+      "endAt": "2026-09-06T18:00:00-07:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "mission-local",
+        "name": "Mission Local",
+        "url": "https://missionlocal.org/event/community-music-center-argentine-tango-workshop/2026-09-06/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Community Music Center",
+          "layerType": "poi",
+          "metadata": {
+            "address": "544 Capp St, San Francisco, CA, 94110"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4182226,
+            37.7579453
+          ]
+        }
+      },
+      "imageUrl": "https://missionlocal.org/wp-content/uploads/2026/08/SF-Tango-Academy-Workshop_web-cal-768x505-1.jpg"
+    },
+    {
+      "id": "mission-local:34782f8e0e967e78",
+      "title": "Gray Area Grand Theater: CROSSROADS 2026 presented by SFCinematheque & Gray Area",
+      "startAt": "2026-09-06T14:00:00-07:00",
+      "endAt": "2026-09-06T22:00:00-07:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "mission-local",
+        "name": "Mission Local",
+        "url": "https://missionlocal.org/event/gray-area-grand-theater-crossroads-2026-presented-by-sfcinematheque-gray-area/2026-09-06/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Gray Area Grand Theater",
+          "layerType": "poi",
+          "metadata": {
+            "address": "2665 Mission St, San Francisco, CA, 94110"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4183493,
+            37.7544054
+          ]
+        }
+      },
+      "imageUrl": "https://missionlocal.org/wp-content/uploads/2026/08/XRDS26-Festival-Graphic-1-scaled-1.jpg"
+    },
+    {
+      "id": "sf-rec-park:10445",
+      "title": "Golden Gate Bandshell: Crucial Reggae Sunday",
+      "startAt": "2026-09-06T16:30:00-07:00",
+      "endAt": "2026-09-06T19:30:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sf-rec-park",
+        "name": "San Francisco Recreation and Parks",
+        "url": "https://sfrecpark.org/Calendar.aspx?EID=10445"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Golden Gate Bandshell",
+          "layerType": "poi",
+          "metadata": {
+            "address": "Music Concourse Drive, San Francisco, CA, 94118"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.467718633595,
+            37.7696158329688
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:106394-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-09-07T17:15:00Z",
+      "endAt": "2026-09-07T17:45:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/09/07/storytime-toddlers"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Merced",
+          "layerType": "poi",
+          "metadata": {
+            "address": "155 Winston Drive San Francisco , CA 94132 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4744806,
+            37.7267834
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:112116-sfpl.org",
+      "title": "Storytime: For Babies",
+      "startAt": "2026-09-07T17:30:00Z",
+      "endAt": "2026-09-07T18:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/09/07/storytime-babies"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Sunset",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1305 18th Avenue San Francisco , CA 94122 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.476292,
+            37.763385
+          ]
+        }
+      }
+    },
+    {
+      "id": "mission-local:bf01a9673b8733b6",
+      "title": "Community Music Center: Argentine Tango Workshop",
+      "startAt": "2026-09-07T11:00:00-07:00",
+      "endAt": "2026-09-07T17:00:00-07:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "mission-local",
+        "name": "Mission Local",
+        "url": "https://missionlocal.org/event/community-music-center-argentine-tango-workshop/2026-09-07/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Community Music Center",
+          "layerType": "poi",
+          "metadata": {
+            "address": "544 Capp St, San Francisco, CA, 94110"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4182226,
+            37.7579453
+          ]
+        }
+      },
+      "imageUrl": "https://missionlocal.org/wp-content/uploads/2026/08/SF-Tango-Academy-Workshop_web-cal-768x505-1.jpg"
+    },
+    {
+      "id": "sf-rec-park:10395",
+      "title": "Golden Gate Park Band: Labor Day Celebration",
+      "startAt": "2026-09-07T13:00:00-07:00",
+      "endAt": "2026-09-07T14:30:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sf-rec-park",
+        "name": "San Francisco Recreation and Parks",
+        "url": "https://sfrecpark.org/Calendar.aspx?EID=10395"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Golden Gate Bandshell",
+          "layerType": "poi",
+          "metadata": {
+            "address": "Music Concourse Drive, San Francisco, CA, 94118"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.467718633595,
+            37.7696158329688
+          ]
+        }
+      }
+    },
+    {
+      "id": "mission-local:946fe421c1e25159",
+      "title": "Dolores Park: SF Mime Troupe – WRECKAGE: A Musical Tragicomedy",
+      "startAt": "2026-09-07T13:30:00-07:00",
+      "endAt": "2026-09-07T15:30:00-07:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "mission-local",
+        "name": "Mission Local",
+        "url": "https://missionlocal.org/event/dolores-park-sf-mime-troupe-wreckage-a-musical-tragicomedy/2026-09-07/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Dolores Park",
+          "layerType": "poi",
+          "metadata": {
+            "address": "19th &amp; Dolores St, San Francisco, CA, 94110"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.426019,
+            37.759816
+          ]
+        }
+      },
+      "imageUrl": "https://missionlocal.org/wp-content/uploads/2026/06/GENERIC_PR_POSTER_3x.jpg"
+    },
+    {
+      "id": "mission-local:a90f63ee4cb6f060",
+      "title": "Community Music Center: Tango Masters Live: SF Tango Orchestra and Academy",
+      "startAt": "2026-09-07T14:00:00-07:00",
+      "endAt": "2026-09-07T16:00:00-07:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "mission-local",
+        "name": "Mission Local",
+        "url": "https://missionlocal.org/event/community-music-center-tango-masters-live-sf-tango-orchestra-and-academy/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Community Music Center",
+          "layerType": "poi",
+          "metadata": {
+            "address": "544 Capp St, San Francisco, CA, 94110"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4182226,
+            37.7579453
+          ]
+        }
+      },
+      "imageUrl": "https://missionlocal.org/wp-content/uploads/2026/08/SFTango-Academy_cal-768x505-1.jpg"
+    },
+    {
+      "id": "sfpl:162171-sfpl.org",
+      "title": "Tutorial: Meet One-on-One with a Financial Counselor",
+      "startAt": "2026-09-08T16:00:00Z",
+      "endAt": "2026-09-09T00:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/09/08/tutorial-meet-one-one-financial-counselor"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Main Library",
+          "layerType": "poi",
+          "metadata": {
+            "address": "100 Larkin Street San Francisco , CA 94102 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.415771,
+            37.779081
+          ]
+        }
+      }
+    },
+    {
+      "id": "mission-local:cd0fe2120433dde1",
+      "title": "ODC Theater: OFF WAA Showcase",
+      "startAt": "2026-09-08T19:00:00-07:00",
+      "endAt": "2026-09-08T21:00:00-07:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "mission-local",
+        "name": "Mission Local",
+        "url": "https://missionlocal.org/event/odc-theater-off-waa-showcase/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "ODC Theater",
+          "layerType": "poi",
+          "metadata": {
+            "address": "3153 17th St, San Francisco, CA, 94110"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4164619,
+            37.7634025
+          ]
+        }
+      },
+      "imageUrl": "https://missionlocal.org/wp-content/uploads/2026/09/servlet.jpg"
+    },
+    {
+      "id": "mission-local:a3606fed18a7fd3a",
+      "title": "Verdi Club: Tuesday Night Lindy Hop and Balboa Classes",
+      "startAt": "2026-09-08T19:00:00-07:00",
+      "endAt": "2026-09-08T21:00:00-07:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "mission-local",
+        "name": "Mission Local",
+        "url": "https://missionlocal.org/event/verdi-club-tuesday-night-lindy-hop-and-balboa-classes-5/2026-09-08/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Verdi Club",
+          "layerType": "poi",
+          "metadata": {
+            "address": "2424 Mariposa Street, San Francisco, CA, 94110"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4079386,
+            37.7634058
+          ]
+        }
+      },
+      "imageUrl": "https://missionlocal.org/wp-content/uploads/2017/12/VerdiClublogo-e1511646454767.jpg"
+    },
+    {
+      "id": "mission-local:7d62256317f9678b",
+      "title": "Brava Theater: San Francisco Contemporary Music Players – American Reflections: Exuberance",
+      "startAt": "2026-09-08T19:30:00-07:00",
+      "endAt": "2026-09-08T21:30:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "mission-local",
+        "name": "Mission Local",
+        "url": "https://missionlocal.org/event/brava-theater-san-francisco-contemporary-music-players-american-reflections-exuberance/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Brava Theater",
+          "layerType": "poi",
+          "metadata": {
+            "address": "2781 24th Street, San Francisco, CA, 94110"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4078258,
+            37.7526752
+          ]
+        }
+      },
+      "imageUrl": "https://missionlocal.org/wp-content/uploads/2026/08/Screenshot2026-08-04at12.07.36-PM.jpg"
+    }
+  ]
 }

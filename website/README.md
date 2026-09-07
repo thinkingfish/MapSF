@@ -31,10 +31,16 @@ npm run test:browser
 
 ## Choose the sources
 
-Edit [config/sources.mjs](config/sources.mjs). SF Rec & Parks, SFPL, Funcheap, and
-SF Chronicle are candidates, **disabled until you vet and enable them**. Review
-collection URLs and adapter settings as well as the publisher: an editorial
-homepage or RSS publication timestamp is not necessarily an event date.
+Record your decisions in the [source review checklist](SOURCE-REVIEW.md).
+Its approval boxes do not automatically enable collection.
+
+All eight sources in [config/sources.mjs](config/sources.mjs) have your recorded
+approval. Collection requires both `approved: true` and `enabled: true`.
+The integration status is documented in [SOURCE-STATUS.md](SOURCE-STATUS.md).
+
+SFPL, SF Rec & Parks, and Mission Local are enabled with verified publisher
+fixtures. The other five sources are approved but await complete extraction or
+verified venue geometry. Approval and working collection are separate states.
 
 Only enabled sources are collected. Incomplete or cancelled listings are excluded.
 Collection preserves source attribution and explicit time ranges. Unknown cost
@@ -61,8 +67,10 @@ npm test
 npm run build
 ```
 
-With no enabled sources and no approved content, the public feed stays empty.
-This is intentional. There are no made-up listings disguised as today's events.
+The committed snapshot contains real collected listings. Refresh it before deployment
+and let the scheduled workflow keep it current. Test fixtures never become fallback
+public content. Fetched listings link to publisher pages without copying article
+bodies; optional descriptions can be supplied through manual curation.
 
 ## Manual curation and shared geometry
 

@@ -53,3 +53,11 @@ fix material findings, and report deploy instructions and source enablement gate
 - Task 2 implemented: 3 UI unit tests and 4 production browser tests pass; MapLibre6 named exports and explicit worker bundling verified.
 - Task 3 integrated: Cloudflare dry run passes; desktop/mobile previews inspected with test-only point/route/area fixtures and real map tiles.
 - Whole-site review findings fixed: cancellation preservation, SF geometry coverage, card collapse, and strict calendar validation. Final regression suite: 27 unit tests and 4 production browser tests pass. Scoped rereview completed; its remaining cross-refresh cancellation finding is fixed with persisted, expiring occurrence metadata and a multi-refresh regression.
+
+## Approved-source integration
+
+- Owner approved all eight publishers in SOURCE-REVIEW.md, including Marina Times in conversation.
+- Enabled three verified sources: SFPL (detail + UTC ICS + exact branch coordinates), Rec & Parks (verified Bandshell facility), Mission Local (calendar JSON-LD).
+- Five approved sources remain pending specific extraction/geometry/freshness work; evidence and limits are in website/SOURCE-STATUS.md.
+- Collector now enforces both approval and enabled status; publisher prose remains on source pages.
+- Integration verification: 51 unit tests, 4 production browser tests, and existing architecture checks pass. Scoped review passed after fixing cancellation handling before publication-field validation and SFPL current-time filtering. Final live refresh succeeded for all three enabled sources (13 unexpired events; 3 shown for today at verification time). Production desktop/mobile preview passed with no page errors; Cloudflare deployment dry run passed.
