@@ -280,7 +280,7 @@ function cancellationMetadata(instances) {
   return values.length > 0 ? { cancelledInstances: values } : {};
 }
 
-function normalizeJsonLd(source, { record, pageUrl }) {
+function normalizeJsonLd(source, { record, pageUrl, curation }) {
   if (cancelled(record)) return null;
   const title = plainText(record.name);
   const startAt = text(record.startDate);
@@ -315,6 +315,8 @@ function normalizeJsonLd(source, { record, pageUrl }) {
       geometry,
     };
   }
+  // Only trusted adapters supply this sibling field; publisher JSON-LD cannot.
+  if (curation) event.curation = structuredClone(curation);
   if (image) event.imageUrl = image;
   return event;
 }
@@ -559,6 +561,12 @@ export async function refreshEvents({
       } else if (source.adapter === 'mission-local') {
         const { collectMissionLocal } = await import('./adapters/mission-local.mjs');
         raw = await collectMissionLocal(source, fetchImpl, now);
+      } else if (source.adapter === 'chronicle') {
+        const { collectChronicle } = await import('./adapters/chronicle.mjs');
+        raw = await collectChronicle(source, fetchImpl, now);
+      } else if (source.adapter === 'civic-joy-fund') {
+        const { collectCivicJoy } = await import('./adapters/civic-joy-fund.mjs');
+        raw = await collectCivicJoy(source, fetchImpl, now);
       } else throw new Error(`Unsupported adapter: ${source.adapter}`);
       if (source.collectionWindowDays === 30 && (raw.coverageComplete !== true || usefulCoverageDates(raw.coverageDates, today).length !== 30)) throw new Error('Incomplete 30-day source collection');
       if (source.adapter === 'mission-local') reconcileMissionLocalIds(source, raw, previous, manual, sourceCancellations);

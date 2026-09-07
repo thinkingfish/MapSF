@@ -753,8 +753,8 @@ h1 span {
     min-height: 0;
   }
   .map-panel {
-    height: 330px;
-    min-height: 330px;
+    height: 420px;
+    min-height: 420px;
     scroll-margin-top: 15px;
   }
   .map-heading {

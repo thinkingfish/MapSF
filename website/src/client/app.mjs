@@ -42,6 +42,9 @@ const sfBounds = [
   [-122.53, 37.7],
   [-122.348, 37.835],
 ];
+const cityFitPadding = () => window.matchMedia('(max-width: 760px)').matches
+  ? { top: 60, bottom: 85, left: 10, right: 10 }
+  : 10;
 const reduceMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
@@ -374,7 +377,7 @@ async function setupMap() {
         ],
       },
       bounds: sfBounds,
-      fitBoundsOptions: { padding: 10 },
+      fitBoundsOptions: { padding: cityFitPadding() },
       minZoom: 9,
       maxZoom: 18,
       attributionControl: { compact: false },
@@ -508,7 +511,7 @@ $("free-only").addEventListener("change", (event) => {
 });
 $("reset-map").addEventListener("click", () => {
   if (mapReady)
-    map.fitBounds(sfBounds, { padding: 10, duration: reduceMotion ? 0 : 650 });
+    map.fitBounds(sfBounds, { padding: cityFitPadding(), duration: reduceMotion ? 0 : 650 });
 });
 for (const [button, panel] of [
   ["show-map", "map-panel"],

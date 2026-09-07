@@ -58,12 +58,12 @@ export const sources = [
     id: 'sf-chronicle',
     name: 'San Francisco Chronicle',
     listingUrl: 'https://www.sfchronicle.com/entertainment/events/',
-    approved: true, // Yao, 2026-09-06; recorded in SOURCE-REVIEW.md.
-    enabled: false, // Publisher-specific extraction verification is pending.
-    adapter: 'jsonld',
-    detailPathPattern: /^\/entertainment\/[a-z0-9/-]+/i,
-    maxDetailPages: 12,
-    maxEvents: 50,
+    approved: true,
+    enabled: true,
+    adapter: 'chronicle',
+    collectionWindowDays: 30,
+    maxRequestsPerDay: 2,
+    maxEvents: 5000,
   },
   {
     id: 'mission-local',
@@ -121,12 +121,13 @@ export const sources = [
     id: 'civic-joy-fund',
     name: 'Civic Joy Fund',
     listingUrl: 'https://civicjoyfund.org/events',
-    approved: true, // Added at Yao's request; recorded in SOURCE-REVIEW.md.
-    enabled: false,
-    adapter: 'jsonld',
-    // Provided page has no JSON-LD Event records; verify its event data adapter.
-    maxDetailPages: 0,
-    maxEvents: 40,
+    calendarUrl: 'https://calendar.google.com/calendar/ical/c_b0e78aa2d8125f99b281c06594c1e47e63f1bcb7c33e975f8b6d469204f6735f%40group.calendar.google.com/public/basic.ics',
+    approved: true,
+    enabled: true,
+    adapter: 'civic-joy-fund',
+    collectionWindowDays: 30,
+    maxDetailPages: 10,
+    maxEvents: 1000,
   },
   {
     id: 'mission-science-workshop',
