@@ -138,7 +138,7 @@ function renderCard(event) {
   button.setAttribute("aria-expanded", String(selected));
   button.setAttribute(
     "aria-label",
-    `${event.title}, ${event.hoursLabel || eventTime(event)}, ${event.cost.label}`,
+    `${selected ? "Hide details" : "Details"}: ${event.title}, ${event.hoursLabel || eventTime(event)}, ${event.cost.label}`,
   );
   const detailsId = `event-details-${state.visible.indexOf(event)}`;
   button.setAttribute("aria-controls", detailsId);
@@ -155,7 +155,7 @@ function renderCard(event) {
   place.append(
     element("span", "place-marker"),
     element("span", "", properties.name),
-    element("span", "event-chevron", selected ? "−" : "+"),
+    element("span", "event-details-label", selected ? "Hide details" : "Details"),
   );
   button.append(kicker, element("span", "event-title", event.title), place);
   if (event.eligibility) button.append(element("span", "admission-note", event.eligibility));

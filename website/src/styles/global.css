@@ -534,11 +534,12 @@ h1 span {
   border-radius: 50%;
   border: 1.5px solid #bb8496;
 }
-.event-chevron {
+.event-details-label {
   margin-left: auto;
-  color: #c78295;
-  font-size: 19px;
-  line-height: 10px;
+  color: #934255;
+  font-size: 14px;
+  line-height: 1.5;
+  flex-shrink: 0;
 }
 .event-details {
   padding: 0 16px 17px;
