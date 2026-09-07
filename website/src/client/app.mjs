@@ -22,7 +22,7 @@ const state = {
   day: sfDate(),
   followToday: true,
   freeOnly: false,
-  sourceIds: [],
+  excludedSourceIds: [],
   mapBounds: null,
   feed: null,
   error: false,
@@ -110,7 +110,7 @@ function renderEmpty(target = list) {
   const empty = element("div", "empty-state");
   empty.append(emptyIcon.cloneNode(true));
   const hasFilters =
-    state.freeOnly || state.sourceIds.length > 0 || Boolean(state.mapBounds);
+    state.freeOnly || state.excludedSourceIds.length > 0 || Boolean(state.mapBounds);
   const dayChecked = checkedDates(state.feed?.coverage).has(state.day);
   const title = state.error
     ? "Let’s try that again."
@@ -254,7 +254,7 @@ function renderList() {
     body.setAttribute("role", "region");
     body.setAttribute("aria-labelledby", button.id);
     if (kind === "events" && !entries.length) {
-      if (state.error || !places.length || state.freeOnly || state.sourceIds.length) renderEmpty(body);
+      if (state.error || !places.length || state.freeOnly || state.excludedSourceIds.length) renderEmpty(body);
       else body.append(element("p", "places-intro", checkedDates(state.feed?.coverage).has(state.day)
         ? "No one-off events listed for this day." : "Event listings haven’t been checked for this day."));
     }
@@ -286,12 +286,13 @@ function updateDateShortcuts(now = new Date()) {
   }
 }
 
-const sourceNames = new Map();
-function updateSourceOptions(events) {
+function updateSourceOptions() {
   const options = $("source-options");
-  const sources = new Map(events.map(event => [event.source.id, event.source.name]));
-  for (const [id, name] of sources) sourceNames.set(id, name);
-  for (const id of state.sourceIds) if (!sources.has(id)) sources.set(id, sourceNames.get(id) || id);
+  // Keep the publisher menu stable across dates, including zero-result sources.
+  const sources = new Map((state.feed?.sources || []).map(source => [source.id, source.name]));
+  for (const event of state.events) {
+    if (!event.recurring) sources.set(event.source.id, event.source.name);
+  }
   const entries = [...sources].sort((a, b) => a[1].localeCompare(b[1]));
   const signature = JSON.stringify(entries);
   if (options.dataset.options !== signature) {
@@ -301,7 +302,9 @@ function updateSourceOptions(events) {
       checkbox.type = "checkbox";
       checkbox.value = id;
       checkbox.addEventListener("change", () => {
-        state.sourceIds = checkbox.checked ? [...state.sourceIds, id] : state.sourceIds.filter(value => value !== id);
+        state.excludedSourceIds = checkbox.checked
+          ? state.excludedSourceIds.filter(value => value !== id)
+          : [...new Set([...state.excludedSourceIds, id])];
         render();
       });
       label.append(checkbox, document.createTextNode(name));
@@ -309,9 +312,11 @@ function updateSourceOptions(events) {
     }));
     options.dataset.options = signature;
   }
-  for (const checkbox of options.querySelectorAll("input")) checkbox.checked = state.sourceIds.includes(checkbox.value);
-  $("source-filter").textContent = state.sourceIds.length === 0 ? "All sources" : state.sourceIds.length === 1
-    ? sourceNames.get(state.sourceIds[0]) || state.sourceIds[0] : state.sourceIds.length + " sources";
+  for (const checkbox of options.querySelectorAll("input")) checkbox.checked = !state.excludedSourceIds.includes(checkbox.value);
+  const selected = entries.filter(([id]) => !state.excludedSourceIds.includes(id));
+  $("source-filter").textContent = selected.length === entries.length ? "All sources" : selected.length === 0
+    ? "No sources" : selected.length === 1 ? selected[0][1] : selected.length + " sources";
+  positionSourceMenu();
 }
 
 function render() {
@@ -322,7 +327,7 @@ function render() {
     (event) => state.day !== sfDate(now) || new Date(event.endAt) > now,
   );
   const candidates = [...dayEvents, ...scheduledPlacesForDay(state.day, { now })];
-  updateSourceOptions(dayEvents);
+  updateSourceOptions();
   state.mapped = filterEvents(candidates, { ...state, mapBounds: null });
   state.visible = filterEvents(state.mapped, { mapBounds: state.mapBounds });
   $("region-status").hidden = !state.mapBounds;
@@ -594,7 +599,7 @@ async function loadFeed() {
 
 function resetFilters() {
   state.freeOnly = false;
-  state.sourceIds = [];
+  state.excludedSourceIds = [];
   $("free-only").checked = false;
   if (mapReady) map.fitBounds(sfBounds, { padding: cityFitPadding(), duration: 0 });
   render();
@@ -615,16 +620,27 @@ $("free-only").addEventListener("change", (event) => {
   state.freeOnly = event.target.checked;
   render();
 });
-$("all-sources").addEventListener("click", () => { state.sourceIds = []; render(); });
+function positionSourceMenu() {
+  const panel = $("source-menu");
+  if (!panel.matches(":popover-open")) return;
+  const viewport = window.visualViewport;
+  const left = viewport?.offsetLeft || 0;
+  const top = viewport?.offsetTop || 0;
+  const width = viewport?.width || innerWidth;
+  const height = viewport?.height || innerHeight;
+  panel.style.width = Math.min(340, width - 32) + "px";
+  panel.style.maxHeight = Math.min(440, height - 32) + "px";
+  const bounds = $("source-filter").getBoundingClientRect();
+  panel.style.left = Math.max(left + 16, Math.min(bounds.left, left + width - panel.offsetWidth - 16)) + "px";
+  panel.style.top = Math.max(top + 16, Math.min(bounds.bottom + 8, top + height - panel.offsetHeight - 16)) + "px";
+}
 $("source-menu").addEventListener("toggle", event => {
   $("source-filter").setAttribute("aria-expanded", String(event.newState === "open"));
-  if (event.newState === "open") {
-    const bounds = $("source-filter").getBoundingClientRect();
-    const panel = $("source-menu");
-    panel.style.left = Math.max(16, Math.min(bounds.left, innerWidth - panel.offsetWidth - 16)) + "px";
-    panel.style.top = Math.max(16, Math.min(bounds.bottom + 8, innerHeight - panel.offsetHeight - 16)) + "px";
-  }
+  positionSourceMenu();
 });
+window.addEventListener("resize", positionSourceMenu);
+window.visualViewport?.addEventListener("resize", positionSourceMenu);
+window.visualViewport?.addEventListener("scroll", positionSourceMenu);
 $("reset-map").addEventListener("click", () => {
   if (mapReady)
     map.fitBounds(sfBounds, { padding: cityFitPadding(), duration: reduceMotion ? 0 : 650 });

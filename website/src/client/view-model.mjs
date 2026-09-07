@@ -1,6 +1,6 @@
-export function filterEvents(events, { freeOnly = false, sourceIds = [], mapBounds = null } = {}) {
+export function filterEvents(events, { freeOnly = false, excludedSourceIds = [], mapBounds = null } = {}) {
   return events.filter(event => (!freeOnly || event.cost.isFree)
-    && (!sourceIds.length || event.recurring || sourceIds.includes(event.source.id))
+    && (!excludedSourceIds.length || event.recurring || !excludedSourceIds.includes(event.source.id))
     && (!mapBounds || geometryIntersectsBounds(event.curation.geometry, mapBounds)));
 }
 
