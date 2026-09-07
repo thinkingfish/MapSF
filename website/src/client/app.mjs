@@ -245,7 +245,7 @@ function render() {
     !state.selectionCleared &&
     !state.visible.some((event) => event.id === state.selected)
   )
-    state.selected = state.visible[0]?.id ?? null;
+    state.selected = null;
   const eventCount = state.visible.filter(event => !event.recurring).length;
   const placeCount = state.visible.length - eventCount;
   $("event-count").textContent = `${eventCount} ${eventCount === 1 ? "event" : "events"}${placeCount ? ` · ${placeCount} ${placeCount === 1 ? "place" : "places"}` : ""}`;

@@ -52,8 +52,11 @@ test('production map renderer loads and event selection exposes source details',
   timedFeed.events[0].startAt = '2026-09-06T11:00:00-07:00';
   timedFeed.events[0].endAt = '2026-09-06T12:00:30-07:00';
   await load(page, timedFeed);
+  await expect(page.locator('#event-list button[aria-expanded="true"]')).toHaveCount(0);
   await expect(page.locator('canvas.maplibregl-canvas')).toBeVisible();
   await expect(page.locator('#map-status')).toBeHidden({ timeout: 15000 });
+  await page.clock.fastForward(60_000);
+  await expect(page.locator('#event-list button[aria-expanded="true"]')).toHaveCount(0);
   const route = page.locator('article[data-event-id="route-event"]');
   await route.locator('button').click();
   await expect(route.locator('button')).toHaveAttribute('aria-expanded', 'true');
