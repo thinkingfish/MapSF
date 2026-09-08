@@ -3,7 +3,7 @@
 Reviewed September 6, 2026 for the rolling September 6–October 5 window. This is
 bounded discovery evidence, not an enabled collector or a promise of complete
 publisher coverage. Publisher approval is already recorded in
-[the source review](../website/SOURCE-REVIEW.md).
+[the source review](../SOURCE-REVIEW.md).
 
 Live Node fetches returned HTTP 200 for all three general RSS feeds, the sampled
 articles, and the category pages below. Each general feed contained 15 entries.

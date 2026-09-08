@@ -13,20 +13,17 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    defaults:
-      run:
-        working-directory: website
     steps:
       - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v6
         with:
-          package_json_file: website/package.json
+          package_json_file: package.json
           run_install: false
       - uses: actions/setup-node@v6
         with:
-          node-version-file: website/.node-version
+          node-version-file: .node-version
           cache: pnpm
-          cache-dependency-path: website/pnpm-lock.yaml
+          cache-dependency-path: pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - name: Download and validate a candidate
@@ -45,4 +42,4 @@ jobs:
           compression-level: 0
       - name: Review instructions
         run: |
-          echo 'Download mapsf-tile-candidate, review its manifest, then run pnpm --dir website run tiles:refresh --adopt PATH and open a PR. No live tiles were changed.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Download mapsf-tile-candidate, review its manifest, then run pnpm run tiles:refresh --adopt PATH and open a PR. No live tiles were changed.' >> "$GITHUB_STEP_SUMMARY"

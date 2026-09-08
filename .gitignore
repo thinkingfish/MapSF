@@ -1,16 +1,3 @@
-# Xcode
-build/
-DerivedData/
-*.xcodeproj/xcuserdata/
-*.xcodeproj/project.xcworkspace/
-*.xcworkspace/xcuserdata/
-*.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
-
-# Swift Package Manager
-.build/
-.swiftpm/
-Package.resolved
-
 # macOS
 .DS_Store
 .AppleDouble
@@ -31,3 +18,17 @@ Package.resolved
 # Tile refresh staging
 .tile-work/
 .tile-adopt-*/
+
+# Web application
+node_modules/
+dist/
+.astro/
+.wrangler/
+.env
+.env.*
+!.env.example
+playwright-report/
+test-results/
+public/basemap/
+public/.basemap-staging-*/
+public/basemap.previous/

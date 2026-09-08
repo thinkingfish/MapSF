@@ -15,9 +15,9 @@ The shared compressed source is 34.4 MiB. The website can zoom to 18 by overzoom
 
 - `config/tiles.mjs`: coverage, zooms, budgets, and pinned font revision.
 - `config/basemap-release.json`: reviewed snapshot, SHA-256 checksums, provenance, sizes and per-zoom counts.
-- `../maps/basemap/sf-bay.pmtiles`: shared source; compressed once in Git rather than committing thousands of individual tile files.
-- `../maps/basemap/fonts/`: the font ranges used by names in that source; SIL license alongside them.
-- `../MapSF/Resources/BaseMap/sf-tiles.mbtiles`: generated iOS subset, with gzip-compressed MVT data and TMS tile rows.
+- `maps/basemap/sf-bay.pmtiles`: shared source; compressed once in Git rather than committing thousands of individual tile files.
+- `maps/basemap/fonts/`: the font ranges used by names in that source; SIL license alongside them.
+- `iOS/MapSF/Resources/BaseMap/sf-tiles.mbtiles`: generated iOS subset, with gzip-compressed MVT data and TMS tile rows.
 - `src/lib/basemap-style.mjs`: muted website vector style and same-origin URLs.
 
 `pnpm run dev` and `pnpm run build` prepare `public/basemap/VERSION/` from local, checksum-verified inputs. Generated web files are ignored by Git. Normal builds need no map/font downloads and no PMTiles CLI. Install dependencies with `pnpm install --frozen-lockfile`; Node 24 is pinned by the project.
@@ -26,7 +26,7 @@ The version hashes the complete release manifest, including source/font checksum
 
 ## Refresh and review
 
-Run from `website/`:
+Run from the repository root:
 
 ```sh
 # Latest published build, or choose a date explicitly:
@@ -44,7 +44,7 @@ pnpm test
 pnpm run test:browser
 ```
 
-Adoption verifies source/font checksums and the complete web tile inventory, regenerates the iOS subset and compares its checksum, then copies the validated inputs into the repository. Open a PR containing the input data, release manifest and iOS archive together. Inspect the map at city and street scales and run the iOS app on macOS/Xcode before an app release. Linux tests validate the MBTiles database/data but cannot validate the native renderer.
+Adoption verifies source/font checksums and the complete web tile inventory, regenerates the iOS subset and compares its checksum, then copies the validated inputs into `maps/basemap/`, the release manifest into `config/`, and the iOS archive into `iOS/MapSF/Resources/BaseMap/`. Open a PR containing the input data, release manifest and iOS archive together. Inspect the map at city and street scales and run the iOS app on macOS/Xcode before an app release. Linux tests validate the MBTiles database/data but cannot validate the native renderer.
 
 The monthly `Prepare monthly map tiles` GitHub workflow runs at 12:43 UTC on the first day of each month; it can also be dispatched manually. It uploads a 35-day `mapsf-tile-candidate` artifact after extraction, validation and a production build. It does **not** commit, merge or deploy. Download/unzip that artifact and use the same adoption command to create a reviewed PR. Daily event refreshes keep using the last reviewed map snapshot.
 
@@ -52,15 +52,15 @@ A missing tile, corrupt input, unsupported Protomaps major schema, or exceeded b
 
 ## Cloudflare deployment
 
-Use the existing production build/deploy commands. From repository root:
+From the repository root:
 
 ```sh
-pnpm --dir website install --frozen-lockfile
-pnpm --dir website run build
-pnpm --dir website exec wrangler deploy
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm exec wrangler deploy
 ```
 
-Or use `pnpm run build` / `pnpm exec wrangler deploy` when Cloudflare's root directory is `website`. Wrangler uploads generated `dist/` assets, including the tile tree. No new account settings or bindings are required. The initial complete build has about 2,400 files and 68 MiB of assets, all below the individual-file limit. Merge/deploy normally; merely generating a candidate does not update mapsf.net.
+Set Cloudflare's root directory to `/` (it may appear blank in the dashboard), with `pnpm run build` as the build command. Preview deployments use `pnpm exec wrangler versions upload`. Existing production and preview settings must both drop the old `website` root, `--dir website` command prefixes, and any `website/**`-only watch rule; see [deployment setup](README.md#deploy-on-cloudflare). These dashboard changes require authenticated account access. Wrangler uploads generated `dist/` assets, including the tile tree. Tile serving needs no additional bindings. The initial complete build has about 2,400 files and 68 MiB of assets, all below the individual-file limit. Merge/deploy normally; merely generating a candidate does not update mapsf.net.
 
 ## Verification and upstream references
 

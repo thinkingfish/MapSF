@@ -12,7 +12,7 @@ Reviewed 2026-09-06 against [operator hours](https://gggp.org/visit/admissions-h
 
 Records expire after 2026-12-31 and produce no cards outside the configured validity window. This bounds the known annual closure data; it is not a guarantee of future availability. Review official hours, admission requirements, seasonal cutoffs, announced closures, map positions, and exceptions before extending dates. Unexpected closures, sold-out tickets, and special events are not a live feed. The small catalog guarantees no particular number of options for every date or visitor's eligibility.
 
-Run `node --test website/tests/places.test.mjs` from the repository root to check monthly/holiday rules, SF midnight and DST, seasonal last entry, resident labels, closures, review expiry, duplicate suppression, and complete curation geometry.
+Run `pnpm exec node --test tests/places.test.mjs` from the repository root to check monthly/holiday rules, SF midnight and DST, seasonal last entry, resident labels, closures, review expiry, duplicate suppression, and complete curation geometry.
 
 ## Community science workshops
 
