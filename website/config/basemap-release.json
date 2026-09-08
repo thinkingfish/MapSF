@@ -1,0 +1,126 @@
+{
+  "version": "20260907-15e4a7744194fe50",
+  "bounds": [
+    -122.65,
+    37.6,
+    -122.2,
+    37.95
+  ],
+  "minzoom": 8,
+  "maxzoom": 15,
+  "source": {
+    "url": "https://build.protomaps.com/20260907.pmtiles",
+    "buildVersion": "4.15.2",
+    "upstreamPlanetB3": "99796b90478828fd0f6db3eeec760ee5c8bb3c32cbc693d0462fca78c44bf1cc",
+    "sha256": "68afc58d42efc69626e9bdb523f7542dea408ef41c9f1004b3021cd410b56304",
+    "bytes": 36113749,
+    "extractor": "go-pmtiles 1.31.2",
+    "localExtract": false
+  },
+  "fontRevision": "028c18f713baecad011301ff7a69acc39bcc2ae7",
+  "profiles": {
+    "web": {
+      "bounds": [
+        -122.65,
+        37.6,
+        -122.2,
+        37.95
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "maxBytes": 188743680,
+      "maxFiles": 18000,
+      "maxFileBytes": 26214400
+    },
+    "ios": {
+      "bounds": [
+        -122.55,
+        37.7,
+        -122.35,
+        37.85
+      ],
+      "minzoom": 10,
+      "maxzoom": 15,
+      "maxBytes": 20971520
+    }
+  },
+  "web": {
+    "bounds": [
+      -122.65,
+      37.6,
+      -122.2,
+      37.95
+    ],
+    "minzoom": 8,
+    "maxzoom": 15,
+    "tileCount": 2341,
+    "bytes": 61625020,
+    "byZoom": {
+      "8": 4,
+      "9": 4,
+      "10": 4,
+      "11": 9,
+      "12": 36,
+      "13": 121,
+      "14": 441,
+      "15": 1722
+    },
+    "glyphRanges": [
+      "0-255",
+      "256-511",
+      "1024-1279",
+      "3584-3839",
+      "7680-7935",
+      "8192-8447",
+      "9216-9471",
+      "19968-20223",
+      "22784-23039",
+      "24064-24319",
+      "25088-25343",
+      "25856-26111",
+      "26368-26623",
+      "29696-29951",
+      "34048-34303"
+    ]
+  },
+  "ios": {
+    "bounds": [
+      -122.55,
+      37.7,
+      -122.35,
+      37.85
+    ],
+    "minzoom": 10,
+    "maxzoom": 15,
+    "tileCount": 501,
+    "bytes": 13504512,
+    "byZoom": {
+      "10": 2,
+      "11": 4,
+      "12": 9,
+      "13": 25,
+      "14": 100,
+      "15": 361
+    },
+    "sha256": "46ed0545198af6f6ce9cefa6bd3eff3c78c2d6be630a602976ab3d485b55d9d0"
+  },
+  "files": {
+    "fonts/Noto Sans Regular/0-255.pbf": "62c6d49b15fa836eb6aa45e259c7ca6762f44b011b09e47776efbe4a6db1b397",
+    "fonts/Noto Sans Regular/256-511.pbf": "2eca7561f9f566bcacfda5dd04fb5880baec1328ec0f5484678289a13994de8a",
+    "fonts/Noto Sans Regular/1024-1279.pbf": "302231023f7048d9694a7b3f3b737c8bc378f5af0175aed5bb4f2f3b6188919a",
+    "fonts/Noto Sans Regular/3584-3839.pbf": "6ddbd10873186e1bdd270232b64819587edc06e1d8432baa2a163ace2331bd61",
+    "fonts/Noto Sans Regular/7680-7935.pbf": "b9100ec886dff647198802c41d1ca6df9e6f82325179d8d71e3d377b5fe8682e",
+    "fonts/Noto Sans Regular/8192-8447.pbf": "8ea977a587352fe31b4159ffdbc9a40be79056f2472017c742ea1e4a931864b9",
+    "fonts/Noto Sans Regular/9216-9471.pbf": "55810b3114332aad1e333fe12c52955c44fb0ad8b11ea03ece6a2ea521edb531",
+    "fonts/Noto Sans Regular/19968-20223.pbf": "dfd5002c61cc6afdab9253dc3bfc6ad541639a938f115493d6d773727016342e",
+    "fonts/Noto Sans Regular/22784-23039.pbf": "2ee75a039b051dacd31fd50c867d15f3594481006723ea7bc7059a143d2e0e05",
+    "fonts/Noto Sans Regular/24064-24319.pbf": "9b8ef1a6723554115d3bd07ef09a2b5f34910684bee9d92c2ba0c0955b7c5170",
+    "fonts/Noto Sans Regular/25088-25343.pbf": "48de62efc3a509aaf689d94ea3cf9265bce1a8bedff05c5b37a7a25a9d345a2f",
+    "fonts/Noto Sans Regular/25856-26111.pbf": "8d1fbbebd72ff27dc38632d8272bba7a4fafa64a431273649cb59ef9a0f1c51f",
+    "fonts/Noto Sans Regular/26368-26623.pbf": "e2a78099c1f14ad484898056780f5cbe38530a5bf40807d343be5ba7bd84c3d8",
+    "fonts/Noto Sans Regular/29696-29951.pbf": "05e1cc2daca41d71953e9e4f3d989d5ebb637418c74c1c3323d15fae0daf165c",
+    "fonts/Noto Sans Regular/34048-34303.pbf": "9f88b3eac1912793e52b38ae70fe676ace148536b9982edc05ba76b0113c24ee",
+    "OFL.txt": "7713cfc8e3c36d5ec4aa3d6cffe7500a1b3310f8a86d914b8ea09c2a9dee7c2d",
+    "NOTICE.txt": "28876f42c1e75f055843b58730f1d4354f4ebc02ff6e2bb2f742bdc8d63383d4"
+  }
+}

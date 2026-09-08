@@ -1,3 +1,5 @@
+import basemapRelease from '../../config/basemap-release.json';
+import { createBasemapStyle } from '../lib/basemap-style.mjs';
 import { applyVenuePriceHint } from '../lib/venue-pricing.mjs';
 import { createCalendar, checkedDates } from "./calendar.mjs";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
@@ -441,31 +443,8 @@ async function setupMap() {
     setWorkerUrl(workerUrl);
     map = new Map({
       container: "map",
-      style: {
-        version: 8,
-        sources: {
-          basemap: {
-            type: "raster",
-            tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
-            tileSize: 256,
-            attribution:
-              '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>',
-            maxzoom: 19,
-          },
-        },
-        layers: [
-          {
-            id: "basemap",
-            type: "raster",
-            source: "basemap",
-            paint: {
-              "raster-saturation": -0.82,
-              "raster-opacity": 0.72,
-              "raster-contrast": -0.15,
-            },
-          },
-        ],
-      },
+      style: createBasemapStyle(basemapRelease),
+      maxBounds: basemapRelease.bounds,
       bounds: sfBounds,
       fitBoundsOptions: { padding: cityFitPadding() },
       minZoom: 9,
