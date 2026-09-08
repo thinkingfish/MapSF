@@ -12,7 +12,7 @@ async function load(page) {
 test('source filter combines with Free only and can recover from no matches',async({page})=>{
   await load(page);
   await page.locator('#source-filter').click();
-  await page.getByRole('checkbox',{name:'Mission Local',exact:true}).check();
+  await page.getByRole('checkbox',{name:'SF Public Library',exact:true}).uncheck();
   await page.keyboard.press('Escape');
   await expect(page.locator('#events-entries article')).toHaveCount(1);
   await expect(page.locator('#event-list')).toContainText(feed.events[1].title);
@@ -70,19 +70,19 @@ for(const [name,viewport] of [['desktop',{width:1440,height:900}],['mobile',{wid
  });
 }
 
- test('multiple sources combine and All sources restores the complete set',async({page})=>{
+ test('checked sources can be excluded and restored individually',async({page})=>{
   await load(page);
   await page.locator('#source-filter').click();
-  await page.getByRole('checkbox',{name:'Mission Local',exact:true}).check();
-  await page.getByRole('checkbox',{name:'SF Public Library',exact:true}).check();
-  await expect(page.locator('#source-filter')).toHaveText('2 sources');
+  await expect(page.getByRole('checkbox',{name:'Mission Local',exact:true})).toBeChecked();
+  await expect(page.getByRole('checkbox',{name:'SF Public Library',exact:true})).toBeChecked();
+  await expect(page.locator('#source-filter')).toHaveText('All sources');
   for(const event of feed.events) await expect(page.locator('#event-list')).toContainText(event.title);
   await expect(page.locator('#event-list [data-recurring]')).toHaveCount(4);
   await expect(page.getByRole('checkbox',{name:'Gardens of Golden Gate Park',exact:true})).toHaveCount(0);
   await page.getByRole('checkbox',{name:'Mission Local',exact:true}).uncheck();
   await expect(page.locator('[data-event-id="route-event"]')).toHaveCount(0);
-  await page.getByRole('button',{name:'All sources',exact:true}).click();
-  await expect(page.getByRole('checkbox',{name:'SF Public Library',exact:true})).not.toBeChecked();
+  await page.getByRole('checkbox',{name:'Mission Local',exact:true}).check();
+  await expect(page.getByRole('checkbox',{name:'SF Public Library',exact:true})).toBeChecked();
   await page.keyboard.press('Escape');
   await expect(page.locator('#source-filter')).toBeFocused();
   await expect(page.locator('[data-event-id="route-event"]')).toHaveCount(1);

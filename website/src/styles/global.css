@@ -871,9 +871,8 @@ h1 span {
   .results-panel { overflow: clip; }
 }
 
-.source-menu { position: fixed; inset: auto; width: min(340px, calc(100vw - 32px)); max-height: min(440px, 65vh); overflow-y: auto; box-sizing: border-box; margin: 0; padding: 16px; border: 1px solid #dce1e3; border-radius: 12px; background: white; color: var(--ink); box-shadow: 0 12px 40px #26323f26; }
+.source-menu { position: fixed; inset: auto; width: min(340px, calc(100vw - 32px)); max-height: min(440px, calc(100dvh - 32px)); overflow-y: auto; overscroll-behavior: contain; box-sizing: border-box; margin: 0; padding: 16px; border: 1px solid #dce1e3; border-radius: 12px; background: white; color: var(--ink); box-shadow: 0 12px 40px #26323f26; }
 .source-menu p { margin: 0 0 10px; font-weight: 600; }
-.source-menu > button { font: inherit; padding: 8px 12px; border: 1px solid #c5dfce; border-radius: 8px; color: #326547; background: #e3f1e7; margin-bottom: 8px; }
 .source-option { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; font-size: 16px; cursor: pointer; }
 .source-option input { accent-color: #b54464; width: 18px; height: 18px; margin: 2px 0 0; flex-shrink: 0; }
 

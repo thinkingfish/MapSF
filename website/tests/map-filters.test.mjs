@@ -19,7 +19,14 @@ test('map region includes enclosing areas but excludes polygon holes', () => {
 test('source, price and region filters combine', () => {
   const make=(id,source,isFree,coordinates)=>({id,source:{id:source},cost:{isFree},curation:{geometry:{type:'Point',coordinates}}});
   const events=[make('match','a',true,[1,1]),make('paid','a',false,[1,1]),make('other','b',true,[1,1]),make('outside','a',true,[4,4])];
-  assert.deepEqual(filterEvents(events,{sourceIds:['a'],freeOnly:true,mapBounds:bounds}).map(e=>e.id),['match']);
-  assert.deepEqual(filterEvents(events,{sourceIds:['a','b'],freeOnly:true,mapBounds:bounds}).map(e=>e.id),['match','other']);
+  assert.deepEqual(filterEvents(events,{excludedSourceIds:['b'],freeOnly:true,mapBounds:bounds}).map(e=>e.id),['match']);
+  assert.deepEqual(filterEvents(events,{excludedSourceIds:[],freeOnly:true,mapBounds:bounds}).map(e=>e.id),['match','other']);
   assert.equal(filterEvents(events).length,4);
+});
+
+test('source exclusions remove publishers without hiding Free Places or newly seen publishers', () => {
+ const events=[{id:'a',source:{id:'a'},cost:{isFree:true}},{id:'b',source:{id:'b'},cost:{isFree:true}},
+   {id:'place',source:{id:'a'},recurring:true,cost:{isFree:true}}];
+ assert.deepEqual(filterEvents(events,{excludedSourceIds:['a']}).map(e=>e.id),['b','place']);
+ assert.deepEqual(filterEvents(events,{excludedSourceIds:['a','b']}).map(e=>e.id),['place']);
 });

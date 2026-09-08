@@ -30,5 +30,5 @@ test('public street celebrations can be free without treating every route as fre
 
 test('event publisher selections do not filter recurring Free Places',()=>{
  const recurring={...event('Garden'),source:{id:'garden-provider'},recurring:true,cost:{label:'Free',isFree:true}};
- assert.equal(filterEvents([recurring],{sourceIds:['sfpl']}).length,1);
+ assert.equal(filterEvents([recurring],{excludedSourceIds:['garden-provider']}).length,1);
 });
