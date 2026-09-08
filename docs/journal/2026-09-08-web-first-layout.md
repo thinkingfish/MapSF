@@ -2,6 +2,7 @@
 status: open
 opened: 2026-09-08
 updated: 2026-09-08
+pr: https://github.com/thinkingfish/MapSF/pull/10
 ---
 
 # Web-first repository layout
@@ -29,7 +30,7 @@ Root installation uses Node 24.20.0. All 136 unit tests, 34 browser tests, the p
 
 ## Next steps
 
-Independent review found no material findings. Open the PR and set Cloudflare production/preview root and commands before merging. Native app compilation remains a macOS/Xcode check if development resumes.
+Independent review found no material findings. PR #10 is open. Set Cloudflare production/preview root, commands and watch rules before merging; its preview check reported failure and private build logs were not available in this session. Native app compilation remains a macOS/Xcode check if development resumes.
 
 ## Skills used
 
