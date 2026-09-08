@@ -7,10 +7,12 @@ artifacts separate source structure from runtime behavior:
   frameworks, and bundled content.
 - `architecture-runtime.svg`: selected album loading, selection, and basemap flows.
 
-The README embeds both with adjacent textual equivalents. The old hand-maintained
-D2 diagram is superseded by `scripts/generate-architecture.mjs`; edit the generator,
-not the SVG output. Run `node scripts/generate-architecture.mjs` to regenerate
-both, or add `--check` to fail on stale output. CI runs the latter on pushes and PRs.
+The [archived iOS README](../README.md) embeds both with adjacent textual equivalents. The old hand-maintained
+D2 diagram is superseded by `iOS/scripts/generate-architecture.mjs`; edit the generator,
+not the SVG output. From the repository root, run `node iOS/scripts/generate-architecture.mjs` to regenerate
+both, or add `--check` to fail on stale output. The generator resolves paths from
+its own location; inside `iOS/`, use `node scripts/generate-architecture.mjs`.
+CI runs the freshness check on pushes and PRs.
 
 ## Ground truth and limitations
 

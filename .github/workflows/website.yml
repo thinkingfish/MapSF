@@ -1,29 +1,26 @@
 name: Website
 on:
   pull_request:
-    paths: ['website/**', 'maps/basemap/**', 'MapSF/Resources/BaseMap/**', 'scripts/update-tiles.sh', '.github/workflows/refresh-tiles.yml', '.github/workflows/website.yml', '.github/workflows/refresh-events.yml']
+    paths: ['src/**', 'public/**', 'config/**', 'data/**', 'scripts/**', 'tests/**', 'e2e/**', 'maps/**', 'iOS/MapSF/Resources/BaseMap/**', 'package.json', 'pnpm-lock.yaml', 'pnpm-workspace.yaml', '.node-version', 'astro.config.mjs', 'playwright.config.mjs', 'wrangler.jsonc', '.github/workflows/**']
   push:
     branches: [main]
-    paths: ['website/**', 'maps/basemap/**', 'MapSF/Resources/BaseMap/**', 'scripts/update-tiles.sh', '.github/workflows/refresh-tiles.yml', '.github/workflows/website.yml', '.github/workflows/refresh-events.yml']
+    paths: ['src/**', 'public/**', 'config/**', 'data/**', 'scripts/**', 'tests/**', 'e2e/**', 'maps/**', 'iOS/MapSF/Resources/BaseMap/**', 'package.json', 'pnpm-lock.yaml', 'pnpm-workspace.yaml', '.node-version', 'astro.config.mjs', 'playwright.config.mjs', 'wrangler.jsonc', '.github/workflows/**']
 permissions:
   contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: website
     steps:
       - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v6
         with:
-          package_json_file: website/package.json
+          package_json_file: package.json
           run_install: false
       - uses: actions/setup-node@v6
         with:
-          node-version-file: website/.node-version
+          node-version-file: .node-version
           cache: pnpm
-          cache-dependency-path: website/pnpm-lock.yaml
+          cache-dependency-path: pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - run: pnpm exec playwright install --with-deps chromium

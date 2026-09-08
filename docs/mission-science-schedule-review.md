@@ -21,4 +21,4 @@ Review the live operator flyer and announcements before extending the catalog. T
 
 ## Integration
 
-`config/science-workshops.mjs` exports `scienceWorkshops` in the existing recurring places schema. Add it to the default `configuredPlaces` array in `src/lib/places.mjs`. This curated schedule is independent of feed ingestion: the source's feed adapter should stay disabled unless a separately verified ingestion path exists. Run `node --test website/tests/science-workshops.test.mjs` from the repository root.
+`config/science-workshops.mjs` exports `scienceWorkshops` in the existing recurring places schema. Add it to the default `configuredPlaces` array in `src/lib/places.mjs`. This curated schedule is independent of feed ingestion: the source's feed adapter should stay disabled unless a separately verified ingestion path exists. Run `pnpm exec node --test tests/science-workshops.test.mjs` from the repository root.

@@ -1,5 +1,8 @@
 # Pending calendar source review
 
+Historical review: findings below describe the dated investigation. Paths with
+`website/` refer to the former layout; those files now live at the repository root.
+
 Read-only publisher investigation and adapter verification, September 6, 2026.
 No source approval or operational switch was changed by this review.
 

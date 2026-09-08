@@ -9,6 +9,6 @@ async function check(directory) {
   else {const size=(await stat(path)).size;if(size>25*1024*1024)throw new Error(`Cloudflare asset exceeds 25 MiB: ${path}`);count++;bytes+=size;}
  }
 }
-await check(join(repoRoot,'website/dist'));
+await check(join(repoRoot,'dist'));
 if(count>20000)throw new Error(`Cloudflare free-tier file count exceeded: ${count}`);
 console.log(`Cloudflare assets: ${count}/20000 files, ${(bytes/1024/1024).toFixed(1)} MiB`);

@@ -4,7 +4,7 @@ import {parseArgs} from 'node:util';
 import {tileProfiles,fontStack,fontBaseURL,fontRevision,maxArchiveBytes} from '../../config/tiles.mjs';
 import {openArchive,exportWebTiles,exportMBTiles,sha256,releaseVersion} from './core.mjs';
 import {download,extractRegion} from './tool.mjs';
-import {repoRoot,sourceDirectory,releasePath} from './paths.mjs';
+import {repoRoot,sourceDirectory,releasePath,iosBundlePath} from './paths.mjs';
 import {prepareTiles} from './prepare.mjs';
 const {values}=parseArgs({options:{date:{type:'string'},source:{type:'string'},output:{type:'string'},adopt:{type:'string'},help:{type:'boolean'}}});
 if(values.help){console.log('pnpm run tiles:refresh [--date YYYYMMDD] [--output NEW_DIRECTORY]\npnpm run tiles:refresh --adopt CANDIDATE_DIRECTORY\nOptional --source LOCAL.pmtiles reuses a local extract (requires --date). No live deployment.');process.exit(0);}
@@ -27,7 +27,7 @@ if(values.adopt) {
   const {readdir}=await import('node:fs/promises');
   const fonts=join(sourceDirectory,'fonts',fontStack);
   for(const name of await readdir(fonts))if(!wanted.has(`fonts/${fontStack}/${name}`))await rm(join(fonts,name));
-  await copyFile(join(stage,'sf-tiles.mbtiles'),join(repoRoot,'MapSF/Resources/BaseMap/sf-tiles.mbtiles'));
+  await copyFile(join(stage,'sf-tiles.mbtiles'),iosBundlePath);
   await copyFile(manifest,releasePath);
   console.log(`Adopted ${release.version}. Review the git diff and open a PR; nothing has been deployed.`);
  }finally{await rm(stage,{recursive:true,force:true});}

@@ -252,16 +252,16 @@ function generate() {
 
 function main() {
   const args = process.argv.slice(2);
-  require(args.length === 0 || (args.length === 1 && ['--check', '--help'].includes(args[0])), 'Usage: node scripts/generate-architecture.mjs [--check|--help]');
+  require(args.length === 0 || (args.length === 1 && ['--check', '--help'].includes(args[0])), 'Usage: node iOS/scripts/generate-architecture.mjs [--check|--help]');
   if (args[0] === '--help') {
-    console.log('Usage: node scripts/generate-architecture.mjs [--check]\nGenerate architecture SVGs; --check rejects stale output. No npm packages required.');
+    console.log('Usage: node iOS/scripts/generate-architecture.mjs [--check]\nGenerate architecture SVGs; --check rejects stale output. No npm packages required.');
     return;
   }
   const check = args[0] === '--check';
   const outputs = generate();
   for (const [name, content] of Object.entries(outputs)) {
     const path = join(ROOT, name);
-    if (check) require(existsSync(path) && read(path) === content, `Stale diagram: ${name}; run node scripts/generate-architecture.mjs`);
+    if (check) require(existsSync(path) && read(path) === content, `Stale diagram: ${name}; run node iOS/scripts/generate-architecture.mjs`);
     else writeFileSync(path, content);
   }
   console.log(`${check ? 'Checked' : 'Generated'} ${Object.keys(outputs).length} diagrams; source claims and geometry passed.`);

@@ -75,9 +75,9 @@ test('build preparation rejects tampering without removing the previous map asse
 });
 
 test('committed iOS bundle matches the reviewed release and zoom inventory',async()=>{
- const {repoRoot,releasePath}=await import('../scripts/tiles/paths.mjs');
+ const {iosBundlePath,releasePath}=await import('../scripts/tiles/paths.mjs');
  const release=JSON.parse(await readFile(releasePath,'utf8'));
- const path=join(repoRoot,'MapSF/Resources/BaseMap/sf-tiles.mbtiles');
+ const path=iosBundlePath;
  await verifyFile(path,release.ios.sha256);
  const db=new DatabaseSync(path,{readOnly:true});
  try {

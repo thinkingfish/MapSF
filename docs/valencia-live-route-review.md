@@ -1,5 +1,8 @@
 # Valencia LIVE! route collection review
 
+Historical review: findings below describe the dated investigation. Paths with
+`website/` refer to the former layout; those files now live at the repository root.
+
 Reviewed September 6, 2026. This is a diagnosis and proposed curation record; it does not publish events or enable a source.
 
 ## Finding
