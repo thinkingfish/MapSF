@@ -27,3 +27,7 @@ Package.resolved
 
 # Worktrees
 .worktrees/
+
+# Tile refresh staging
+.tile-work/
+.tile-adopt-*/

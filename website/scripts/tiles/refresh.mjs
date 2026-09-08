@@ -1,0 +1,78 @@
+import {mkdir,readFile,writeFile,copyFile,mkdtemp,rm,rename,stat,cp} from 'node:fs/promises';
+import {join,resolve,dirname} from 'node:path';
+import {parseArgs} from 'node:util';
+import {tileProfiles,fontStack,fontBaseURL,fontRevision,maxArchiveBytes} from '../../config/tiles.mjs';
+import {openArchive,exportWebTiles,exportMBTiles,sha256,releaseVersion} from './core.mjs';
+import {download,extractRegion} from './tool.mjs';
+import {repoRoot,sourceDirectory,releasePath} from './paths.mjs';
+import {prepareTiles} from './prepare.mjs';
+const {values}=parseArgs({options:{date:{type:'string'},source:{type:'string'},output:{type:'string'},adopt:{type:'string'},help:{type:'boolean'}}});
+if(values.help){console.log('pnpm run tiles:refresh [--date YYYYMMDD] [--output NEW_DIRECTORY]\npnpm run tiles:refresh --adopt CANDIDATE_DIRECTORY\nOptional --source LOCAL.pmtiles reuses a local extract (requires --date). No live deployment.');process.exit(0);}
+
+if(values.adopt) {
+ const candidate=resolve(values.adopt);
+ const inputs=join(candidate,'basemap');
+ const manifest=join(candidate,'basemap-release.json');
+ const stage=await mkdtemp(join(repoRoot,'.tile-adopt-'));
+ try {
+  const release=await prepareTiles({inputs,manifest,output:join(stage,'web')});
+  // Recreate iOS from the checked source, checking the candidate against it before promotion.
+  const archive=await openArchive(join(inputs,'sf-bay.pmtiles'),release.source.sha256);
+  const ios=await exportMBTiles(archive,tileProfiles.ios,join(stage,'sf-tiles.mbtiles'));
+  if(ios.sha256!==release.ios.sha256||sha256(await readFile(join(candidate,'sf-tiles.mbtiles')))!==ios.sha256)throw new Error('Candidate iOS checksum mismatch');
+  await mkdir(sourceDirectory,{recursive:true});
+  await cp(inputs,sourceDirectory,{recursive:true});
+  // Remove stale font ranges only inside this generated input directory.
+  const wanted=new Set(Object.keys(release.files));
+  const {readdir}=await import('node:fs/promises');
+  const fonts=join(sourceDirectory,'fonts',fontStack);
+  for(const name of await readdir(fonts))if(!wanted.has(`fonts/${fontStack}/${name}`))await rm(join(fonts,name));
+  await copyFile(join(stage,'sf-tiles.mbtiles'),join(repoRoot,'MapSF/Resources/BaseMap/sf-tiles.mbtiles'));
+  await copyFile(manifest,releasePath);
+  console.log(`Adopted ${release.version}. Review the git diff and open a PR; nothing has been deployed.`);
+ }finally{await rm(stage,{recursive:true,force:true});}
+} else {
+ const builds=JSON.parse((await download('https://build-metadata.protomaps.dev/builds.json')).toString()).sort((a,b)=>b.key.localeCompare(a.key));
+ if(values.source&&!values.date)throw new Error('--source requires an explicit --date');
+ const build=values.date?builds.find(build=>build.key===`${values.date}.pmtiles`):builds[0];
+ if(!build||!/^\d{8}\.pmtiles$/.test(build.key))throw new Error('No published Protomaps build for that date');
+ if(!/^4\./.test(build.version))throw new Error('Unsupported Protomaps schema: review the map style before adopting a new major version');
+ const date=build.key.slice(0,8);
+ const output=resolve(values.output??join(repoRoot,'.tile-work',`candidate-${date}`));
+ if(await stat(output).catch(()=>null))throw new Error(`Candidate output already exists: ${output}`);
+ await mkdir(dirname(output),{recursive:true});
+ const stage=await mkdtemp(join(dirname(output),'.tile-refresh-'));
+ try {
+  const inputs=join(stage,'basemap');await mkdir(inputs);
+  const archivePath=join(inputs,'sf-bay.pmtiles');
+  const sourceURL=`https://build.protomaps.com/${build.key}`;
+  if(values.source)await copyFile(resolve(values.source),archivePath);
+  else await extractRegion(sourceURL,archivePath,tileProfiles.web);
+  const bytes=await readFile(archivePath);
+  if(bytes.length>maxArchiveBytes)throw new Error('Master archive exceeds budget');
+  const archive=await openArchive(archivePath);
+  const header=await archive.getHeader();
+  if(header.minZoom>tileProfiles.web.minzoom||header.maxZoom<tileProfiles.web.maxzoom)throw new Error('Source zoom coverage is insufficient');
+  const web=await exportWebTiles(archive,tileProfiles.web,join(stage,'web'));
+  const ios=await exportMBTiles(archive,tileProfiles.ios,join(stage,'sf-tiles.mbtiles'));
+  const files={};
+  for(const range of web.glyphRanges) {
+   const name=`fonts/${fontStack}/${range}.pbf`;
+   const glyphs=await download(`${fontBaseURL}${encodeURIComponent(fontStack)}/${range}.pbf`);
+   if(!glyphs.length||glyphs.length>tileProfiles.web.maxFileBytes)throw new Error(`Invalid glyph size: ${range}`);
+   await mkdir(dirname(join(inputs,name)),{recursive:true});await writeFile(join(inputs,name),glyphs);files[name]=sha256(glyphs);
+  }
+  const license=await download(`${fontBaseURL}OFL.txt`);await writeFile(join(inputs,'OFL.txt'),license);files['OFL.txt']=sha256(license);
+  const notice='Map data © OpenStreetMap contributors, licensed under ODbL 1.0: https://www.openstreetmap.org/copyright\nVector basemap generated by Protomaps: https://protomaps.com\nFonts: Noto Sans, SIL Open Font License 1.1; see OFL.txt.\n';
+  await writeFile(join(inputs,'NOTICE.txt'),notice);files['NOTICE.txt']=sha256(notice);
+  const source={url:sourceURL,buildVersion:build.version,upstreamPlanetB3:build.b3sum,sha256:sha256(bytes),bytes:bytes.length,extractor:'go-pmtiles 1.31.2',localExtract:!!values.source};
+  const contents={bounds:tileProfiles.web.bounds,minzoom:tileProfiles.web.minzoom,maxzoom:tileProfiles.web.maxzoom,source,fontRevision,profiles:tileProfiles,web,ios,files};
+  const version=releaseVersion(contents);
+  const release={version,...contents};
+  await writeFile(join(stage,'basemap-release.json'),JSON.stringify(release,null,2)+'\n');
+  await rm(join(stage,'web'),{recursive:true});
+  await rename(stage,output);
+  console.log(JSON.stringify({candidate:output,version,web,ios},null,2));
+  console.log(`Review then adopt: pnpm run tiles:refresh --adopt ${output}`);
+ }finally{await rm(stage,{recursive:true,force:true});}
+}

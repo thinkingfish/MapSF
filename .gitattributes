@@ -1,0 +1,6 @@
+# Tile archives and font glyphs must retain their exact checksummed bytes.
+*.pmtiles binary
+*.mbtiles binary
+*.pbf binary
+# Preserve the upstream font license verbatim, including its trailing space.
+maps/basemap/OFL.txt -text whitespace=-blank-at-eol

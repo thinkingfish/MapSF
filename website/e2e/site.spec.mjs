@@ -22,7 +22,7 @@ test('SF today, free filter and all geometry types work in another timezone', as
 });
 
 test('unpublished feed is honest and map failure leaves a usable list', async ({ page }) => {
-  await page.route('https://tile.openstreetmap.org/**', route => route.abort());
+  await page.route('**/basemap/**/*.pbf', route => route.abort());
   await load(page, { schemaVersion: 1, generatedAt: null, coverage: {dates: ['2026-09-06']}, sources: [], events: [] });
   await expect(page.locator('#event-list')).toContainText('No one-off events listed for this day.');
   await expect(page.locator('#event-list')).not.toContainText('Example:');
@@ -30,6 +30,7 @@ test('unpublished feed is honest and map failure leaves a usable list', async ({
   await page.route('**/events.json', route => route.fulfill({ json: feed }));
   await page.reload();
   await expect(page.locator('#event-list')).toContainText(feed.events[0].title);
+  await expect(page.locator('#map-status')).toContainText('trouble loading');
 });
 
 test('mobile layout fits viewport and Map/List controls move focus', async ({ page }) => {
@@ -43,11 +44,6 @@ test('mobile layout fits viewport and Map/List controls move focus', async ({ pa
 });
 
 test('production map renderer loads and event selection exposes source details', async ({ page }) => {
-  // Local solid-color tiles keep this renderer test independent of external tile uptime.
-  await page.route('https://tile.openstreetmap.org/**', route => route.fulfill({
-    contentType: 'image/png',
-    body: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALUlEQVR4AeyTsQ0AAAjCCP9f6mD8QOMNDCyQsDI0lDW9SgkxGQDCIAxeI/8PDgAA//9lCVeGAAAABklEQVQDAC/yPJEMiKmVAAAAAElFTkSuQmCC', 'base64'),
-  }));
   const timedFeed = structuredClone(feed);
   timedFeed.events[0].startAt = '2026-09-06T11:00:00-07:00';
   timedFeed.events[0].endAt = '2026-09-06T12:00:30-07:00';

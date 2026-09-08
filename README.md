@@ -12,7 +12,7 @@ Its source registry is owner-vetted and its static build is prepared for Cloudfl
 
 ## Features
 
-- **Offline Vector Tiles**: SF map tiles (z10-16) bundled with the app via MapLibre
+- **Offline Vector Tiles**: SF map tiles (z10–15, overzoom to 16) bundled with the app via MapLibre
 - **Curated Albums**: Collections of POIs, walking routes (segments), and neighborhood areas
 - **Proximity Queries**: Find nearby places based on current location or map center
 - **Selection & Details**: Tap markers, routes, or areas to view details in the info panel
@@ -99,17 +99,15 @@ MapSF/
 
 ## Tile Management
 
-Update bundled tiles with the provided script:
+The website and iOS app use one reviewed Protomaps snapshot. Node 24 + pnpm prepare locally served website tiles and a smaller iOS MBTiles subset; Python, tile-join and the SQLite CLI are not required.
 
-```bash
-./scripts/update-tiles.sh [YYYYMMDD]
+```sh
+pnpm --dir website install --frozen-lockfile
+pnpm --dir website run tiles:refresh --output /tmp/mapsf-candidate
+pnpm --dir website run tiles:refresh --adopt /tmp/mapsf-candidate
 ```
 
-Requirements: `pmtiles` CLI, `tippecanoe` (for `tile-join`), `sqlite3`
-
-The script extracts SF region from Protomaps world basemap with two passes:
-- z10-12: Wide coverage (natural tile grid extends beyond SF)
-- z13-15: SF-focused coverage
+Refresh first creates a candidate for review; adoption updates repository inputs for a PR. It does not deploy. The monthly workflow also produces reviewable candidates. See [tile management](website/TILES.md) for coverage, size budgets, verification and Cloudflare deployment.
 
 ## Building
 

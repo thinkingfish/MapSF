@@ -7,3 +7,6 @@ dist/
 !.env.example
 playwright-report/
 test-results/
+public/basemap/
+public/.basemap-staging-*/
+public/basemap.previous/

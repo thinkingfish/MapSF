@@ -1,10 +1,10 @@
 name: Website
 on:
   pull_request:
-    paths: ['website/**', '.github/workflows/website.yml', '.github/workflows/refresh-events.yml']
+    paths: ['website/**', 'maps/basemap/**', 'MapSF/Resources/BaseMap/**', 'scripts/update-tiles.sh', '.github/workflows/refresh-tiles.yml', '.github/workflows/website.yml', '.github/workflows/refresh-events.yml']
   push:
     branches: [main]
-    paths: ['website/**', '.github/workflows/website.yml', '.github/workflows/refresh-events.yml']
+    paths: ['website/**', 'maps/basemap/**', 'MapSF/Resources/BaseMap/**', 'scripts/update-tiles.sh', '.github/workflows/refresh-tiles.yml', '.github/workflows/website.yml', '.github/workflows/refresh-events.yml']
 permissions:
   contents: read
 jobs:

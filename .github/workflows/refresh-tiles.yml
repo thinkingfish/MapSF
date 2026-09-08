@@ -1,0 +1,48 @@
+name: Prepare monthly map tiles
+on:
+  schedule:
+    - cron: '43 12 1 * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: refresh-map-tiles
+  cancel-in-progress: false
+jobs:
+  candidate:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: website/package.json
+          run_install: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: website/.node-version
+          cache: pnpm
+          cache-dependency-path: website/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - name: Download and validate a candidate
+        run: pnpm run tiles:refresh --output /tmp/mapsf-tile-candidate
+      - name: Validate candidate with the production build
+        run: |
+          pnpm run tiles:refresh --adopt /tmp/mapsf-tile-candidate
+          pnpm run build
+      - name: Publish candidate for review (does not deploy)
+        uses: actions/upload-artifact@v7
+        with:
+          name: mapsf-tile-candidate
+          path: /tmp/mapsf-tile-candidate/
+          if-no-files-found: error
+          retention-days: 35
+          compression-level: 0
+      - name: Review instructions
+        run: |
+          echo 'Download mapsf-tile-candidate, review its manifest, then run pnpm --dir website run tiles:refresh --adopt PATH and open a PR. No live tiles were changed.' >> "$GITHUB_STEP_SUMMARY"
