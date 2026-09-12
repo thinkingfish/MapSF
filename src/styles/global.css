@@ -927,3 +927,18 @@ h1 span {
   .time-filter { width:100%; order:3; display:grid; grid-template-columns:108px minmax(0,1fr); }
   .time-filter select { width:100%; }
 }
+
+/* Position the chevron explicitly so native platform styling cannot crowd the border. */
+.neighborhood-controls select,
+.time-filter select {
+  appearance: none;
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23545d66' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 8px;
+}
+@media (forced-colors: active) {
+  .neighborhood-controls select,
+  .time-filter select { appearance: auto; background-image: none; }
+}
