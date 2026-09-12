@@ -251,3 +251,7 @@ Owner decision, September 11: remove KQED from collection and all public listing
 - [ ] Sunday Streets: verify current organizer hours and occurrence geometry before enabling. Source approval does not imply collection is ready.
 
 See [source grouping and series evidence](docs/journal/2026-09-11-direct-series.md).
+
+## Farmers markets — admitted September 11, 2026
+
+At Yao’s request, 14 SF markets were researched and admitted using their official operators. The editable [market catalog](config/farmers-markets.mjs) records schedules and map geometry; [research and maintenance evidence](docs/journal/2026-09-11-farmers-markets.md) explains source conflicts, seasons, exceptions and deferred candidates. They are recurring Event series, not Free Places or individual source-filter choices. Existing daily refresh verifies schedule pages and expands the next 30 days; these bounded rules require review before 2027.

@@ -19,9 +19,9 @@ const descriptions = {
 };
 export const eventSourceGuide = sources.filter(source => source.approved && !scienceWorkshops.some(place => place.source.id === source.id)).map(source => ({
   id: source.id, name: source.name, url: source.listingUrl, group: source.group, seriesKind: source.seriesKind,
-  status: source.enabled ? 'Collecting events' : 'Planned',
-  description: descriptions[source.id]?.[0] ?? 'A source selected for local event coverage.',
-  collection: descriptions[source.id]?.[1] ?? 'Collection details are being reviewed.',
+  status: source.adapter === 'farmers-market' ? 'Reviewed weekly schedule' : source.enabled ? 'Collecting events' : 'Planned',
+  description: source.adapter === 'farmers-market' ? 'A San Francisco farmers market listed by its official operator.' : descriptions[source.id]?.[0] ?? 'A source selected for local event coverage.',
+  collection: source.adapter === 'farmers-market' ? 'We check the official page against reviewed hours and location, then expand the weekly schedule within 30 days and its review expiry. Known closures are excluded. Changed or unavailable pages report a collection failure; short-notice cancellations and new holiday exceptions require review. Entry is free; purchases cost extra.' : descriptions[source.id]?.[1] ?? 'Collection details are being reviewed.',
 }));
 export const eventSourceGroups = [
   {id: 'publishers', name: 'Publishers and calendars'},

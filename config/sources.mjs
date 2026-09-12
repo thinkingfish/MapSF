@@ -1,3 +1,5 @@
+import { farmersMarkets } from './farmers-markets.mjs';
+
 // Only explicitly opted-in broad calendars appear in the front-page source filter.
 // approved records the owner's source decision; enabled controls collection.
 // Enable only after approval and publisher-specific extraction verification.
@@ -16,6 +18,12 @@ export const publicationBounds = Object.freeze({
 });
 
 export const sources = [
+  ...farmersMarkets.map(market => ({
+    id: 'market-' + market.id, name: market.name + ' — ' + market.operator,
+    group: 'series', seriesKind: 'Farmers markets', listingUrl: market.url,
+    approved: true, // Yao requested official farmers markets, 2026-09-11.
+    enabled: true, adapter: 'farmers-market', allowEmpty: true, maxEvents: 30,
+  })),
   {
     id: 'sf-shakes',
     name: 'SF Shakes — Free Shakespeare in the Park',

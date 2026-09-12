@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-12T00:59:04.639Z",
+  "generatedAt": "2026-09-12T03:22:04.372Z",
   "sources": [
     {
       "id": "sfpl",
@@ -270,6 +270,275 @@
       },
       "lastSuccessfulAt": "2026-09-12T00:54:44.392Z",
       "eventCount": 1
+    },
+    {
+      "id": "market-ferry-plaza",
+      "name": "Ferry Plaza Farmers Market — Foodwise",
+      "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-12",
+          "2026-09-15",
+          "2026-09-17",
+          "2026-09-19",
+          "2026-09-22",
+          "2026-09-24",
+          "2026-09-26",
+          "2026-09-29",
+          "2026-10-01",
+          "2026-10-03",
+          "2026-10-06",
+          "2026-10-08",
+          "2026-10-10"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 13
+    },
+    {
+      "id": "market-alemany",
+      "name": "Alemany Farmers Market — Foodwise",
+      "url": "https://foodwise.org/markets/alemany-farmers-market/",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-12",
+          "2026-09-19",
+          "2026-09-26",
+          "2026-10-03",
+          "2026-10-10"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 5
+    },
+    {
+      "id": "market-mission",
+      "name": "Mission Community Market — Foodwise",
+      "url": "https://foodwise.org/markets/mission-community-market/",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-17",
+          "2026-09-24",
+          "2026-10-01",
+          "2026-10-08"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 4
+    },
+    {
+      "id": "market-heart-of-city",
+      "name": "Heart of the City Farmers Market — Heart of the City Farmers Market",
+      "url": "https://hotcfarmersmarket.org/find-us",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-13",
+          "2026-09-16",
+          "2026-09-20",
+          "2026-09-23",
+          "2026-09-27",
+          "2026-09-30",
+          "2026-10-04",
+          "2026-10-07"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 8
+    },
+    {
+      "id": "market-clement",
+      "name": "Clement Street Farmers Market — Agricultural Institute of Marin",
+      "url": "https://www.agriculturalinstitute.org/clement-st",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-13",
+          "2026-09-20",
+          "2026-09-27",
+          "2026-10-04"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 4
+    },
+    {
+      "id": "market-stonestown",
+      "name": "Stonestown Farmers Market — Agricultural Institute of Marin",
+      "url": "https://www.agriculturalinstitute.org/stonestown",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-13",
+          "2026-09-20",
+          "2026-09-27",
+          "2026-10-04"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 4
+    },
+    {
+      "id": "market-fort-mason",
+      "name": "Fort Mason Center Farmers Market — California Farmers’ Markets Association",
+      "url": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-13",
+          "2026-09-20",
+          "2026-09-27",
+          "2026-10-04"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 4
+    },
+    {
+      "id": "market-noe-valley",
+      "name": "Noe Valley Farmers Market — Noe Valley Farmers Market",
+      "url": "https://www.noevalleyfarmersmarket.com/",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-12",
+          "2026-09-19",
+          "2026-09-26",
+          "2026-10-03",
+          "2026-10-10"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 5
+    },
+    {
+      "id": "market-outer-sunset",
+      "name": "Outer Sunset Farmers Market & Mercantile — Sunset Mercantile",
+      "url": "https://sunsetmercantilesf.com/osfmm/",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-13",
+          "2026-09-20",
+          "2026-09-27",
+          "2026-10-04"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 4
+    },
+    {
+      "id": "market-castro",
+      "name": "Castro Farmers Market — Pacific Coast Farmers’ Market Association",
+      "url": "https://www.pcfma.org/castro",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-16",
+          "2026-09-23",
+          "2026-09-30",
+          "2026-10-07"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 4
+    },
+    {
+      "id": "market-fillmore",
+      "name": "Fillmore Farmers Market — Pacific Coast Farmers’ Market Association",
+      "url": "https://www.pcfma.org/market/fillmore-farmers-market",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-12",
+          "2026-09-19",
+          "2026-09-26",
+          "2026-10-03",
+          "2026-10-10"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 5
+    },
+    {
+      "id": "market-inner-sunset",
+      "name": "Inner Sunset Farmers Market — Pacific Coast Farmers’ Market Association",
+      "url": "https://www.pcfma.org/innersunset",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-13",
+          "2026-09-20",
+          "2026-09-27",
+          "2026-10-04"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 4
+    },
+    {
+      "id": "market-divisadero",
+      "name": "Divisadero Farmers Market — Pacific Coast Farmers’ Market Association",
+      "url": "https://www.pcfma.org/divisadero",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-13",
+          "2026-09-20",
+          "2026-09-27",
+          "2026-10-04"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 4
+    },
+    {
+      "id": "market-hayes-valley",
+      "name": "Hayes Valley Farmers Market — Pacific Coast Farmers’ Market Association",
+      "url": "https://www.pcfma.org/hayesvalley",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-12",
+          "2026-09-19",
+          "2026-09-26",
+          "2026-10-03",
+          "2026-10-10"
+        ],
+        "checkedAt": "2026-09-12T03:22:04.372Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
+      "eventCount": 5
     }
   ],
   "coverage": {
@@ -3132,6 +3401,164 @@
       }
     },
     {
+      "id": "market-alemany:alemany-2026-09-12-07-00",
+      "title": "Alemany Farmers Market",
+      "startAt": "2026-09-12T07:00:00-07:00",
+      "endAt": "2026-09-12T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-alemany",
+        "name": "Alemany Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/alemany-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -122.4108339,
+                37.7356603
+              ],
+              [
+                -122.4093103,
+                37.7366328
+              ],
+              [
+                -122.4091994,
+                37.7365451
+              ],
+              [
+                -122.4092888,
+                37.7363185
+              ],
+              [
+                -122.4094397,
+                37.7360773
+              ],
+              [
+                -122.4097139,
+                37.7357825
+              ],
+              [
+                -122.4100559,
+                37.7355412
+              ],
+              [
+                -122.4105273,
+                37.7353122
+              ],
+              [
+                -122.4108878,
+                37.7353268
+              ],
+              [
+                -122.4108632,
+                37.7355948
+              ],
+              [
+                -122.4108339,
+                37.7356603
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Alemany Farmers Market",
+          "layerType": "area",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "100 Alemany Boulevard, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/alemany-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/367586034"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-ferry-plaza:ferry-plaza-2026-09-12-08-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-09-12T08:00:00-07:00",
+      "endAt": "2026-09-12T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-noe-valley:noe-valley-2026-09-12-08-00",
+      "title": "Noe Valley Farmers Market",
+      "startAt": "2026-09-12T08:00:00-07:00",
+      "endAt": "2026-09-12T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-noe-valley",
+        "name": "Noe Valley Farmers Market — Noe Valley Farmers Market",
+        "url": "https://www.noevalleyfarmersmarket.com/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.42897955000001,
+            37.75137405
+          ]
+        },
+        "properties": {
+          "name": "Noe Valley Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Noe Valley Town Square, 3861 24th Street, San Francisco, CA",
+            "scheduleSource": "https://www.noevalleyfarmersmarket.com/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/256784864"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:161172-sfpl.org",
       "title": "Activity: Wild Goose Qigong with Chunfu Cai",
       "startAt": "2026-09-12T15:30:00Z",
@@ -3162,6 +3589,44 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-fillmore:fillmore-2026-09-12-09-00",
+      "title": "Fillmore Farmers Market",
+      "startAt": "2026-09-12T09:00:00-07:00",
+      "endAt": "2026-09-12T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-fillmore",
+        "name": "Fillmore Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/market/fillmore-farmers-market"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4330022,
+            37.7840139
+          ]
+        },
+        "properties": {
+          "name": "Fillmore Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1700 O’Farrell Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/market/fillmore-farmers-market",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/market/fillmore-farmers-market"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sf-chronicle:44120229",
@@ -3419,6 +3884,44 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-hayes-valley:hayes-valley-2026-09-12-10-00",
+      "title": "Hayes Valley Farmers Market",
+      "startAt": "2026-09-12T10:00:00-07:00",
+      "endAt": "2026-09-12T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-hayes-valley",
+        "name": "Hayes Valley Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/hayesvalley"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4239646,
+            37.7769099
+          ]
+        },
+        "properties": {
+          "name": "Hayes Valley Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "450 Hayes Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/hayesvalley",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/hayesvalley"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sf-chronicle:44250698",
@@ -8200,6 +8703,288 @@
       }
     },
     {
+      "id": "market-heart-of-city:heart-of-city-2026-09-13-07-00",
+      "title": "Heart of the City Farmers Market",
+      "startAt": "2026-09-13T07:00:00-07:00",
+      "endAt": "2026-09-13T16:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-heart-of-city",
+        "name": "Heart of the City Farmers Market — Heart of the City Farmers Market",
+        "url": "https://hotcfarmersmarket.org/find-us"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.415126955,
+              37.779788527
+            ],
+            [
+              -122.416768093,
+              37.779584438
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Heart of the City Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fulton Plaza between Hyde and Larkin, San Francisco, CA",
+            "scheduleSource": "https://hotcfarmersmarket.org/find-us",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-clement:clement-2026-09-13-09-00",
+      "title": "Clement Street Farmers Market",
+      "startAt": "2026-09-13T09:00:00-07:00",
+      "endAt": "2026-09-13T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-clement",
+        "name": "Clement Street Farmers Market — Agricultural Institute of Marin",
+        "url": "https://www.agriculturalinstitute.org/clement-st"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4612258,
+            37.7830983
+          ]
+        },
+        "properties": {
+          "name": "Clement Street Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "244 Clement Street, San Francisco, CA",
+            "scheduleSource": "https://www.agriculturalinstitute.org/clement-st",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/362162006"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-divisadero:divisadero-2026-09-13-09-00",
+      "title": "Divisadero Farmers Market",
+      "startAt": "2026-09-13T09:00:00-07:00",
+      "endAt": "2026-09-13T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-divisadero",
+        "name": "Divisadero Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/divisadero"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4404278,
+            37.7733404
+          ]
+        },
+        "properties": {
+          "name": "Divisadero Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1377 Fell Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/divisadero",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/divisadero"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-inner-sunset:inner-sunset-2026-09-13-09-00",
+      "title": "Inner Sunset Farmers Market",
+      "startAt": "2026-09-13T09:00:00-07:00",
+      "endAt": "2026-09-13T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-inner-sunset",
+        "name": "Inner Sunset Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/innersunset"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4657866,
+            37.7636003
+          ]
+        },
+        "properties": {
+          "name": "Inner Sunset Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1315 8th Avenue, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/innersunset",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/innersunset"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-outer-sunset:outer-sunset-2026-09-13-09-00",
+      "title": "Outer Sunset Farmers Market & Mercantile",
+      "startAt": "2026-09-13T09:00:00-07:00",
+      "endAt": "2026-09-13T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-outer-sunset",
+        "name": "Outer Sunset Farmers Market & Mercantile — Sunset Mercantile",
+        "url": "https://sunsetmercantilesf.com/osfmm/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.495630257,
+              37.751526823
+            ],
+            [
+              -122.49550014,
+              37.749662077
+            ],
+            [
+              -122.495369765,
+              37.74779354
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Outer Sunset Farmers Market & Mercantile",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "37th Avenue from Ortega to Quintara, San Francisco, CA",
+            "scheduleSource": "https://sunsetmercantilesf.com/osfmm/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-stonestown:stonestown-2026-09-13-09-00",
+      "title": "Stonestown Farmers Market",
+      "startAt": "2026-09-13T09:00:00-07:00",
+      "endAt": "2026-09-13T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-stonestown",
+        "name": "Stonestown Farmers Market — Agricultural Institute of Marin",
+        "url": "https://www.agriculturalinstitute.org/stonestown"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4790533,
+            37.7297335
+          ]
+        },
+        "properties": {
+          "name": "Stonestown Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "501 Buckingham Way, San Francisco, CA",
+            "scheduleSource": "https://www.agriculturalinstitute.org/stonestown",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.agriculturalinstitute.org/stonestown"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-fort-mason:fort-mason-2026-09-13-09-30",
+      "title": "Fort Mason Center Farmers Market",
+      "startAt": "2026-09-13T09:30:00-07:00",
+      "endAt": "2026-09-13T13:30:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-fort-mason",
+        "name": "Fort Mason Center Farmers Market — California Farmers’ Markets Association",
+        "url": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4315658,
+            37.8061667
+          ]
+        },
+        "properties": {
+          "name": "Fort Mason Center Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fort Mason Center, Marina Boulevard, San Francisco, CA",
+            "scheduleSource": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/1478520965"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "civic-joy-fund:f8ao68geqaivprsem93mfqrn1g-google.com-2026-09-13t16-45-00.000z",
       "title": "Lower Nob Hill Clean Up",
       "startAt": "2026-09-13T16:45:00.000Z",
@@ -12465,6 +13250,44 @@
       }
     },
     {
+      "id": "market-ferry-plaza:ferry-plaza-2026-09-15-10-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-09-15T10:00:00-07:00",
+      "endAt": "2026-09-15T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:161383-sfpl.org",
       "title": "Social: Job Seeker Meetup",
       "startAt": "2026-09-15T17:00:00Z",
@@ -14963,6 +15786,50 @@
       "imageUrl": "https://i0.wp.com/missionlocal.org/wp-content/uploads/2026/09/792228283_1645639940896219_5122906383929235186_n.jpg?fit=300%2C211&ssl=1"
     },
     {
+      "id": "market-heart-of-city:heart-of-city-2026-09-16-07-00",
+      "title": "Heart of the City Farmers Market",
+      "startAt": "2026-09-16T07:00:00-07:00",
+      "endAt": "2026-09-16T16:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-heart-of-city",
+        "name": "Heart of the City Farmers Market — Heart of the City Farmers Market",
+        "url": "https://hotcfarmersmarket.org/find-us"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.415126955,
+              37.779788527
+            ],
+            [
+              -122.416768093,
+              37.779584438
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Heart of the City Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fulton Plaza between Hyde and Larkin, San Francisco, CA",
+            "scheduleSource": "https://hotcfarmersmarket.org/find-us",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "mission-local:10040159",
       "title": "The Women’s Building: Clases de Yoga",
       "startAt": "2026-09-16T08:00:00-07:00",
@@ -15634,6 +16501,54 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-castro:castro-2026-09-16-15-00",
+      "title": "Castro Farmers Market",
+      "startAt": "2026-09-16T15:00:00-07:00",
+      "endAt": "2026-09-16T19:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-castro",
+        "name": "Castro Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/castro"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.433178635,
+              37.765060651
+            ],
+            [
+              -122.43311272,
+              37.764373526
+            ],
+            [
+              -122.433074471,
+              37.764195713
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Castro Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Noe Street between Market and Beaver, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/castro",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sfpl:160867-sfpl.org",
@@ -17561,6 +18476,44 @@
       }
     },
     {
+      "id": "market-ferry-plaza:ferry-plaza-2026-09-17-10-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-09-17T10:00:00-07:00",
+      "endAt": "2026-09-17T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:116626-sfpl.org",
       "title": "Storytime: For Families",
       "startAt": "2026-09-17T17:00:00Z",
@@ -18487,6 +19440,54 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-mission:mission-2026-09-17-15-00",
+      "title": "Mission Community Market",
+      "startAt": "2026-09-17T15:00:00-07:00",
+      "endAt": "2026-09-17T19:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-mission",
+        "name": "Mission Community Market — Foodwise",
+        "url": "https://foodwise.org/markets/mission-community-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.418747574,
+              37.755436936
+            ],
+            [
+              -122.419857943,
+              37.75536573
+            ],
+            [
+              -122.420964093,
+              37.755294782
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Mission Community Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "22nd Street between Mission and Valencia, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/mission-community-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sfpl:160983-sfpl.org",
@@ -23167,6 +24168,164 @@
       }
     },
     {
+      "id": "market-alemany:alemany-2026-09-19-07-00",
+      "title": "Alemany Farmers Market",
+      "startAt": "2026-09-19T07:00:00-07:00",
+      "endAt": "2026-09-19T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-alemany",
+        "name": "Alemany Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/alemany-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -122.4108339,
+                37.7356603
+              ],
+              [
+                -122.4093103,
+                37.7366328
+              ],
+              [
+                -122.4091994,
+                37.7365451
+              ],
+              [
+                -122.4092888,
+                37.7363185
+              ],
+              [
+                -122.4094397,
+                37.7360773
+              ],
+              [
+                -122.4097139,
+                37.7357825
+              ],
+              [
+                -122.4100559,
+                37.7355412
+              ],
+              [
+                -122.4105273,
+                37.7353122
+              ],
+              [
+                -122.4108878,
+                37.7353268
+              ],
+              [
+                -122.4108632,
+                37.7355948
+              ],
+              [
+                -122.4108339,
+                37.7356603
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Alemany Farmers Market",
+          "layerType": "area",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "100 Alemany Boulevard, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/alemany-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/367586034"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-ferry-plaza:ferry-plaza-2026-09-19-08-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-09-19T08:00:00-07:00",
+      "endAt": "2026-09-19T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-noe-valley:noe-valley-2026-09-19-08-00",
+      "title": "Noe Valley Farmers Market",
+      "startAt": "2026-09-19T08:00:00-07:00",
+      "endAt": "2026-09-19T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-noe-valley",
+        "name": "Noe Valley Farmers Market — Noe Valley Farmers Market",
+        "url": "https://www.noevalleyfarmersmarket.com/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.42897955000001,
+            37.75137405
+          ]
+        },
+        "properties": {
+          "name": "Noe Valley Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Noe Valley Town Square, 3861 24th Street, San Francisco, CA",
+            "scheduleSource": "https://www.noevalleyfarmersmarket.com/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/256784864"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:161173-sfpl.org",
       "title": "Activity: Wild Goose Qigong with Chunfu Cai",
       "startAt": "2026-09-19T15:30:00Z",
@@ -23197,6 +24356,44 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-fillmore:fillmore-2026-09-19-09-00",
+      "title": "Fillmore Farmers Market",
+      "startAt": "2026-09-19T09:00:00-07:00",
+      "endAt": "2026-09-19T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-fillmore",
+        "name": "Fillmore Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/market/fillmore-farmers-market"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4330022,
+            37.7840139
+          ]
+        },
+        "properties": {
+          "name": "Fillmore Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1700 O’Farrell Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/market/fillmore-farmers-market",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/market/fillmore-farmers-market"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "civic-joy-fund:2ps4fqfu4krehj2a2m3rbmgu29_r20250906t170000-google.com-2026-09-19t17-00-00.000z",
@@ -23326,6 +24523,44 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-hayes-valley:hayes-valley-2026-09-19-10-00",
+      "title": "Hayes Valley Farmers Market",
+      "startAt": "2026-09-19T10:00:00-07:00",
+      "endAt": "2026-09-19T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-hayes-valley",
+        "name": "Hayes Valley Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/hayesvalley"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4239646,
+            37.7769099
+          ]
+        },
+        "properties": {
+          "name": "Hayes Valley Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "450 Hayes Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/hayesvalley",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/hayesvalley"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "civic-joy-fund:0smmejpo3rjmi8261oa005ovv6_r20250830t170000-google.com-2026-09-19t17-00-00.000z",
@@ -28366,6 +29601,50 @@
       }
     },
     {
+      "id": "market-heart-of-city:heart-of-city-2026-09-20-07-00",
+      "title": "Heart of the City Farmers Market",
+      "startAt": "2026-09-20T07:00:00-07:00",
+      "endAt": "2026-09-20T16:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-heart-of-city",
+        "name": "Heart of the City Farmers Market — Heart of the City Farmers Market",
+        "url": "https://hotcfarmersmarket.org/find-us"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.415126955,
+              37.779788527
+            ],
+            [
+              -122.416768093,
+              37.779584438
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Heart of the City Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fulton Plaza between Hyde and Larkin, San Francisco, CA",
+            "scheduleSource": "https://hotcfarmersmarket.org/find-us",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sf-chronicle:40953887",
       "title": "Farallones Sanctuary Wildlife Expedition",
       "startAt": "2026-09-20T07:30:00-07:00",
@@ -28396,6 +29675,244 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-clement:clement-2026-09-20-09-00",
+      "title": "Clement Street Farmers Market",
+      "startAt": "2026-09-20T09:00:00-07:00",
+      "endAt": "2026-09-20T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-clement",
+        "name": "Clement Street Farmers Market — Agricultural Institute of Marin",
+        "url": "https://www.agriculturalinstitute.org/clement-st"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4612258,
+            37.7830983
+          ]
+        },
+        "properties": {
+          "name": "Clement Street Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "244 Clement Street, San Francisco, CA",
+            "scheduleSource": "https://www.agriculturalinstitute.org/clement-st",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/362162006"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-divisadero:divisadero-2026-09-20-09-00",
+      "title": "Divisadero Farmers Market",
+      "startAt": "2026-09-20T09:00:00-07:00",
+      "endAt": "2026-09-20T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-divisadero",
+        "name": "Divisadero Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/divisadero"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4404278,
+            37.7733404
+          ]
+        },
+        "properties": {
+          "name": "Divisadero Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1377 Fell Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/divisadero",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/divisadero"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-inner-sunset:inner-sunset-2026-09-20-09-00",
+      "title": "Inner Sunset Farmers Market",
+      "startAt": "2026-09-20T09:00:00-07:00",
+      "endAt": "2026-09-20T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-inner-sunset",
+        "name": "Inner Sunset Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/innersunset"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4657866,
+            37.7636003
+          ]
+        },
+        "properties": {
+          "name": "Inner Sunset Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1315 8th Avenue, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/innersunset",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/innersunset"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-outer-sunset:outer-sunset-2026-09-20-09-00",
+      "title": "Outer Sunset Farmers Market & Mercantile",
+      "startAt": "2026-09-20T09:00:00-07:00",
+      "endAt": "2026-09-20T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-outer-sunset",
+        "name": "Outer Sunset Farmers Market & Mercantile — Sunset Mercantile",
+        "url": "https://sunsetmercantilesf.com/osfmm/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.495630257,
+              37.751526823
+            ],
+            [
+              -122.49550014,
+              37.749662077
+            ],
+            [
+              -122.495369765,
+              37.74779354
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Outer Sunset Farmers Market & Mercantile",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "37th Avenue from Ortega to Quintara, San Francisco, CA",
+            "scheduleSource": "https://sunsetmercantilesf.com/osfmm/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-stonestown:stonestown-2026-09-20-09-00",
+      "title": "Stonestown Farmers Market",
+      "startAt": "2026-09-20T09:00:00-07:00",
+      "endAt": "2026-09-20T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-stonestown",
+        "name": "Stonestown Farmers Market — Agricultural Institute of Marin",
+        "url": "https://www.agriculturalinstitute.org/stonestown"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4790533,
+            37.7297335
+          ]
+        },
+        "properties": {
+          "name": "Stonestown Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "501 Buckingham Way, San Francisco, CA",
+            "scheduleSource": "https://www.agriculturalinstitute.org/stonestown",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.agriculturalinstitute.org/stonestown"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-fort-mason:fort-mason-2026-09-20-09-30",
+      "title": "Fort Mason Center Farmers Market",
+      "startAt": "2026-09-20T09:30:00-07:00",
+      "endAt": "2026-09-20T13:30:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-fort-mason",
+        "name": "Fort Mason Center Farmers Market — California Farmers’ Markets Association",
+        "url": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4315658,
+            37.8061667
+          ]
+        },
+        "properties": {
+          "name": "Fort Mason Center Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fort Mason Center, Marina Boulevard, San Francisco, CA",
+            "scheduleSource": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/1478520965"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "civic-joy-fund:f8ao68geqaivprsem93mfqrn1g-google.com-2026-09-20t16-45-00.000z",
@@ -32152,6 +33669,44 @@
       }
     },
     {
+      "id": "market-ferry-plaza:ferry-plaza-2026-09-22-10-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-09-22T10:00:00-07:00",
+      "endAt": "2026-09-22T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:157151-sfpl.org",
       "title": "Services: Aging and Disability Resources with the San Francisco Senior Center",
       "startAt": "2026-09-22T17:00:00Z",
@@ -34873,6 +36428,50 @@
       }
     },
     {
+      "id": "market-heart-of-city:heart-of-city-2026-09-23-07-00",
+      "title": "Heart of the City Farmers Market",
+      "startAt": "2026-09-23T07:00:00-07:00",
+      "endAt": "2026-09-23T16:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-heart-of-city",
+        "name": "Heart of the City Farmers Market — Heart of the City Farmers Market",
+        "url": "https://hotcfarmersmarket.org/find-us"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.415126955,
+              37.779788527
+            ],
+            [
+              -122.416768093,
+              37.779584438
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Heart of the City Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fulton Plaza between Hyde and Larkin, San Francisco, CA",
+            "scheduleSource": "https://hotcfarmersmarket.org/find-us",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "mission-local:10040160",
       "title": "The Women’s Building: Clases de Yoga",
       "startAt": "2026-09-23T08:00:00-07:00",
@@ -35576,6 +37175,54 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-castro:castro-2026-09-23-15-00",
+      "title": "Castro Farmers Market",
+      "startAt": "2026-09-23T15:00:00-07:00",
+      "endAt": "2026-09-23T19:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-castro",
+        "name": "Castro Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/castro"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.433178635,
+              37.765060651
+            ],
+            [
+              -122.43311272,
+              37.764373526
+            ],
+            [
+              -122.433074471,
+              37.764195713
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Castro Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Noe Street between Market and Beaver, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/castro",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sfpl:151727-sfpl.org",
@@ -37567,6 +39214,44 @@
       }
     },
     {
+      "id": "market-ferry-plaza:ferry-plaza-2026-09-24-10-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-09-24T10:00:00-07:00",
+      "endAt": "2026-09-24T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:116627-sfpl.org",
       "title": "Storytime: For Families",
       "startAt": "2026-09-24T17:00:00Z",
@@ -38365,6 +40050,54 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-mission:mission-2026-09-24-15-00",
+      "title": "Mission Community Market",
+      "startAt": "2026-09-24T15:00:00-07:00",
+      "endAt": "2026-09-24T19:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-mission",
+        "name": "Mission Community Market — Foodwise",
+        "url": "https://foodwise.org/markets/mission-community-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.418747574,
+              37.755436936
+            ],
+            [
+              -122.419857943,
+              37.75536573
+            ],
+            [
+              -122.420964093,
+              37.755294782
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Mission Community Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "22nd Street between Mission and Valencia, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/mission-community-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sfpl:150041-sfpl.org",
@@ -43744,6 +45477,88 @@
       }
     },
     {
+      "id": "market-alemany:alemany-2026-09-26-07-00",
+      "title": "Alemany Farmers Market",
+      "startAt": "2026-09-26T07:00:00-07:00",
+      "endAt": "2026-09-26T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-alemany",
+        "name": "Alemany Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/alemany-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -122.4108339,
+                37.7356603
+              ],
+              [
+                -122.4093103,
+                37.7366328
+              ],
+              [
+                -122.4091994,
+                37.7365451
+              ],
+              [
+                -122.4092888,
+                37.7363185
+              ],
+              [
+                -122.4094397,
+                37.7360773
+              ],
+              [
+                -122.4097139,
+                37.7357825
+              ],
+              [
+                -122.4100559,
+                37.7355412
+              ],
+              [
+                -122.4105273,
+                37.7353122
+              ],
+              [
+                -122.4108878,
+                37.7353268
+              ],
+              [
+                -122.4108632,
+                37.7355948
+              ],
+              [
+                -122.4108339,
+                37.7356603
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Alemany Farmers Market",
+          "layerType": "area",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "100 Alemany Boulevard, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/alemany-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/367586034"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sf-chronicle:44234579",
       "title": "CLCAF Presents War of the West: Dodgers v Giants",
       "startAt": "2026-09-26T07:00:00-07:00",
@@ -43776,6 +45591,82 @@
       }
     },
     {
+      "id": "market-ferry-plaza:ferry-plaza-2026-09-26-08-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-09-26T08:00:00-07:00",
+      "endAt": "2026-09-26T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-noe-valley:noe-valley-2026-09-26-08-00",
+      "title": "Noe Valley Farmers Market",
+      "startAt": "2026-09-26T08:00:00-07:00",
+      "endAt": "2026-09-26T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-noe-valley",
+        "name": "Noe Valley Farmers Market — Noe Valley Farmers Market",
+        "url": "https://www.noevalleyfarmersmarket.com/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.42897955000001,
+            37.75137405
+          ]
+        },
+        "properties": {
+          "name": "Noe Valley Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Noe Valley Town Square, 3861 24th Street, San Francisco, CA",
+            "scheduleSource": "https://www.noevalleyfarmersmarket.com/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/256784864"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:161174-sfpl.org",
       "title": "Activity: Wild Goose Qigong with Chunfu Cai",
       "startAt": "2026-09-26T15:30:00Z",
@@ -43806,6 +45697,44 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-fillmore:fillmore-2026-09-26-09-00",
+      "title": "Fillmore Farmers Market",
+      "startAt": "2026-09-26T09:00:00-07:00",
+      "endAt": "2026-09-26T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-fillmore",
+        "name": "Fillmore Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/market/fillmore-farmers-market"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4330022,
+            37.7840139
+          ]
+        },
+        "properties": {
+          "name": "Fillmore Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1700 O’Farrell Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/market/fillmore-farmers-market",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/market/fillmore-farmers-market"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "civic-joy-fund:2ps4fqfu4krehj2a2m3rbmgu29_r20250906t170000-google.com-2026-09-26t17-00-00.000z",
@@ -44031,6 +45960,44 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-hayes-valley:hayes-valley-2026-09-26-10-00",
+      "title": "Hayes Valley Farmers Market",
+      "startAt": "2026-09-26T10:00:00-07:00",
+      "endAt": "2026-09-26T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-hayes-valley",
+        "name": "Hayes Valley Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/hayesvalley"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4239646,
+            37.7769099
+          ]
+        },
+        "properties": {
+          "name": "Hayes Valley Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "450 Hayes Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/hayesvalley",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/hayesvalley"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "civic-joy-fund:0smmejpo3rjmi8261oa005ovv6_r20250830t170000-google.com-2026-09-26t17-00-00.000z",
@@ -49192,6 +51159,50 @@
       }
     },
     {
+      "id": "market-heart-of-city:heart-of-city-2026-09-27-07-00",
+      "title": "Heart of the City Farmers Market",
+      "startAt": "2026-09-27T07:00:00-07:00",
+      "endAt": "2026-09-27T16:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-heart-of-city",
+        "name": "Heart of the City Farmers Market — Heart of the City Farmers Market",
+        "url": "https://hotcfarmersmarket.org/find-us"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.415126955,
+              37.779788527
+            ],
+            [
+              -122.416768093,
+              37.779584438
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Heart of the City Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fulton Plaza between Hyde and Larkin, San Francisco, CA",
+            "scheduleSource": "https://hotcfarmersmarket.org/find-us",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sf-chronicle:44195474",
       "title": "DJ Slugo: Upward @ Monroe SF",
       "startAt": "2026-09-27T07:30:00-07:00",
@@ -49256,6 +51267,120 @@
       }
     },
     {
+      "id": "market-clement:clement-2026-09-27-09-00",
+      "title": "Clement Street Farmers Market",
+      "startAt": "2026-09-27T09:00:00-07:00",
+      "endAt": "2026-09-27T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-clement",
+        "name": "Clement Street Farmers Market — Agricultural Institute of Marin",
+        "url": "https://www.agriculturalinstitute.org/clement-st"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4612258,
+            37.7830983
+          ]
+        },
+        "properties": {
+          "name": "Clement Street Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "244 Clement Street, San Francisco, CA",
+            "scheduleSource": "https://www.agriculturalinstitute.org/clement-st",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/362162006"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-divisadero:divisadero-2026-09-27-09-00",
+      "title": "Divisadero Farmers Market",
+      "startAt": "2026-09-27T09:00:00-07:00",
+      "endAt": "2026-09-27T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-divisadero",
+        "name": "Divisadero Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/divisadero"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4404278,
+            37.7733404
+          ]
+        },
+        "properties": {
+          "name": "Divisadero Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1377 Fell Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/divisadero",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/divisadero"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-inner-sunset:inner-sunset-2026-09-27-09-00",
+      "title": "Inner Sunset Farmers Market",
+      "startAt": "2026-09-27T09:00:00-07:00",
+      "endAt": "2026-09-27T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-inner-sunset",
+        "name": "Inner Sunset Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/innersunset"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4657866,
+            37.7636003
+          ]
+        },
+        "properties": {
+          "name": "Inner Sunset Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1315 8th Avenue, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/innersunset",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/innersunset"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sf-chronicle:43168079",
       "title": "Mind Enterprises - Portola Music Festival 2026",
       "startAt": "2026-09-27T09:00:00-07:00",
@@ -49286,6 +51411,130 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-outer-sunset:outer-sunset-2026-09-27-09-00",
+      "title": "Outer Sunset Farmers Market & Mercantile",
+      "startAt": "2026-09-27T09:00:00-07:00",
+      "endAt": "2026-09-27T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-outer-sunset",
+        "name": "Outer Sunset Farmers Market & Mercantile — Sunset Mercantile",
+        "url": "https://sunsetmercantilesf.com/osfmm/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.495630257,
+              37.751526823
+            ],
+            [
+              -122.49550014,
+              37.749662077
+            ],
+            [
+              -122.495369765,
+              37.74779354
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Outer Sunset Farmers Market & Mercantile",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "37th Avenue from Ortega to Quintara, San Francisco, CA",
+            "scheduleSource": "https://sunsetmercantilesf.com/osfmm/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-stonestown:stonestown-2026-09-27-09-00",
+      "title": "Stonestown Farmers Market",
+      "startAt": "2026-09-27T09:00:00-07:00",
+      "endAt": "2026-09-27T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-stonestown",
+        "name": "Stonestown Farmers Market — Agricultural Institute of Marin",
+        "url": "https://www.agriculturalinstitute.org/stonestown"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4790533,
+            37.7297335
+          ]
+        },
+        "properties": {
+          "name": "Stonestown Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "501 Buckingham Way, San Francisco, CA",
+            "scheduleSource": "https://www.agriculturalinstitute.org/stonestown",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.agriculturalinstitute.org/stonestown"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-fort-mason:fort-mason-2026-09-27-09-30",
+      "title": "Fort Mason Center Farmers Market",
+      "startAt": "2026-09-27T09:30:00-07:00",
+      "endAt": "2026-09-27T13:30:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-fort-mason",
+        "name": "Fort Mason Center Farmers Market — California Farmers’ Markets Association",
+        "url": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4315658,
+            37.8061667
+          ]
+        },
+        "properties": {
+          "name": "Fort Mason Center Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fort Mason Center, Marina Boulevard, San Francisco, CA",
+            "scheduleSource": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/1478520965"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "civic-joy-fund:f8ao68geqaivprsem93mfqrn1g-google.com-2026-09-27t16-45-00.000z",
@@ -54089,6 +56338,44 @@
       }
     },
     {
+      "id": "market-ferry-plaza:ferry-plaza-2026-09-29-10-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-09-29T10:00:00-07:00",
+      "endAt": "2026-09-29T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:157430-sfpl.org",
       "title": "教程: 基本科技協助 (中文和英文) / Tutorial: English and Chinese Tech Drop-In",
       "startAt": "2026-09-29T17:00:00Z",
@@ -56330,6 +58617,50 @@
       }
     },
     {
+      "id": "market-heart-of-city:heart-of-city-2026-09-30-07-00",
+      "title": "Heart of the City Farmers Market",
+      "startAt": "2026-09-30T07:00:00-07:00",
+      "endAt": "2026-09-30T16:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-heart-of-city",
+        "name": "Heart of the City Farmers Market — Heart of the City Farmers Market",
+        "url": "https://hotcfarmersmarket.org/find-us"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.415126955,
+              37.779788527
+            ],
+            [
+              -122.416768093,
+              37.779584438
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Heart of the City Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fulton Plaza between Hyde and Larkin, San Francisco, CA",
+            "scheduleSource": "https://hotcfarmersmarket.org/find-us",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:165898-sfpl.org",
       "title": "Activity: Therapy Pets at the Library",
       "startAt": "2026-09-30T15:00:00Z",
@@ -56937,6 +59268,54 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-castro:castro-2026-09-30-15-00",
+      "title": "Castro Farmers Market",
+      "startAt": "2026-09-30T15:00:00-07:00",
+      "endAt": "2026-09-30T19:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-castro",
+        "name": "Castro Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/castro"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.433178635,
+              37.765060651
+            ],
+            [
+              -122.43311272,
+              37.764373526
+            ],
+            [
+              -122.433074471,
+              37.764195713
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Castro Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Noe Street between Market and Beaver, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/castro",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sfpl:158750-sfpl.org",
@@ -58796,6 +61175,44 @@
       }
     },
     {
+      "id": "market-ferry-plaza:ferry-plaza-2026-10-01-10-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-10-01T10:00:00-07:00",
+      "endAt": "2026-10-01T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:116628-sfpl.org",
       "title": "Storytime: For Families",
       "startAt": "2026-10-01T17:00:00Z",
@@ -59626,6 +62043,54 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-mission:mission-2026-10-01-15-00",
+      "title": "Mission Community Market",
+      "startAt": "2026-10-01T15:00:00-07:00",
+      "endAt": "2026-10-01T19:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-mission",
+        "name": "Mission Community Market — Foodwise",
+        "url": "https://foodwise.org/markets/mission-community-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.418747574,
+              37.755436936
+            ],
+            [
+              -122.419857943,
+              37.75536573
+            ],
+            [
+              -122.420964093,
+              37.755294782
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Mission Community Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "22nd Street between Mission and Valencia, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/mission-community-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sfpl:128749-sfpl.org",
@@ -65453,6 +67918,164 @@
       }
     },
     {
+      "id": "market-alemany:alemany-2026-10-03-07-00",
+      "title": "Alemany Farmers Market",
+      "startAt": "2026-10-03T07:00:00-07:00",
+      "endAt": "2026-10-03T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-alemany",
+        "name": "Alemany Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/alemany-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -122.4108339,
+                37.7356603
+              ],
+              [
+                -122.4093103,
+                37.7366328
+              ],
+              [
+                -122.4091994,
+                37.7365451
+              ],
+              [
+                -122.4092888,
+                37.7363185
+              ],
+              [
+                -122.4094397,
+                37.7360773
+              ],
+              [
+                -122.4097139,
+                37.7357825
+              ],
+              [
+                -122.4100559,
+                37.7355412
+              ],
+              [
+                -122.4105273,
+                37.7353122
+              ],
+              [
+                -122.4108878,
+                37.7353268
+              ],
+              [
+                -122.4108632,
+                37.7355948
+              ],
+              [
+                -122.4108339,
+                37.7356603
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Alemany Farmers Market",
+          "layerType": "area",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "100 Alemany Boulevard, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/alemany-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/367586034"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-ferry-plaza:ferry-plaza-2026-10-03-08-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-10-03T08:00:00-07:00",
+      "endAt": "2026-10-03T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-noe-valley:noe-valley-2026-10-03-08-00",
+      "title": "Noe Valley Farmers Market",
+      "startAt": "2026-10-03T08:00:00-07:00",
+      "endAt": "2026-10-03T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-noe-valley",
+        "name": "Noe Valley Farmers Market — Noe Valley Farmers Market",
+        "url": "https://www.noevalleyfarmersmarket.com/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.42897955000001,
+            37.75137405
+          ]
+        },
+        "properties": {
+          "name": "Noe Valley Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Noe Valley Town Square, 3861 24th Street, San Francisco, CA",
+            "scheduleSource": "https://www.noevalleyfarmersmarket.com/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/256784864"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:161175-sfpl.org",
       "title": "Activity: Wild Goose Qigong with Chunfu Cai",
       "startAt": "2026-10-03T15:30:00Z",
@@ -65515,6 +68138,44 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-fillmore:fillmore-2026-10-03-09-00",
+      "title": "Fillmore Farmers Market",
+      "startAt": "2026-10-03T09:00:00-07:00",
+      "endAt": "2026-10-03T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-fillmore",
+        "name": "Fillmore Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/market/fillmore-farmers-market"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4330022,
+            37.7840139
+          ]
+        },
+        "properties": {
+          "name": "Fillmore Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1700 O’Farrell Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/market/fillmore-farmers-market",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/market/fillmore-farmers-market"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sfpl:163359-sfpl.org",
@@ -65708,6 +68369,44 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-hayes-valley:hayes-valley-2026-10-03-10-00",
+      "title": "Hayes Valley Farmers Market",
+      "startAt": "2026-10-03T10:00:00-07:00",
+      "endAt": "2026-10-03T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-hayes-valley",
+        "name": "Hayes Valley Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/hayesvalley"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4239646,
+            37.7769099
+          ]
+        },
+        "properties": {
+          "name": "Hayes Valley Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "450 Hayes Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/hayesvalley",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/hayesvalley"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "civic-joy-fund:0smmejpo3rjmi8261oa005ovv6_r20250830t170000-google.com-2026-10-03t17-00-00.000z",
@@ -70032,6 +72731,50 @@
       }
     },
     {
+      "id": "market-heart-of-city:heart-of-city-2026-10-04-07-00",
+      "title": "Heart of the City Farmers Market",
+      "startAt": "2026-10-04T07:00:00-07:00",
+      "endAt": "2026-10-04T16:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-heart-of-city",
+        "name": "Heart of the City Farmers Market — Heart of the City Farmers Market",
+        "url": "https://hotcfarmersmarket.org/find-us"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.415126955,
+              37.779788527
+            ],
+            [
+              -122.416768093,
+              37.779584438
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Heart of the City Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fulton Plaza between Hyde and Larkin, San Francisco, CA",
+            "scheduleSource": "https://hotcfarmersmarket.org/find-us",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sf-chronicle:41522090",
       "title": "Farallones Sanctuary Wildlife Expedition",
       "startAt": "2026-10-04T07:30:00-07:00",
@@ -70064,6 +72807,168 @@
       }
     },
     {
+      "id": "market-clement:clement-2026-10-04-09-00",
+      "title": "Clement Street Farmers Market",
+      "startAt": "2026-10-04T09:00:00-07:00",
+      "endAt": "2026-10-04T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-clement",
+        "name": "Clement Street Farmers Market — Agricultural Institute of Marin",
+        "url": "https://www.agriculturalinstitute.org/clement-st"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4612258,
+            37.7830983
+          ]
+        },
+        "properties": {
+          "name": "Clement Street Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "244 Clement Street, San Francisco, CA",
+            "scheduleSource": "https://www.agriculturalinstitute.org/clement-st",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/362162006"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-divisadero:divisadero-2026-10-04-09-00",
+      "title": "Divisadero Farmers Market",
+      "startAt": "2026-10-04T09:00:00-07:00",
+      "endAt": "2026-10-04T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-divisadero",
+        "name": "Divisadero Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/divisadero"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4404278,
+            37.7733404
+          ]
+        },
+        "properties": {
+          "name": "Divisadero Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1377 Fell Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/divisadero",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/divisadero"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-inner-sunset:inner-sunset-2026-10-04-09-00",
+      "title": "Inner Sunset Farmers Market",
+      "startAt": "2026-10-04T09:00:00-07:00",
+      "endAt": "2026-10-04T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-inner-sunset",
+        "name": "Inner Sunset Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/innersunset"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4657866,
+            37.7636003
+          ]
+        },
+        "properties": {
+          "name": "Inner Sunset Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1315 8th Avenue, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/innersunset",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/innersunset"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-outer-sunset:outer-sunset-2026-10-04-09-00",
+      "title": "Outer Sunset Farmers Market & Mercantile",
+      "startAt": "2026-10-04T09:00:00-07:00",
+      "endAt": "2026-10-04T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-outer-sunset",
+        "name": "Outer Sunset Farmers Market & Mercantile — Sunset Mercantile",
+        "url": "https://sunsetmercantilesf.com/osfmm/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.495630257,
+              37.751526823
+            ],
+            [
+              -122.49550014,
+              37.749662077
+            ],
+            [
+              -122.495369765,
+              37.74779354
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Outer Sunset Farmers Market & Mercantile",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "37th Avenue from Ortega to Quintara, San Francisco, CA",
+            "scheduleSource": "https://sunsetmercantilesf.com/osfmm/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sf-chronicle:44423203",
       "title": "Punch Brothers: Hardly Strictly Bluegrass 2026",
       "startAt": "2026-10-04T09:00:00-07:00",
@@ -70094,6 +72999,82 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-stonestown:stonestown-2026-10-04-09-00",
+      "title": "Stonestown Farmers Market",
+      "startAt": "2026-10-04T09:00:00-07:00",
+      "endAt": "2026-10-04T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-stonestown",
+        "name": "Stonestown Farmers Market — Agricultural Institute of Marin",
+        "url": "https://www.agriculturalinstitute.org/stonestown"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4790533,
+            37.7297335
+          ]
+        },
+        "properties": {
+          "name": "Stonestown Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "501 Buckingham Way, San Francisco, CA",
+            "scheduleSource": "https://www.agriculturalinstitute.org/stonestown",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.agriculturalinstitute.org/stonestown"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-fort-mason:fort-mason-2026-10-04-09-30",
+      "title": "Fort Mason Center Farmers Market",
+      "startAt": "2026-10-04T09:30:00-07:00",
+      "endAt": "2026-10-04T13:30:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-fort-mason",
+        "name": "Fort Mason Center Farmers Market — California Farmers’ Markets Association",
+        "url": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4315658,
+            37.8061667
+          ]
+        },
+        "properties": {
+          "name": "Fort Mason Center Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fort Mason Center, Marina Boulevard, San Francisco, CA",
+            "scheduleSource": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/1478520965"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "civic-joy-fund:f8ao68geqaivprsem93mfqrn1g-google.com-2026-10-04t16-45-00.000z",
@@ -74129,6 +77110,44 @@
       }
     },
     {
+      "id": "market-ferry-plaza:ferry-plaza-2026-10-06-10-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-10-06T10:00:00-07:00",
+      "endAt": "2026-10-06T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:163989-sfpl.org",
       "title": "Social: Job Seeker Meetup",
       "startAt": "2026-10-06T17:00:00Z",
@@ -76913,6 +79932,50 @@
       }
     },
     {
+      "id": "market-heart-of-city:heart-of-city-2026-10-07-07-00",
+      "title": "Heart of the City Farmers Market",
+      "startAt": "2026-10-07T07:00:00-07:00",
+      "endAt": "2026-10-07T16:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-heart-of-city",
+        "name": "Heart of the City Farmers Market — Heart of the City Farmers Market",
+        "url": "https://hotcfarmersmarket.org/find-us"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.415126955,
+              37.779788527
+            ],
+            [
+              -122.416768093,
+              37.779584438
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Heart of the City Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Fulton Plaza between Hyde and Larkin, San Francisco, CA",
+            "scheduleSource": "https://hotcfarmersmarket.org/find-us",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "mission-local:10040162",
       "title": "The Women’s Building: Clases de Yoga",
       "startAt": "2026-10-07T08:00:00-07:00",
@@ -77616,6 +80679,54 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-castro:castro-2026-10-07-15-00",
+      "title": "Castro Farmers Market",
+      "startAt": "2026-10-07T15:00:00-07:00",
+      "endAt": "2026-10-07T19:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-castro",
+        "name": "Castro Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/castro"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.433178635,
+              37.765060651
+            ],
+            [
+              -122.43311272,
+              37.764373526
+            ],
+            [
+              -122.433074471,
+              37.764195713
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Castro Farmers Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Noe Street between Market and Beaver, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/castro",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sfpl:151729-sfpl.org",
@@ -79571,6 +82682,44 @@
       }
     },
     {
+      "id": "market-ferry-plaza:ferry-plaza-2026-10-08-10-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-10-08T10:00:00-07:00",
+      "endAt": "2026-10-08T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:116629-sfpl.org",
       "title": "Storytime: For Families",
       "startAt": "2026-10-08T17:00:00Z",
@@ -80465,6 +83614,54 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-mission:mission-2026-10-08-15-00",
+      "title": "Mission Community Market",
+      "startAt": "2026-10-08T15:00:00-07:00",
+      "endAt": "2026-10-08T19:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-mission",
+        "name": "Mission Community Market — Foodwise",
+        "url": "https://foodwise.org/markets/mission-community-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.418747574,
+              37.755436936
+            ],
+            [
+              -122.419857943,
+              37.75536573
+            ],
+            [
+              -122.420964093,
+              37.755294782
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Mission Community Market",
+          "layerType": "segment",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "22nd Street between Mission and Valencia, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/mission-community-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sfpl:162842-sfpl.org",
@@ -84844,6 +88041,164 @@
       }
     },
     {
+      "id": "market-alemany:alemany-2026-10-10-07-00",
+      "title": "Alemany Farmers Market",
+      "startAt": "2026-10-10T07:00:00-07:00",
+      "endAt": "2026-10-10T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-alemany",
+        "name": "Alemany Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/alemany-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -122.4108339,
+                37.7356603
+              ],
+              [
+                -122.4093103,
+                37.7366328
+              ],
+              [
+                -122.4091994,
+                37.7365451
+              ],
+              [
+                -122.4092888,
+                37.7363185
+              ],
+              [
+                -122.4094397,
+                37.7360773
+              ],
+              [
+                -122.4097139,
+                37.7357825
+              ],
+              [
+                -122.4100559,
+                37.7355412
+              ],
+              [
+                -122.4105273,
+                37.7353122
+              ],
+              [
+                -122.4108878,
+                37.7353268
+              ],
+              [
+                -122.4108632,
+                37.7355948
+              ],
+              [
+                -122.4108339,
+                37.7356603
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Alemany Farmers Market",
+          "layerType": "area",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "100 Alemany Boulevard, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/alemany-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/367586034"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-ferry-plaza:ferry-plaza-2026-10-10-08-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-10-10T08:00:00-07:00",
+      "endAt": "2026-10-10T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "market-noe-valley:noe-valley-2026-10-10-08-00",
+      "title": "Noe Valley Farmers Market",
+      "startAt": "2026-10-10T08:00:00-07:00",
+      "endAt": "2026-10-10T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-noe-valley",
+        "name": "Noe Valley Farmers Market — Noe Valley Farmers Market",
+        "url": "https://www.noevalleyfarmersmarket.com/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.42897955000001,
+            37.75137405
+          ]
+        },
+        "properties": {
+          "name": "Noe Valley Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Noe Valley Town Square, 3861 24th Street, San Francisco, CA",
+            "scheduleSource": "https://www.noevalleyfarmersmarket.com/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/way/256784864"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
       "id": "sfpl:161176-sfpl.org",
       "title": "Activity: Wild Goose Qigong with Chunfu Cai",
       "startAt": "2026-10-10T15:30:00Z",
@@ -84874,6 +88229,44 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-fillmore:fillmore-2026-10-10-09-00",
+      "title": "Fillmore Farmers Market",
+      "startAt": "2026-10-10T09:00:00-07:00",
+      "endAt": "2026-10-10T13:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-fillmore",
+        "name": "Fillmore Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/market/fillmore-farmers-market"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4330022,
+            37.7840139
+          ]
+        },
+        "properties": {
+          "name": "Fillmore Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "1700 O’Farrell Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/market/fillmore-farmers-market",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/market/fillmore-farmers-market"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "sfpl:162211-sfpl.org",
@@ -85067,6 +88460,44 @@
           ]
         }
       }
+    },
+    {
+      "id": "market-hayes-valley:hayes-valley-2026-10-10-10-00",
+      "title": "Hayes Valley Farmers Market",
+      "startAt": "2026-10-10T10:00:00-07:00",
+      "endAt": "2026-10-10T14:00:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-hayes-valley",
+        "name": "Hayes Valley Farmers Market — Pacific Coast Farmers’ Market Association",
+        "url": "https://www.pcfma.org/hayesvalley"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4239646,
+            37.7769099
+          ]
+        },
+        "properties": {
+          "name": "Hayes Valley Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "450 Hayes Street, San Francisco, CA",
+            "scheduleSource": "https://www.pcfma.org/hayesvalley",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.pcfma.org/hayesvalley"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
       "id": "civic-joy-fund:0smmejpo3rjmi8261oa005ovv6_r20250830t170000-google.com-2026-10-10t17-00-00.000z",
