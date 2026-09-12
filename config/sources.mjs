@@ -16,6 +16,19 @@ export const publicationBounds = Object.freeze({
 
 export const sources = [
   {
+    id: 'kqed',
+    name: 'KQED The Do List',
+    listingUrl: 'https://www.kqed.org/thedolist',
+    rss: { url: 'https://ww2.kqed.org/arts/feed/', kind: 'Arts articles across the Bay Area' },
+    approved: true, // Requested by Yao, 2026-09-11; SF venues only.
+    enabled: false, // Editorial discovery: event times and geometry need verification.
+    adapter: 'jsonld',
+    // Do not use article dates or headline place names as event date/location.
+    // See docs/journal/2026-09-11-kqed-source.md before implementing extraction.
+    maxDetailPages: 0,
+    maxEvents: 40,
+  },
+  {
     id: 'sfpl',
     name: 'San Francisco Public Library',
     listingUrl: 'https://sfpl.org/events',

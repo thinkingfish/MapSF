@@ -47,13 +47,13 @@ pnpm run test:browser
 Record your decisions in the [source review checklist](SOURCE-REVIEW.md).
 Its approval boxes do not automatically enable collection.
 
-All ten sources in [config/sources.mjs](config/sources.mjs) have your recorded
+The sources in [config/sources.mjs](config/sources.mjs) have your recorded
 approval. Collection requires both `approved: true` and `enabled: true`.
 The integration status is documented in [SOURCE-STATUS.md](SOURCE-STATUS.md).
 
 SFPL, SF Rec & Parks, Mission Local, the Chronicle, and Civic Joy Fund have verified publisher
 collectors. Mission Science Workshop has a curated Mission-site community-day
-schedule. Other sources await complete extraction or verified venue geometry. Approval and working collection are separate states.
+schedule. KQED The Do List is approved for SF venues and listed as Planned; its regional Arts RSS is available for direct subscriptions. Other sources await complete extraction or verified venue geometry. Approval and working collection are separate states.
 
 Only enabled sources are collected. Incomplete or cancelled listings are excluded.
 Collection preserves source attribution and explicit time ranges. Unknown cost

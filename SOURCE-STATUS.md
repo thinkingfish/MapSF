@@ -1,11 +1,12 @@
 # Source integration status
 
-All ten publishers are approved by Yao in [SOURCE-REVIEW.md](SOURCE-REVIEW.md).
-This file records collection evidence as of September 6, 2026. The operational
+Publisher approvals are recorded in [SOURCE-REVIEW.md](SOURCE-REVIEW.md).
+The original checks date to September 6, 2026; KQED was added September 11. The operational
 switches remain in [config/sources.mjs](config/sources.mjs).
 
 | Source | Collection | Evidence or remaining work |
 | --- | --- | --- |
+| [KQED The Do List](https://www.kqed.org/thedolist) | Pending editorial extraction; SF venues only | Public page supplies article records, publication dates and organizer links, rather than a uniform event calendar. Venue, actual event time, price and geometry must be verified individually; headline geography is unreliable. The [regional Arts RSS](https://ww2.kqed.org/arts/feed/) works for direct subscription/discovery. [Evidence](docs/journal/2026-09-11-kqed-source.md). |
 | [SFPL](https://sfpl.org/events) | Enabled | Publisher event details + UTC ICS times; exact branch URL joins to the publisher's coordinates. Saved fixtures test missing data, cancellation, and request limits. Queries all 30 Pacific dates with full wall-time bounds, validates echoed filters, follows pagination, and caches detail/ICS requests within the run. Two concurrent workers; a 200-request per-day guard prevents incomplete runs from claiming coverage. |
 | [SF Rec & Parks](https://sfrecpark.org/Calendar.aspx) | Enabled, limited venues | Calendar microdata supplies event dates and clock ranges. Currently accepts only Golden Gate Bandshell, matched to its exact official facility URL and verified coordinates. Unknown venues and ambiguous times are skipped. Checks all 30 daily calendar views, validates the requested date, and handles empty days and pagination explicitly. |
 | [Mission Local](https://missionlocal.org/events/) | Enabled | Public Events Calendar API supplies UTC timestamps, addresses, venue coordinates, and stable event IDs. A bounded date-range query follows every page, verifies the echoed range and totals, and records checked empty days only after full completion. |
