@@ -5,6 +5,6 @@ import { eventSourceGroups, placeSourceGuide, mapSourceGuide } from '../../confi
   <div class="sources-footer-heading"><h2 id="footer-sources-title"><a href="/sources/">Sources</a></h2><a href="/sources/#methodology">How we gather listings ↗</a></div>
   {[...eventSourceGroups.map(group => [group.name, group.sources]), ["Free Places schedule providers", placeSourceGuide], ["Map data", mapSourceGuide]].map(([title, sources]) => <div class="source-footer-group"><h3>{title}</h3><ul class="source-footer-links">{sources.map(source => <li><a href={`/sources/#${source.id}`}>{source.name}</a></li>)}</ul></div>)}
   <hr class="feedback-divider" />
-  <p>Send feedback and suggestions to: <a href="mailto:mapsf@yaoyue.org">mapsf@yaoyue.org</a></p>
+  <p>By <a href="https://yaoyue.org">Yao Yue</a>. Send feedback and suggestions to: <a href="mailto:mapsf@yaoyue.org">mapsf@yaoyue.org</a></p>
   <div class="site-footer"><span>Made for a little more San Francisco.</span><span><a href="/agent/index.md">Agent mode · Markdown</a> · Times shown in Pacific time</span></div>
 </footer>
