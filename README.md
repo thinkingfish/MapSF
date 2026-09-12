@@ -264,3 +264,10 @@ content. Cloudflare `_headers` serves Markdown as UTF-8 plain text with a
 five-minute cache policy. Unit tests cover date/coverage semantics, admission
 conditions, freshness, escaping, and geometry; HTTP tests read the built content
 without a browser or JavaScript.
+
+The front-page source dropdown is an explicit allowlist (`showInSourceFilter` in
+`config/sources.mjs`) for broad calendars: SFPL, Rec & Parks, Mission Local, SF
+Chronicle, and Civic Joy Fund. Individual venues, event series, and newly added
+sources do not appear automatically. Their events retain attribution and stay
+included when calendar sources are deselected; date, map, and price filters still
+apply.

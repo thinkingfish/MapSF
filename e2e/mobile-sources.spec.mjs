@@ -1,14 +1,15 @@
 import {test,expect} from './test.mjs';
 import {feed,clock} from './fixtures.mjs';
 
+const ids=['civic-joy-fund','mission-local','sf-chronicle','sfpl','sf-rec-park'];
 const names=['Civic Joy Fund','Mission Local','San Francisco Chronicle','San Francisco Public Library','San Francisco Recreation and Parks'];
 async function loadSources(page) {
   const snapshot=structuredClone(feed);
   snapshot.coverage.dates.push('2026-09-07');
-  snapshot.sources=names.map((name,i)=>({id:`source-${i}`,name,status:'ok',lastSuccessfulAt:snapshot.generatedAt}));
+  snapshot.sources=names.map((name,i)=>({id:ids[i],name,status:'ok',lastSuccessfulAt:snapshot.generatedAt}));
   // Only two publishers have events today. The others must remain available.
   snapshot.events=names.map((name,i)=>({...structuredClone(feed.events[0]),id:`event-${i}`,title:`Event from ${name}`,
-    source:{id:`source-${i}`,name,url:`https://example.com/${i}`},
+    source:{id:ids[i],name,url:`https://example.com/${i}`},
     startAt:`2026-09-${i<2?'06':'07'}T13:00:00-07:00`,endAt:`2026-09-${i<2?'06':'07'}T18:00:00-07:00`}));
   await page.emulateMedia({reducedMotion:'reduce'});
   await page.clock.install({time:clock});

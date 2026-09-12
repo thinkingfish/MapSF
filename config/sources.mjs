@@ -1,3 +1,4 @@
+// Only explicitly opted-in broad calendars appear in the front-page source filter.
 // approved records the owner's source decision; enabled controls collection.
 // Enable only after approval and publisher-specific extraction verification.
 // See ../SOURCE-REVIEW.md for the saved owner decisions and review notes.
@@ -58,6 +59,7 @@ export const sources = [
   },
   {
     id: 'sfpl',
+    showInSourceFilter: true,
     group: 'organizers',
     name: 'San Francisco Public Library',
     listingUrl: 'https://sfpl.org/events',
@@ -72,6 +74,7 @@ export const sources = [
   },
   {
     id: 'sf-rec-park',
+    showInSourceFilter: true,
     group: 'organizers',
     rss: { url: 'https://sfrecpark.org/RSSFeed.aspx?ModID=58&CID=All-calendar.xml', kind: 'Events' },
     name: 'San Francisco Recreation and Parks',
@@ -100,6 +103,7 @@ export const sources = [
   },
   {
     id: 'sf-chronicle',
+    showInSourceFilter: true,
     group: 'publishers',
     name: 'San Francisco Chronicle',
     listingUrl: 'https://www.sfchronicle.com/entertainment/events/',
@@ -112,6 +116,7 @@ export const sources = [
   },
   {
     id: 'mission-local',
+    showInSourceFilter: true,
     group: 'publishers',
     rss: { url: 'https://missionlocal.org/events/feed/', kind: 'Events' },
     name: 'Mission Local',
@@ -168,6 +173,7 @@ export const sources = [
   },
   {
     id: 'civic-joy-fund',
+    showInSourceFilter: true,
     group: 'publishers',
     name: 'Civic Joy Fund',
     listingUrl: 'https://civicjoyfund.org/events',

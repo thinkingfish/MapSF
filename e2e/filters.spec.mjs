@@ -87,3 +87,22 @@ for(const [name,viewport] of [['desktop',{width:1440,height:900}],['mobile',{wid
   await expect(page.locator('#source-filter')).toBeFocused();
   await expect(page.locator('[data-event-id="route-event"]')).toHaveCount(1);
  });
+
+test('direct series stay visible without occupying source dropdown entries',async({page})=>{
+ await page.clock.install({time:clock});
+ const snapshot=structuredClone(feed);
+ snapshot.events[1].source={id:'sf-shakes',name:'SF Shakes',url:'https://sfshakes.org/performance/free-shakes/'};
+ snapshot.sources.push({id:'from-the-e',name:'From the E',status:'ok',eventCount:0});
+ snapshot.sources.push({id:'unreviewed-publisher',name:'New publisher',status:'ok',eventCount:0});
+ await page.route('**/events.json',r=>r.fulfill({json:snapshot}));await page.goto('/');
+ await page.locator('#source-filter').click();
+ await expect(page.getByRole('checkbox',{name:'SF Shakes',exact:true})).toHaveCount(0);
+ await expect(page.getByRole('checkbox',{name:'From the E',exact:true})).toHaveCount(0);
+ await expect(page.getByRole('checkbox',{name:'New publisher',exact:true})).toHaveCount(0);
+ await expect(page.getByRole('checkbox',{name:'SF Public Library',exact:true})).toBeChecked();
+ await page.getByRole('checkbox',{name:'SF Public Library',exact:true}).uncheck();
+ await expect(page.locator('#source-filter')).toHaveText('Other sources only');
+ await page.keyboard.press('Escape');
+ await expect(page.locator('[data-event-id="route-event"]')).toBeVisible();
+ await expect(page.locator('[data-event-id="point-event"]')).toHaveCount(0);
+});
