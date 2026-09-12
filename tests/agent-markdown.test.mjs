@@ -83,3 +83,24 @@ test('daily JSON preserves polygon geometry and overnight dates, without frozen 
   const dst=agentDocuments(feed(),{now:new Date('2026-10-31T19:00:00Z')});
   assert.ok(dst.some(d=>d.slug==='2026-11-29'));
 });
+
+test('garden exports include area boundaries and main-entrance navigation separately', () => {
+  const doc = agentDocuments(feed(), {now}).find(d => d.slug === '2026-09-07');
+  const garden = doc.data.freePlaces.find(p => p.id.includes('sf-botanical-garden'));
+  assert.equal(garden.curation.geometry.type, 'Polygon');
+  assert.deepEqual(garden.entrance.geometry, {type: 'Point', coordinates: [-122.4667863,37.767047]});
+  assert.match(doc.body, /Map element: area \(Polygon\)/);
+  assert.match(doc.body, /destination=37.767047%2C-122.4667863/);
+  assert.match(doc.body, /OpenStreetMap contributors \(ODbL\)/);
+  assert.match(doc.body, /San Francisco residents: bring ID or proof of residency/);
+});
+
+test('boundary provenance cannot inject unsafe links or Markdown structure', () => {
+  const malicious = event();
+  malicious.curation.properties.metadata = {address:'100 Larkin St', geometrySource:'javascript:alert(1)', geometryReviewedAt:'\n# forged\n<script>x</script>'};
+  let body = agentDocuments(feed([malicious]),{now}).find(d=>d.slug==='2026-09-07').body;
+  assert.doesNotMatch(body,/javascript:|\n# forged|<script>/);
+  malicious.curation.properties.metadata.geometrySource = 'https://example.org/boundary';
+  body = agentDocuments(feed([malicious]),{now}).find(d=>d.slug==='2026-09-07').body;
+  assert.doesNotMatch(body,/\n# forged|<script>/);
+});

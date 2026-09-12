@@ -45,16 +45,43 @@ test('last entry cutoff uses the SF day even after UTC midnight and retains plan
   assert.equal(on('2026-09-07','sf-botanical-garden','2026-09-07T01:00:00Z').entryEnded,false);
   assert.match(on('2026-09-06','conservatory-of-flowers').hoursLabel, /last entry/);
 });
-test('each generated card contains full validated point curation with provenance', () => {
+test('each generated card contains full validated curation with provenance', () => {
   assert.equal(museums.length,1);
   assert.equal(places.length,3);
   for (const event of scheduledPlacesForDay('2026-09-06')) {
     assert.equal(validateEvent(event),true, event.id);
     assert.equal(event.recurring,true);
-    assert.equal(event.curation.geometry.type,'Point');
+    assert.equal(event.curation.geometry.type, /sf-botanical-garden|japanese-tea-garden/.test(event.id) ? 'Polygon' : 'Point');
     assert.match(event.curation.properties.metadata.coordinateSource,/^https:/);
     assert.equal(event.curation.properties.metadata.verifiedAt,'2026-09-06');
   }
   assert.deepEqual(scheduledPlacesForDay('2026-09-06',{places:[]}),[]);
   assert.equal(scheduledPlacesForDay('2026-09-06',{places:[places[0],places[0]]}).length,1);
+});
+
+test('garden areas retain independent entrance points and isolated geometry per day', () => {
+  for (const [id, coordinates] of [
+    ['sf-botanical-garden', [-122.4667863, 37.767047]],
+    ['japanese-tea-garden', [-122.4695479, 37.7702263]],
+  ]) {
+    const event = on('2026-09-06', id);
+    assert.equal(event.curation.geometry.type, 'Polygon');
+    assert.equal(event.curation.properties.layerType, 'area');
+    assert.deepEqual(event.entrance.geometry, { type: 'Point', coordinates });
+    assert.match(event.entrance.source, /^https:\/\/www.openstreetmap.org\/node\//);
+    assert.equal(event.curation.properties.metadata.geometryReviewedAt, '2026-09-11');
+    const first = structuredClone(event.curation.geometry.coordinates[0][0]);
+    event.curation.geometry.coordinates[0][0][0] = 0;
+    assert.deepEqual(on('2026-09-07', id).curation.geometry.coordinates[0][0], first);
+  }
+  assert.equal(on('2026-09-06', 'conservatory-of-flowers').curation.geometry.type, 'Point');
+  assert.equal(on('2026-09-06', 'asian-art-museum').entrance, undefined);
+});
+
+test('optional entrances reject invalid navigation coordinates and provenance', () => {
+  const event = on('2026-09-06', 'sf-botanical-garden');
+  for (const entrance of [null, {}, { name: 'Gate', geometry: { type: 'Point', coordinates: [999, 37] }, source: 'https://example.org' },
+    { name: 'Gate', geometry: { type: 'Point', coordinates: [-122, 37] }, source: 'javascript:alert(1)' }]) {
+    assert.equal(validateEvent({ ...event, entrance }), false);
+  }
 });

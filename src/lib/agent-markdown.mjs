@@ -1,3 +1,4 @@
+import { entranceDirectionsUrl } from './navigation.mjs';
 import { dedupeEvents, eventsForDay, sfDate } from './events.mjs';
 import { scheduledPlacesForDay } from './places.mjs';
 import { applyVenuePriceHint } from './venue-pricing.mjs';
@@ -12,6 +13,9 @@ const prose = value => String(value ?? '').replace(/\s+/g, ' ').trim()
   .replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/[\\\x60*_\[\]]/g, character => '\\' + character);
 const link = (label, url) => `[${prose(label)}](<${String(url).replace(/[<>\s]/g, c => encodeURIComponent(c))}>)`;
+const safeHttpUrl = value => {
+  try { return ['http:', 'https:'].includes(new URL(value).protocol); } catch { return false; }
+};
 const uri = slug => `${origin}/agent/${slug}.md`;
 const validInstant = value => typeof value === 'string' && Number.isFinite(Date.parse(value));
 
@@ -52,6 +56,12 @@ function listing(event) {
   if (properties.metadata.validThrough) lines.push(`- Schedule valid through: ${prose(properties.metadata.validThrough)}`);
   lines.push(`- Source: ${link(event.source.name, event.source.url)}`,
     `- Map element: ${properties.layerType} (${event.curation.geometry.type}); coordinates use longitude, latitude.`);
+  const directions = entranceDirectionsUrl(event);
+  if (directions) lines.push(
+    '- Entrance: ' + prose(event.entrance.name) + '; longitude, latitude: ' + event.entrance.geometry.coordinates.join(', '),
+    '- Directions: ' + link('Main entrance', directions),
+    '- Entrance coordinates: ' + link('OpenStreetMap', event.entrance.source));
+  if (safeHttpUrl(properties.metadata.geometrySource)) lines.push('- Boundary: ' + link('OpenStreetMap contributors (ODbL)', properties.metadata.geometrySource) + '; reviewed ' + prose(properties.metadata.geometryReviewedAt) + '. Grounds outline, not an access guarantee.');
   if (event.description && !event.recurring) lines.push('', 'Publisher description:', '', `> ${prose(event.description)}`);
   lines.push('');
   return lines.join('\n');
