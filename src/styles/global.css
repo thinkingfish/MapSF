@@ -158,11 +158,6 @@ h1 span {
   align-items: flex-end;
   gap: 8px;
 }
-.date-control > .date-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--muted);
-}
 .date-input-row {
   display: flex;
   gap: 6px;
@@ -674,9 +669,6 @@ h1 span {
     justify-content: space-between;
     gap: 10px;
     flex-wrap: wrap;
-  }
-  .date-control > .date-label {
-    font-size: 14px;
   }
   .timezone-note {
     display: none;
