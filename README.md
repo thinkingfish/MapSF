@@ -271,3 +271,7 @@ Chronicle, and Civic Joy Fund. Individual venues, event series, and newly added
 sources do not appear automatically. Their events retain attribution and stay
 included when calendar sources are deselected; date, map, and price filters still
 apply.
+
+### Farmers markets
+
+The 14 reviewed SF farmers markets in [config/farmers-markets.mjs](config/farmers-markets.mjs) appear under Events. The daily refresh checks their official schedule pages and expands the next 30 days, respecting seasonal ends, known exclusions and review expiry. They use points, routes or areas according to verified location evidence; individual markets do not add source-filter choices. Entry is free, but purchases cost extra. See the [market research and maintenance record](docs/journal/2026-09-11-farmers-markets.md) before changing schedules or extending them beyond 2026.

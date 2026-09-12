@@ -1,3 +1,4 @@
+import { marketOccurrenceKey } from './market-identity.mjs';
 import { sources } from '../../config/sources.mjs';
 
 // Only reviewed source roles determine precedence, never event-supplied claims.
@@ -150,6 +151,8 @@ function validCuration(curation) {
 }
 
 function semanticKey(event) {
+  const marketKey = marketOccurrenceKey(event);
+  if (marketKey) return marketKey;
   return [
     event.title.trim().toLocaleLowerCase('en-US').replace(/\s+/g, ' '),
     Date.parse(event.startAt),

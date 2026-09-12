@@ -48,10 +48,11 @@ function listing(event) {
     `- Address: ${prose(properties.metadata.address)}`,
     `- Price: ${prose(event.cost.label)}`];
   if (event.cost.inferredFromVenue) lines.push('- Price basis: inferred from the venue or event type; confirm with the organizer.');
-  else lines.push(`- Price basis: ${event.recurring ? 'curated admission schedule' : event.cost.label === 'Cost not listed' ? 'unknown; do not assume free or paid' : 'publisher listing'}.`);
+  else lines.push(`- Price basis: ${event.recurring ? 'curated admission schedule' : properties.category === 'farmers-market' ? 'curated market entry policy; purchases cost extra' : event.cost.label === 'Cost not listed' ? 'unknown; do not assume free or paid' : 'publisher listing'}.`);
   if (event.eligibility) lines.push(`- Eligibility: ${prose(event.eligibility)}`);
   if (event.hoursLabel) lines.push(`- Admission window: ${prose(event.hoursLabel)}`);
   if (event.admissionNote) lines.push(`- Admission conditions: ${prose(event.admissionNote)}`);
+  if (properties.metadata.scheduleReviewedAt) lines.push('- Weekly schedule reviewed: ' + prose(properties.metadata.scheduleReviewedAt) + '; review valid through ' + prose(properties.metadata.scheduleValidThrough) + '.');
   if (properties.metadata.verifiedAt) lines.push(`- Schedule/location verified: ${prose(properties.metadata.verifiedAt)}`);
   if (properties.metadata.validThrough) lines.push(`- Schedule valid through: ${prose(properties.metadata.validThrough)}`);
   lines.push(`- Source: ${link(event.source.name, event.source.url)}`,
@@ -77,7 +78,7 @@ function sourcesMarkdown(feed, now) {
     'Missing event prices remain unknown unless a curated venue or event-type rule supplies a free-admission inference. Explicit publisher prices take precedence. Inferred admission is labeled and should be confirmed.', '',
     'Free Places are calculated from separately reviewed rules, including resident eligibility, public free days, seasonal admission windows, known closures, and review expiry. A free listing is not a claim that a venue is open now, that everyone qualifies, or that special exhibitions are included.', '',
     'One daily document includes the full day, including events that may already have ended. Compare end times with the current time. The interactive site can hide ended events and apply source, price, and visible-map filters; these documents have no such filters.', '');
-  lines.push('Matching duplicate occurrences prefer venue and series organizers over publishers. Matching currently requires the same normalized title, start instant, and geometry; uncertain matches remain separate.', '');
+  lines.push('Matching duplicate occurrences prefer venue and series organizers over publishers. Matching normally requires the same normalized title, start instant, and geometry. Reviewed farmers-market aliases also match nearby venue pins to the market footprint at the same start time; separate performances at a market remain distinct. Uncertain matches remain separate.', '');
   for (const [title, guide] of [...eventSourceGroups.map(group => [group.name, group.sources]),['Free Places schedule providers',placeSourceGuide],['Map data',mapSourceGuide]]) {
     lines.push(`## ${title}`, '');
     for (const source of guide) {
