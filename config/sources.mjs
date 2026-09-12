@@ -1,3 +1,4 @@
+// Only explicitly opted-in broad calendars appear in the front-page source filter.
 // approved records the owner's source decision; enabled controls collection.
 // Enable only after approval and publisher-specific extraction verification.
 // See ../SOURCE-REVIEW.md for the saved owner decisions and review notes.
@@ -16,7 +17,50 @@ export const publicationBounds = Object.freeze({
 
 export const sources = [
   {
+    id: 'sf-shakes',
+    name: 'SF Shakes — Free Shakespeare in the Park',
+    group: 'series',
+    seriesKind: 'Performances',
+    listingUrl: 'https://sfshakes.org/performance/free-shakes/',
+    approved: true, // Requested by Yao, 2026-09-11.
+    enabled: true,
+    adapter: 'sf-shakes',
+    productionUrl: 'https://sfshakes.org/performance/free-shakes/ac/',
+    seasonYear: 2026,
+    allowEmpty: true,
+    maxDetailPages: 0,
+    maxEvents: 60,
+  },
+  {
+    id: 'from-the-e',
+    name: 'From the E — Excelsior Night Market',
+    group: 'series',
+    seriesKind: 'Markets',
+    listingUrl: 'https://www.fromtheesf.com/',
+    approved: true, // Requested through the Excelsior column, 2026-09-11.
+    enabled: true,
+    adapter: 'from-the-e',
+    allowEmpty: true,
+    detailPathPattern: /^\/events\/[a-z0-9-]+\/?$/i,
+    maxDetailPages: 8,
+    maxEvents: 40,
+  },
+  {
+    id: 'sunday-streets',
+    name: 'Sunday Streets SF',
+    group: 'series',
+    seriesKind: 'Street festivals',
+    listingUrl: 'https://sundaystreetssf.com/',
+    approved: true, // Requested by Yao, 2026-09-11.
+    enabled: false, // Verify each occurrence’s hours and point, route, or area.
+    adapter: 'jsonld',
+    maxDetailPages: 0,
+    maxEvents: 40,
+  },
+  {
     id: 'sfpl',
+    showInSourceFilter: true,
+    group: 'organizers',
     name: 'San Francisco Public Library',
     listingUrl: 'https://sfpl.org/events',
     approved: true, // Yao, 2026-09-06; recorded in SOURCE-REVIEW.md.
@@ -30,6 +74,8 @@ export const sources = [
   },
   {
     id: 'sf-rec-park',
+    showInSourceFilter: true,
+    group: 'organizers',
     rss: { url: 'https://sfrecpark.org/RSSFeed.aspx?ModID=58&CID=All-calendar.xml', kind: 'Events' },
     name: 'San Francisco Recreation and Parks',
     listingUrl: 'https://sfrecpark.org/Calendar.aspx',
@@ -44,6 +90,7 @@ export const sources = [
   },
   {
     id: 'funcheap',
+    group: 'publishers',
     rss: { url: 'https://sf.funcheap.com/feed/', kind: 'Recently added events' },
     name: 'Funcheap',
     listingUrl: 'https://sf.funcheap.com/today/',
@@ -56,6 +103,8 @@ export const sources = [
   },
   {
     id: 'sf-chronicle',
+    showInSourceFilter: true,
+    group: 'publishers',
     name: 'San Francisco Chronicle',
     listingUrl: 'https://www.sfchronicle.com/entertainment/events/',
     approved: true,
@@ -67,6 +116,8 @@ export const sources = [
   },
   {
     id: 'mission-local',
+    showInSourceFilter: true,
+    group: 'publishers',
     rss: { url: 'https://missionlocal.org/events/feed/', kind: 'Events' },
     name: 'Mission Local',
     listingUrl: 'https://missionlocal.org/events/',
@@ -82,6 +133,7 @@ export const sources = [
   },
   {
     id: 'ingleside-light',
+    group: 'publishers',
     rss: { url: 'https://www.inglesidelight.com/rss/', kind: 'Neighborhood news' },
     name: 'The Ingleside Light',
     listingUrl: 'https://www.inglesidelight.com/tag/things-to-do/',
@@ -95,6 +147,7 @@ export const sources = [
   },
   {
     id: 'richmond-sunset-news',
+    group: 'publishers',
     rss: { url: 'https://richmondsunsetnews.com/feed/', kind: 'Neighborhood news' },
     name: 'Richmond Review / Sunset Beacon',
     listingUrl: 'https://richmondsunsetnews.com/',
@@ -107,6 +160,7 @@ export const sources = [
   },
   {
     id: 'marina-times',
+    group: 'publishers',
     rss: { url: 'https://www.marinatimes.com/feed', kind: 'Neighborhood news' },
     name: 'Marina Times',
     listingUrl: 'https://www.marinatimes.com/category/calendar',
@@ -119,6 +173,8 @@ export const sources = [
   },
   {
     id: 'civic-joy-fund',
+    showInSourceFilter: true,
+    group: 'publishers',
     name: 'Civic Joy Fund',
     listingUrl: 'https://civicjoyfund.org/events',
     calendarUrl: 'https://calendar.google.com/calendar/ical/c_b0e78aa2d8125f99b281c06594c1e47e63f1bcb7c33e975f8b6d469204f6735f%40group.calendar.google.com/public/basic.ics',
@@ -131,6 +187,7 @@ export const sources = [
   },
   {
     id: 'mission-science-workshop',
+    group: 'organizers',
     name: 'Mission Science Workshop',
     listingUrl: 'https://www.missionscienceworkshop.org/',
     approved: true, // Added at Yao's request in conversation.

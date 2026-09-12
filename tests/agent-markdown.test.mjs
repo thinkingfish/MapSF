@@ -65,7 +65,8 @@ test('missing and stale feeds are explicit, with provider and publisher guides s
   const stale=agentDocuments({...feed(),generatedAt:'2026-09-01T06:00:00Z'}, {now});
   assert.match(stale.find(d=>d.slug==='2026-09-07').body,/Stale at build time/);
   const sources=stale.find(d=>d.slug==='sources').body;
-  assert.match(sources,/## Event publishers/);
+  assert.match(sources,/## Publishers and calendars/);
+  assert.doesNotMatch(sources,/KQED|kqed/);
   assert.match(sources,/## Free Places schedule providers/);
 });
 

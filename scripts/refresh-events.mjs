@@ -284,7 +284,7 @@ function cancellationMetadata(instances) {
   return values.length > 0 ? { cancelledInstances: values } : {};
 }
 
-function normalizeJsonLd(source, { record, pageUrl, curation }) {
+export function normalizeJsonLd(source, { record, pageUrl, curation, summary }) {
   if (cancelled(record)) return null;
   const title = plainText(record.name);
   const startAt = text(record.startDate);
@@ -322,6 +322,8 @@ function normalizeJsonLd(source, { record, pageUrl, curation }) {
   // Only trusted adapters supply this sibling field; publisher JSON-LD cannot.
   if (curation) event.curation = structuredClone(curation);
   if (image) event.imageUrl = image;
+  // Adapter-authored factual summaries only; never copy publisher article prose.
+  if (typeof summary === 'string') event.description = plainText(summary);
   return event;
 }
 
@@ -556,7 +558,10 @@ export async function refreshEvents({
     try {
       let raw;
       if (source.adapter === 'jsonld') raw = await collectJsonLd(source, fetchImpl);
-      else if (source.adapter === 'sfpl') {
+      else if (source.adapter === 'sf-shakes' || source.adapter === 'from-the-e') {
+        const { collectShakes, collectFromTheE } = await import('./adapters/direct-series.mjs');
+        raw = await (source.adapter === 'sf-shakes' ? collectShakes : collectFromTheE)(source, fetchImpl, now);
+      } else if (source.adapter === 'sfpl') {
         const { collectSfpl } = await import('./adapters/sfpl.mjs');
         raw = await collectSfpl(source, fetchImpl, now);
       } else if (source.adapter === 'recpark') {

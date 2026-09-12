@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import SourcesFooter from '../components/SourcesFooter.astro';
-import { eventSourceGuide, placeSourceGuide, mapSourceGuide, rssSourceGuide } from '../../config/source-guide.mjs';
+import { eventSourceGroups, placeSourceGuide, mapSourceGuide, rssSourceGuide } from '../../config/source-guide.mjs';
 ---
 <!doctype html>
 <html lang="en">
@@ -13,7 +13,7 @@ import { eventSourceGuide, placeSourceGuide, mapSourceGuide, rssSourceGuide } fr
     <main class="info-page" id="source-guide">
       <section class="info-intro"><p class="eyebrow">LOCAL KNOWLEDGE, CLEAR SOURCES</p><h1>Sources & methodology<span>.</span></h1><p class="intro-copy">A smaller, carefully checked selection of things to do in San Francisco. Every listing links back to its original source.</p></section>
       <section aria-labelledby="event-source-heading"><h2 id="event-source-heading">Event sources</h2><p class="info-copy">“Collecting events” means a source is connected. “Planned” sources are on our curated list, but their events are not yet included.</p>
-        <div class="source-cards">{eventSourceGuide.map(source => <article class="source-card" id={source.id}><span class="source-status">{source.status}</span><h3><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a></h3><p>{source.description}</p><p>{source.collection}</p></article>)}</div>
+        {eventSourceGroups.map(group => <section aria-labelledby={`${group.id}-heading`}><h3 id={`${group.id}-heading`}>{group.name}</h3><div class="source-cards">{group.sources.map(source => <article class="source-card" id={source.id}><span class="source-status">{source.status}</span><h3><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a></h3>{source.seriesKind && <p class="eyebrow">{source.seriesKind}</p>}<p>{source.description}</p><p>{source.collection}</p></article>)}</div></section>)}
       </section>
       <section id="rss" aria-labelledby="rss-heading">
         <h2 id="rss-heading">Subscribe via RSS</h2>
@@ -29,6 +29,7 @@ import { eventSourceGuide, placeSourceGuide, mapSourceGuide, rssSourceGuide } fr
         <h3>Quality before quantity</h3><p>We keep event titles, dates, times, places, prices when stated, and links to the original source. We do not reproduce news articles. Listings need usable dates and verified map locations in San Francisco. Missing or ambiguous information can keep an event out of the list, even when we have checked that date.</p>
         <h3>Costs and eligibility stay explicit</h3><p>An explicit publisher price takes precedence. For missing prices, we use reviewed defaults for SFPL venues, city parks, named Golden Gate Park meadows, and recognizable public street celebrations. Inferred prices are identified in the event details; unmatched prices remain “Cost not listed.” Resident admission, proof of residency, special-exhibition exclusions, and other conditions are shown separately.</p>
         <h3>Places, routes, and areas</h3><p>Most calendars supply a venue point. A festival with a verified venue or intersection can appear as a point. We use a route or area when the streets or boundaries for that specific event are verified. Reviewed route and area records retain their full shape on the map.</p>
+        <h3>Original sources and repeat events</h3><p>We track recurring markets, street festivals, and performance series separately from broad calendars. Each published occurrence needs its own verified date and location. When listings have the same normalized title, start time, and map geometry, we show the venue or series organizer’s listing ahead of a publisher’s copy. Different dates, locations, or uncertain matches remain separate; a series is not a daily event.</p>
         <h3>Updates, cancellations, and limits</h3><p>We remove ended events, reconcile duplicates, and honor cancellations we can identify. If a source fails, previously verified upcoming listings may remain with their original freshness information. We cannot guarantee that every event or last-minute change is captured, so check the linked publisher before heading out.</p>
         <h3>Reviewed recurring schedules</h3><p>Museum and garden admission rules are maintained separately from event collection. We record their official sources, conditions, seasonal hours, known closures, and review expiry. These schedules do not make an unchecked event date count as checked.</p>
       </section>

@@ -1,3 +1,8 @@
+import { sources } from '../../config/sources.mjs';
+
+// Only reviewed source roles determine precedence, never event-supplied claims.
+const directSources = new Set(sources.filter(source => source.group === 'organizers' || source.group === 'series').map(source => source.id));
+
 const SF_TIME_ZONE = 'America/Los_Angeles';
 const ISO_WITH_OFFSET = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{1,9}))?)?(Z|([+-])(\d{2}):(\d{2}))$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -213,8 +218,10 @@ export function dedupeEvents(events) {
   const ids = new Set();
   const listings = new Set();
   const unique = [];
-  for (const event of events) {
-    if (!validateEvent(event)) continue;
+  // Stable sorting preserves existing first-seen behavior within each role.
+  const candidates = events.filter(validateEvent).sort((a, b) =>
+    Number(directSources.has(b.source.id)) - Number(directSources.has(a.source.id)));
+  for (const event of candidates) {
     const listing = semanticKey(event);
     if (ids.has(event.id) || listings.has(listing)) continue;
     ids.add(event.id);

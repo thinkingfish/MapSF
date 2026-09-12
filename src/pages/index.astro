@@ -37,7 +37,8 @@ import Skyline from '../components/Skyline.astro';
         <div class="explore-grid">
           <section id="map-panel" class="map-panel" aria-label="San Francisco event map" tabindex="-1">
             <div id="map" aria-label="Interactive map of event locations"></div>
-            <button id="reset-map" class="reset-map" type="button" aria-label="Show all of San Francisco" title="Show all of San Francisco"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4m0 10v4M1 10h4m10 0h4" stroke="currentColor" stroke-width="1.5"/></svg></button>
+            <!-- Mainland shoreline / southern county line, simplified from DataSF txuc-3kzm (PDDL). -->
+            <button id="reset-map" class="reset-map" type="button" aria-label="Show all of San Francisco" title="Show all of San Francisco"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.12 3.47L13.55 3.88L15.09 6.01L14.93 9.52L15.71 9.53L15.25 10.66L16.1 11.43L14.35 11.57L16.4 11.84L16.94 12.77L16.04 12.75L16.1 13.45L17.95 13.92L17.15 14.4L17.84 15.63L15.02 14.53L16.22 16.57L3.23 16.63L2.23 6.89L4.82 6.19L5.77 3.45L7.2 4.23L11.12 3.47Z" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             <div id="map-status" class="map-status" role="status">Finding our way around…</div>
             <div class="map-legend" aria-label="Map legend"><span><i class="legend-point"></i>Place</span><span><i class="legend-route"></i>Route</span><span><i class="legend-area"></i>Area</span></div>
           </section>

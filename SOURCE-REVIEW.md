@@ -208,7 +208,7 @@ pending schedule and location verification.
 
 This document records your approval; checking a box does not start collection.
 The operational source list remains [config/sources.mjs](config/sources.mjs),
-where all ten sources now have `approved: true`, reflecting your saved
+where the reviewed sources have `approved: true`, reflecting your saved
 decisions and your approval of Marina Times and addition of Civic Joy Fund and Mission Science Workshop in conversation.
 SFPL, SF Rec & Parks, Mission Local, the Chronicle, and Civic Joy Fund have verified collectors.
 Mission Science Workshop has a reviewed Mission-site schedule shown with recurring
@@ -229,3 +229,25 @@ work are tracked per publisher in [SOURCE-STATUS.md](SOURCE-STATUS.md).
 - [X] Verify extraction with saved fixtures, including missing information and cancellations.
 - [X] Apply approved scope/exclusions and enable only approved, verified sources in the registry.
 - [X] Run refresh, tests, and build; review the resulting event snapshot before deployment.
+
+## KQED The Do List
+
+Former registry ID: `kqed`
+[Browse The Do List](https://www.kqed.org/thedolist) · [KQED Arts RSS](https://ww2.kqed.org/arts/feed/)
+
+- [x] Requested by Yao in conversation on September 11, 2026, with an SF-only scope.
+- [x] Narrow Chinatown event-summary extraction and station geometry verified. Other event formats remain pending.
+
+Include physical events at verified San Francisco venues. Exclude out-of-city venues, online-only offerings, and non-event articles. Decide by actual venue, not headline keywords: an article about a play set in Oakland can describe a performance in San Francisco. The regional Arts RSS is offered for direct subscription; it is not an SF-only event feed.
+
+Owner decision, September 11: remove KQED from collection and all public listings; retain the investigation only as internal discovery research. The prior approval and trial verification above are historical. [Feasibility evidence and next steps](docs/journal/2026-09-11-kqed-source.md).
+
+## Direct series added September 11, 2026
+
+- [x] SF Shakes — [Free Shakespeare in the Park](https://sfshakes.org/performance/free-shakes/), requested by Yao. San Francisco performances only.
+- [x] [From the E — Excelsior Night Market](https://www.fromtheesf.com/), identified in the Excelsior column supplied by Yao for tracking recurring markets.
+- [x] [Sunday Streets SF](https://sundaystreetssf.com/), requested as a recurring street-festival series.
+- [x] SF Shakes and From the E: verified adapters and occurrence points; enabled September 11.
+- [ ] Sunday Streets: verify current organizer hours and occurrence geometry before enabling. Source approval does not imply collection is ready.
+
+See [source grouping and series evidence](docs/journal/2026-09-11-direct-series.md).

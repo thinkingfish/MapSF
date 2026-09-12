@@ -250,3 +250,15 @@ test('dedupeEvents compares and sorts timestamps by instant rather than offset t
   });
   assert.deepEqual(dedupeEvents([original, earlier]), [earlier, original]);
 });
+
+test('direct sources win duplicate occurrences regardless of collection order', () => {
+  const publisher = event({id: 'mission-local:show', source: {id:'mission-local',name:'Mission Local',url:'https://missionlocal.org/event/show/'}});
+  const direct = event({id:'sf-shakes:show', source:{id:'sf-shakes',name:'SF Shakes',url:'https://sfshakes.org/performance/free-shakes/ac/'}});
+  assert.deepEqual(dedupeEvents([publisher,direct]), [direct]);
+  assert.deepEqual(dedupeEvents([direct,publisher]), [direct]);
+  const secondShow = {...direct,id:'sf-shakes:second',startAt:'2026-09-07T23:30:00-07:00',endAt:'2026-09-08T01:15:00-07:00'};
+  assert.deepEqual(dedupeEvents([publisher,direct,secondShow]), [direct,secondShow]);
+  const otherVenue = event({id:'mission-local:elsewhere',source:publisher.source,curation:{...publisher.curation,geometry:{type:'Point',coordinates:[-122.42,37.76]}}});
+  assert.equal(dedupeEvents([direct,otherVenue]).length,2);
+  assert.deepEqual(dedupeEvents([publisher,{...direct,startAt:'bad'}]),[publisher]);
+});

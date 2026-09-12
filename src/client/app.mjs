@@ -1,3 +1,5 @@
+import { sources as sourceRegistry } from '../../config/sources.mjs';
+const sourceFilterIds = new Set(sourceRegistry.filter(source => source.showInSourceFilter === true).map(source => source.id));
 import basemapRelease from '../../config/basemap-release.json';
 import { createBasemapStyle } from '../lib/basemap-style.mjs';
 import { applyVenuePriceHint } from '../lib/venue-pricing.mjs';
@@ -295,7 +297,8 @@ function updateSourceOptions() {
   for (const event of state.events) {
     if (!event.recurring) sources.set(event.source.id, event.source.name);
   }
-  const entries = [...sources].sort((a, b) => a[1].localeCompare(b[1]));
+  const hasOtherSources = [...sources.keys()].some(id => !sourceFilterIds.has(id));
+  const entries = [...sources].filter(([id]) => sourceFilterIds.has(id)).sort((a, b) => a[1].localeCompare(b[1]));
   const signature = JSON.stringify(entries);
   if (options.dataset.options !== signature) {
     options.replaceChildren(...entries.map(([id, name]) => {
@@ -317,7 +320,7 @@ function updateSourceOptions() {
   for (const checkbox of options.querySelectorAll("input")) checkbox.checked = !state.excludedSourceIds.includes(checkbox.value);
   const selected = entries.filter(([id]) => !state.excludedSourceIds.includes(id));
   $("source-filter").textContent = selected.length === entries.length ? "All sources" : selected.length === 0
-    ? "No sources" : selected.length === 1 ? selected[0][1] : selected.length + " sources";
+    ? (hasOtherSources ? "Other sources only" : "No sources") : selected.length === 1 ? selected[0][1] : selected.length + " sources";
   positionSourceMenu();
 }
 

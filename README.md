@@ -47,13 +47,13 @@ pnpm run test:browser
 Record your decisions in the [source review checklist](SOURCE-REVIEW.md).
 Its approval boxes do not automatically enable collection.
 
-All ten sources in [config/sources.mjs](config/sources.mjs) have your recorded
+The sources in [config/sources.mjs](config/sources.mjs) have your recorded
 approval. Collection requires both `approved: true` and `enabled: true`.
 The integration status is documented in [SOURCE-STATUS.md](SOURCE-STATUS.md).
 
 SFPL, SF Rec & Parks, Mission Local, the Chronicle, and Civic Joy Fund have verified publisher
 collectors. Mission Science Workshop has a curated Mission-site community-day
-schedule. Other sources await complete extraction or verified venue geometry. Approval and working collection are separate states.
+schedule. SF Shakes and From the E collect verified individual occurrences. KQED is retained only as [internal discovery research](docs/journal/2026-09-11-kqed-source.md), not collected or exposed on the website. Sunday Streets awaits current occurrence hours and locations. Other sources await complete extraction or verified venue geometry. Approval and working collection are separate states.
 
 Only enabled sources are collected. Incomplete or cancelled listings are excluded.
 Collection preserves source attribution and explicit time ranges. Unknown cost
@@ -264,3 +264,10 @@ content. Cloudflare `_headers` serves Markdown as UTF-8 plain text with a
 five-minute cache policy. Unit tests cover date/coverage semantics, admission
 conditions, freshness, escaping, and geometry; HTTP tests read the built content
 without a browser or JavaScript.
+
+The front-page source dropdown is an explicit allowlist (`showInSourceFilter` in
+`config/sources.mjs`) for broad calendars: SFPL, Rec & Parks, Mission Local, SF
+Chronicle, and Civic Joy Fund. Individual venues, event series, and newly added
+sources do not appear automatically. Their events retain attribution and stay
+included when calendar sources are deselected; date, map, and price filters still
+apply.
