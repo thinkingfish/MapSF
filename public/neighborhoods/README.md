@@ -17,3 +17,15 @@ Context: The Chronicle article https://www.sfchronicle.com/projects/2022/san-fra
 The source manifest lists each DataSF download endpoint and its source name field. Fetch each GeoJSON FeatureCollection with `$limit=1000`; verify the response is complete against source metadata. Keep all Polygon/MultiPolygon coordinates unchanged. Set the feature ID and properties.id to `layout + '-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')`, properties.name to the original name, and remove other properties. Runtime paths use `311.geojson` for the SF Find dataset. Normalization performs no independent ring simplification; doing so could create gaps along shared boundaries. These are separate definitions, not interchangeable administrative districts.
 
 Files here are normalized snapshots. The manifest distinguishes source hashes from runtime hashes and sizes. DataSF may update boundaries; refresh deliberately, validate names/counts/geometry, and review changes before publication. This is a static asset release, not part of daily event collection.
+
+### Election dissolve
+
+The property-only normalization above applies directly to Analysis, Notification and 311. For Election, download the manifest's `bsfq-aeyw` precinct GeoJSON, exclude the five `neighrep === "NA"` features, and set each retained feature's properties to `{neighrep, name: crosswalk[neighrep]}` using `election-name-crosswalk.json`. Fail if any named code is missing from the crosswalk. Save this as `election-precincts.named.geojson`, then run the same pinned tool used for this snapshot:
+
+```sh
+pnpm dlx mapshaper@0.7.61 election-precincts.named.geojson \
+  -dissolve neighrep copy-fields=name \
+  -o election.dissolved.geojson format=geojson
+```
+
+Normalize the dissolved features to `election-*` IDs and id/name properties as above. No simplification, rounding or repair was applied. Check 26 groups, all 600 assigned precincts, three retained holes and each group's area against its source precinct sum. The five exclusions are recorded in `election-excluded-unassigned.json`; these are not reassigned to adjacent neighborhoods. Mapshaper is a one-time data preparation tool, not a runtime dependency.

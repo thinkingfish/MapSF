@@ -36,6 +36,8 @@ test('neighborhood, price, source and viewport filters compose for events and fr
  assert.deepEqual(filterEvents(events,{neighborhood:polygon}).map(e=>e.id),['inside','place']);
  assert.deepEqual(filterEvents(events,{neighborhood:polygon,excludedSourceIds:['a']}).map(e=>e.id),['place']);
  assert.equal(filterEvents(events,{neighborhood:polygon,mapBounds:[[3,3],[4,4]]}).length,0);
+ events[0].cost.isFree=false;
+ assert.deepEqual(filterEvents(events,{neighborhood:polygon,freeOnly:true}).map(e=>e.id),['place']);
 });
 
 test('shipped official layouts retain valid multipart geometry and unique IDs',async()=>{
