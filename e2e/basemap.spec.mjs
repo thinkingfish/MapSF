@@ -50,3 +50,21 @@ test('local vector tiles and glyphs render streets and neighbourhoods through pa
   expect(external).toEqual([]);
   await expect(page.locator('#map-status')).toBeHidden();
 });
+
+test('Free Places gardens render as areas with directions to their main entrances', async ({ page }) => {
+  await inspectMap(page);
+  await page.clock.install({ time: clock });
+  await page.route('**/events.json', route => route.fulfill({ json: feed }));
+  await page.goto('/');
+  await expect(page.locator('#map-status')).toBeHidden({ timeout: 20000 });
+  await page.evaluate(() => window.__testedMap.jumpTo({center: [-122.4705, 37.7685], zoom: 14}));
+  await page.locator('#places-toggle').click();
+  for (const [id, coordinate] of [['sf-botanical-garden','37.767047%2C-122.4667863'], ['japanese-tea-garden','37.7702263%2C-122.4695479']]) {
+    await expect.poll(() => page.evaluate(id => window.__testedMap.queryRenderedFeatures({ layers: ['event-areas'] }).some(f => String(f.properties.eventId).includes(id)), id)).toBe(true);
+    const card = page.locator(`article[data-event-id*="${id}"]`);
+    await card.locator('.event-select').click();
+    await expect(card.getByRole('link', {name: 'Directions to main entrance'})).toHaveAttribute('href', `https://www.google.com/maps/dir/?api=1&destination=${coordinate}`);
+    await expect(card.locator('.event-details')).toContainText('Area');
+  }
+  await page.locator('#map-panel').screenshot({path:'/tmp/mapsf-garden-areas.png'});
+});

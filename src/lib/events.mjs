@@ -189,6 +189,12 @@ export function eventsForDay(events, day) {
   });
 }
 
+export function validEntrance(entrance) {
+  return isObject(entrance) && nonEmptyString(entrance.name)
+    && entrance.geometry?.type === 'Point' && validGeometry(entrance.geometry)
+    && safeHttpUrl(entrance.source);
+}
+
 export function validateEvent(event) {
   if (!isObject(event)
     || !nonEmptyString(event.id)
@@ -207,6 +213,7 @@ export function validateEvent(event) {
     return false;
   }
 
+  if (event.entrance !== undefined && !validEntrance(event.entrance)) return false;
   if (event.description !== undefined && typeof event.description !== 'string') return false;
   if (event.imageUrl !== undefined && !safeHttpUrl(event.imageUrl)) return false;
   return true;

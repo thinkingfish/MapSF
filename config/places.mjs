@@ -1,7 +1,9 @@
+import { botanical, tea } from './garden-geometry.mjs';
+
 // Reviewed against the operator's admission and travel pages on 2026-09-06.
 // Coordinates are Google Maps *place targets* (!3d/!4d), not viewport centers,
 // linked by https://gggp.org/visit/getting-here/. They identify the actual gardens,
-// not surveyed entrances or invented garden-boundary polygons.
+// with reviewed area geometry and separate entrance points for two gardens.
 const gardens = {
   category: 'garden',
   verifiedAt: '2026-09-06',
@@ -18,7 +20,7 @@ export const places = [
     ...gardens,
     id: 'sf-botanical-garden', name: 'San Francisco Botanical Garden',
     address: '1199 9th Avenue, San Francisco, CA 94122',
-    coordinates: [-122.4693109, 37.7677096],
+    ...botanical,
     hours: { start: '07:30', end: 'botanical-seasonal', closingNote: 'Garden closes one hour after last entry.' },
     publicFreeRules: [{ weekday: 2, nth: 2 }, { month: 11, weekday: 4, nth: 4 }, { month: 12, day: 25 }, { month: 1, day: 1 }],
     earlyFree: { start: '07:30', end: '09:00' },
@@ -27,7 +29,7 @@ export const places = [
     ...gardens,
     id: 'japanese-tea-garden', name: 'Japanese Tea Garden',
     address: '75 Hagiwara Tea Garden Drive, San Francisco, CA 94118',
-    coordinates: [-122.4704359, 37.7700913],
+    ...tea,
     hours: { start: '09:00', end: 'tea-seasonal' },
     publicFreeRules: [],
     earlyFree: { weekdays: [1, 3, 5], start: '09:00', end: '10:00' },

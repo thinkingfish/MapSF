@@ -1,3 +1,4 @@
+import { entranceDirectionsUrl } from '../lib/navigation.mjs';
 import { sources as sourceRegistry } from '../../config/sources.mjs';
 const sourceFilterIds = new Set(sourceRegistry.filter(source => source.showInSourceFilter === true).map(source => source.id));
 import basemapRelease from '../../config/basemap-release.json';
@@ -218,6 +219,16 @@ function renderCard(event) {
     "aria-label",
     `Details for ${event.title} at ${event.source.name} (opens in a new tab)`,
   );
+  const directionsUrl = entranceDirectionsUrl(event);
+  if (directionsUrl) {
+    const directions = element("a", "source-link", "Directions to main entrance ↗");
+    directions.href = directionsUrl;
+    directions.target = "_blank";
+    directions.rel = "noopener noreferrer";
+    const paragraph = element("p", "event-address");
+    paragraph.append(directions);
+    details.append(paragraph);
+  }
   details.append(source);
   card.append(button, details);
   return card;

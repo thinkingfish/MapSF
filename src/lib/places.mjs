@@ -80,15 +80,17 @@ export function scheduledPlacesForDay(day, { now = new Date(), places = configur
       cost: { label: publicFree ? 'Free general admission' : 'Free for SF residents', isFree: true },
       source: { ...place.source }, description: `${eligibility} ${admissionNote}`,
       recurring: true, eligibility, admissionNote, hoursLabel,
+      ...(place.entrance ? { entrance: structuredClone(place.entrance) } : {}),
       entryEnded: today === day && nowMs >= Date.parse(endAt),
       curation: {
         type: 'Feature',
-        geometry: { type: 'Point', coordinates: [...place.coordinates] },
+        geometry: place.geometry ? structuredClone(place.geometry) : { type: 'Point', coordinates: [...place.coordinates] },
         properties: {
-          name: place.name, layerType: 'poi', category: place.category,
+          name: place.name, layerType: place.geometry?.type === 'Polygon' ? 'area' : 'poi', category: place.category,
           metadata: {
             address: place.address, source: place.source.url,
-            coordinateSource: place.coordinateSource, verifiedAt: place.verifiedAt,
+            coordinateSource: place.geometrySource || place.coordinateSource, verifiedAt: place.verifiedAt,
+            ...(place.geometrySource ? { geometrySource: place.geometrySource, geometryVersion: place.geometryVersion, geometryReviewedAt: place.geometryReviewedAt, geometryAttribution: '© OpenStreetMap contributors (ODbL 1.0)' } : {}),
             validThrough: place.validThrough,
           },
         },
