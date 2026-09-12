@@ -731,13 +731,20 @@ h1 span {
     color: #8a7380;
   }
   .explore-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: contents;
     height: auto;
     max-height: none;
     min-height: 0;
   }
+  .explore {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .explore > .mobile-view-controls { margin-bottom: 0; }
+  .explore .map-panel { order: 1; }
+  .explore > .toolbar { order: 2; margin-bottom: 0; }
+  .explore .results-panel { order: 3; }
   .map-panel {
     height: auto;
     min-height: 420px;
