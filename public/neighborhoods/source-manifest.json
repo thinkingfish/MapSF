@@ -7,7 +7,7 @@
     "Election neighborhoods",
     "311 neighborhoods"
   ],
-  "default": "analysis",
+  "default": "event-areas",
   "datasets": [
     {
       "layout": "analysis",
@@ -398,5 +398,18 @@
     }
   ],
   "validation_limits": "Validated GeoJSON structure, nonempty closed polygon rings, finite coordinates, unique names, and geographic bounds. Did not run GEOS topological validity/coverage checks.",
-  "simplification": "Raw datasets are small enough to use directly. Prefer raw coordinates initially. If needed use shared-topology simplification (Mapshaper/TopoJSON), preserve all islands and polygon holes, maximum deviation 5–10 meters at city scale; avoid separately simplifying adjacent polygons. Rounding coordinates to 6 decimals is about 0.1m, but validate rings after rounding."
+  "simplification": "Raw datasets are small enough to use directly. Prefer raw coordinates initially. If needed use shared-topology simplification (Mapshaper/TopoJSON), preserve all islands and polygon holes, maximum deviation 5–10 meters at city scale; avoid separately simplifying adjacent polygons. Rounding coordinates to 6 decimals is about 0.1m, but validate rings after rounding.",
+  "event_areas": {
+    "name": "MapSF event areas",
+    "feature_count": 15,
+    "source_layout": "analysis",
+    "grouping": "config/event-areas.json",
+    "generator": "scripts/build-event-areas.mjs",
+    "tool": "Mapshaper 0.7.61; dissolve only, no simplification",
+    "runtime_file": "event-areas.geojson",
+    "runtime_bytes": 1639366,
+    "runtime_sha256": "678dc05e63b4a73e13b2eeeb66e0e32cfdf10df1258f06da0b8d07bf638339c0",
+    "approved": "2026-09-11",
+    "license_id": "PDDL"
+  }
 }

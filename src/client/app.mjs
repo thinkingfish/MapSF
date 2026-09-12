@@ -56,7 +56,6 @@ let mappedDataSignature;
 let paintedSelection;
 let gestureHintTimer;
 let neighborhoodData = { type: 'FeatureCollection', features: [] };
-let activeLayout = defaultNeighborhoodLayout;
 let neighborhoodRequest = 0;
 const neighborhoodCache = new Map();
 const sfBounds = [
@@ -646,7 +645,7 @@ async function loadNeighborhoodLayout(id, fit = false) {
   if (!layout) return;
   const request = ++neighborhoodRequest;
   $('neighborhood-filter').disabled = true;
-  $('neighborhood-status').textContent = 'Loading neighborhoods…';
+  $('neighborhood-status').textContent = 'Loading areas…';
   $('retry-neighborhoods').hidden = true;
   try {
     let data = neighborhoodCache.get(id);
@@ -659,8 +658,7 @@ async function loadNeighborhoodLayout(id, fit = false) {
     }
     if (request !== neighborhoodRequest) return;
     neighborhoodData = data;
-    activeLayout = id;
-    $('neighborhood-filter').replaceChildren(new Option('All neighborhoods', ''),
+    $('neighborhood-filter').replaceChildren(new Option('All areas', ''),
       ...data.features.slice().sort((a,b) => a.properties.name.localeCompare(b.properties.name))
         .map(feature => new Option(feature.properties.name, feature.id)));
     if (mapReady) map.getSource('neighborhoods').setData(data);
@@ -669,19 +667,16 @@ async function loadNeighborhoodLayout(id, fit = false) {
     $('neighborhood-filter').disabled = false;
   } catch {
     if (request !== neighborhoodRequest) return;
-    $('neighborhood-layout').value = activeLayout;
     $('neighborhood-filter').disabled = !neighborhoodData.features.length;
-    $('neighborhood-status').textContent = 'Could not load that boundary map. Existing filters still work.';
+    $('neighborhood-status').textContent = 'Could not load areas. Other filters still work.';
     $('retry-neighborhoods').hidden = false;
     $('retry-neighborhoods').onclick = () => {
-      $('neighborhood-layout').value = id;
       loadNeighborhoodLayout(id, fit);
     };
   }
 }
 
 $('neighborhood-filter').addEventListener('change', event => selectNeighborhood(event.target.value));
-$('neighborhood-layout').addEventListener('change', event => loadNeighborhoodLayout(event.target.value, true));
 
 function chooseDay(day) {
   if (!checkedDates(state.feed?.coverage).has(day)) return;

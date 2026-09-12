@@ -53,3 +53,25 @@ test('multipart meadow events can intersect one part of a neighborhood',()=>{
  const meadow={type:'MultiPolygon',coordinates:[[[[0.1,0.1],[0.5,0.1],[0.5,0.5],[0.1,0.1]]],[[[8,8],[9,8],[9,9],[8,8]]]]};
  assert.ok(geometryIntersectsNeighborhood(meadow,polygon));
 });
+
+test('approved event areas partition all 41 source neighborhoods exactly once',async()=>{
+ const {readFile}=await import('node:fs/promises');
+ const {validateNeighborhoodCollection}=await import('../src/lib/neighborhoods.mjs');
+ const groups=JSON.parse(await readFile(new URL('../config/event-areas.json',import.meta.url)));
+ const areas=JSON.parse(await readFile(new URL('../public/neighborhoods/event-areas.geojson',import.meta.url)));
+ const source=JSON.parse(await readFile(new URL('../public/neighborhoods/analysis.geojson',import.meta.url)));
+ assert.equal(groups.length,15);assert.equal(areas.features.length,15);assert.ok(validateNeighborhoodCollection(areas));
+ assert.deepEqual(groups.flatMap(g=>g.members).sort(),source.features.map(f=>f.properties.name).sort());
+ assert.deepEqual(groups.find(g=>g.name==='Bayview–Hunters Point').members,['Bayview Hunters Point']);
+ assert.deepEqual(groups.find(g=>g.name==='Glen Park & Excelsior').members,['Glen Park','Outer Mission','Excelsior']);
+ assert.deepEqual(groups.find(g=>g.name==='Portola, McLaren Park & Visitacion Valley').members,['Portola','McLaren Park','Visitacion Valley']);
+});
+
+test('dissolving approved groups preserves the combined source area',async()=>{
+ const {readFile}=await import('node:fs/promises');
+ const read=async path=>JSON.parse(await readFile(new URL(path,import.meta.url)));
+ const groups=await read('../config/event-areas.json'),source=await read('../public/neighborhoods/analysis.geojson'),areas=await read('../public/neighborhoods/event-areas.geojson');
+ const ringArea=ring=>{const [ox,oy]=ring[0];let sum=0;for(let i=1;i<ring.length;i++)sum+=(ring[i-1][0]-ox)*(ring[i][1]-oy)-(ring[i][0]-ox)*(ring[i-1][1]-oy);return Math.abs(sum/2);};
+ const area=g=>(g.type==='MultiPolygon'?g.coordinates:[g.coordinates]).reduce((sum,p)=>sum+ringArea(p[0])-p.slice(1).reduce((s,r)=>s+ringArea(r),0),0);
+ for(const group of groups){const expected=source.features.filter(f=>group.members.includes(f.properties.name)).reduce((sum,f)=>sum+area(f.geometry),0);const actual=area(areas.features.find(f=>f.properties.name===group.name).geometry);assert.ok(Math.abs(actual-expected)<expected*1e-7,group.name);}
+});

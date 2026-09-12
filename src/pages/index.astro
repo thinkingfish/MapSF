@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import SourcesFooter from '../components/SourcesFooter.astro';
 import Skyline from '../components/Skyline.astro';
-import { neighborhoodLayouts } from '../../config/neighborhood-layouts.mjs';
 ---
 <!doctype html>
 <html lang="en">
@@ -34,9 +33,8 @@ import { neighborhoodLayouts } from '../../config/neighborhood-layouts.mjs';
           <div class="source-filter"><span id="source-filter-label">Event sources:</span><button id="source-filter" type="button" popovertarget="source-menu" aria-haspopup="dialog" aria-expanded="false" aria-describedby="source-filter-label">All sources</button><div id="source-menu" class="source-menu" popover role="dialog" aria-label="Filter by sources"><p>Show events from</p><div id="source-options"></div></div></div>
           <label class="free-filter"><input id="free-only" type="checkbox" /><span class="checkbox-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="m2.5 6 2.3 2.5 4.7-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Free only</label>
           <div class="neighborhood-controls">
-            <label class="neighborhood-filter" for="neighborhood-filter">Neighborhood <select id="neighborhood-filter" disabled><option value="">All neighborhoods</option></select></label>
-            <label class="boundary-layout" for="neighborhood-layout">Boundary map <select id="neighborhood-layout">{neighborhoodLayouts.map(layout => <option value={layout.id}>{layout.name}</option>)}</select></label>
-            <span id="neighborhood-status" role="status">Loading neighborhoods…</span><button id="retry-neighborhoods" type="button" hidden>Retry neighborhoods</button>
+            <div class="neighborhood-filter"><label for="neighborhood-filter">Area</label><select id="neighborhood-filter" disabled><option value="">All areas</option></select></div>
+            <span id="neighborhood-status" role="status">Loading areas…</span><button id="retry-neighborhoods" type="button" hidden>Retry areas</button>
           </div>
         </div>
         <div class="mobile-view-controls" aria-label="Jump to view"><button id="show-map" type="button"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="m2 4 4-2 6 2 4-2v12l-4 2-6-2-4 2V4Zm4-2v12m6-10v12" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Map</button><button id="show-list" type="button"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6 4h10M6 9h10M6 14h10M2 4h.1M2 9h.1M2 14h.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>List</button></div>

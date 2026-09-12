@@ -12,9 +12,10 @@ async function load(page){
 for(const [name,size] of [['desktop',{width:1440,height:900}],['mobile',{width:390,height:844}]]){
  test(`neighborhood selection filters and fits, reset restores city on ${name}`,async({page})=>{
   await page.setViewportSize(size);await load(page);
-  await expect(page.locator('#neighborhood-layout')).toHaveValue('analysis');
-  await expect(page.locator('#neighborhood-filter option')).toHaveCount(42);
-  await page.locator('#neighborhood-filter').selectOption({label:'Mission'});
+  await expect(page.getByLabel('Boundary map')).toHaveCount(0);
+  await expect(page.getByLabel('Area',{exact:true})).toBeVisible();
+  await expect(page.locator('#neighborhood-filter option')).toHaveCount(16);
+  await page.locator('#neighborhood-filter').selectOption({label:'Mission & Bernal Heights'});
   await expect(page.locator('[data-event-id="point-event"]')).toHaveCount(1);
   await expect(page.locator('[data-event-id="outside-neighborhood"]')).toHaveCount(0);
   await expect(page.locator('#region-status')).toContainText('Mission');
@@ -37,26 +38,22 @@ for(const [name,size] of [['desktop',{width:1440,height:900}],['mobile',{width:3
   await page.getByRole('button',{name:'Show all of San Francisco',exact:true}).click();
   await expect(page.locator('#neighborhood-filter')).toHaveValue('');
   await expect(page.locator('[data-event-id="outside-neighborhood"]')).toHaveCount(1);
-  await page.locator('#neighborhood-layout').selectOption('311');
-  await expect(page.locator('#neighborhood-filter')).toBeEnabled();
-  await expect(page.locator('#neighborhood-filter option')).toHaveCount(118);
-  await page.locator('#neighborhood-layout').selectOption('election');
-  await expect(page.locator('#neighborhood-filter option')).toHaveCount(27);
-  await page.locator('#neighborhood-layout').selectOption('notification');
-  await expect(page.locator('#neighborhood-filter option')).toHaveCount(38);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   await page.screenshot({path:`/tmp/mapsf-neighborhood-${name}.png`,fullPage:true});
  });
 }
-test('failed layout fetch retains previous selection and retries',async({page})=>{
- await load(page);await page.locator('#neighborhood-filter').selectOption({label:'Mission'});
- await page.route('**/notification.geojson',r=>r.fulfill({status:503,body:'unavailable'}));
- await page.locator('#neighborhood-layout').selectOption('notification');
- await expect(page.locator('#neighborhood-status')).toContainText('Could not load');
- await expect(page.locator('#neighborhood-layout')).toHaveValue('analysis');
- await expect(page.locator('#neighborhood-filter')).toHaveValue('analysis-mission');
+test('failed area download leaves other filters usable and can retry',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});await page.clock.install({time:clock});
+ await page.route('**/events.json',r=>r.fulfill({json:snapshot}));
+ await page.route('**/event-areas.geojson',r=>r.fulfill({status:503,body:'unavailable'}));
+ await page.goto('/');
+ await expect(page.locator('#neighborhood-status')).toContainText('Could not load areas');
+ await expect(page.locator('#neighborhood-filter')).toBeDisabled();
+ await expect(page.locator('[data-event-id="point-event"]')).toHaveCount(1);
+ await expect(page.getByLabel('Free only')).toBeEnabled();
+ await page.unroute('**/event-areas.geojson');await page.getByRole('button',{name:'Retry areas',exact:true}).click();
+ await expect(page.locator('#neighborhood-filter')).toBeEnabled();
+ await expect(page.locator('#neighborhood-filter option')).toHaveCount(16);
+ await page.locator('#neighborhood-filter').selectOption({label:'Mission & Bernal Heights'});
  await expect(page.locator('[data-event-id="outside-neighborhood"]')).toHaveCount(0);
- await page.unroute('**/notification.geojson');await page.locator('#retry-neighborhoods').click();
- await expect(page.locator('#neighborhood-filter option')).toHaveCount(38);
- await expect(page.locator('#neighborhood-layout')).toHaveValue('notification');
 });
