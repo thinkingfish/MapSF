@@ -32,18 +32,19 @@ The linked Eventive screening page returned a client-rendered shell in the read-
 
 ## Implementation and decisions
 
-- Register `kqed`, approved by the owner's request, with collection disabled and detail discovery capped at zero until an adapter is verified.
-- The public Sources page describes the SF-only venue requirement and labels this integration Planned. Add the verified Arts RSS for direct subscriptions, explicitly labeled as Bay Area arts articles.
-- No KQED events, fabricated coordinates, inferred performance hours, or new calendar coverage are added to `public/events.json`.
-- A future extractor should discover editorial candidates, verify explicit physical venues in SF and actual occurrences through organizer details, and retain the KQED article link. Unknown cost stays unknown. Use POI/route/area only when that geometry is supported; retain a verified point when an extent is unavailable.
+- KQED is now enabled with a narrow editorial adapter. It reads JSON state safely with JSON.parse, inspects recent Do List articles, and accepts explicit event-summary paragraphs with a reviewed venue combination. The initial supported format is the three-venue Chinatown art event. Other articles are discovery material, not automatically published events.
+- Actual event dates and hours come from the summary sentence, never publication timestamps or headline geography. Unknown prices remain unknown. No article bodies are republished.
+- The station point is verified against [MTC’s 511 station page](https://511.org/travel/transit/centers/chinatown-rose-pak-station): latitude 37.794779100241, longitude -122.40807550785. It is a station pin, not an asserted entrance or route. All three addresses appear in an adapter-authored summary.
+- The linked SF.gov organizer page presents a JavaScript verification challenge. It is not bypassed. The trusted KQED article supplies the event facts; the transit agency supplies location evidence.
+- One landing-page request, bounded article count, explicit failure on missing state, and no full-month completeness claim. Publication is restricted to the 30-day window. Arts RSS remains available for direct subscription.
 
 ## Outcome
 
-KQED is a useful editorial discovery source. The registry/public listing addition passed the production build, 136 unit tests and 34 browser tests; automatic event collection is still pending. The local browser executable was initially missing and was restored before browser verification. The sampled data does not justify enabling the existing generic JSON-LD adapter or claiming a complete 30-day window.
+The live adapter returned one valid event: A Day of Public Art in Chinatown, September 12, 11am–4pm. Unit fixtures distinguish event dates from publication dates, reject unknown venue combinations and invalid dates, and preserve multi-venue context. Final admission validation is recorded in the direct-series journal.
 
 ## Next steps
 
-Implement and test an editorial candidate/review workflow plus verified organizer/venue joins before enabling collection. Include regression cases for article dates versus event dates, SF venues in non-SF headlines, mixed-city roundups, multi-venue programs, online screenings, multi-day performances and price/pass distinctions. Preserve the existing quality-over-quantity policy.
+Extend reviewed venue and summary formats as more explicit event examples are verified. Recent editorial discovery is not exhaustive; individual screening times, multi-day performances, and ticket/pass distinctions still need review. Sunday Streets admission is tracked separately. Merge/deployment is not claimed here.
 
 ## Skills used
 

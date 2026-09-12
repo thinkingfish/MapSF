@@ -10,6 +10,8 @@ test('footer links every source to its description and explains planned sources 
  await expect(page.locator('#mission-science-workshop')).toContainText('Curated schedule');
  await expect(page.locator('#funcheap')).toContainText('Planned');
  await expect(page.locator('#sfpl')).toContainText('Collecting events');
+ await expect(page.locator('#sf-shakes')).toContainText('Collecting events');
+ await expect(page.locator('#from-the-e')).toContainText('Collecting events');
  await expect(page.getByRole('region', {name:'Recurring series',exact:true})).toContainText('Excelsior Night Market');
  await expect(page.getByRole('region', {name:'Recurring series',exact:true})).toContainText('Sunday Streets SF');
  await expect(page.getByRole('region', {name:'Recurring series',exact:true})).toContainText('Free Shakespeare');
@@ -18,7 +20,7 @@ test('footer links every source to its description and explains planned sources 
  await expect(page.locator('#methodology')).toContainText('same normalized title, start time, and map geometry');
  const rss = page.getByRole('region', {name:'Subscribe via RSS'});
  await expect(rss.getByRole('link')).toHaveCount(7);
- await expect(page.locator('#kqed')).toContainText('Planned');
+ await expect(page.locator('#kqed')).toContainText('Collecting events');
  await expect(page.locator('#kqed')).toContainText('San Francisco venues');
  await expect(rss.getByRole('link', {name:'KQED The Do List RSS',exact:true})).toHaveAttribute('href','https://ww2.kqed.org/arts/feed/');
  await expect(rss).toContainText('Arts articles across the Bay Area');

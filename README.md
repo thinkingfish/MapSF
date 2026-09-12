@@ -53,7 +53,7 @@ The integration status is documented in [SOURCE-STATUS.md](SOURCE-STATUS.md).
 
 SFPL, SF Rec & Parks, Mission Local, the Chronicle, and Civic Joy Fund have verified publisher
 collectors. Mission Science Workshop has a curated Mission-site community-day
-schedule. KQED The Do List is approved for SF venues and listed as Planned; its regional Arts RSS is available for direct subscriptions. Other sources await complete extraction or verified venue geometry. Approval and working collection are separate states.
+schedule. SF Shakes and From the E collect verified individual occurrences. KQED inspects recent Do List articles with a narrow, reviewed Chinatown event-summary parser; its regional Arts RSS is available for subscriptions. Sunday Streets awaits current occurrence hours and locations. Other sources await complete extraction or verified venue geometry. Approval and working collection are separate states.
 
 Only enabled sources are collected. Incomplete or cancelled listings are excluded.
 Collection preserves source attribution and explicit time ranges. Unknown cost

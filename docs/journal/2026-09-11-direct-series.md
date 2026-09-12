@@ -44,33 +44,46 @@ Read-only checks on September 11:
 
 ## Implementation and decisions
 
-- `config/sources.mjs` records approved, disabled entries for the three series.
+- `config/sources.mjs` records approved entries for the three series. SF Shakes and From the E are now enabled; Sunday Streets remains disabled.
   All registered sources have explicit groups; series have a kind. SFPL and Rec
   & Parks are venue/organizer sources. Civic Joy Fund is classified as a calendar
   because support for an event does not establish original authorship.
 - Source page, footer, and agent Markdown use the same three groups. Free Places
-  schedule providers remain independent. New series are clearly marked Planned.
+  schedule providers remain independent. Source status distinguishes connected series from Sunday Streets, which remains Planned.
 - Shared `dedupeEvents` prefers reviewed direct-source IDs before applying the
   existing normalized-title/start-instant/exact-geometry identity. This reaches
   collection, website, and agent output. Equal-priority records retain existing
   first-seen selection. Caller arrays are not mutated. Invalid records cannot
   displace a valid publisher listing. Distinct dates and locations stay distinct.
-- No fuzzy title matching, inferred schedule, fake geometry, live feed refresh,
-  or newly claimed coverage. A verified intersection point is enough to publish
-  the market later; a route is not a prerequisite.
+- The direct-series adapters collect published individual dates, not inferred recurrence. SF Shakes uses the city’s Jerry Garcia Amphitheater and Sue Bierman Park facility coordinates; From the E reuses the reviewed city Ocean/Mission intersection. Both restrict output to the 30-day publication window without claiming complete window coverage.
+- Live probes returned six SF Shakes performances and one night market. The Shakespeare parser recognizes row cancellation annotations and rejects missing sections, changed seasons, invalid dates and unknown annotations. Market JSON-LD preserves cancellation status and explicit offsets.
+- The map reset control now uses a small inline SF outline SVG; accessible label and reset behavior remain unchanged.
 
 ## Outcome
 
-Implementation is included with KQED in PR #11. New source collection remains
-planned. Verification: production build passed, 137 unit tests passed, and 34 browser tests passed. The organizer-precedence regression failed before the fix and passed afterward.
+Implementation is included with KQED in PR #11. SF Shakes and From the E are connected; Sunday Streets still needs current occurrence details. Final admission validation and refresh results are recorded below.
 
 ## Next steps
 
-Verify source-specific seasonal extraction/cancellations and venue coordinates
-before enabling collection. Add reviewed occurrence aliases if real duplicate
+Verify Sunday Streets current hours and location before enabling it. The organizer’s Excelsior page returned HTTP 500; indexed content describes 2025, so its hours/route are not reused for 2026. Review each new Shakespeare season before changing the pinned production URL/year. Add reviewed occurrence aliases if real duplicate
 examples differ in titles or geometry; do not collapse an entire series or nearby
 unrelated events. Merge and deployment remain the owner's steps.
 
 ## Skills used
 
 Brainstorming, test-driven development, verification-before-completion, and the local engineering-journal skill.
+
+## Venue provenance
+
+- Jerry Garcia Amphitheater: https://sfrecpark.org/Facilities/Facility/Details/Jerry-Garcia-Amphitheater-421 — city map record latitude 37.7199305859824, longitude -122.414369024704.
+- Sue Bierman Park: https://sfrecpark.org/Facilities/Facility/Details/Sue-Bierman-Park-378 — city map record latitude 37.796417999991, longitude -122.39675999997.
+- Ocean/Mission: existing city-centerline provenance in `config/civic-joy-points.mjs`.
+
+## Admission verification
+
+- Final unit suite: 143 tests passed. Browser suite: 34 tests passed. Production build passed with the refreshed snapshot; final control inspected at mobile size. The last UI change after browser tests only simplified the SVG path; the built result was visually checked.
+- Source pipeline checks returned status `ok` and 6 SF Shakes / 1 From the E / 1 KQED events. These eight were merged into today's existing successful calendar snapshot, preserving each existing source's timestamps and coverage. Ended records were removed and counts recomputed; resulting snapshot has 2,765 events.
+- A redundant full-calendar crawl was stopped before it wrote output. Its incomplete requests are not claimed as a successful refresh. The new-source pipeline wrote a separate temporary snapshot for validation before inclusion.
+- Independent review found no blocking issues. A subsequent KQED headline-cancellation regression was added and verified red/green; changed-format and unknown-venue articles stay unpublished.
+- Outline geometry: [DataSF SF Shoreline and Islands](https://data.sfgov.org/resource/txuc-3kzm.geojson), public-domain dedication. Largest exterior land ring projected to a 20-unit icon and simplified to 23 points. The mainland shoreline and southern county line are represented; remote islands and piers are omitted at this size.
+- No merge or deployment performed. Sunday Streets remains the outstanding admission: October 18 date confirmed, current organizer hours and exact location not verified.

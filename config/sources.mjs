@@ -22,8 +22,11 @@ export const sources = [
     seriesKind: 'Performances',
     listingUrl: 'https://sfshakes.org/performance/free-shakes/',
     approved: true, // Requested by Yao, 2026-09-11.
-    enabled: false, // Verify season-specific extraction and performance coordinates.
-    adapter: 'jsonld',
+    enabled: true,
+    adapter: 'sf-shakes',
+    productionUrl: 'https://sfshakes.org/performance/free-shakes/ac/',
+    seasonYear: 2026,
+    allowEmpty: true,
     maxDetailPages: 0,
     maxEvents: 60,
   },
@@ -34,8 +37,9 @@ export const sources = [
     seriesKind: 'Markets',
     listingUrl: 'https://www.fromtheesf.com/',
     approved: true, // Requested through the Excelsior column, 2026-09-11.
-    enabled: false, // Event JSON-LD has explicit times, but no coordinates.
-    adapter: 'jsonld',
+    enabled: true,
+    adapter: 'from-the-e',
+    allowEmpty: true,
     detailPathPattern: /^\/events\/[a-z0-9-]+\/?$/i,
     maxDetailPages: 8,
     maxEvents: 40,
@@ -59,10 +63,12 @@ export const sources = [
     listingUrl: 'https://www.kqed.org/thedolist',
     rss: { url: 'https://ww2.kqed.org/arts/feed/', kind: 'Arts articles across the Bay Area' },
     approved: true, // Requested by Yao, 2026-09-11; SF venues only.
-    enabled: false, // Editorial discovery: event times and geometry need verification.
-    adapter: 'jsonld',
+    enabled: true, // Bounded editorial discovery with reviewed SF venue patterns.
+    adapter: 'kqed',
+    allowEmpty: true,
+    maxArticles: 20,
     // Do not use article dates or headline place names as event date/location.
-    // See docs/journal/2026-09-11-kqed-source.md before implementing extraction.
+    // Reviewed formats and limits: docs/journal/2026-09-11-kqed-source.md.
     maxDetailPages: 0,
     maxEvents: 40,
   },

@@ -1,0 +1,40 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {collectShakes, collectFromTheE} from '../scripts/adapters/direct-series.mjs';
+import {sources} from '../config/sources.mjs';
+import {normalizeJsonLd} from '../scripts/refresh-events.mjs';
+import {validateEvent} from '../src/lib/events.mjs';
+const shakes = await readFile(new URL('./fixtures/direct-series/shakes.html',import.meta.url),'utf8');
+const market = await readFile(new URL('./fixtures/direct-series/market.html',import.meta.url),'utf8');
+const now=new Date('2026-09-11T12:00:00-07:00');
+const s=sources.find(s=>s.id==='sf-shakes'), m=sources.find(s=>s.id==='from-the-e');
+const response=body=>({ok:true,text:async()=>body});
+test('Shakespeare collects only individual SF performances in the window with verified points',async()=>{
+ const result=await collectShakes(s,async()=>response(shakes),now);
+ assert.equal(result.length,6);
+ assert.deepEqual(result.map(x=>x.record.startDate.slice(0,10)),['2026-09-12','2026-09-13','2026-09-19','2026-09-20','2026-09-26','2026-09-27']);
+ assert.ok(result.every(x=>validateEvent(normalizeJsonLd(s,x))));
+ assert.equal(result[0].record.endDate,'2026-09-12T22:30:00.000Z');
+ assert.equal(result[0].record.isAccessibleForFree,true);
+ assert.equal(result[0].record.location.name,'Jerry Garcia Amphitheater');
+ assert.equal(result.coverageComplete,undefined);
+});
+test('Shakespeare fails on changed season, malformed dates, or missing duration; marks row cancellations',async()=>{
+ for(const html of [shakes.replace('Park 2026','Park 2027'),shakes.replace(/Sept\s+12/,'Sept 32'),shakes.replace('90 minutes','a while')])await assert.rejects(collectShakes(s,async()=>response(html),now));
+ const canceled=await collectShakes(s,async()=>response(shakes.replace(/(Sept\s+12[^<]+)/,'$1 CANCELLED')),now);
+ assert.equal(canceled[0].record.eventStatus,'https://schema.org/EventCancelled');
+});
+test('night market discovers distinct detail links, preserves times and fills only the reviewed SF venue',async()=>{
+ const detail='https://www.fromtheesf.com/events/from-the-e-latino-heritage-month-night-market';
+ const calls=[];
+ const fetcher=async url=>{calls.push(url);return response(url===m.listingUrl?`<a href="${detail}">Event</a><a href="${detail}">RSVP</a><a href="https://elsewhere.example/events/other">Other</a>`:market);};
+ const records=await collectFromTheE(m,fetcher,now);
+ assert.equal(records.length,1);assert.equal(calls.length,2);
+ assert.equal(records[0].record.endDate,'2026-09-18T20:30:00-07:00');
+ assert.equal(records[0].record.isAccessibleForFree,true);
+ assert.ok(validateEvent(normalizeJsonLd(m,records[0])));
+ assert.equal((await collectFromTheE(m,async url=>response(url===m.listingUrl?`<a href="${detail}">Event</a>`:market.replace('Ocean Ave & Mission St','Unverified venue')),now)).length,0);
+ await assert.rejects(collectFromTheE(m,async()=>response('<html>Challenge page</html>'),now));
+ await assert.rejects(collectFromTheE({...m,maxDetailPages:0},fetcher,now));
+});

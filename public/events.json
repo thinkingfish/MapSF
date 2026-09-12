@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T17:01:24.753Z",
+  "generatedAt": "2026-09-12T00:59:04.639Z",
   "sources": [
     {
       "id": "sfpl",
@@ -43,7 +43,7 @@
         "checkedAt": "2026-09-11T17:01:24.753Z"
       },
       "lastSuccessfulAt": "2026-09-11T17:01:24.753Z",
-      "eventCount": 898,
+      "eventCount": 886,
       "cancelledInstances": [
         {
           "id": "sfpl:136904-sfpl.org",
@@ -234,7 +234,57 @@
         "checkedAt": "2026-09-11T17:01:24.753Z"
       },
       "lastSuccessfulAt": "2026-09-11T17:01:24.753Z",
-      "eventCount": 81
+      "eventCount": 80
+    },
+    {
+      "id": "sf-shakes",
+      "name": "SF Shakes — Free Shakespeare in the Park",
+      "url": "https://sfshakes.org/performance/free-shakes/",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-12",
+          "2026-09-13",
+          "2026-09-19",
+          "2026-09-20",
+          "2026-09-26",
+          "2026-09-27"
+        ],
+        "checkedAt": "2026-09-12T00:54:44.392Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T00:54:44.392Z",
+      "eventCount": 6
+    },
+    {
+      "id": "from-the-e",
+      "name": "From the E — Excelsior Night Market",
+      "url": "https://www.fromtheesf.com/",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-18"
+        ],
+        "checkedAt": "2026-09-12T00:54:44.392Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T00:54:44.392Z",
+      "eventCount": 1
+    },
+    {
+      "id": "kqed",
+      "name": "KQED The Do List",
+      "url": "https://www.kqed.org/thedolist",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-12"
+        ],
+        "checkedAt": "2026-09-12T00:54:44.392Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T00:54:44.392Z",
+      "eventCount": 1
     }
   ],
   "coverage": {
@@ -272,422 +322,6 @@
     ]
   },
   "events": [
-    {
-      "id": "sfpl:156867-sfpl.org",
-      "title": "Tutorial: Cantonese Tablet/Smartphone Course for Older Adults 60+",
-      "startAt": "2026-09-11T20:00:00Z",
-      "endAt": "2026-09-11T21:30:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/tutorial-cantonese-tabletsmartphone-course-older-adults-60"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Sunset",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1305 18th Avenue San Francisco , CA 94122 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.476292,
-            37.763385
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:146048-sfpl.org",
-      "title": "Storytime: For Families",
-      "startAt": "2026-09-11T20:15:00Z",
-      "endAt": "2026-09-11T20:45:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/storytime-families"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Golden Gate Valley",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1801 Green Street San Francisco , CA 94123 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.429035,
-            37.796852
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:158278-sfpl.org",
-      "title": "Activity: Watercolor and Associates",
-      "startAt": "2026-09-11T20:30:00Z",
-      "endAt": "2026-09-12T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/activity-watercolor-and-associates"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Glen Park",
-          "layerType": "poi",
-          "metadata": {
-            "address": "2825 Diamond Street San Francisco , CA 94131 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.434,
-            37.734
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:161216-sfpl.org",
-      "title": "FULL: Activity: Bernal Heights Walking Tour",
-      "startAt": "2026-09-11T20:30:00Z",
-      "endAt": "2026-09-11T23:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/full-activity-bernal-heights-walking-tour"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Bernal Heights",
-          "layerType": "poi",
-          "metadata": {
-            "address": "500 Cortland Avenue San Francisco , CA 94110 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.416054,
-            37.738922
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:161744-sfpl.org",
-      "title": "FULL: Tutorial: Digital Literacy 基礎電腦課程",
-      "startAt": "2026-09-11T20:30:00Z",
-      "endAt": "2026-09-11T22:30:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/full-tutorial-digital-literacy-jichudiannaokecheng"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Ortega",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3223 Ortega Street San Francisco , CA 94122 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.498025,
-            37.751258
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:136500-sfpl.org",
-      "title": "Tutorial: Drop-In Tech Support for Older Adults",
-      "startAt": "2026-09-11T20:30:00Z",
-      "endAt": "2026-09-11T22:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/tutorial-drop-tech-support-older-adults"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Richmond/Senator Milton Marks",
-          "layerType": "poi",
-          "metadata": {
-            "address": "351 9th Avenue San Francisco , CA 94118 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.468155,
-            37.781883
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:160330-sfpl.org",
-      "title": "Film: The Shape of Water",
-      "startAt": "2026-09-11T21:00:00Z",
-      "endAt": "2026-09-11T23:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/film-shape-water"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Noe Valley/Sally Brunn",
-          "layerType": "poi",
-          "metadata": {
-            "address": "451 Jersey Street San Francisco , CA 94114 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.435,
-            37.7502
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:155196-sfpl.org",
-      "title": "Activity: Upcycled Crafting",
-      "startAt": "2026-09-11T22:00:00Z",
-      "endAt": "2026-09-11T23:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/activity-upcycled-crafting"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Anza",
-          "layerType": "poi",
-          "metadata": {
-            "address": "550 37th Avenue San Francisco , CA 94121 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.497013,
-            37.778697
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:154849-sfpl.org",
-      "title": "Social: Therapy Dog in the Library",
-      "startAt": "2026-09-11T22:00:00Z",
-      "endAt": "2026-09-11T23:30:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/social-therapy-dog-library"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Eureka Valley/Harvey Milk Memorial",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1 Jose Sarria Court San Francisco , CA 94114 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4318162,
-            37.7640815
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:152283-sfpl.org",
-      "title": "Storytime: For Preschoolers",
-      "startAt": "2026-09-11T22:00:00Z",
-      "endAt": "2026-09-11T22:30:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/storytime-preschoolers"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Marina",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1890 Chestnut Street San Francisco , CA 94123 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.434,
-            37.8013
-          ]
-        }
-      }
-    },
-    {
-      "id": "civic-joy-fund:t4ommrib6ephlvfqpj4e41muha_r20260327t230000-google.com-2026-09-11t23-00-00.000z",
-      "title": "Clement St Cleanup",
-      "startAt": "2026-09-11T23:00:00.000Z",
-      "endAt": "2026-09-12T00:00:00.000Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "civic-joy-fund",
-        "name": "Civic Joy Fund",
-        "url": "https://www.mobilize.us/civicjoyfund/event/756136/"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Richmond Republic Draught House",
-          "layerType": "poi",
-          "metadata": {
-            "address": "Richmond Republic Draught House, 642 Clement St, San Francisco, CA 94118, USA"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4662435,
-            37.7830943
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:158096-sfpl.org",
-      "title": "Social: Karaoke",
-      "startAt": "2026-09-11T23:00:00Z",
-      "endAt": "2026-09-12T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/social-karaoke"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Excelsior",
-          "layerType": "poi",
-          "metadata": {
-            "address": "4400 Mission Street San Francisco , CA 94112 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.433221,
-            37.72714
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:148313-sfpl.org",
-      "title": "Workshop: Cricut Custom Design",
-      "startAt": "2026-09-11T23:00:00Z",
-      "endAt": "2026-09-12T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/09/11/workshop-cricut-custom-design"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Main Library",
-          "layerType": "poi",
-          "metadata": {
-            "address": "100 Larkin Street San Francisco , CA 94102 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.415771,
-            37.779081
-          ]
-        }
-      }
-    },
     {
       "id": "sf-rec-park:10447",
       "title": "Golden Gate Bandshell: Friday Happy Hour",
@@ -4283,6 +3917,39 @@
       }
     },
     {
+      "id": "kqed:f84fcef0eea527c8",
+      "title": "A Day of Public Art in Chinatown",
+      "startAt": "2026-09-12T11:00:00-07:00",
+      "endAt": "2026-09-12T16:00:00-07:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "kqed",
+        "name": "KQED The Do List",
+        "url": "https://www.kqed.org/arts/13993605/day-of-public-art-san-francisco-chinatown-ccc-cmac-sfac"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Chinatown–Rose Pak Station",
+          "layerType": "poi",
+          "metadata": {
+            "address": "934 Stockton Street, San Francisco, CA"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.40807550785,
+            37.794779100241
+          ]
+        }
+      },
+      "description": "Multiple venues: the map pin marks Chinatown–Rose Pak Station, 934 Stockton Street. Also at CCC Art Center & Design Store, 667 Grant Avenue, and Empress of China, 838 Grant Avenue. Check the article for individual activities."
+    },
+    {
       "id": "sfpl:150159-sfpl.org",
       "title": "Activity: Gardening",
       "startAt": "2026-09-12T18:00:00Z",
@@ -5210,6 +4877,39 @@
           ]
         }
       }
+    },
+    {
+      "id": "sf-shakes:2026-san-francisco-mclaren-park-2026-09-12",
+      "title": "Free Shakespeare in the Park: antony and cleopatra",
+      "startAt": "2026-09-12T14:00:00-07:00",
+      "endAt": "2026-09-12T22:30:00.000Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sf-shakes",
+        "name": "SF Shakes — Free Shakespeare in the Park",
+        "url": "https://sfshakes.org/performance/free-shakes/ac/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Jerry Garcia Amphitheater",
+          "layerType": "poi",
+          "metadata": {
+            "address": "McLaren Park, John F. Shelley Drive, San Francisco, CA"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.414369024704,
+            37.7199305859824
+          ]
+        }
+      },
+      "description": "Outdoor Shakespeare. Approximate running time: 90 minutes; check the organizer for changes."
     },
     {
       "id": "sfpl:160656-sfpl.org",
@@ -9220,6 +8920,39 @@
           ]
         }
       }
+    },
+    {
+      "id": "sf-shakes:2026-san-francisco-mclaren-park-2026-09-13",
+      "title": "Free Shakespeare in the Park: antony and cleopatra",
+      "startAt": "2026-09-13T14:00:00-07:00",
+      "endAt": "2026-09-13T22:30:00.000Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sf-shakes",
+        "name": "SF Shakes — Free Shakespeare in the Park",
+        "url": "https://sfshakes.org/performance/free-shakes/ac/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Jerry Garcia Amphitheater",
+          "layerType": "poi",
+          "metadata": {
+            "address": "McLaren Park, John F. Shelley Drive, San Francisco, CA"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.414369024704,
+            37.7199305859824
+          ]
+        }
+      },
+      "description": "Outdoor Shakespeare. Approximate running time: 90 minutes; check the organizer for changes."
     },
     {
       "id": "sf-chronicle:44311628",
@@ -21302,6 +21035,38 @@
       }
     },
     {
+      "id": "from-the-e:128d2bc270cbb25a",
+      "title": "From the E: Latino Heritage Month Night Market",
+      "startAt": "2026-09-18T16:30:00-07:00",
+      "endAt": "2026-09-18T20:30:00-07:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "from-the-e",
+        "name": "From the E — Excelsior Night Market",
+        "url": "https://www.fromtheesf.com/events/from-the-e-latino-heritage-month-night-market"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Ocean Ave & Mission St",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, CA 94112, USA"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.435385086,
+            37.723909403
+          ]
+        }
+      }
+    },
+    {
       "id": "sf-rec-park:10451",
       "title": "Golden Gate Bandshell: Friday Happy Hour",
       "startAt": "2026-09-18T16:30:00-07:00",
@@ -25021,6 +24786,39 @@
           ]
         }
       }
+    },
+    {
+      "id": "sf-shakes:2026-san-francisco-sue-bierman-park-2026-09-19",
+      "title": "Free Shakespeare in the Park: antony and cleopatra",
+      "startAt": "2026-09-19T14:00:00-07:00",
+      "endAt": "2026-09-19T22:30:00.000Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sf-shakes",
+        "name": "SF Shakes — Free Shakespeare in the Park",
+        "url": "https://sfshakes.org/performance/free-shakes/ac/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Sue Bierman Park",
+          "layerType": "poi",
+          "metadata": {
+            "address": "Washington and Drumm Streets, San Francisco, CA"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.39675999997,
+            37.796417999991
+          ]
+        }
+      },
+      "description": "Outdoor Shakespeare. Approximate running time: 90 minutes; check the organizer for changes."
     },
     {
       "id": "mission-local:10040573",
@@ -29420,6 +29218,39 @@
           ]
         }
       }
+    },
+    {
+      "id": "sf-shakes:2026-san-francisco-sue-bierman-park-2026-09-20",
+      "title": "Free Shakespeare in the Park: antony and cleopatra",
+      "startAt": "2026-09-20T14:00:00-07:00",
+      "endAt": "2026-09-20T22:30:00.000Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sf-shakes",
+        "name": "SF Shakes — Free Shakespeare in the Park",
+        "url": "https://sfshakes.org/performance/free-shakes/ac/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Sue Bierman Park",
+          "layerType": "poi",
+          "metadata": {
+            "address": "Washington and Drumm Streets, San Francisco, CA"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.39675999997,
+            37.796417999991
+          ]
+        }
+      },
+      "description": "Outdoor Shakespeare. Approximate running time: 90 minutes; check the organizer for changes."
     },
     {
       "id": "sf-chronicle:43686769",
@@ -45788,6 +45619,39 @@
       }
     },
     {
+      "id": "sf-shakes:2026-san-francisco-sue-bierman-park-2026-09-26",
+      "title": "Free Shakespeare in the Park: antony and cleopatra",
+      "startAt": "2026-09-26T14:00:00-07:00",
+      "endAt": "2026-09-26T22:30:00.000Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sf-shakes",
+        "name": "SF Shakes — Free Shakespeare in the Park",
+        "url": "https://sfshakes.org/performance/free-shakes/ac/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Sue Bierman Park",
+          "layerType": "poi",
+          "metadata": {
+            "address": "Washington and Drumm Streets, San Francisco, CA"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.39675999997,
+            37.796417999991
+          ]
+        }
+      },
+      "description": "Outdoor Shakespeare. Approximate running time: 90 minutes; check the organizer for changes."
+    },
+    {
       "id": "sf-chronicle:43205017",
       "title": "Mike D: Portola Music Festival 2026",
       "startAt": "2026-09-26T14:00:00-07:00",
@@ -50398,6 +50262,39 @@
           ]
         }
       }
+    },
+    {
+      "id": "sf-shakes:2026-san-francisco-sue-bierman-park-2026-09-27",
+      "title": "Free Shakespeare in the Park: antony and cleopatra",
+      "startAt": "2026-09-27T14:00:00-07:00",
+      "endAt": "2026-09-27T22:30:00.000Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sf-shakes",
+        "name": "SF Shakes — Free Shakespeare in the Park",
+        "url": "https://sfshakes.org/performance/free-shakes/ac/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Sue Bierman Park",
+          "layerType": "poi",
+          "metadata": {
+            "address": "Washington and Drumm Streets, San Francisco, CA"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.39675999997,
+            37.796417999991
+          ]
+        }
+      },
+      "description": "Outdoor Shakespeare. Approximate running time: 90 minutes; check the organizer for changes."
     },
     {
       "id": "sfpl:160733-sfpl.org",
