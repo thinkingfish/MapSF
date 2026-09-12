@@ -40,6 +40,8 @@ for(const [name,size] of [['desktop',{width:1440,height:900}],['mobile',{width:3
   await page.locator('#neighborhood-layout').selectOption('311');
   await expect(page.locator('#neighborhood-filter')).toBeEnabled();
   await expect(page.locator('#neighborhood-filter option')).toHaveCount(118);
+  await page.locator('#neighborhood-layout').selectOption('election');
+  await expect(page.locator('#neighborhood-filter option')).toHaveCount(27);
   await page.locator('#neighborhood-layout').selectOption('notification');
   await expect(page.locator('#neighborhood-filter option')).toHaveCount(38);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);

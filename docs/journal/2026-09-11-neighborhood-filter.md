@@ -14,7 +14,7 @@ Add the neighborhood layouts described in the Chronicle's February 2022 comparis
 
 A user-requested research subagent downloaded official DataSF datasets: Analysis (j2bu-swwd, 41), Notification (mw29-m2za, 37), and SF Find/311 (gfpk-269f, 117). See public/neighborhoods/README.md and source-manifest.json for URLs, public-domain metadata, counts and raw-source hashes. WGS84 MultiPolygon geometry is preserved exactly, including islands and holes; properties are reduced to stable layout-prefixed IDs and names.
 
-The [Chronicle comparison](https://www.sfchronicle.com/projects/2022/san-francisco-neighborhoods/) also lists Election neighborhoods. Its [official historical PDF](https://sfelections.sfgov.org/sites/default/files/Documents/Maps/NeighborhoodPctMap2019.pdf) has no verified official machine-readable counterpart found in this investigation. The Chronicle's repository does not declare a license; no geometry was copied from it. Election is documented as unavailable rather than silently substituted with precincts or supervisor districts.
+Following the user’s [Election Map SF](https://electionmapsf.com/) suggestion, the subagent found official DataSF historical precincts (bsfq-aeyw, PDDL) with their own `neighrep` assignments. Dissolving 600 named precincts produces 26 historical Election neighborhoods; five unassigned polygons remain excluded. Readable names are corroborated by Election Map SF’s 2020 metadata. The selector explicitly labels 2012 precinct definitions. These match the historical group names in the Chronicle article, without asserting exact equivalence to every subsequent map revision. No Chronicle or Election Map SF geometry was copied. Source crosswalk, excluded features and per-group area checks are shipped with the manifest.
 
 ## Implementation and decisions
 
@@ -27,11 +27,11 @@ The [Chronicle comparison](https://www.sfchronicle.com/projects/2022/san-francis
 
 ## Outcome
 
-The three-layout implementation passes 157 unit tests and 40 browser tests, including visual assertions that the selected boundary fits the map on desktop and mobile. A full-snapshot filter check over 2,837 records took 18 ms for Mission, 1 ms for Golden Gate Park and 15 ms for Bayview Hunters Point on this development host; these are local observations, not mobile performance guarantees. Election Map SF is being investigated as an additional source. No deployment performed.
+The three-layout implementation passes 157 unit tests and 40 browser tests, including visual assertions that the selected boundary fits the map on desktop and mobile. A full-snapshot filter check over 2,837 records took 18 ms for Mission, 1 ms for Golden Gate Park and 15 ms for Bayview Hunters Point on this development host; these are local observations, not mobile performance guarantees. The fourth, historical Election layout is added; combined verification follows the HSB MultiPolygon update. No deployment performed.
 
 ## Next steps
 
-Review the implementation PR. Add Election only after verifying a reusable source. Refresh source snapshots deliberately when city definitions change; do not infer that all four systems agree.
+Review the implementation PR. Keep the historical Election label explicit; do not substitute current precincts without reviewing neighborhood assignments. Refresh source snapshots deliberately when city definitions change; do not infer that all four systems agree.
 
 ## Skills used
 

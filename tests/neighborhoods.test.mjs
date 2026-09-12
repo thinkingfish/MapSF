@@ -41,7 +41,7 @@ test('neighborhood, price, source and viewport filters compose for events and fr
 test('shipped official layouts retain valid multipart geometry and unique IDs',async()=>{
  const {readFile}=await import('node:fs/promises');
  const {validateNeighborhoodCollection}=await import('../src/lib/neighborhoods.mjs');
- for(const [layout,count] of [['analysis',41],['notification',37],['311',117]]){
+ for(const [layout,count] of [['analysis',41],['notification',37],['311',117],['election',26]]){
   const data=JSON.parse(await readFile(new URL(`../public/neighborhoods/${layout}.geojson`,import.meta.url),'utf8'));
   assert.equal(data.features.length,count);assert.ok(validateNeighborhoodCollection(data),layout);
  }

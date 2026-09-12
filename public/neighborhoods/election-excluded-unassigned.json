@@ -1,0 +1,47 @@
+[
+  {
+    "bartdist": "9",
+    "assemdist": "19",
+    "prec_2012": null,
+    "prec_2010": "GG Park",
+    "supdist": "1",
+    "neighrep": "NA",
+    "congdist": "12"
+  },
+  {
+    "bartdist": "8",
+    "assemdist": "19",
+    "prec_2012": null,
+    "prec_2010": "GG Park",
+    "supdist": "1",
+    "neighrep": "NA",
+    "congdist": "12"
+  },
+  {
+    "bartdist": "9",
+    "assemdist": "17",
+    "prec_2012": "7527",
+    "prec_2010": "GG Park",
+    "supdist": "5",
+    "neighrep": "NA",
+    "congdist": "12"
+  },
+  {
+    "bartdist": "9",
+    "assemdist": "19",
+    "prec_2012": "9514",
+    "prec_2010": "2514",
+    "supdist": "5",
+    "neighrep": "NA",
+    "congdist": "12"
+  },
+  {
+    "bartdist": null,
+    "assemdist": "17",
+    "prec_2012": "9900",
+    "prec_2010": "4000",
+    "supdist": null,
+    "neighrep": "NA",
+    "congdist": "13"
+  }
+]
