@@ -1,0 +1,133 @@
+[
+  {
+    "name": "Richmond",
+    "members": [
+      "Inner Richmond",
+      "Outer Richmond",
+      "Seacliff",
+      "Lincoln Park",
+      "Lone Mountain/USF"
+    ],
+    "why": "Geary and Clement corridors; combines the Richmond with its adjoining western parks and eastern edge."
+  },
+  {
+    "name": "Sunset & Parkside",
+    "members": [
+      "Inner Sunset",
+      "Sunset/Parkside"
+    ],
+    "why": "The west-side residential grid, connected along Judah, Irving and Taraval."
+  },
+  {
+    "name": "Golden Gate Park",
+    "members": [
+      "Golden Gate Park"
+    ],
+    "why": "A recognizable destination with enough festivals, museums, gardens and outdoor activities to deserve its own choice."
+  },
+  {
+    "name": "Presidio, Marina & Pacific Heights",
+    "members": [
+      "Presidio",
+      "Marina",
+      "Pacific Heights",
+      "Presidio Heights"
+    ],
+    "why": "Adjoining northern neighborhoods and park destinations; Chestnut, Union and California provide useful activity corridors."
+  },
+  {
+    "name": "North Beach & Embarcadero",
+    "members": [
+      "North Beach",
+      "Russian Hill",
+      "Nob Hill",
+      "Chinatown",
+      "Financial District/South Beach"
+    ],
+    "why": "A connected northeast cluster around downtown, Chinatown, the northern hills and waterfront. The hills still affect walking."
+  },
+  {
+    "name": "Downtown & SoMa",
+    "members": [
+      "Tenderloin",
+      "South of Market"
+    ],
+    "why": "The central Market Street area, Civic Center, downtown arts and SoMa venues; strong regional transit access."
+  },
+  {
+    "name": "Haight, Hayes & Fillmore",
+    "members": [
+      "Haight Ashbury",
+      "Hayes Valley",
+      "Western Addition",
+      "Japantown"
+    ],
+    "why": "Adjoining central neighborhoods with distinct cultural identities and nearby shopping, music and festival corridors."
+  },
+  {
+    "name": "Castro & Noe Valley",
+    "members": [
+      "Castro/Upper Market",
+      "Noe Valley",
+      "Twin Peaks"
+    ],
+    "why": "Castro/Church activity corridors and adjoining Upper Market hills; Twin Peaks is a destination within the area, not an easy walk from everywhere."
+  },
+  {
+    "name": "Mission & Bernal Heights",
+    "members": [
+      "Mission",
+      "Bernal Heights"
+    ],
+    "why": "Connected by Mission Street and adjoining residential/commercial streets; keeps a strong, recognizable events cluster together."
+  },
+  {
+    "name": "Mission Bay & Potrero Hill",
+    "members": [
+      "Mission Bay",
+      "Potrero Hill"
+    ],
+    "why": "Adjoining eastern neighborhoods with event venues, neighborhood centers and connections around Mission Bay. Potrero’s hill remains a walking consideration."
+  },
+  {
+    "name": "Bayview–Hunters Point",
+    "members": [
+      "Bayview Hunters Point"
+    ],
+    "why": "A distinct area for Bayview–Hunters Point events, neighborhood institutions and waterfront destinations. Keeps the neighborhood visible as its own choice."
+  },
+  {
+    "name": "Glen Park & Excelsior",
+    "members": [
+      "Glen Park",
+      "Outer Mission",
+      "Excelsior"
+    ],
+    "why": "Groups the adjoining western side of the former southern area around Glen Park and the Mission Street corridor. A more focused browsing area than combining it with neighborhoods across McLaren Park."
+  },
+  {
+    "name": "Portola, McLaren Park & Visitacion Valley",
+    "members": [
+      "Portola",
+      "McLaren Park",
+      "Visitacion Valley"
+    ],
+    "why": "Groups McLaren Park with adjoining neighborhoods on its northern and southeastern sides. San Bruno Avenue and Leland Avenue provide distinct neighborhood centers. The park and hills still mean this is not uniformly walkable."
+  },
+  {
+    "name": "West Portal & Southwest",
+    "members": [
+      "West of Twin Peaks",
+      "Lakeshore",
+      "Oceanview/Merced/Ingleside"
+    ],
+    "why": "Southwestern neighborhoods and destinations around West Portal, Ocean Avenue, Stonestown and Lake Merced. Metro corridors help, but the area is large."
+  },
+  {
+    "name": "Treasure Island",
+    "members": [
+      "Treasure Island"
+    ],
+    "why": "Separate island geography and a distinct trip; do not attach it to a mainland neighborhood just to reach twelve."
+  }
+]

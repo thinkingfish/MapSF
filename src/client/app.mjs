@@ -12,7 +12,9 @@ import {
   validateEvent,
   dedupeEvents,
 } from "../lib/events.mjs";
-import { filterEvents } from "./view-model.mjs";
+import { filterEvents, geometryBounds } from "./view-model.mjs";
+import { neighborhoodLayouts, defaultNeighborhoodLayout } from '../../config/neighborhood-layouts.mjs';
+import { validateNeighborhoodCollection } from '../lib/neighborhoods.mjs';
 
 import { scheduledPlacesForDay } from "../lib/places.mjs";
 
@@ -29,6 +31,8 @@ const state = {
   freeOnly: false,
   excludedSourceIds: [],
   mapBounds: null,
+  neighborhood: null,
+  neighborhoodId: '',
   feed: null,
   error: false,
 };
@@ -51,6 +55,9 @@ let mapTimeout;
 let mappedDataSignature;
 let paintedSelection;
 let gestureHintTimer;
+let neighborhoodData = { type: 'FeatureCollection', features: [] };
+let neighborhoodRequest = 0;
+const neighborhoodCache = new Map();
 const sfBounds = [
   [-122.53, 37.7],
   [-122.348, 37.835],
@@ -346,8 +353,11 @@ function render() {
   updateSourceOptions();
   state.mapped = filterEvents(candidates, { ...state, mapBounds: null });
   state.visible = filterEvents(state.mapped, { mapBounds: state.mapBounds });
-  $("region-status").hidden = !state.mapBounds;
-  $("region-status").textContent = state.mapBounds ? "Showing listings in the current map view." : "";
+  const neighborhoodName = neighborhoodData.features.find(feature => feature.id === state.neighborhoodId)?.properties.name;
+  $("region-status").hidden = !state.mapBounds && !neighborhoodName;
+  $("region-status").textContent = neighborhoodName
+    ? `Showing listings in ${neighborhoodName}${state.mapBounds ? ' within the current map view' : ''}.`
+    : state.mapBounds ? "Showing listings in the current map view." : "";
   if (
     !state.selectionCleared &&
     !state.visible.some((event) => event.id === state.selected)
@@ -491,6 +501,11 @@ async function setupMap() {
     }, 12000);
     map.on("load", () => {
       clearTimeout(mapTimeout);
+      map.addSource('neighborhoods', { type: 'geojson', data: neighborhoodData,
+        attribution: '<a href="/sources/#neighborhood-boundaries">SF neighborhood boundaries</a>' });
+      map.addLayer({id:'neighborhood-fill',type:'fill',source:'neighborhoods',filter:['==',['get','id'],state.neighborhoodId],paint:{'fill-color':'#377e7b','fill-opacity':0.09}});
+      map.addLayer({id:'neighborhood-lines',type:'line',source:'neighborhoods',paint:{'line-color':'#657b83','line-width':1,'line-opacity':0.38}});
+      map.addLayer({id:'neighborhood-selected',type:'line',source:'neighborhoods',filter:['==',['get','id'],state.neighborhoodId],paint:{'line-color':'#327c77','line-width':2.5}});
       map.addSource("events", {
         type: "geojson",
         data: { type: "FeatureCollection", features: [] },
@@ -541,6 +556,7 @@ async function setupMap() {
       };
       map.on("moveend", updateViewport);
       map.on("resize", updateViewport);
+      if (state.neighborhood) fitNeighborhood();
       updateViewport();
       const layers = ["event-points", "event-routes", "event-areas"];
       map.on("click", (event) => {
@@ -594,9 +610,73 @@ function resetFilters() {
   state.freeOnly = false;
   state.excludedSourceIds = [];
   $("free-only").checked = false;
+  selectNeighborhood('', false);
   if (mapReady) map.fitBounds(sfBounds, { padding: cityFitPadding(), duration: 0 });
   render();
 }
+
+function updateNeighborhoodOverlay() {
+  if (!mapReady) return;
+  for (const id of ['neighborhood-fill', 'neighborhood-selected'])
+    map.setFilter(id, ['==', ['get', 'id'], state.neighborhoodId]);
+}
+
+function fitNeighborhood() {
+  if (!mapReady) return;
+  map.fitBounds(state.neighborhood ? geometryBounds(state.neighborhood) : sfBounds, {
+    padding: state.neighborhood ? {top: 55, bottom: 65, left: 25, right: 55} : cityFitPadding(),
+    maxZoom: 15, duration: reduceMotion ? 0 : 650,
+  });
+}
+
+function selectNeighborhood(id, fit = true) {
+  const feature = neighborhoodData.features.find(feature => feature.id === id);
+  state.neighborhoodId = feature?.id || '';
+  state.neighborhood = feature?.geometry || null;
+  $('neighborhood-filter').value = state.neighborhoodId;
+  if (fit) state.mapBounds = null;
+  updateNeighborhoodOverlay();
+  if (fit) fitNeighborhood();
+  render();
+}
+
+async function loadNeighborhoodLayout(id, fit = false) {
+  const layout = neighborhoodLayouts.find(layout => layout.id === id);
+  if (!layout) return;
+  const request = ++neighborhoodRequest;
+  $('neighborhood-filter').disabled = true;
+  $('neighborhood-status').textContent = 'Loading areas…';
+  $('retry-neighborhoods').hidden = true;
+  try {
+    let data = neighborhoodCache.get(id);
+    if (!data) {
+      const response = await fetch(layout.url, {signal: AbortSignal.timeout(15000)});
+      if (!response.ok) throw new Error('Neighborhood download failed');
+      data = await response.json();
+      if (!validateNeighborhoodCollection(data)) throw new Error('Invalid neighborhoods');
+      neighborhoodCache.set(id, data);
+    }
+    if (request !== neighborhoodRequest) return;
+    neighborhoodData = data;
+    $('neighborhood-filter').replaceChildren(new Option('All areas', ''),
+      ...data.features.slice().sort((a,b) => a.properties.name.localeCompare(b.properties.name))
+        .map(feature => new Option(feature.properties.name, feature.id)));
+    if (mapReady) map.getSource('neighborhoods').setData(data);
+    selectNeighborhood('', fit);
+    $('neighborhood-status').textContent = '';
+    $('neighborhood-filter').disabled = false;
+  } catch {
+    if (request !== neighborhoodRequest) return;
+    $('neighborhood-filter').disabled = !neighborhoodData.features.length;
+    $('neighborhood-status').textContent = 'Could not load areas. Other filters still work.';
+    $('retry-neighborhoods').hidden = false;
+    $('retry-neighborhoods').onclick = () => {
+      loadNeighborhoodLayout(id, fit);
+    };
+  }
+}
+
+$('neighborhood-filter').addEventListener('change', event => selectNeighborhood(event.target.value));
 
 function chooseDay(day) {
   if (!checkedDates(state.feed?.coverage).has(day)) return;
@@ -635,6 +715,7 @@ window.addEventListener("resize", positionSourceMenu);
 window.visualViewport?.addEventListener("resize", positionSourceMenu);
 window.visualViewport?.addEventListener("scroll", positionSourceMenu);
 $("reset-map").addEventListener("click", () => {
+  selectNeighborhood('', false);
   if (mapReady)
     map.fitBounds(sfBounds, { padding: cityFitPadding(), duration: reduceMotion ? 0 : 650 });
 });
@@ -670,3 +751,4 @@ setInterval(() => {
 }, 60000);
 loadFeed();
 setupMap();
+loadNeighborhoodLayout(defaultNeighborhoodLayout);
