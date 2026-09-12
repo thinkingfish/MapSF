@@ -61,7 +61,7 @@ function listing(event) {
   if (directions) lines.push(
     '- Entrance: ' + prose(event.entrance.name) + '; longitude, latitude: ' + event.entrance.geometry.coordinates.join(', '),
     '- Directions: ' + link('Main entrance', directions),
-    '- Entrance coordinates: ' + link('OpenStreetMap', event.entrance.source));
+    '- Entrance coordinates: ' + link('Entrance source', event.entrance.source));
   if (safeHttpUrl(properties.metadata.geometrySource)) lines.push('- Boundary: ' + link('OpenStreetMap contributors (ODbL)', properties.metadata.geometrySource) + '; reviewed ' + prose(properties.metadata.geometryReviewedAt) + '. Grounds outline, not an access guarantee.');
   if (event.description && !event.recurring) lines.push('', 'Publisher description:', '', `> ${prose(event.description)}`);
   lines.push('');
@@ -115,7 +115,7 @@ export function agentDocuments(feed = {}, { now = new Date() } = {}) {
       `- Date: ${day}; this URL always refers to this date.`,
       `- Coverage: ${coverage}. ${covered.has(day) ? 'Successful source collection is recorded for this date; this is not an exhaustive city calendar.' : 'Event sources have not recorded coverage for this date. This does not mean there are no events.'}`,
       '- Scope: full-day, unfiltered snapshot. Events that have ended remain listed; compare end times with the current time.',
-      `- Exact data and full Point/LineString/Polygon geometry: ${link('Daily JSON',`${origin}/agent/${day}.json`)}`, '',
+      `- Exact data and full Point/LineString/Polygon/MultiPolygon geometry: ${link('Daily JSON',`${origin}/agent/${day}.json`)}`, '',
       '## Source collection status', '');
     if (!sourceStatus.length) lines.push('No event source collection status is available.');
     for (const source of sourceStatus) lines.push(`- ${prose(source.name || source.id)}: ${prose(source.status)}; date ${source.checkedForDate ? 'checked' : 'not checked'}; last success ${source.lastSuccessfulAt || 'not recorded'}.`);

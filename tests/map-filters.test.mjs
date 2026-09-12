@@ -1,9 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {filterEvents, geometryIntersectsBounds} from '../src/client/view-model.mjs';
+import {filterEvents, geometryIntersectsBounds, geometryBounds} from '../src/client/view-model.mjs';
 const bounds = [[0,0],[2,2]];
 const line = coordinates => ({type:'LineString',coordinates});
 const polygon = coordinates => ({type:'Polygon',coordinates});
+test('disconnected areas retain gaps and holes in viewport filtering and bounds', () => {
+  const geometry={type:'MultiPolygon',coordinates:[
+    [[[-3,-3],[5,-3],[5,5],[-3,5],[-3,-3]],[[-1,-1],[-1,3],[3,3],[3,-1],[-1,-1]]],
+    [[[10,0],[12,0],[12,2],[10,2],[10,0]]],
+  ]};
+  assert.deepEqual(geometryBounds(geometry),[[-3,-3],[12,5]]);
+  assert.equal(geometryIntersectsBounds(geometry,bounds),false);
+  assert.equal(geometryIntersectsBounds(geometry,[[6,0],[8,2]]),false);
+  assert.equal(geometryIntersectsBounds(geometry,[[10.5,0.5],[11,1]]),true);
+});
 test('map region includes points on edges and routes crossing without an inside vertex', () => {
   assert.equal(geometryIntersectsBounds({type:'Point',coordinates:[0,1]},bounds),true);
   assert.equal(geometryIntersectsBounds(line([[-1,1],[3,1]]),bounds),true);

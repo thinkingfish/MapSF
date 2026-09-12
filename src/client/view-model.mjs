@@ -32,6 +32,8 @@ function pointInRing([x, y], ring) {
 }
 
 export function geometryIntersectsBounds(geometry, bounds) {
+  if (geometry.type === 'MultiPolygon') return geometry.coordinates.some(coordinates =>
+    geometryIntersectsBounds({ type: 'Polygon', coordinates }, bounds));
   const [[west, south], [east, north]] = bounds;
   const contains = ([x, y]) => x >= west && x <= east && y >= south && y <= north;
   if (geometry.type === "Point") return contains(geometry.coordinates);
@@ -49,7 +51,7 @@ export function geometryBounds(geometry) {
       ? [geometry.coordinates]
       : geometry.type === "LineString"
         ? geometry.coordinates
-        : geometry.coordinates.flat();
+        : geometry.coordinates.flat(geometry.type === 'MultiPolygon' ? 2 : 1);
   return points.reduce(
     ([min, max], [x, y]) => [
       [Math.min(min[0], x), Math.min(min[1], y)],

@@ -284,7 +284,7 @@ function cancellationMetadata(instances) {
   return values.length > 0 ? { cancelledInstances: values } : {};
 }
 
-export function normalizeJsonLd(source, { record, pageUrl, curation, summary, cost }) {
+export function normalizeJsonLd(source, { record, pageUrl, curation, summary, cost, entrance }) {
   if (cancelled(record)) return null;
   const title = plainText(record.name);
   const startAt = text(record.startDate);
@@ -321,6 +321,7 @@ export function normalizeJsonLd(source, { record, pageUrl, curation, summary, co
   }
   // Only trusted adapters supply this sibling field; publisher JSON-LD cannot.
   if (curation) event.curation = structuredClone(curation);
+  if (entrance) event.entrance = structuredClone(entrance);
   // Like geometry, only adapter-authored sibling data may override admission.
   if (cost) event.cost = structuredClone(cost);
   if (image) event.imageUrl = image;
@@ -411,6 +412,8 @@ function pointInPolygon(point, rings) {
 }
 
 function geometryIntersectsBounds(geometry, bounds) {
+  if (geometry.type === 'MultiPolygon') return geometry.coordinates.some(coordinates =>
+    geometryIntersectsBounds({ type: 'Polygon', coordinates }, bounds));
   if (geometry.type === 'Point') return pointInBounds(geometry.coordinates, bounds);
   if (geometry.type === 'LineString') return lineIntersectsBounds(geometry.coordinates, bounds);
   if (geometry.type !== 'Polygon') return false;

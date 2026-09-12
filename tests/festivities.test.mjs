@@ -9,6 +9,43 @@ const now=new Date('2026-09-11T19:00:00Z');
 const source=id=>sources.find(s=>s.id==='festivity-'+id);
 const fetcher=f=>async url=>({ok:true,text:async()=>f.pages.find(p=>p.url===url).checks.join(' | ')});
 const collect=(id,date=now)=>{const f=festivities.find(f=>f.id===id);return collectFestivity(source(id),fetcher(f),date);};
+test('HSB publishes three separate meadow areas with a reviewed directions entrance',async()=>{
+ const event=normalizeJsonLd(source('hardly-strictly'),(await collect('hardly-strictly'))[0]);
+ assert.equal(event.curation.geometry.type,'MultiPolygon');
+ assert.equal(event.curation.geometry.coordinates.length,3);
+ assert.equal(event.curation.properties.layerType,'area');
+ assert.ok(validateEvent(event));
+ const {entranceDirectionsUrl}=await import('../src/lib/navigation.mjs');
+ assert.match(entranceDirectionsUrl(event),/37.770495879/);
+ const broken=structuredClone(event);broken.curation.geometry.coordinates[1][0].pop();
+ assert.equal(validateEvent(broken),false);
+ const empty=structuredClone(event);empty.curation.geometry.coordinates=[];
+ assert.equal(validateEvent(empty),false);
+ const {agentDocuments}=await import('../src/lib/agent-markdown.mjs');
+ const doc=agentDocuments({schemaVersion:1,sources:[],events:[event]},{now}).find(d=>d.slug==='2026-10-02');
+ assert.deepEqual(doc.data.events[0].curation.geometry,event.curation.geometry);
+ assert.match(doc.body,/area \(MultiPolygon\)/);
+ assert.match(doc.body,/OpenStreetMap contributors \(ODbL\)/);
+ const {dedupeEvents}=await import('../src/lib/events.mjs');
+ const entranceCopy=structuredClone(event);
+ entranceCopy.id='civic-joy-fund:hsb-entrance';entranceCopy.source.id='civic-joy-fund';
+ entranceCopy.curation.geometry=event.entrance.geometry;entranceCopy.curation.properties.layerType='poi';
+ assert.deepEqual(dedupeEvents([entranceCopy,event]).map(e=>e.id),[event.id]);
+});
+test('refresh keeps meadow areas within SF publication bounds',async t=>{
+ const {mkdtemp,writeFile,rm}=await import('node:fs/promises');
+ const {tmpdir}=await import('node:os');
+ const {join}=await import('node:path');
+ const {refreshEvents}=await import('../scripts/refresh-events.mjs');
+ const dir=await mkdtemp(join(tmpdir(),'mapsf-meadows-'));
+ t.after(()=>rm(dir,{recursive:true,force:true}));
+ const manualPath=join(dir,'manual.json');
+ await writeFile(manualPath,JSON.stringify({schemaVersion:1,events:[],overrides:[]}));
+ const f=festivities.find(f=>f.id==='hardly-strictly');
+ const snapshot=await refreshEvents({sources:[source(f.id)],manualPath,previousPath:join(dir,'previous.json'),outputPath:join(dir,'events.json'),fetchImpl:fetcher(f),now});
+ assert.equal(snapshot.events.length,3);
+ assert.ok(snapshot.events.every(e=>e.curation.geometry.type==='MultiPolygon'&&e.entrance));
+});
 test('annual editions publish only reviewed occurrences within thirty days',async()=>{
  let count=0;
  for(const f of festivities.filter(f=>f.occurrences.length)){

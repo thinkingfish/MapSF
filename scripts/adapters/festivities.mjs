@@ -23,8 +23,9 @@ export async function collectFestivity(source, fetchImpl=fetch, now=new Date()) 
     if(!page.checks.every(check=>body.includes(comparable(check)))) throw new Error(`Festivity details changed: ${festival.name}; review required`);
   }
   return dates.map(o=>({pageUrl:festival.url,summary:festival.summary,cost:structuredClone(festival.cost),
+    ...(festival.entrance ? {entrance:structuredClone(festival.entrance)} : {}),
     record:{identifier:`${festival.id}-${o.date}`,name:festival.name,url:festival.url,startDate:pacificTimestamp(`${o.date}T${o.start}:00`),endDate:pacificTimestamp(`${o.date}T${o.end}:00`),isAccessibleForFree:festival.cost.isFree},
-    curation:{type:'Feature',geometry:structuredClone(festival.geometry),properties:{name:festival.name,layerType:{Point:'poi',LineString:'segment',Polygon:'area'}[festival.geometry.type],category:'festival',metadata:{address:festival.address,scheduleSource:festival.url,scheduleReviewedAt:festival.reviewedAt,edition:String(festival.edition),coordinateSource:festival.geometrySource,geometryNote:festival.geometryNote}}}
+    curation:{type:'Feature',geometry:structuredClone(festival.geometry),properties:{name:festival.name,layerType:{Point:'poi',LineString:'segment',Polygon:'area',MultiPolygon:'area'}[festival.geometry.type],category:'festival',metadata:{address:festival.address,scheduleSource:festival.url,scheduleReviewedAt:festival.reviewedAt,edition:String(festival.edition),coordinateSource:festival.geometrySource,geometryNote:festival.geometryNote,...(festival.geometryLicense?{geometryLicense:festival.geometryLicense,geometryVersions:festival.geometryVersions,geometrySource:festival.geometryMapUrl,geometryReviewedAt:festival.reviewedAt}: {})}}}
   }));
   // Explicit occurrences do not claim complete coverage of a publisher calendar.
 }

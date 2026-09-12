@@ -107,7 +107,7 @@ freshness/status, `coverage: { dates: ["YYYY-MM-DD", ...] }`, and `events`. Each
 
 Feature properties include `name` and optional `category` and string-valued
 `metadata` (including an address). Coordinates use `[longitude, latitude]`.
-Polygon exterior rings must close. Event timing and source data live alongside
+Polygon exterior rings must close. Website events also support `area` / `MultiPolygon` for disconnected grounds; each component follows the same ring rules. The iOS mapping above remains Polygon-only. Event timing and source data live alongside
 geometry so the iOS app can consume the same feed later. Full route and area
 geometry is rendered and used when fitting the map to an event.
 
@@ -253,7 +253,7 @@ time and the event feed generation time, source collection status, and coverage.
 Daily JSON uses `schemaVersion: 1`, `date`, `timeZone`, `builtAt`, `generatedAt`,
 `coverage` (`checked` or `not checked`), `freshness`, `fullDay`, `sources`, `events`,
 and `freePlaces`. Both listing arrays use the existing event/curation schema,
-including complete GeoJSON Point, LineString, and Polygon geometry. Free Places
+including complete GeoJSON Point, LineString, Polygon, and MultiPolygon geometry. Free Places
 retain eligibility, admission notes, and review validity; the browser-only
 `entryEnded` flag is omitted because it would become stale. `cost.isFree` is not
 a claim that every visitor qualifies: preserve eligibility and inferred-price

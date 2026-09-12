@@ -19,7 +19,7 @@ Reviewed organizer pages on September 11, 2026. Dates below are explicit announc
 | [Chinatown Autumn Moon Festival](https://www.moonfestival.org/) | 2026-09-19, 2026-09-20 | Verified occurrences; LineString |
 | [Folsom Street Fair](https://www.folsomstreet.org/folsom-street-fair) | 2026-09-27 | Verified occurrences; Point |
 | [Castro Street Fair](https://castrostreetfair.org/fair/) | 2026-10-04 | Verified occurrences; Point |
-| [Hardly Strictly Bluegrass](https://hardlystrictlybluegrass.com/info-faq-2026/) | 2026-10-02, 2026-10-03, 2026-10-04 | Verified occurrences; Point |
+| [Hardly Strictly Bluegrass](https://hardlystrictlybluegrass.com/info-faq-2026/) | 2026-10-02, 2026-10-03, 2026-10-04 | Verified occurrences; three meadow areas (MultiPolygon), separate entrance |
 | [Bay to Breakers](https://www.baytobreakers.com/12k) | 2027-05-16 | Verified occurrences; Point |
 | [San Francisco Pride](https://sfpride.org/) | 2027-06-26, 2027-06-27 | Weekend announced. Parade detail page still describes June 28, 2026; await 2027 parade date, hours and route confirmation. |
 | [Carnaval San Francisco](https://carnavalsanfrancisco.org/) | 2027-05-29, 2027-05-30 | Festival weekend and May 30 parade announced. Parade route: 24th/Bryant to Mission, then north to 15th. Parade hours are missing; festival page mixes 2026 details. Await edition-specific hours. |
@@ -32,6 +32,22 @@ Reviewed organizer pages on September 11, 2026. Dates below are explicit announc
 Additional primary details: [Pride parade](https://sfpride.org/parade/) still has 2026 parade details beneath a 2027 header; [Carnaval parade](https://carnavalsanfrancisco.org/parade/) confirms May 30, 2027 but lacks hours, while [festival details](https://carnavalsanfrancisco.org/festival/) retain 2026 programming. [Folsom FAQ](https://www.folsomstreet.org/faq) supplies the 18+ policy and suggested donation; its [linked map](https://www.folsomstreet.org/2025-map) is still 2025. [Fleet Week air show](https://fleetweeksf.org/air-show/) and [Parade of Ships](https://fleetweeksf.org/events/parade-of-ships/) give separate event schedules; do not publish the umbrella date range as continuous programming.
 
 Coordinates come from [SF city street centerlines](https://data.sfgov.org/resource/3psu-pn9h.json), retrieved September 11, 2026: Autumn Moon follows Grant from California to Broadway, CNN 6392000–6399000; Folsom/9th is the end of CNN 5678000; Castro/Market starts 3790000; HSB entrance JFK/Transverse ends 12674000; Bay to Breakers start Howard/Fremont starts 7032000. Exact city vertices are preserved. Point locations explicitly describe entrances or intersections, not full festival footprints. The old Bay to Breakers test route and synthetic fixture hours are not publication evidence.
+
+## HSB meadow area follow-up
+
+The user requested meadow outlines in PR #14 on September 11, 2026. The [official 2026 FAQ](https://hardlystrictlybluegrass.com/info-faq-2026/) names Hellman Hollow, Lindley and Marx meadows. The [2026 organizer map](https://hardlystrictlybluegrass.com/wp-content/uploads/2026/09/2026-Map.pdf) was downloaded and visually reviewed to confirm these locations and entrance 1 at JFK/Transverse. Its schematic artwork is not used as georeferenced boundary data.
+
+Exact outline vertices come from OpenStreetMap, retrieved September 11, 2026 via Overpass. In component order:
+
+- [Hellman Hollow way 417407488](https://www.openstreetmap.org/way/417407488), version 3, last edited 2022-12-05, 76 closed-ring vertices.
+- [Lindley Meadow way 417407474](https://www.openstreetmap.org/way/417407474), version 3, last edited 2026-05-18, 38 closed-ring vertices.
+- [Marx Meadow way 417407483](https://www.openstreetmap.org/way/417407483), version 2, last edited 2022-09-04, 19 closed-ring vertices.
+
+The outlines are © OpenStreetMap contributors under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). All vertices are retained in config/hsb-meadows.mjs; only winding is normalized to counterclockwise. These are separate meadow grounds, not an exact event security perimeter, stage layout, or guarantee of access. They do not include connectors, intervening woods, or all festival facilities. The existing city-derived entrance remains a separate Point for directions.
+
+Website event areas now accept MultiPolygon with the same validation rules for each component as Polygon. Bounds, viewport filtering and refresh publication bounds preserve disconnected components and holes; MapLibre renders them through the existing Polygon fill layer. Daily agent JSON retains the full geometry, and Markdown includes area type, OSM provenance and separate entrance. The iOS schema is unchanged. Dedupe accepts the reviewed entrance as well as the grounds so existing calendar entrance pins still yield to the organizer.
+
+Only the three HSB snapshot records changed (geometry/provenance, description and entrance); event IDs, hours, other events, and refresh timestamps are unchanged. The requested horizontal divider now separates Map data from the feedback email in the shared footer.
 
 ## Implementation and decisions
 
@@ -46,6 +62,8 @@ Coordinates come from [SF city street centerlines](https://data.sfgov.org/resour
 ## Outcome
 
 Verified 156 unit tests with `pnpm exec node --test --test-isolation=none tests/*.test.mjs`, production build, and all 38 browser tests, including mobile festival details and both footer contact links. The live partial refresh published seven festival-day occurrences and replaced two Civic Joy Fund copies with the official Autumn Moon route, leaving 2,842 total events. Bay to Breakers is stored for May 2027 and is not shown early. No deployment performed.
+
+The meadow follow-up passed 159 unit tests, the production build and asset checks, and all 39 browser tests. Browser inspection confirmed a fill in each meadow, an unfilled gap, and directions to the preserved entrance. The footer divider is present on both built pages. Node 24 was invoked directly from the installed runtime to avoid pnpm installing dependencies in the worktree.
 
 ## Next steps
 

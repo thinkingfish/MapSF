@@ -1,5 +1,6 @@
 import { test, expect } from './test.mjs';
 import { feed, clock } from './fixtures.mjs';
+import { festivities } from '../config/festivities.mjs';
 
 // Capture the actual production Map instance at construction in the served JS.
 // Instrumentation stays in the test; the app has no debug globals or fake map.
@@ -10,6 +11,27 @@ async function inspectMap(page) {
     await route.fulfill({ response, body: source.replace(/new ([\w$]+)\(\{container:[`"']map[`"']/, match => `window.__testedMap=${match}`) });
   });
 }
+
+test('HSB renders disconnected meadow areas and keeps entrance directions', async ({page}) => {
+  const f=festivities.find(f=>f.id==='hardly-strictly');
+  const event={...structuredClone(feed.events[2]),id:'hsb-meadows',title:f.name,entrance:f.entrance};
+  event.curation.geometry=f.geometry;
+  await inspectMap(page);
+  await page.clock.install({time:clock});
+  await page.route('**/events.json',route=>route.fulfill({json:{...feed,events:[event]}}));
+  await page.goto('/');
+  await expect(page.locator('#map-status')).toBeHidden({timeout:20000});
+  await page.evaluate(()=>window.__testedMap.jumpTo({center:[-122.487,37.770],zoom:14}));
+  for (const coordinate of [[-122.485,37.769],[-122.4905835,37.7704276],[-122.4849567,37.7712343]]) {
+    await expect.poll(()=>page.evaluate(coordinate=>window.__testedMap.queryRenderedFeatures(window.__testedMap.project(coordinate),{layers:['event-areas']}).some(f=>f.properties.eventId==='hsb-meadows'),coordinate)).toBe(true);
+  }
+  // The space between Marx Meadow and Hellman Hollow is not meadow grounds.
+  expect(await page.evaluate(()=>window.__testedMap.queryRenderedFeatures(window.__testedMap.project([-122.483,37.7705]),{layers:['event-areas']}).some(f=>f.properties.eventId==='hsb-meadows'))).toBe(false);
+  const card=page.locator('article[data-event-id="hsb-meadows"]');
+  await card.locator('.event-select').click();
+  await expect(card.getByRole('link',{name:'Directions to main entrance'})).toHaveAttribute('href','https://www.google.com/maps/dir/?api=1&destination=37.770495879%2C-122.479895428');
+  await page.locator('#map-panel').screenshot({path:'/tmp/mapsf-hsb-meadows.png'});
+});
 
 test('local vector tiles and glyphs render streets and neighbourhoods through pan and overzoom', async ({ page }) => {
   const external = [];

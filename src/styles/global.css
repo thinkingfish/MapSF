@@ -828,6 +828,7 @@ h1 span {
 .sources-footer h2 { font-size: 24px; margin: 0; color: var(--ink); }
 .sources-footer a { text-underline-offset: 3px; }
 .sources-footer p { margin: 8px 0 16px; }
+.feedback-divider { border: 0; border-top: 1px solid #e1e4e6; margin: 24px 0; }
 .source-footer-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; gap: 10px 24px; padding: 0; margin: 0; }
 .info-page { max-width: 1120px; }
 .info-intro { padding: 48px 0 32px; }

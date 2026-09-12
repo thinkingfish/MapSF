@@ -1,3 +1,4 @@
+import { hsbMeadows } from './hsb-meadows.mjs';
 // Explicit organizer editions, never inferred annual recurrence.
 // See docs/journal/2026-09-11-sf-festivities.md for evidence and review gaps.
 export const festivities = [
@@ -206,17 +207,11 @@ export const festivities = [
       "2026-10-03",
       "2026-10-04"
     ],
-    "address": "Entrance at JFK Drive and Transverse Drive, Golden Gate Park, San Francisco, CA",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        -122.479895428,
-        37.770495879
-      ]
-    },
-    "geometrySource": "https://data.sfgov.org/resource/3psu-pn9h.json",
-    "geometryNote": "Official entrance 1. Festival occupies Hellman Hollow, Lindley and Marx meadows; this entrance pin is not the full footprint.",
-    "summary": "Free music festival in Golden Gate Park. Listed opening times are gate opening times (11am Friday, 9am Saturday and Sunday); performances end at 7pm. The pin marks the JFK/Transverse entrance.",
+    "address": "Hellman Hollow, Lindley & Marx meadows, Golden Gate Park, San Francisco, CA",
+    "geometry": hsbMeadows.geometry,
+    "geometrySource": hsbMeadows.geometrySource,
+    "geometryNote": "Three separate meadow grounds from OpenStreetMap; not the exact 2026 event perimeter or a claim that every part is accessible. Gaps between meadows are preserved. Directions use the separate JFK/Transverse entrance.",
+    "summary": "Free music festival in Golden Gate Park. Listed opening times are gate opening times (11am Friday, 9am Saturday and Sunday); performances end at 7pm. The shaded areas trace Hellman Hollow, Lindley and Marx meadows; use the JFK/Transverse entrance for directions.",
     "cost": {
       "label": "Free; no tickets needed",
       "isFree": true
@@ -230,7 +225,8 @@ export const festivities = [
           "9am Saturday & Sunday",
           "Performances end at 7pm daily",
           "JFK Drive and Transverse Drive",
-          "FREE EVENT (NO TICKETS NEEDED)"
+          "FREE EVENT (NO TICKETS NEEDED)",
+          "Hellman Hollow, Lindley & Marx meadows"
         ]
       }
     ],
@@ -256,7 +252,21 @@ export const festivities = [
       "2026 Hardly Strictly Bluegrass"
     ],
     "reviewedAt": "2026-09-11",
-    "status": "reviewed"
+    "status": "reviewed",
+    "entrance": {
+      "name": "JFK Drive and Transverse Drive — entrance 1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.479895428,
+          37.770495879
+        ]
+      },
+      "source": "https://data.sfgov.org/resource/3psu-pn9h.json"
+    },
+    "geometryVersions": hsbMeadows.geometryVersions,
+    "geometryLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "geometryMapUrl": "https://www.openstreetmap.org/#map=16/37.7699/-122.4875"
   },
   {
     "id": "bay-to-breakers",
