@@ -1,16 +1,19 @@
 import { marketOccurrenceKey } from './market-identity.mjs';
+import { festivityOccurrenceKey } from './festivity-identity.mjs';
 import { sources } from '../../config/sources.mjs';
 
 // Only reviewed source roles determine precedence, never event-supplied claims.
 const directSources = new Set(sources.filter(source => source.group === 'organizers' || source.group === 'series').map(source => source.id));
+const festivalSources = new Set(sources.filter(source => source.adapter === 'festivity').map(source => source.id));
+const sourcePriority = id => festivalSources.has(id) ? 2 : Number(directSources.has(id));
 
 const SF_TIME_ZONE = 'America/Los_Angeles';
 const ISO_WITH_OFFSET = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{1,9}))?)?(Z|([+-])(\d{2}):(\d{2}))$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 const LAYER_GEOMETRY = {
-  poi: 'Point',
-  segment: 'LineString',
-  area: 'Polygon',
+  poi: ['Point'],
+  segment: ['LineString'],
+  area: ['Polygon', 'MultiPolygon'],
 };
 
 const sfDateFormatter = new Intl.DateTimeFormat('en-US', {
@@ -121,6 +124,12 @@ function validGeometry(geometry) {
       ));
   }
 
+  if (geometry.type === 'MultiPolygon') {
+    return Array.isArray(geometry.coordinates)
+      && geometry.coordinates.length >= 1
+      && geometry.coordinates.every(coordinates => validGeometry({ type: 'Polygon', coordinates }));
+  }
+
   return false;
 }
 
@@ -147,10 +156,12 @@ function validCuration(curation) {
     return false;
   }
 
-  return LAYER_GEOMETRY[properties.layerType] === geometry.type;
+  return LAYER_GEOMETRY[properties.layerType].includes(geometry.type);
 }
 
 function semanticKey(event) {
+  const festivalKey = festivityOccurrenceKey(event);
+  if (festivalKey) return festivalKey;
   const marketKey = marketOccurrenceKey(event);
   if (marketKey) return marketKey;
   return [
@@ -230,7 +241,7 @@ export function dedupeEvents(events) {
   const unique = [];
   // Stable sorting preserves existing first-seen behavior within each role.
   const candidates = events.filter(validateEvent).sort((a, b) =>
-    Number(directSources.has(b.source.id)) - Number(directSources.has(a.source.id)));
+    sourcePriority(b.source.id) - sourcePriority(a.source.id));
   for (const event of candidates) {
     const listing = semanticKey(event);
     if (ids.has(event.id) || listings.has(listing)) continue;

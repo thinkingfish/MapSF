@@ -284,7 +284,7 @@ function cancellationMetadata(instances) {
   return values.length > 0 ? { cancelledInstances: values } : {};
 }
 
-export function normalizeJsonLd(source, { record, pageUrl, curation, summary }) {
+export function normalizeJsonLd(source, { record, pageUrl, curation, summary, cost, entrance }) {
   if (cancelled(record)) return null;
   const title = plainText(record.name);
   const startAt = text(record.startDate);
@@ -321,6 +321,9 @@ export function normalizeJsonLd(source, { record, pageUrl, curation, summary }) 
   }
   // Only trusted adapters supply this sibling field; publisher JSON-LD cannot.
   if (curation) event.curation = structuredClone(curation);
+  if (entrance) event.entrance = structuredClone(entrance);
+  // Like geometry, only adapter-authored sibling data may override admission.
+  if (cost) event.cost = structuredClone(cost);
   if (image) event.imageUrl = image;
   // Adapter-authored factual summaries only; never copy publisher article prose.
   if (typeof summary === 'string') event.description = plainText(summary);
@@ -409,6 +412,8 @@ function pointInPolygon(point, rings) {
 }
 
 function geometryIntersectsBounds(geometry, bounds) {
+  if (geometry.type === 'MultiPolygon') return geometry.coordinates.some(coordinates =>
+    geometryIntersectsBounds({ type: 'Polygon', coordinates }, bounds));
   if (geometry.type === 'Point') return pointInBounds(geometry.coordinates, bounds);
   if (geometry.type === 'LineString') return lineIntersectsBounds(geometry.coordinates, bounds);
   if (geometry.type !== 'Polygon') return false;
@@ -558,6 +563,10 @@ export async function refreshEvents({
     try {
       let raw;
       if (source.adapter === 'jsonld') raw = await collectJsonLd(source, fetchImpl);
+      else if (source.adapter === 'festivity') {
+        const { collectFestivity } = await import('./adapters/festivities.mjs');
+        raw = await collectFestivity(source, fetchImpl, now);
+      }
       else if (source.adapter === 'farmers-market') {
         const { collectFarmersMarket } = await import('./adapters/farmers-markets.mjs');
         raw = await collectFarmersMarket(source, fetchImpl, now);
