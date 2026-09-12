@@ -19,9 +19,9 @@ const descriptions = {
 };
 export const eventSourceGuide = sources.filter(source => source.approved && !scienceWorkshops.some(place => place.source.id === source.id)).map(source => ({
   id: source.id, name: source.name, url: source.listingUrl, group: source.group, seriesKind: source.seriesKind,
-  status: source.adapter === 'farmers-market' ? 'Reviewed weekly schedule' : source.enabled ? 'Collecting events' : 'Planned',
-  description: source.adapter === 'farmers-market' ? 'A San Francisco farmers market listed by its official operator.' : descriptions[source.id]?.[0] ?? 'A source selected for local event coverage.',
-  collection: source.adapter === 'farmers-market' ? 'We check the official page against reviewed hours and location, then expand the weekly schedule within 30 days and its review expiry. Known closures are excluded. Changed or unavailable pages report a collection failure; short-notice cancellations and new holiday exceptions require review. Entry is free; purchases cost extra.' : descriptions[source.id]?.[1] ?? 'Collection details are being reviewed.',
+  status: source.adapter === 'festivity' ? 'Reviewed annual edition' : source.adapter === 'farmers-market' ? 'Reviewed weekly schedule' : source.enabled ? 'Collecting events' : 'Planned',
+  description: source.adapter === 'festivity' ? 'An annual San Francisco festivity listed by its official organizer.' : source.adapter === 'farmers-market' ? 'A San Francisco farmers market listed by its official operator.' : descriptions[source.id]?.[0] ?? 'A source selected for local event coverage.',
+  collection: source.adapter === 'festivity' ? 'We check organizer pages against explicitly reviewed dates, hours, admission and locations. Only confirmed occurrences in the next 30 days are listed; annual dates are never inferred. Changed pages require review. Pins may mark an entrance when the full boundary is unverified. Optional donations and paid participation are distinguished from free admission.' : source.adapter === 'farmers-market' ? 'We check the official page against reviewed hours and location, then expand the weekly schedule within 30 days and its review expiry. Known closures are excluded. Changed or unavailable pages report a collection failure; short-notice cancellations and new holiday exceptions require review. Entry is free; purchases cost extra.' : descriptions[source.id]?.[1] ?? 'Collection details are being reviewed.',
 }));
 export const eventSourceGroups = [
   {id: 'publishers', name: 'Publishers and calendars'},

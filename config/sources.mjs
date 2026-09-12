@@ -1,4 +1,5 @@
 import { farmersMarkets } from './farmers-markets.mjs';
+import { festivities } from './festivities.mjs';
 
 // Only explicitly opted-in broad calendars appear in the front-page source filter.
 // approved records the owner's source decision; enabled controls collection.
@@ -18,6 +19,12 @@ export const publicationBounds = Object.freeze({
 });
 
 export const sources = [
+  ...festivities.filter(f => f.status === 'reviewed').map(f => ({
+    id: 'festivity-' + f.id, name: f.name + ' — official organizer',
+    group: 'series', seriesKind: 'Annual festivities', listingUrl: f.url,
+    approved: true, // Yao requested official SF festivities, 2026-09-11.
+    enabled: true, adapter: 'festivity', allowEmpty: true, maxEvents: 30,
+  })),
   ...farmersMarkets.map(market => ({
     id: 'market-' + market.id, name: market.name + ' — ' + market.operator,
     group: 'series', seriesKind: 'Farmers markets', listingUrl: market.url,

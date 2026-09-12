@@ -1,0 +1,22 @@
+import {test,expect} from './test.mjs';
+import {sources} from '../config/sources.mjs';
+import {festivities} from '../config/festivities.mjs';
+import {collectFestivity} from '../scripts/adapters/festivities.mjs';
+import {normalizeJsonLd} from '../scripts/refresh-events.mjs';
+const now=new Date('2026-09-19T17:00:00Z');
+const source=sources.find(s=>s.id==='festivity-autumn-moon');
+const festival=festivities.find(f=>f.id==='autumn-moon');
+const rows=await collectFestivity(source,async()=>({ok:true,text:async()=>festival.pages[0].checks.join(' ')}),now);
+const events=rows.map(row=>normalizeJsonLd(source,row));
+test('festival route and original details appear on mobile without a single-series filter',async({page})=>{
+ await page.setViewportSize({width:390,height:844});await page.clock.install({time:now});
+ await page.route('**/events.json',r=>r.fulfill({json:{schemaVersion:1,generatedAt:now.toISOString(),coverage:{dates:['2026-09-19']},sources:[{...source,status:'ok',lastSuccessfulAt:now.toISOString()}],events}}));
+ await page.goto('/');await expect(page.locator('#map-status')).toBeHidden({timeout:20000});
+ const card=page.locator('article[data-event-id^="festivity-autumn-moon:"]');await expect(card).toHaveCount(1);
+ await card.locator('.event-select').click();await expect(card.locator('.event-details')).toContainText('Route');
+ await expect(card.getByRole('link',{name:/Details for/})).toHaveAttribute('href',festival.url);
+ await expect(page.getByRole('checkbox',{name:/Autumn Moon/})).toHaveCount(0);
+ await expect(page.getByRole('link',{name:'mapsf@yaoyue.org'})).toHaveAttribute('href','mailto:mapsf@yaoyue.org');
+ await page.goto('/sources/');await expect(page.locator('#festivity-autumn-moon')).toContainText('Reviewed annual edition');
+ await expect(page.getByRole('link',{name:'mapsf@yaoyue.org'})).toBeVisible();
+});

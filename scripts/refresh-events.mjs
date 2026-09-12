@@ -284,7 +284,7 @@ function cancellationMetadata(instances) {
   return values.length > 0 ? { cancelledInstances: values } : {};
 }
 
-export function normalizeJsonLd(source, { record, pageUrl, curation, summary }) {
+export function normalizeJsonLd(source, { record, pageUrl, curation, summary, cost }) {
   if (cancelled(record)) return null;
   const title = plainText(record.name);
   const startAt = text(record.startDate);
@@ -321,6 +321,8 @@ export function normalizeJsonLd(source, { record, pageUrl, curation, summary }) 
   }
   // Only trusted adapters supply this sibling field; publisher JSON-LD cannot.
   if (curation) event.curation = structuredClone(curation);
+  // Like geometry, only adapter-authored sibling data may override admission.
+  if (cost) event.cost = structuredClone(cost);
   if (image) event.imageUrl = image;
   // Adapter-authored factual summaries only; never copy publisher article prose.
   if (typeof summary === 'string') event.description = plainText(summary);
@@ -558,6 +560,10 @@ export async function refreshEvents({
     try {
       let raw;
       if (source.adapter === 'jsonld') raw = await collectJsonLd(source, fetchImpl);
+      else if (source.adapter === 'festivity') {
+        const { collectFestivity } = await import('./adapters/festivities.mjs');
+        raw = await collectFestivity(source, fetchImpl, now);
+      }
       else if (source.adapter === 'farmers-market') {
         const { collectFarmersMarket } = await import('./adapters/farmers-markets.mjs');
         raw = await collectFarmersMarket(source, fetchImpl, now);

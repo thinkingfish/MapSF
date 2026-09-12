@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-12T03:22:04.372Z",
+  "generatedAt": "2026-09-12T03:47:00.379Z",
   "sources": [
     {
       "id": "sfpl",
@@ -234,7 +234,7 @@
         "checkedAt": "2026-09-11T17:01:24.753Z"
       },
       "lastSuccessfulAt": "2026-09-11T17:01:24.753Z",
-      "eventCount": 80
+      "eventCount": 78
     },
     {
       "id": "sf-shakes",
@@ -539,6 +539,83 @@
       },
       "lastSuccessfulAt": "2026-09-12T03:22:04.372Z",
       "eventCount": 5
+    },
+    {
+      "id": "festivity-autumn-moon",
+      "name": "Chinatown Autumn Moon Festival — official organizer",
+      "url": "https://www.moonfestival.org/",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-19",
+          "2026-09-20"
+        ],
+        "checkedAt": "2026-09-12T03:47:00.379Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:47:00.379Z",
+      "eventCount": 2
+    },
+    {
+      "id": "festivity-folsom",
+      "name": "Folsom Street Fair — official organizer",
+      "url": "https://www.folsomstreet.org/folsom-street-fair",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-09-27"
+        ],
+        "checkedAt": "2026-09-12T03:47:00.379Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:47:00.379Z",
+      "eventCount": 1
+    },
+    {
+      "id": "festivity-castro",
+      "name": "Castro Street Fair — official organizer",
+      "url": "https://castrostreetfair.org/fair/",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-10-04"
+        ],
+        "checkedAt": "2026-09-12T03:47:00.379Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:47:00.379Z",
+      "eventCount": 1
+    },
+    {
+      "id": "festivity-hardly-strictly",
+      "name": "Hardly Strictly Bluegrass — official organizer",
+      "url": "https://hardlystrictlybluegrass.com/info-faq-2026/",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11",
+          "2026-10-02",
+          "2026-10-03",
+          "2026-10-04"
+        ],
+        "checkedAt": "2026-09-12T03:47:00.379Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:47:00.379Z",
+      "eventCount": 3
+    },
+    {
+      "id": "festivity-bay-to-breakers",
+      "name": "Bay to Breakers — official organizer",
+      "url": "https://www.baytobreakers.com/12k",
+      "status": "ok",
+      "coverage": {
+        "dates": [
+          "2026-09-11"
+        ],
+        "checkedAt": "2026-09-12T03:47:00.379Z"
+      },
+      "lastSuccessfulAt": "2026-09-12T03:47:00.379Z",
+      "eventCount": 0
     }
   ],
   "coverage": {
@@ -25076,38 +25153,6 @@
       }
     },
     {
-      "id": "civic-joy-fund:6gbqidm99an7le0gfnr8t4jtfs-google.com-2026-09-19t18-00-00.000z",
-      "title": "Autumn Moon Festival",
-      "startAt": "2026-09-19T18:00:00.000Z",
-      "endAt": "2026-09-20T00:00:00.000Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "civic-joy-fund",
-        "name": "Civic Joy Fund",
-        "url": "https://civicjoyfund.org/events"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Autumn Moon Festival",
-          "layerType": "poi",
-          "metadata": {
-            "address": "Grant Avenue & Broadway, Grant Ave & Broadway, San Francisco, CA 94133, USA"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.407016163,
-            37.797822303
-          ]
-        }
-      }
-    },
-    {
       "id": "sfpl:138298-sfpl.org",
       "title": "Book Club: Abundance",
       "startAt": "2026-09-19T18:00:00Z",
@@ -25138,6 +25183,79 @@
           ]
         }
       }
+    },
+    {
+      "id": "festivity-autumn-moon:autumn-moon-2026-09-19",
+      "title": "Chinatown Autumn Moon Festival",
+      "startAt": "2026-09-19T11:00:00-07:00",
+      "endAt": "2026-09-19T17:00:00-07:00",
+      "cost": {
+        "label": "Free entry",
+        "isFree": true
+      },
+      "source": {
+        "id": "festivity-autumn-moon",
+        "name": "Chinatown Autumn Moon Festival — official organizer",
+        "url": "https://www.moonfestival.org/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -122.405938119,
+              37.792450752
+            ],
+            [
+              -122.406129483,
+              37.793379705
+            ],
+            [
+              -122.40622048,
+              37.793831753
+            ],
+            [
+              -122.406304986,
+              37.794263627
+            ],
+            [
+              -122.406475551,
+              37.795144465
+            ],
+            [
+              -122.406652352,
+              37.79602475
+            ],
+            [
+              -122.406827678,
+              37.796901906
+            ],
+            [
+              -122.406944629,
+              37.797468973
+            ],
+            [
+              -122.407016163,
+              37.797822303
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Chinatown Autumn Moon Festival",
+          "layerType": "segment",
+          "category": "festival",
+          "metadata": {
+            "address": "Grant Avenue, California Street to Broadway, San Francisco, CA",
+            "scheduleSource": "https://www.moonfestival.org/",
+            "scheduleReviewedAt": "2026-09-11",
+            "edition": "2026",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json",
+            "geometryNote": "Grant Avenue festival corridor, city street centerlines CNN 6392000–6399000. Side activities are not a surveyed perimeter."
+          }
+        }
+      },
+      "description": "Free Chinatown street festival with performances, food vendors and family activities. Purchases cost extra."
     },
     {
       "id": "civic-joy-fund:0kc65vhhtjsasmcjo19opj8mch_r20250906t180000-google.com-2026-09-19t18-00-00.000z",
@@ -30044,36 +30162,77 @@
       }
     },
     {
-      "id": "civic-joy-fund:6sgt4ite013nkakdb6eprh4b09-google.com-2026-09-20t18-00-00.000z",
-      "title": "Autumn Moon Festival",
-      "startAt": "2026-09-20T18:00:00.000Z",
-      "endAt": "2026-09-21T00:00:00.000Z",
+      "id": "festivity-autumn-moon:autumn-moon-2026-09-20",
+      "title": "Chinatown Autumn Moon Festival",
+      "startAt": "2026-09-20T11:00:00-07:00",
+      "endAt": "2026-09-20T17:00:00-07:00",
       "cost": {
-        "label": "Free",
+        "label": "Free entry",
         "isFree": true
       },
       "source": {
-        "id": "civic-joy-fund",
-        "name": "Civic Joy Fund",
-        "url": "https://civicjoyfund.org/events"
+        "id": "festivity-autumn-moon",
+        "name": "Chinatown Autumn Moon Festival — official organizer",
+        "url": "https://www.moonfestival.org/"
       },
       "curation": {
         "type": "Feature",
-        "properties": {
-          "name": "Autumn Moon Festival",
-          "layerType": "poi",
-          "metadata": {
-            "address": "Grant Avenue & Broadway, Grant Ave & Broadway, San Francisco, CA 94133, USA"
-          }
-        },
         "geometry": {
-          "type": "Point",
+          "type": "LineString",
           "coordinates": [
-            -122.407016163,
-            37.797822303
+            [
+              -122.405938119,
+              37.792450752
+            ],
+            [
+              -122.406129483,
+              37.793379705
+            ],
+            [
+              -122.40622048,
+              37.793831753
+            ],
+            [
+              -122.406304986,
+              37.794263627
+            ],
+            [
+              -122.406475551,
+              37.795144465
+            ],
+            [
+              -122.406652352,
+              37.79602475
+            ],
+            [
+              -122.406827678,
+              37.796901906
+            ],
+            [
+              -122.406944629,
+              37.797468973
+            ],
+            [
+              -122.407016163,
+              37.797822303
+            ]
           ]
+        },
+        "properties": {
+          "name": "Chinatown Autumn Moon Festival",
+          "layerType": "segment",
+          "category": "festival",
+          "metadata": {
+            "address": "Grant Avenue, California Street to Broadway, San Francisco, CA",
+            "scheduleSource": "https://www.moonfestival.org/",
+            "scheduleReviewedAt": "2026-09-11",
+            "edition": "2026",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json",
+            "geometryNote": "Grant Avenue festival corridor, city street centerlines CNN 6392000–6399000. Side activities are not a surveyed perimeter."
+          }
         }
-      }
+      },
+      "description": "Free Chinatown street festival with performances, food vendors and family activities. Purchases cost extra."
     },
     {
       "id": "sf-chronicle:43541054",
@@ -51697,6 +51856,45 @@
       }
     },
     {
+      "id": "festivity-folsom:folsom-2026-09-27",
+      "title": "Folsom Street Fair",
+      "startAt": "2026-09-27T11:00:00-07:00",
+      "endAt": "2026-09-27T18:00:00-07:00",
+      "cost": {
+        "label": "Free entry; donation requested · 18+",
+        "isFree": true
+      },
+      "source": {
+        "id": "festivity-folsom",
+        "name": "Folsom Street Fair — official organizer",
+        "url": "https://www.folsomstreet.org/folsom-street-fair"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.411610117,
+            37.773769346
+          ]
+        },
+        "properties": {
+          "name": "Folsom Street Fair",
+          "layerType": "poi",
+          "category": "festival",
+          "metadata": {
+            "address": "Folsom Street at 9th Street, San Francisco, CA",
+            "scheduleSource": "https://www.folsomstreet.org/folsom-street-fair",
+            "scheduleReviewedAt": "2026-09-11",
+            "edition": "2026",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json",
+            "geometryNote": "Fair location pin at Folsom and 9th; the linked boundary map still describes 2025, so no 2026 perimeter is asserted."
+          }
+        }
+      },
+      "description": "Adults 18+ only. Outdoor leather and fetish community fair. Entry does not require a ticket; a $10–20 donation is requested. The map pin locates the fair, not its full street closure."
+    },
+    {
       "id": "sf-chronicle:44117030",
       "title": "John Elliott: Slow Street Party at Steiner+Page w/ The Band of Supervisors",
       "startAt": "2026-09-27T11:00:00-07:00",
@@ -64173,6 +64371,45 @@
       }
     },
     {
+      "id": "festivity-hardly-strictly:hardly-strictly-2026-10-02",
+      "title": "Hardly Strictly Bluegrass",
+      "startAt": "2026-10-02T11:00:00-07:00",
+      "endAt": "2026-10-02T19:00:00-07:00",
+      "cost": {
+        "label": "Free; no tickets needed",
+        "isFree": true
+      },
+      "source": {
+        "id": "festivity-hardly-strictly",
+        "name": "Hardly Strictly Bluegrass — official organizer",
+        "url": "https://hardlystrictlybluegrass.com/info-faq-2026/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.479895428,
+            37.770495879
+          ]
+        },
+        "properties": {
+          "name": "Hardly Strictly Bluegrass",
+          "layerType": "poi",
+          "category": "festival",
+          "metadata": {
+            "address": "Entrance at JFK Drive and Transverse Drive, Golden Gate Park, San Francisco, CA",
+            "scheduleSource": "https://hardlystrictlybluegrass.com/info-faq-2026/",
+            "scheduleReviewedAt": "2026-09-11",
+            "edition": "2026",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json",
+            "geometryNote": "Official entrance 1. Festival occupies Hellman Hollow, Lindley and Marx meadows; this entrance pin is not the full footprint."
+          }
+        }
+      },
+      "description": "Free music festival in Golden Gate Park. Listed opening times are gate opening times (11am Friday, 9am Saturday and Sunday); performances end at 7pm. The pin marks the JFK/Transverse entrance."
+    },
+    {
       "id": "sf-chronicle:44363488",
       "title": "Steve Poltz: Hardly Strictly Bluegrass 2026",
       "startAt": "2026-10-02T11:00:00-07:00",
@@ -68176,6 +68413,45 @@
         }
       },
       "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "festivity-hardly-strictly:hardly-strictly-2026-10-03",
+      "title": "Hardly Strictly Bluegrass",
+      "startAt": "2026-10-03T09:00:00-07:00",
+      "endAt": "2026-10-03T19:00:00-07:00",
+      "cost": {
+        "label": "Free; no tickets needed",
+        "isFree": true
+      },
+      "source": {
+        "id": "festivity-hardly-strictly",
+        "name": "Hardly Strictly Bluegrass — official organizer",
+        "url": "https://hardlystrictlybluegrass.com/info-faq-2026/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.479895428,
+            37.770495879
+          ]
+        },
+        "properties": {
+          "name": "Hardly Strictly Bluegrass",
+          "layerType": "poi",
+          "category": "festival",
+          "metadata": {
+            "address": "Entrance at JFK Drive and Transverse Drive, Golden Gate Park, San Francisco, CA",
+            "scheduleSource": "https://hardlystrictlybluegrass.com/info-faq-2026/",
+            "scheduleReviewedAt": "2026-09-11",
+            "edition": "2026",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json",
+            "geometryNote": "Official entrance 1. Festival occupies Hellman Hollow, Lindley and Marx meadows; this entrance pin is not the full footprint."
+          }
+        }
+      },
+      "description": "Free music festival in Golden Gate Park. Listed opening times are gate opening times (11am Friday, 9am Saturday and Sunday); performances end at 7pm. The pin marks the JFK/Transverse entrance."
     },
     {
       "id": "sfpl:163359-sfpl.org",
@@ -72883,6 +73159,45 @@
       "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
     },
     {
+      "id": "festivity-hardly-strictly:hardly-strictly-2026-10-04",
+      "title": "Hardly Strictly Bluegrass",
+      "startAt": "2026-10-04T09:00:00-07:00",
+      "endAt": "2026-10-04T19:00:00-07:00",
+      "cost": {
+        "label": "Free; no tickets needed",
+        "isFree": true
+      },
+      "source": {
+        "id": "festivity-hardly-strictly",
+        "name": "Hardly Strictly Bluegrass — official organizer",
+        "url": "https://hardlystrictlybluegrass.com/info-faq-2026/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.479895428,
+            37.770495879
+          ]
+        },
+        "properties": {
+          "name": "Hardly Strictly Bluegrass",
+          "layerType": "poi",
+          "category": "festival",
+          "metadata": {
+            "address": "Entrance at JFK Drive and Transverse Drive, Golden Gate Park, San Francisco, CA",
+            "scheduleSource": "https://hardlystrictlybluegrass.com/info-faq-2026/",
+            "scheduleReviewedAt": "2026-09-11",
+            "edition": "2026",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json",
+            "geometryNote": "Official entrance 1. Festival occupies Hellman Hollow, Lindley and Marx meadows; this entrance pin is not the full footprint."
+          }
+        }
+      },
+      "description": "Free music festival in Golden Gate Park. Listed opening times are gate opening times (11am Friday, 9am Saturday and Sunday); performances end at 7pm. The pin marks the JFK/Transverse entrance."
+    },
+    {
       "id": "market-inner-sunset:inner-sunset-2026-10-04-09-00",
       "title": "Inner Sunset Farmers Market",
       "startAt": "2026-10-04T09:00:00-07:00",
@@ -73204,6 +73519,45 @@
           ]
         }
       }
+    },
+    {
+      "id": "festivity-castro:castro-2026-10-04",
+      "title": "Castro Street Fair",
+      "startAt": "2026-10-04T11:00:00-07:00",
+      "endAt": "2026-10-04T18:00:00-07:00",
+      "cost": {
+        "label": "Free entry; donation requested",
+        "isFree": true
+      },
+      "source": {
+        "id": "festivity-castro",
+        "name": "Castro Street Fair — official organizer",
+        "url": "https://castrostreetfair.org/fair/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.435187962,
+            37.762670708
+          ]
+        },
+        "properties": {
+          "name": "Castro Street Fair",
+          "layerType": "poi",
+          "category": "festival",
+          "metadata": {
+            "address": "Castro and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://castrostreetfair.org/fair/",
+            "scheduleReviewedAt": "2026-09-11",
+            "edition": "2026",
+            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json",
+            "geometryNote": "Organizer meeting intersection; general street closure guidance is not treated as a verified 2026 perimeter."
+          }
+        }
+      },
+      "description": "Community street fair in the Castro. Free entry with a suggested $10–20 donation; food and other purchases cost extra."
     },
     {
       "id": "sf-chronicle:44225348",
