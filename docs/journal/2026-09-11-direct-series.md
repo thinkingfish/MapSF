@@ -87,3 +87,7 @@ Brainstorming, test-driven development, verification-before-completion, and the 
 - Independent review found no blocking issues. A subsequent KQED headline-cancellation regression was added and verified red/green; changed-format and unknown-venue articles stay unpublished.
 - Outline geometry: [DataSF SF Shoreline and Islands](https://data.sfgov.org/resource/txuc-3kzm.geojson), public-domain dedication. Largest exterior land ring projected to a 20-unit icon and simplified to 23 points. The mainland shoreline and southern county line are represented; remote islands and piers are omitted at this size.
 - No merge or deployment performed. Sunday Streets remains the outstanding admission: October 18 date confirmed, current organizer hours and exact location not verified.
+
+## Subsequent KQED removal
+
+At the owner’s request, KQED was removed from collection, public source/RSS listings, agent output, and the current snapshot. Its retired implementation and investigation remain documented in the KQED journal. The admission counts above are historical; the current snapshot retains seven new direct-series listings and contains no KQED event.

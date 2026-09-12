@@ -16,14 +16,10 @@ test('footer links every source to its description and explains planned sources 
  await expect(page.getByRole('region', {name:'Recurring series',exact:true})).toContainText('Sunday Streets SF');
  await expect(page.getByRole('region', {name:'Recurring series',exact:true})).toContainText('Free Shakespeare');
  await expect(page.getByRole('region', {name:'Venues and organizers',exact:true})).toContainText('San Francisco Public Library');
- await expect(page.getByRole('region', {name:'Publishers and calendars',exact:true})).toContainText('KQED');
  await expect(page.locator('#methodology')).toContainText('same normalized title, start time, and map geometry');
+ await expect(page.locator('body')).not.toContainText('KQED');
  const rss = page.getByRole('region', {name:'Subscribe via RSS'});
- await expect(rss.getByRole('link')).toHaveCount(7);
- await expect(page.locator('#kqed')).toContainText('Collecting events');
- await expect(page.locator('#kqed')).toContainText('San Francisco venues');
- await expect(rss.getByRole('link', {name:'KQED The Do List RSS',exact:true})).toHaveAttribute('href','https://ww2.kqed.org/arts/feed/');
- await expect(rss).toContainText('Arts articles across the Bay Area');
+ await expect(rss.getByRole('link')).toHaveCount(6);
  await expect(rss.getByRole('link', {name:'Mission Local RSS',exact:true})).toHaveAttribute('href','https://missionlocal.org/events/feed/');
  await expect(rss).toContainText('Neighborhood news');
  await expect(rss).toContainText('paste it into your reader');

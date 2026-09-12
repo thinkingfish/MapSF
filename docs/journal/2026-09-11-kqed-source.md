@@ -1,5 +1,5 @@
 ---
-status: open
+status: no-go
 opened: 2026-09-11
 updated: 2026-09-11
 ---
@@ -30,9 +30,9 @@ Selected examples (factual summaries only):
 
 The linked Eventive screening page returned a client-rendered shell in the read-only reader; no screening-time/venue record was verified from that response. KQED Live has a separate program page and has not been silently substituted for The Do List.
 
-## Implementation and decisions
+## Trial implementation (retired)
 
-- KQED is now enabled with a narrow editorial adapter. It reads JSON state safely with JSON.parse, inspects recent Do List articles, and accepts explicit event-summary paragraphs with a reviewed venue combination. The initial supported format is the three-venue Chinatown art event. Other articles are discovery material, not automatically published events.
+- The trial enabled KQED with a narrow editorial adapter. It reads JSON state safely with JSON.parse, inspects recent Do List articles, and accepts explicit event-summary paragraphs with a reviewed venue combination. The initial supported format is the three-venue Chinatown art event. Other articles are discovery material, not automatically published events.
 - Actual event dates and hours come from the summary sentence, never publication timestamps or headline geography. Unknown prices remain unknown. No article bodies are republished.
 - The station point is verified against [MTC’s 511 station page](https://511.org/travel/transit/centers/chinatown-rose-pak-station): latitude 37.794779100241, longitude -122.40807550785. It is a station pin, not an asserted entrance or route. All three addresses appear in an adapter-authored summary.
 - The linked SF.gov organizer page presents a JavaScript verification challenge. It is not bypassed. The trusted KQED article supplies the event facts; the transit agency supplies location evidence.
@@ -40,11 +40,14 @@ The linked Eventive screening page returned a client-rendered shell in the read-
 
 ## Outcome
 
+The owner requested removing KQED from public exposure after reviewing the brittle, single-event extraction. The operational registry entry, collector, public RSS/source links, and published KQED event have been removed. The following trial evidence is retained for future organizer discovery; it is not an active integration.
+
+
 The live adapter returned one valid event: A Day of Public Art in Chinatown, September 12, 11am–4pm. Unit fixtures distinguish event dates from publication dates, reject unknown venue combinations and invalid dates, and preserve multi-venue context. Final admission validation is recorded in the direct-series journal.
 
 ## Next steps
 
-Extend reviewed venue and summary formats as more explicit event examples are verified. Recent editorial discovery is not exhaustive; individual screening times, multi-day performances, and ticket/pass distinctions still need review. Sunday Streets admission is tracked separately. Merge/deployment is not claimed here.
+Use KQED as an internal lead to direct organizer calendars. Do not reinstate the one-event parser or expose this source without a new owner decision. Recent editorial discovery is not exhaustive; individual screening times, multi-day performances, and ticket/pass distinctions still need review. Sunday Streets admission is tracked separately. Merge/deployment is not claimed here.
 
 ## Skills used
 

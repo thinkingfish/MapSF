@@ -53,7 +53,7 @@ The integration status is documented in [SOURCE-STATUS.md](SOURCE-STATUS.md).
 
 SFPL, SF Rec & Parks, Mission Local, the Chronicle, and Civic Joy Fund have verified publisher
 collectors. Mission Science Workshop has a curated Mission-site community-day
-schedule. SF Shakes and From the E collect verified individual occurrences. KQED inspects recent Do List articles with a narrow, reviewed Chinatown event-summary parser; its regional Arts RSS is available for subscriptions. Sunday Streets awaits current occurrence hours and locations. Other sources await complete extraction or verified venue geometry. Approval and working collection are separate states.
+schedule. SF Shakes and From the E collect verified individual occurrences. KQED is retained only as [internal discovery research](docs/journal/2026-09-11-kqed-source.md), not collected or exposed on the website. Sunday Streets awaits current occurrence hours and locations. Other sources await complete extraction or verified venue geometry. Approval and working collection are separate states.
 
 Only enabled sources are collected. Incomplete or cancelled listings are excluded.
 Collection preserves source attribution and explicit time ranges. Unknown cost

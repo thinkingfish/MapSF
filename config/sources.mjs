@@ -57,22 +57,6 @@ export const sources = [
     maxEvents: 40,
   },
   {
-    id: 'kqed',
-    group: 'publishers',
-    name: 'KQED The Do List',
-    listingUrl: 'https://www.kqed.org/thedolist',
-    rss: { url: 'https://ww2.kqed.org/arts/feed/', kind: 'Arts articles across the Bay Area' },
-    approved: true, // Requested by Yao, 2026-09-11; SF venues only.
-    enabled: true, // Bounded editorial discovery with reviewed SF venue patterns.
-    adapter: 'kqed',
-    allowEmpty: true,
-    maxArticles: 20,
-    // Do not use article dates or headline place names as event date/location.
-    // Reviewed formats and limits: docs/journal/2026-09-11-kqed-source.md.
-    maxDetailPages: 0,
-    maxEvents: 40,
-  },
-  {
     id: 'sfpl',
     group: 'organizers',
     name: 'San Francisco Public Library',

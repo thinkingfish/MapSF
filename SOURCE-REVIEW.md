@@ -232,7 +232,7 @@ work are tracked per publisher in [SOURCE-STATUS.md](SOURCE-STATUS.md).
 
 ## KQED The Do List
 
-Registry ID: `kqed`
+Former registry ID: `kqed`
 [Browse The Do List](https://www.kqed.org/thedolist) · [KQED Arts RSS](https://ww2.kqed.org/arts/feed/)
 
 - [x] Requested by Yao in conversation on September 11, 2026, with an SF-only scope.
@@ -240,7 +240,7 @@ Registry ID: `kqed`
 
 Include physical events at verified San Francisco venues. Exclude out-of-city venues, online-only offerings, and non-event articles. Decide by actual venue, not headline keywords: an article about a play set in Oakland can describe a performance in San Francisco. The regional Arts RSS is offered for direct subscription; it is not an SF-only event feed.
 
-The source is enabled for reviewed SF event-summary formats, without claiming a full 30-day editorial search. [Feasibility evidence and next steps](docs/journal/2026-09-11-kqed-source.md).
+Owner decision, September 11: remove KQED from collection and all public listings; retain the investigation only as internal discovery research. The prior approval and trial verification above are historical. [Feasibility evidence and next steps](docs/journal/2026-09-11-kqed-source.md).
 
 ## Direct series added September 11, 2026
 

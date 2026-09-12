@@ -558,10 +558,7 @@ export async function refreshEvents({
     try {
       let raw;
       if (source.adapter === 'jsonld') raw = await collectJsonLd(source, fetchImpl);
-      else if (source.adapter === 'kqed') {
-        const { collectKqed } = await import('./adapters/kqed.mjs');
-        raw = await collectKqed(source, fetchImpl, now);
-      } else if (source.adapter === 'sf-shakes' || source.adapter === 'from-the-e') {
+      else if (source.adapter === 'sf-shakes' || source.adapter === 'from-the-e') {
         const { collectShakes, collectFromTheE } = await import('./adapters/direct-series.mjs');
         raw = await (source.adapter === 'sf-shakes' ? collectShakes : collectFromTheE)(source, fetchImpl, now);
       } else if (source.adapter === 'sfpl') {
