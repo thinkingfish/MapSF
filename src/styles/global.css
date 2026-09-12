@@ -855,6 +855,7 @@ h1 span {
 
 .date-input-row { flex-wrap: wrap; }
 .date-shortcuts { display: inline-flex; gap: 6px; }
+.date-shortcuts button[aria-pressed="true"] { font-weight: 700; }
 #tomorrow-button:not(:disabled) {
   background: #e3f1e7;
   border-color: #c5dfce;
