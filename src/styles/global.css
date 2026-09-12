@@ -918,3 +918,12 @@ h1 span {
  .neighborhood-filter { width: 100%; display: grid; grid-template-columns: 108px minmax(0,1fr); }
  .neighborhood-controls select { width: 100%; max-width: none; }
 }
+
+.time-filter { display:flex; align-items:center; gap:10px; color:var(--muted); font-size:16px; min-width:0; order:2; }
+.time-filter select { font:inherit; color:var(--ink); background:white; border:1px solid #dce1e3; border-radius:8px; padding:10px; min-width:0; }
+.toolbar > .free-filter { order:3; }
+@media (max-width:760px) {
+  .toolbar > .free-filter { order:1; }
+  .time-filter { width:100%; order:3; display:grid; grid-template-columns:108px minmax(0,1fr); }
+  .time-filter select { width:100%; }
+}

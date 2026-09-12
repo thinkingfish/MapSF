@@ -1,8 +1,10 @@
+import { matchesTimeOfDay } from '../lib/time-of-day.mjs';
 import { geometryIntersectsNeighborhood } from '../lib/neighborhoods.mjs';
-export function filterEvents(events, { freeOnly = false, excludedSourceIds = [], mapBounds = null, neighborhood = null } = {}) {
+export function filterEvents(events, { freeOnly = false, excludedSourceIds = [], mapBounds = null, neighborhood = null, day = null, timeOfDay = '' } = {}) {
   const neighborhoodBounds = neighborhood && geometryBounds(neighborhood);
   return events.filter(event => (!freeOnly || event.cost.isFree)
     && (!excludedSourceIds.length || event.recurring || !excludedSourceIds.includes(event.source.id))
+    && matchesTimeOfDay(event, day, timeOfDay)
     && (!mapBounds || geometryIntersectsBounds(event.curation.geometry, mapBounds))
     && (!neighborhood || (geometryIntersectsBounds(event.curation.geometry, neighborhoodBounds)
       && geometryIntersectsNeighborhood(event.curation.geometry, neighborhood))));
