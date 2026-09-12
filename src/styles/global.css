@@ -918,3 +918,27 @@ h1 span {
  .neighborhood-filter { width: 100%; display: grid; grid-template-columns: 108px minmax(0,1fr); }
  .neighborhood-controls select { width: 100%; max-width: none; }
 }
+
+.time-filter { display:flex; align-items:center; gap:10px; color:var(--muted); font-size:16px; min-width:0; order:2; }
+.time-filter select { font:inherit; color:var(--ink); background:white; border:1px solid #dce1e3; border-radius:8px; padding:10px; min-width:0; }
+.toolbar > .free-filter { order:3; }
+@media (max-width:760px) {
+  .toolbar > .free-filter { order:1; }
+  .time-filter { width:100%; order:3; display:grid; grid-template-columns:108px minmax(0,1fr); }
+  .time-filter select { width:100%; }
+}
+
+/* Position the chevron explicitly so native platform styling cannot crowd the border. */
+.neighborhood-controls select,
+.time-filter select {
+  appearance: none;
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23545d66' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 8px;
+}
+@media (forced-colors: active) {
+  .neighborhood-controls select,
+  .time-filter select { appearance: auto; background-image: none; }
+}

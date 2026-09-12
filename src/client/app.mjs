@@ -29,6 +29,7 @@ const state = {
   day: sfDate(),
   followToday: true,
   freeOnly: false,
+  timeOfDay: '',
   excludedSourceIds: [],
   mapBounds: null,
   neighborhood: null,
@@ -122,7 +123,7 @@ function renderEmpty(target = list) {
   const empty = element("div", "empty-state");
   empty.append(emptyIcon.cloneNode(true));
   const hasFilters =
-    state.freeOnly || state.excludedSourceIds.length > 0 || Boolean(state.mapBounds);
+    state.freeOnly || state.timeOfDay || state.excludedSourceIds.length > 0 || Boolean(state.mapBounds) || Boolean(state.neighborhood);
   const dayChecked = checkedDates(state.feed?.coverage).has(state.day);
   const title = state.error
     ? "Let’s try that again."
@@ -276,7 +277,7 @@ function renderList() {
     body.setAttribute("role", "region");
     body.setAttribute("aria-labelledby", button.id);
     if (kind === "events" && !entries.length) {
-      if (state.error || !places.length || state.freeOnly || state.excludedSourceIds.length) renderEmpty(body);
+      if (state.error || !places.length || state.timeOfDay || state.freeOnly || state.excludedSourceIds.length) renderEmpty(body);
       else body.append(element("p", "places-intro", checkedDates(state.feed?.coverage).has(state.day)
         ? "No one-off events listed for this day." : "Event listings haven’t been checked for this day."));
     }
@@ -608,6 +609,8 @@ async function loadFeed() {
 
 function resetFilters() {
   state.freeOnly = false;
+  state.timeOfDay = '';
+  $('time-filter').value = '';
   state.excludedSourceIds = [];
   $("free-only").checked = false;
   selectNeighborhood('', false);
@@ -691,6 +694,10 @@ $("today-button").addEventListener("click", () => chooseDay(sfDate()));
 $("tomorrow-button").addEventListener("click", () => chooseDay(tomorrowDate()));
 $("free-only").addEventListener("change", (event) => {
   state.freeOnly = event.target.checked;
+  render();
+});
+$('time-filter').addEventListener('change', event => {
+  state.timeOfDay = event.target.value;
   render();
 });
 function positionSourceMenu() {

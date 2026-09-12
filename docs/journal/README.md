@@ -9,3 +9,4 @@
 | [Farmers markets](2026-09-11-farmers-markets.md) | open | 2026-09-11 | Verify and review the farmers-market PR; renew schedules before 2027. |
 | [SF festivities](2026-09-11-sf-festivities.md) | open | 2026-09-11 | Review annual editions; complete pending hours and geometry. |
 | [Neighborhood filter](2026-09-11-neighborhood-filter.md) | open | 2026-09-11 | Review the approved 15-area filter; original overlays retained for future use. |
+| [Time-of-day filter](2026-09-11-time-of-day-filter.md) | open | 2026-09-11 | Review the time filter PR. |
