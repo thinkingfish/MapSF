@@ -1,7 +1,11 @@
-export function filterEvents(events, { freeOnly = false, excludedSourceIds = [], mapBounds = null } = {}) {
+import { geometryIntersectsNeighborhood } from '../lib/neighborhoods.mjs';
+export function filterEvents(events, { freeOnly = false, excludedSourceIds = [], mapBounds = null, neighborhood = null } = {}) {
+  const neighborhoodBounds = neighborhood && geometryBounds(neighborhood);
   return events.filter(event => (!freeOnly || event.cost.isFree)
     && (!excludedSourceIds.length || event.recurring || !excludedSourceIds.includes(event.source.id))
-    && (!mapBounds || geometryIntersectsBounds(event.curation.geometry, mapBounds)));
+    && (!mapBounds || geometryIntersectsBounds(event.curation.geometry, mapBounds))
+    && (!neighborhood || (geometryIntersectsBounds(event.curation.geometry, neighborhoodBounds)
+      && geometryIntersectsNeighborhood(event.curation.geometry, neighborhood))));
 }
 
 // Clip each segment against the viewport; a bounding-box overlap alone can
