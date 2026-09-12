@@ -10,6 +10,12 @@ test('footer links every source to its description and explains planned sources 
  await expect(page.locator('#mission-science-workshop')).toContainText('Curated schedule');
  await expect(page.locator('#funcheap')).toContainText('Planned');
  await expect(page.locator('#sfpl')).toContainText('Collecting events');
+ await expect(page.getByRole('region', {name:'Recurring series',exact:true})).toContainText('Excelsior Night Market');
+ await expect(page.getByRole('region', {name:'Recurring series',exact:true})).toContainText('Sunday Streets SF');
+ await expect(page.getByRole('region', {name:'Recurring series',exact:true})).toContainText('Free Shakespeare');
+ await expect(page.getByRole('region', {name:'Venues and organizers',exact:true})).toContainText('San Francisco Public Library');
+ await expect(page.getByRole('region', {name:'Publishers and calendars',exact:true})).toContainText('KQED');
+ await expect(page.locator('#methodology')).toContainText('same normalized title, start time, and map geometry');
  const rss = page.getByRole('region', {name:'Subscribe via RSS'});
  await expect(rss.getByRole('link')).toHaveCount(7);
  await expect(page.locator('#kqed')).toContainText('Planned');

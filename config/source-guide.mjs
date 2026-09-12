@@ -3,6 +3,9 @@ import { sources } from './sources.mjs';
 import { places } from './places.mjs';
 import { museums } from './museums.mjs';
 const descriptions = {
+  'sf-shakes': ['Free outdoor Shakespeare performances presented by the San Francisco Shakespeare Festival. This touring series includes venues outside San Francisco.', 'Planned: collect individual San Francisco performances from the current production schedule, with verified performance locations. The season’s date range is not a daily schedule.'],
+  'from-the-e': ['A recurring community night market at Ocean Avenue and Mission Street in the Excelsior.', 'Planned: the organizer publishes individual dates and times. Verify the intersection coordinates before collection; use a point until an event-specific street extent is established. Do not infer dates from a monthly pattern.'],
+  'sunday-streets': ['Livable City’s series of car-free neighborhood street celebrations across San Francisco.', 'Planned: verify dates, hours, and routes for each neighborhood occurrence. A verified meeting point is sufficient when the full route is unavailable. Other Livable City programs are separate events.'],
   kqed: ['KQED Arts & Culture’s editorial picks cover performances, festivals, exhibitions, and other things to do across the Bay Area.', 'Planned: include events at verified San Francisco venues only. We need to check event dates, times, and map locations against article details and organizer listings. Article publication dates and places mentioned in headlines do not establish when or where an event happens. The linked RSS feed covers KQED Arts across the Bay Area.'],
   'mission-science-workshop': ['Hands-on science and engineering activities for youth and families, with community workshops in the Mission, Excelsior, and Bayview.', 'We maintain the Mission site’s explicitly published 2026–27 community-day dates as a reviewed schedule. Other sites and weekly programs await complete date and location verification.'],
   sfpl: ['San Francisco’s public library calendar includes readings, workshops, performances, and activities at neighborhood branches.', 'We check each day in the 30-day window, including additional results pages, and use the library’s calendar timestamps and branch locations.'],
@@ -16,11 +19,16 @@ const descriptions = {
   'civic-joy-fund': ['A community organization supporting public celebrations and neighborhood activities in San Francisco.', 'We read the public Google Calendar behind its website, including recurring dates and exceptions. Linked organizer records verify cleanup meeting points, and city street data verifies festival intersection pins. Reviewed street geometry covers date-specific ValenciaLIVE events.'],
 };
 export const eventSourceGuide = sources.filter(source => source.approved && !scienceWorkshops.some(place => place.source.id === source.id)).map(source => ({
-  id: source.id, name: source.name, url: source.listingUrl,
+  id: source.id, name: source.name, url: source.listingUrl, group: source.group, seriesKind: source.seriesKind,
   status: source.enabled ? 'Collecting events' : 'Planned',
   description: descriptions[source.id]?.[0] ?? 'A source selected for local event coverage.',
   collection: descriptions[source.id]?.[1] ?? 'Collection details are being reviewed.',
 }));
+export const eventSourceGroups = [
+  {id: 'publishers', name: 'Publishers and calendars'},
+  {id: 'organizers', name: 'Venues and organizers'},
+  {id: 'series', name: 'Recurring series'},
+].map(group => ({...group, sources: eventSourceGuide.filter(source => source.group === group.id)}));
 export const rssSourceGuide = sources.filter(source => source.approved && source.rss).map(source => ({
   id: source.id, name: source.name, ...source.rss,
 }));

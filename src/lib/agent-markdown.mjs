@@ -2,7 +2,7 @@ import { dedupeEvents, eventsForDay, sfDate } from './events.mjs';
 import { scheduledPlacesForDay } from './places.mjs';
 import { applyVenuePriceHint } from './venue-pricing.mjs';
 import { checkedDates } from '../client/calendar.mjs';
-import { eventSourceGuide, placeSourceGuide, mapSourceGuide, rssSourceGuide } from '../../config/source-guide.mjs';
+import { eventSourceGroups, placeSourceGuide, mapSourceGuide, rssSourceGuide } from '../../config/source-guide.mjs';
 
 const origin = 'https://mapsf.net';
 const zone = 'America/Los_Angeles';
@@ -67,7 +67,8 @@ function sourcesMarkdown(feed, now) {
     'Missing event prices remain unknown unless a curated venue or event-type rule supplies a free-admission inference. Explicit publisher prices take precedence. Inferred admission is labeled and should be confirmed.', '',
     'Free Places are calculated from separately reviewed rules, including resident eligibility, public free days, seasonal admission windows, known closures, and review expiry. A free listing is not a claim that a venue is open now, that everyone qualifies, or that special exhibitions are included.', '',
     'One daily document includes the full day, including events that may already have ended. Compare end times with the current time. The interactive site can hide ended events and apply source, price, and visible-map filters; these documents have no such filters.', '');
-  for (const [title, guide] of [['Event publishers',eventSourceGuide],['Free Places schedule providers',placeSourceGuide],['Map data',mapSourceGuide]]) {
+  lines.push('Matching duplicate occurrences prefer venue and series organizers over publishers. Matching currently requires the same normalized title, start instant, and geometry; uncertain matches remain separate.', '');
+  for (const [title, guide] of [...eventSourceGroups.map(group => [group.name, group.sources]),['Free Places schedule providers',placeSourceGuide],['Map data',mapSourceGuide]]) {
     lines.push(`## ${title}`, '');
     for (const source of guide) {
       lines.push(`### ${prose(source.name)}`, '', `- ID: ${prose(source.id)}`, `- Status: ${prose(source.status)}`,

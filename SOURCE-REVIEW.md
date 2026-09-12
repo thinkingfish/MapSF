@@ -241,3 +241,12 @@ Registry ID: `kqed`
 Include physical events at verified San Francisco venues. Exclude out-of-city venues, online-only offerings, and non-event articles. Decide by actual venue, not headline keywords: an article about a play set in Oakland can describe a performance in San Francisco. The regional Arts RSS is offered for direct subscription; it is not an SF-only event feed.
 
 The source is approved and listed as Planned; collection remains disabled. [Feasibility evidence and next steps](docs/journal/2026-09-11-kqed-source.md).
+
+## Direct series added September 11, 2026
+
+- [x] SF Shakes — [Free Shakespeare in the Park](https://sfshakes.org/performance/free-shakes/), requested by Yao. San Francisco performances only.
+- [x] [From the E — Excelsior Night Market](https://www.fromtheesf.com/), identified in the Excelsior column supplied by Yao for tracking recurring markets.
+- [x] [Sunday Streets SF](https://sundaystreetssf.com/), requested as a recurring street-festival series.
+- [ ] Verify collection adapters and occurrence geometry before enabling these series. Source approval does not imply automated collection is ready.
+
+See [source grouping and series evidence](docs/journal/2026-09-11-direct-series.md).

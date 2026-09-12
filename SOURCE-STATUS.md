@@ -55,3 +55,24 @@ that those organizations have no feeds elsewhere. SFPL's current collector uses
 per-event ICS calendar files.
 
 Current pending-source investigations: [editorial sources](docs/pending-editorial-source-review.md). Marina’s calendar RSS ends in May 2024; current Ingleside roundups and Richmond/Sunset street events still need exact event extraction and verified geometry.
+
+## Direct series and source precedence
+
+Sources now have explicit groups: publishers/calendars, venues/organizers, and
+recurring series. Series also identify their kind (markets, street festivals, or
+performances). Civic Joy Fund remains in calendars: funding or listing an event
+does not establish that it is the original organizer. Free Places providers remain
+separate from these event sources.
+
+| Series | Collection | Evidence or remaining work |
+| --- | --- | --- |
+| [SF Shakes](https://sfshakes.org/performance/free-shakes/) | Planned | Current production publishes individual SF dates and a roughly 90-minute duration. Needs seasonal schedule extraction, verified performance coordinates, and cancellation handling. |
+| [From the E](https://www.fromtheesf.com/) | Planned | September 18 detail has Event JSON-LD with explicit 16:30–20:30 Pacific offsets. Its location names Ocean/Mission but supplies no coordinates. Verify a point and bounded discovery before enabling. |
+| [Sunday Streets SF](https://sundaystreetssf.com/) | Planned | Official homepage lists 2026 occurrences, including Excelsior October 18. Verify per-occurrence hours and geometry; this date is outside the September 11 rolling window. |
+
+Duplicate selection now prefers a direct venue/organizer or series over a calendar
+publisher, independent of collection order. The existing conservative identity is
+normalized title + start instant + exact geometry. Different titles or geometries
+are not yet resolved as aliases; uncertain matches stay visible. The preferred
+record keeps its complete fields and source link, without mixing conflicting
+prices or event details. See [investigation](docs/journal/2026-09-11-direct-series.md).
