@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-22T20:19:24.320Z",
+  "generatedAt": "2026-11-24T00:49:05.862Z",
   "sources": [
     {
       "id": "festivity-autumn-moon",
@@ -9,11 +9,11 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22"
+          "2026-11-23"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 0
     },
     {
@@ -23,11 +23,11 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22"
+          "2026-11-23"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 0
     },
     {
@@ -37,11 +37,11 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22"
+          "2026-11-23"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 0
     },
     {
@@ -51,11 +51,11 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22"
+          "2026-11-23"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 0
     },
     {
@@ -65,11 +65,11 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22"
+          "2026-11-23"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 0
     },
     {
@@ -79,7 +79,7 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-24",
           "2026-11-26",
           "2026-11-28",
@@ -91,12 +91,13 @@
           "2026-12-12",
           "2026-12-15",
           "2026-12-17",
-          "2026-12-19"
+          "2026-12-19",
+          "2026-12-22"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 12
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 13
     },
     {
       "id": "market-alemany",
@@ -105,15 +106,15 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-28",
           "2026-12-05",
           "2026-12-12",
           "2026-12-19"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 4
     },
     {
@@ -123,11 +124,11 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22"
+          "2026-11-23"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 0
     },
     {
@@ -137,7 +138,7 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-25",
           "2026-11-29",
           "2026-12-02",
@@ -147,10 +148,10 @@
           "2026-12-16",
           "2026-12-20"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 9
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 8
     },
     {
       "id": "market-clement",
@@ -159,16 +160,16 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-29",
           "2026-12-06",
           "2026-12-13",
           "2026-12-20"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 5
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 4
     },
     {
       "id": "market-stonestown",
@@ -177,16 +178,16 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-29",
           "2026-12-06",
           "2026-12-13",
           "2026-12-20"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 5
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 4
     },
     {
       "id": "market-fort-mason",
@@ -195,16 +196,16 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-29",
           "2026-12-06",
           "2026-12-13",
           "2026-12-20"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 5
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 4
     },
     {
       "id": "market-noe-valley",
@@ -213,25 +214,24 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-28",
           "2026-12-05",
           "2026-12-12",
           "2026-12-19"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 4
     },
     {
       "id": "market-outer-sunset",
       "name": "Outer Sunset Farmers Market & Mercantile — Sunset Mercantile",
       "url": "https://sunsetmercantilesf.com/osfmm/",
-      "status": "ok",
+      "status": "failed",
       "coverage": {
         "dates": [
-          "2026-11-22",
           "2026-11-29",
           "2026-12-06",
           "2026-12-13",
@@ -240,7 +240,8 @@
         "checkedAt": "2026-11-22T20:19:24.320Z"
       },
       "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 5
+      "eventCount": 4,
+      "error": "fetch failed"
     },
     {
       "id": "market-castro",
@@ -249,11 +250,11 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22"
+          "2026-11-23"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 0
     },
     {
@@ -263,15 +264,15 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-28",
           "2026-12-05",
           "2026-12-12",
           "2026-12-19"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 4
     },
     {
@@ -281,16 +282,16 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-29",
           "2026-12-06",
           "2026-12-13",
           "2026-12-20"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 5
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 4
     },
     {
       "id": "market-divisadero",
@@ -299,16 +300,16 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-29",
           "2026-12-06",
           "2026-12-13",
           "2026-12-20"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 5
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 4
     },
     {
       "id": "market-hayes-valley",
@@ -317,15 +318,15 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-11-28",
           "2026-12-05",
           "2026-12-12",
           "2026-12-19"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 4
     },
     {
@@ -335,11 +336,11 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22"
+          "2026-11-23"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 0
     },
     {
@@ -349,12 +350,12 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
+          "2026-11-23",
           "2026-12-11"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
       "eventCount": 1
     },
     {
@@ -364,7 +365,6 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
           "2026-11-23",
           "2026-11-24",
           "2026-11-25",
@@ -393,12 +393,13 @@
           "2026-12-18",
           "2026-12-19",
           "2026-12-20",
-          "2026-12-21"
+          "2026-12-21",
+          "2026-12-22"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 827,
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 828,
       "cancelledInstances": [
         {
           "id": "sfpl:148467-sfpl.org",
@@ -409,6 +410,11 @@
           "id": "sfpl:161800-sfpl.org",
           "startAt": "2026-11-25T01:00:00Z",
           "endAt": "2026-11-25T02:00:00Z"
+        },
+        {
+          "id": "sfpl:159914-sfpl.org",
+          "startAt": "2026-11-25T21:00:00Z",
+          "endAt": "2026-11-26T00:00:00Z"
         },
         {
           "id": "sfpl:137738-sfpl.org",
@@ -444,6 +450,11 @@
           "id": "sfpl:163986-sfpl.org",
           "startAt": "2026-12-13T23:00:00Z",
           "endAt": "2026-12-14T00:00:00Z"
+        },
+        {
+          "id": "sfpl:148470-sfpl.org",
+          "startAt": "2026-12-16T01:00:00Z",
+          "endAt": "2026-12-16T02:00:00Z"
         }
       ]
     },
@@ -454,7 +465,6 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
           "2026-11-23",
           "2026-11-24",
           "2026-11-25",
@@ -483,12 +493,13 @@
           "2026-12-18",
           "2026-12-19",
           "2026-12-20",
-          "2026-12-21"
+          "2026-12-21",
+          "2026-12-22"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 1
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 0
     },
     {
       "id": "sf-chronicle",
@@ -497,7 +508,6 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
           "2026-11-23",
           "2026-11-24",
           "2026-11-25",
@@ -526,12 +536,13 @@
           "2026-12-18",
           "2026-12-19",
           "2026-12-20",
-          "2026-12-21"
+          "2026-12-21",
+          "2026-12-22"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 1360
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 1341
     },
     {
       "id": "mission-local",
@@ -540,7 +551,6 @@
       "status": "ok",
       "coverage": {
         "dates": [
-          "2026-11-22",
           "2026-11-23",
           "2026-11-24",
           "2026-11-25",
@@ -569,12 +579,13 @@
           "2026-12-18",
           "2026-12-19",
           "2026-12-20",
-          "2026-12-21"
+          "2026-12-21",
+          "2026-12-22"
         ],
-        "checkedAt": "2026-11-22T20:19:24.320Z"
+        "checkedAt": "2026-11-24T00:49:05.862Z"
       },
-      "lastSuccessfulAt": "2026-11-22T20:19:24.320Z",
-      "eventCount": 72
+      "lastSuccessfulAt": "2026-11-24T00:49:05.862Z",
+      "eventCount": 71
     },
     {
       "id": "civic-joy-fund",
@@ -583,7 +594,6 @@
       "status": "failed",
       "coverage": {
         "dates": [
-          "2026-11-22",
           "2026-11-23",
           "2026-11-24",
           "2026-11-25",
@@ -611,7 +621,6 @@
   ],
   "coverage": {
     "dates": [
-      "2026-11-22",
       "2026-11-23",
       "2026-11-24",
       "2026-11-25",
@@ -640,2856 +649,11 @@
       "2026-12-18",
       "2026-12-19",
       "2026-12-20",
-      "2026-12-21"
+      "2026-12-21",
+      "2026-12-22"
     ]
   },
   "events": [
-    {
-      "id": "market-heart-of-city:heart-of-city-2026-11-22-07-00",
-      "title": "Heart of the City Farmers Market",
-      "startAt": "2026-11-22T07:00:00-08:00",
-      "endAt": "2026-11-22T16:00:00-08:00",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "market-heart-of-city",
-        "name": "Heart of the City Farmers Market — Heart of the City Farmers Market",
-        "url": "https://hotcfarmersmarket.org/find-us"
-      },
-      "curation": {
-        "type": "Feature",
-        "geometry": {
-          "type": "LineString",
-          "coordinates": [
-            [
-              -122.415126955,
-              37.779788527
-            ],
-            [
-              -122.416768093,
-              37.779584438
-            ]
-          ]
-        },
-        "properties": {
-          "name": "Heart of the City Farmers Market",
-          "layerType": "segment",
-          "category": "farmers-market",
-          "metadata": {
-            "address": "Fulton Plaza between Hyde and Larkin, San Francisco, CA",
-            "scheduleSource": "https://hotcfarmersmarket.org/find-us",
-            "scheduleReviewedAt": "2026-09-11",
-            "scheduleValidThrough": "2026-12-31",
-            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
-          }
-        }
-      },
-      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
-    },
-    {
-      "id": "market-clement:clement-2026-11-22-09-00",
-      "title": "Clement Street Farmers Market",
-      "startAt": "2026-11-22T09:00:00-08:00",
-      "endAt": "2026-11-22T14:00:00-08:00",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "market-clement",
-        "name": "Clement Street Farmers Market — Agricultural Institute of Marin",
-        "url": "https://www.agriculturalinstitute.org/clement-st"
-      },
-      "curation": {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4612258,
-            37.7830983
-          ]
-        },
-        "properties": {
-          "name": "Clement Street Farmers Market",
-          "layerType": "poi",
-          "category": "farmers-market",
-          "metadata": {
-            "address": "244 Clement Street, San Francisco, CA",
-            "scheduleSource": "https://www.agriculturalinstitute.org/clement-st",
-            "scheduleReviewedAt": "2026-09-11",
-            "scheduleValidThrough": "2026-12-31",
-            "coordinateSource": "https://www.openstreetmap.org/way/362162006"
-          }
-        }
-      },
-      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
-    },
-    {
-      "id": "market-divisadero:divisadero-2026-11-22-09-00",
-      "title": "Divisadero Farmers Market",
-      "startAt": "2026-11-22T09:00:00-08:00",
-      "endAt": "2026-11-22T13:00:00-08:00",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "market-divisadero",
-        "name": "Divisadero Farmers Market — Pacific Coast Farmers’ Market Association",
-        "url": "https://www.pcfma.org/divisadero"
-      },
-      "curation": {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4404278,
-            37.7733404
-          ]
-        },
-        "properties": {
-          "name": "Divisadero Farmers Market",
-          "layerType": "poi",
-          "category": "farmers-market",
-          "metadata": {
-            "address": "1377 Fell Street, San Francisco, CA",
-            "scheduleSource": "https://www.pcfma.org/divisadero",
-            "scheduleReviewedAt": "2026-09-11",
-            "scheduleValidThrough": "2026-12-31",
-            "coordinateSource": "https://www.pcfma.org/divisadero"
-          }
-        }
-      },
-      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
-    },
-    {
-      "id": "market-inner-sunset:inner-sunset-2026-11-22-09-00",
-      "title": "Inner Sunset Farmers Market",
-      "startAt": "2026-11-22T09:00:00-08:00",
-      "endAt": "2026-11-22T13:00:00-08:00",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "market-inner-sunset",
-        "name": "Inner Sunset Farmers Market — Pacific Coast Farmers’ Market Association",
-        "url": "https://www.pcfma.org/innersunset"
-      },
-      "curation": {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4657866,
-            37.7636003
-          ]
-        },
-        "properties": {
-          "name": "Inner Sunset Farmers Market",
-          "layerType": "poi",
-          "category": "farmers-market",
-          "metadata": {
-            "address": "1315 8th Avenue, San Francisco, CA",
-            "scheduleSource": "https://www.pcfma.org/innersunset",
-            "scheduleReviewedAt": "2026-09-11",
-            "scheduleValidThrough": "2026-12-31",
-            "coordinateSource": "https://www.pcfma.org/innersunset"
-          }
-        }
-      },
-      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
-    },
-    {
-      "id": "market-outer-sunset:outer-sunset-2026-11-22-09-00",
-      "title": "Outer Sunset Farmers Market & Mercantile",
-      "startAt": "2026-11-22T09:00:00-08:00",
-      "endAt": "2026-11-22T14:00:00-08:00",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "market-outer-sunset",
-        "name": "Outer Sunset Farmers Market & Mercantile — Sunset Mercantile",
-        "url": "https://sunsetmercantilesf.com/osfmm/"
-      },
-      "curation": {
-        "type": "Feature",
-        "geometry": {
-          "type": "LineString",
-          "coordinates": [
-            [
-              -122.495630257,
-              37.751526823
-            ],
-            [
-              -122.49550014,
-              37.749662077
-            ],
-            [
-              -122.495369765,
-              37.74779354
-            ]
-          ]
-        },
-        "properties": {
-          "name": "Outer Sunset Farmers Market & Mercantile",
-          "layerType": "segment",
-          "category": "farmers-market",
-          "metadata": {
-            "address": "37th Avenue from Ortega to Quintara, San Francisco, CA",
-            "scheduleSource": "https://sunsetmercantilesf.com/osfmm/",
-            "scheduleReviewedAt": "2026-09-11",
-            "scheduleValidThrough": "2026-12-31",
-            "coordinateSource": "https://data.sfgov.org/resource/3psu-pn9h.json"
-          }
-        }
-      },
-      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
-    },
-    {
-      "id": "market-stonestown:stonestown-2026-11-22-09-00",
-      "title": "Stonestown Farmers Market",
-      "startAt": "2026-11-22T09:00:00-08:00",
-      "endAt": "2026-11-22T13:00:00-08:00",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "market-stonestown",
-        "name": "Stonestown Farmers Market — Agricultural Institute of Marin",
-        "url": "https://www.agriculturalinstitute.org/stonestown"
-      },
-      "curation": {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4790533,
-            37.7297335
-          ]
-        },
-        "properties": {
-          "name": "Stonestown Farmers Market",
-          "layerType": "poi",
-          "category": "farmers-market",
-          "metadata": {
-            "address": "501 Buckingham Way, San Francisco, CA",
-            "scheduleSource": "https://www.agriculturalinstitute.org/stonestown",
-            "scheduleReviewedAt": "2026-09-11",
-            "scheduleValidThrough": "2026-12-31",
-            "coordinateSource": "https://www.agriculturalinstitute.org/stonestown"
-          }
-        }
-      },
-      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
-    },
-    {
-      "id": "market-fort-mason:fort-mason-2026-11-22-09-30",
-      "title": "Fort Mason Center Farmers Market",
-      "startAt": "2026-11-22T09:30:00-08:00",
-      "endAt": "2026-11-22T13:30:00-08:00",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "market-fort-mason",
-        "name": "Fort Mason Center Farmers Market — California Farmers’ Markets Association",
-        "url": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market"
-      },
-      "curation": {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4315658,
-            37.8061667
-          ]
-        },
-        "properties": {
-          "name": "Fort Mason Center Farmers Market",
-          "layerType": "poi",
-          "category": "farmers-market",
-          "metadata": {
-            "address": "Fort Mason Center, Marina Boulevard, San Francisco, CA",
-            "scheduleSource": "https://www.cafarmersmkts.com/fort-mason-center-farmers-market",
-            "scheduleReviewedAt": "2026-09-11",
-            "scheduleValidThrough": "2026-12-31",
-            "coordinateSource": "https://www.openstreetmap.org/node/1478520965"
-          }
-        }
-      },
-      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
-    },
-    {
-      "id": "sf-chronicle:44622355",
-      "title": "Dylan Carlson",
-      "startAt": "2026-11-22T13:00:00-08:00",
-      "endAt": "2026-11-22T17:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040380503n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Kilowatt Bar",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3160 16th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4232558,
-            37.7649719
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44757865",
-      "title": "John Proctor is the Villain",
-      "startAt": "2026-11-22T13:00:00-08:00",
-      "endAt": "2026-11-22T17:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44757865t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Toni Rembe Theater",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94102"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.419502,
-            37.779499
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:159784-sfpl.org",
-      "title": "Taller: Cómo preparar vaporú para el bienestar respiratorio",
-      "startAt": "2026-11-22T21:00:00Z",
-      "endAt": "2026-11-22T23:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/taller-como-preparar-vaporu-para-el-bienestar-respiratorio"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Main Library",
-          "layerType": "poi",
-          "metadata": {
-            "address": "100 Larkin Street San Francisco , CA 94102 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.415771,
-            37.779081
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44713215",
-      "title": "The Music Man (Touring) - Recommended for ages 6+. No children under 5 allowed",
-      "startAt": "2026-11-22T13:00:00-08:00",
-      "endAt": "2026-11-22T17:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44713215t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Orpheum Theatre-San Francisco",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94102"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.419502,
-            37.779499
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:165980-sfpl.org",
-      "title": "Workshop: Basic Budgeting with Study Smart Tutors",
-      "startAt": "2026-11-22T21:00:00Z",
-      "endAt": "2026-11-22T23:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/workshop-basic-budgeting-study-smart-tutors"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Glen Park",
-          "layerType": "poi",
-          "metadata": {
-            "address": "2825 Diamond Street San Francisco , CA 94131 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.434,
-            37.734
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:167021-sfpl.org",
-      "title": "Social: Self-Guided Play and Learning Activities",
-      "startAt": "2026-11-22T21:15:00Z",
-      "endAt": "2026-11-22T22:15:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/social-self-guided-play-and-learning-activities"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Excelsior",
-          "layerType": "poi",
-          "metadata": {
-            "address": "4400 Mission Street San Francisco , CA 94112 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.433221,
-            37.72714
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:105712-sfpl.org",
-      "title": "Storytime: For Toddlers",
-      "startAt": "2026-11-22T21:15:00Z",
-      "endAt": "2026-11-22T21:45:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/storytime-toddlers"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Ingleside",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1298 Ocean Avenue San Francisco , CA 94112 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.456314,
-            37.724226
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:152023-sfpl.org",
-      "title": "Storytime: For Families",
-      "startAt": "2026-11-22T21:30:00Z",
-      "endAt": "2026-11-22T22:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/storytime-families"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Parkside",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1200 Taraval Street San Francisco , CA 94116 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.479389,
-            37.743191
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:164401-sfpl.org",
-      "title": "Tutorial: Tech Help",
-      "startAt": "2026-11-22T21:30:00Z",
-      "endAt": "2026-11-23T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/tutorial-tech-help"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "West Portal",
-          "layerType": "poi",
-          "metadata": {
-            "address": "190 Lenox Way San Francisco , CA 94127 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.466195,
-            37.741362
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:165536-sfpl.org",
-      "title": "Workshop: Beaded Squash Planter",
-      "startAt": "2026-11-22T21:30:00Z",
-      "endAt": "2026-11-22T23:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/workshop-beaded-squash-planter"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Bayview/Linda Brooks-Burton",
-          "layerType": "poi",
-          "metadata": {
-            "address": "5075 3rd Street San Francisco , CA 94124 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.39117,
-            37.732614
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:45276915",
-      "title": "Amy Obenski",
-      "startAt": "2026-11-22T14:00:00-08:00",
-      "endAt": "2026-11-22T18:00:00-08:00",
-      "cost": {
-        "label": "Free",
-        "isFree": true,
-        "inferredFromVenue": "sf-city-parks"
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F109173345n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Noe Valley Town Square",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3861 24th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4289705,
-            37.751372
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:160820-sfpl.org",
-      "title": "Author: Annalee Newitz in conversation with Soleil Ho",
-      "startAt": "2026-11-22T22:00:00Z",
-      "endAt": "2026-11-22T23:30:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/author-annalee-newitz-conversation-soleil-ho"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Main Library",
-          "layerType": "poi",
-          "metadata": {
-            "address": "100 Larkin Street San Francisco , CA 94102 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.415771,
-            37.779081
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:165057-sfpl.org",
-      "title": "Book Club: Susanna Kwan's Awake in the Floating City",
-      "startAt": "2026-11-22T22:00:00Z",
-      "endAt": "2026-11-22T23:30:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/book-club-susanna-kwans-awake-floating-city"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Marina",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1890 Chestnut Street San Francisco , CA 94123 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.434,
-            37.8013
-          ]
-        }
-      }
-    },
-    {
-      "id": "mission-local:880464",
-      "title": "Dance Mission Theater: Get Live or Die Trying – Dance Battle",
-      "startAt": "2026-11-22T14:00:00-08:00",
-      "endAt": "2026-11-22T19:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "mission-local",
-        "name": "Mission Local",
-        "url": "https://missionlocal.org/event/dance-mission-theater-get-live-or-die-trying-dance-battle/"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Dance Mission Theater",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3316 24th St, San Francisco, CA, 94110"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4188994,
-            37.7524015
-          ]
-        }
-      },
-      "imageUrl": "https://i0.wp.com/missionlocal.org/wp-content/uploads/2026/10/Copie-de-General-flyer-GLODT-scaled-1.jpg?fit=240%2C300&ssl=1"
-    },
-    {
-      "id": "sf-chronicle:44810276",
-      "title": "Peter Pan Goes Wrong",
-      "startAt": "2026-11-22T14:00:00-08:00",
-      "endAt": "2026-11-22T18:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44810276t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "San Francisco Playhouse",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94102"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.419502,
-            37.779499
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:168046-sfpl.org",
-      "title": "Social: Dungeons & Dragons with Writopia Lab",
-      "startAt": "2026-11-22T22:00:00Z",
-      "endAt": "2026-11-23T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/social-dungeons-dragons-writopia-lab"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Ortega",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3223 Ortega Street San Francisco , CA 94122 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.498025,
-            37.751258
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:45105036",
-      "title": "USF Dons Womens Basketball vs. CSU Bakersfield Roadrunners Womens Basketball",
-      "startAt": "2026-11-22T14:00:00-08:00",
-      "endAt": "2026-11-22T18:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F45105036t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "War Memorial Gymnasium",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94117"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.444,
-            37.770599
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44782383",
-      "title": "Victor and the Callers",
-      "startAt": "2026-11-22T14:00:00-08:00",
-      "endAt": "2026-11-22T18:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F109007859n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "San Francisco Campus for Jewish Living",
-          "layerType": "poi",
-          "metadata": {
-            "address": "302 Silver Ave, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4308429,
-            37.7275915
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:157509-sfpl.org",
-      "title": "Workshop: Recording Studio Orientation",
-      "startAt": "2026-11-22T22:00:00Z",
-      "endAt": "2026-11-22T23:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/workshop-recording-studio-orientation"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Main Library",
-          "layerType": "poi",
-          "metadata": {
-            "address": "100 Larkin Street San Francisco , CA 94102 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.415771,
-            37.779081
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:146596-sfpl.org",
-      "title": "Activity: Chess Club",
-      "startAt": "2026-11-22T22:30:00Z",
-      "endAt": "2026-11-23T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/activity-chess-club"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Ingleside",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1298 Ocean Avenue San Francisco , CA 94112 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.456314,
-            37.724226
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:167742-sfpl.org",
-      "title": "FULL Social: Dungeons and Dragons",
-      "startAt": "2026-11-22T23:00:00Z",
-      "endAt": "2026-11-23T01:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/full-social-dungeons-and-dragons"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Main Library",
-          "layerType": "poi",
-          "metadata": {
-            "address": "100 Larkin Street San Francisco , CA 94102 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.415771,
-            37.779081
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:167295-sfpl.org",
-      "title": "Presentation: Pan American Companion Plant Stories with Alicia Retes",
-      "startAt": "2026-11-22T23:00:00Z",
-      "endAt": "2026-11-23T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/presentation-pan-american-companion-plant-stories-alicia-retes"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Park",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1833 Page Street San Francisco , CA 94117 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.451027,
-            37.770173
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:163983-sfpl.org",
-      "title": "Services: Math Tutorial for Homework Help",
-      "startAt": "2026-11-22T23:00:00Z",
-      "endAt": "2026-11-23T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/services-math-tutorial-homework-help"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "West Portal",
-          "layerType": "poi",
-          "metadata": {
-            "address": "190 Lenox Way San Francisco , CA 94127 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.466195,
-            37.741362
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:173185-sfpl.org",
-      "title": "Services: Math Tutoring",
-      "startAt": "2026-11-22T23:00:00Z",
-      "endAt": "2026-11-23T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/services-math-tutoring"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Noe Valley/Sally Brunn",
-          "layerType": "poi",
-          "metadata": {
-            "address": "451 Jersey Street San Francisco , CA 94114 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.435,
-            37.7502
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:170992-sfpl.org",
-      "title": "Social: Dungeons and Dragons",
-      "startAt": "2026-11-22T23:00:00Z",
-      "endAt": "2026-11-23T01:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/social-dungeons-and-dragons"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Main Library",
-          "layerType": "poi",
-          "metadata": {
-            "address": "100 Larkin Street San Francisco , CA 94102 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.415771,
-            37.779081
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:161358-sfpl.org",
-      "title": "Social: Plant Swap",
-      "startAt": "2026-11-22T23:00:00Z",
-      "endAt": "2026-11-23T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/social-plant-swap"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Visitacion Valley",
-          "layerType": "poi",
-          "metadata": {
-            "address": "201 Leland Avenue San Francisco , CA 94134 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.407839,
-            37.712466
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:158451-sfpl.org",
-      "title": "Book Club: Genre Smoosh",
-      "startAt": "2026-11-22T23:30:00Z",
-      "endAt": "2026-11-23T00:30:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/22/book-club-genre-smoosh"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Eureka Valley/Harvey Milk Memorial",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1 Jose Sarria Court San Francisco , CA 94114 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4318162,
-            37.7640815
-          ]
-        }
-      }
-    },
-    {
-      "id": "mission-local:886587",
-      "title": "Adobe Books: Helping Hands – An Adobe Books Volunteer Art Show",
-      "startAt": "2026-11-22T16:00:00-08:00",
-      "endAt": "2026-11-22T19:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "mission-local",
-        "name": "Mission Local",
-        "url": "https://missionlocal.org/event/adobe-books-helping-hands-an-adobe-books-volunteer-art-show/"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Adobe Books",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3130 24th St., San Francisco, CA, 94110"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4148154,
-            37.7526406
-          ]
-        }
-      },
-      "imageUrl": "https://i0.wp.com/missionlocal.org/wp-content/uploads/2026/11/907871341_2565752333914511_579245856856319128_n.jpg?fit=223%2C250&ssl=1"
-    },
-    {
-      "id": "sf-chronicle:44304856",
-      "title": "Sweet Chariot",
-      "startAt": "2026-11-22T16:00:00-08:00",
-      "endAt": "2026-11-22T20:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039936917n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Bottom Of the Hill",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1233 17th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.3964389,
-            37.7649778
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44304851",
-      "title": "Verst",
-      "startAt": "2026-11-22T16:00:00-08:00",
-      "endAt": "2026-11-22T20:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039936509n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Bottom Of the Hill",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1233 17th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.3964389,
-            37.7649778
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44734678",
-      "title": "Your Next Comic - A New Faces Showcase",
-      "startAt": "2026-11-22T16:00:00-08:00",
-      "endAt": "2026-11-22T20:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44734678t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Punch Line Comedy Club - San Francisco",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94111"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4001336,
-            37.7955085
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44987956",
-      "title": "Crucial Reggae Sundays Season Finale! with DJ Sep, Guidance, Irie Dole / Free / All Ages",
-      "startAt": "2026-11-22T16:20:00-08:00",
-      "endAt": "2026-11-22T20:20:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F109081585n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Golden Gate Park Bandshell",
-          "layerType": "poi",
-          "metadata": {
-            "address": "75 Hagiwara Tea Garden Dr, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.468606,
-            37.7698249
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-rec-park:10846",
-      "title": "Golden Gate Bandshell: Crucial Reggae Sunday Finale",
-      "startAt": "2026-11-22T16:30:00-08:00",
-      "endAt": "2026-11-22T19:30:00-08:00",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sf-rec-park",
-        "name": "San Francisco Recreation and Parks",
-        "url": "https://sfrecpark.org/Calendar.aspx?EID=10846"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Golden Gate Bandshell",
-          "layerType": "poi",
-          "metadata": {
-            "address": "Music Concourse Drive, San Francisco, CA, 94118"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.467718633595,
-            37.7696158329688
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44980844",
-      "title": "Gaucho at Brenda's",
-      "startAt": "2026-11-22T17:00:00-08:00",
-      "endAt": "2026-11-22T21:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F109077446n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Brenda's French Soul Food",
-          "layerType": "poi",
-          "metadata": {
-            "address": "652 Polk St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4190358,
-            37.7829023
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44520105",
-      "title": "Jazz Mafia",
-      "startAt": "2026-11-22T17:00:00-08:00",
-      "endAt": "2026-11-22T21:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F108921263n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Mr. Tipple's Jazz Club",
-          "layerType": "poi",
-          "metadata": {
-            "address": "39 Fell St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4185846,
-            37.7763698
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:45170235",
-      "title": "Secret Improv VICE",
-      "startAt": "2026-11-22T17:00:00-08:00",
-      "endAt": "2026-11-22T21:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F109135618n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Shelton Theater",
-          "layerType": "poi",
-          "metadata": {
-            "address": "533 Sutter St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4091439,
-            37.7890249
-          ]
-        }
-      }
-    },
-    {
-      "id": "mission-local:10041095",
-      "title": "The Marsh: Lynne Kaufman – The Secret Museum",
-      "startAt": "2026-11-22T17:00:00-08:00",
-      "endAt": "2026-11-22T19:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "mission-local",
-        "name": "Mission Local",
-        "url": "https://missionlocal.org/event/the-marsh-lynne-kaufman-the-secret-museum/2026-11-22/"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "The Marsh",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1062 Valencia St, San Francisco, CA, 94110"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4212321,
-            37.7558531
-          ]
-        }
-      },
-      "imageUrl": "https://i0.wp.com/missionlocal.org/wp-content/uploads/2026/10/Lynne-Kaufmans-THE-SECRET-MUSEUM-1-1000x563-1.jpg?fit=300%2C169&ssl=1"
-    },
-    {
-      "id": "sf-chronicle:44309664",
-      "title": "Golden State Warriors vs. Boston Celtics",
-      "startAt": "2026-11-22T17:30:00-08:00",
-      "endAt": "2026-11-22T21:30:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44309664t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Chase Center",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94158"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.387464,
-            37.76797
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:45221639",
-      "title": "San Francisco Symphony Youth Orchestra",
-      "startAt": "2026-11-22T18:00:00-08:00",
-      "endAt": "2026-11-22T22:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F45221639t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Davies Symphony Hall",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94102"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.419502,
-            37.779499
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:45267008",
-      "title": "San Francisco Symphony Youth Orchestra",
-      "startAt": "2026-11-22T18:00:00-08:00",
-      "endAt": "2026-11-22T22:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040917547n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Davies Symphony Hall",
-          "layerType": "poi",
-          "metadata": {
-            "address": "201 Van Ness Ave, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4208088,
-            37.7779294
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:43170532",
-      "title": "Boston Manor: Be Nothing. 10 Year Anniversary",
-      "startAt": "2026-11-22T18:30:00-08:00",
-      "endAt": "2026-11-22T22:30:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F108421183n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "August Hall",
-          "layerType": "poi",
-          "metadata": {
-            "address": "420 Mason St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.409595,
-            37.7875662
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44725161",
-      "title": "Ayria",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040438226n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "DNA Lounge",
-          "layerType": "poi",
-          "metadata": {
-            "address": "375 11th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4127726,
-            37.7711099
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44949426",
-      "title": "Brutalismus 3000",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F109068358n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "The Regency Ballroom",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1300 Van Ness Ave, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4214133,
-            37.7878701
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44744367",
-      "title": "Celso Salim",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F108990941n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Biscuits & Blues",
-          "layerType": "poi",
-          "metadata": {
-            "address": "401 Mason St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.410141,
-            37.787295
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:45152659",
-      "title": "Daniel Bulatkin: Herak | Bulatkin \"Elysium\" US TOUR (ft. David Binney) @ Black Cat",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F109132310n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Black Cat",
-          "layerType": "poi",
-          "metadata": {
-            "address": "400 Eddy St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4144729,
-            37.7839326
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44725154",
-      "title": "Die Sexual",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040437938n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "DNA Lounge",
-          "layerType": "poi",
-          "metadata": {
-            "address": "375 11th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4127726,
-            37.7711099
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44725166",
-      "title": "DJ Melting Girl",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040438811n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "DNA Lounge",
-          "layerType": "poi",
-          "metadata": {
-            "address": "375 11th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4127726,
-            37.7711099
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:43330563",
-      "title": "Jon Cowherd: Brian Blade & the Fellowship Band",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F108498570n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "SFJAZZ Center",
-          "layerType": "poi",
-          "metadata": {
-            "address": "201 Franklin St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4213455,
-            37.7763853
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44619663",
-      "title": "LEGENDS AWARDS",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44619663t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "The Castro Theatre",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94114"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.434677,
-            37.762009
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:45119684",
-      "title": "Mr. V: Feelmore Sundays",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F109122427n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "White Rabbit Bar",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3138 Fillmore St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4355989,
-            37.7987026
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:43975259",
-      "title": "MYSTERY SCHOOL (david boyce & phillip greenlief) LIVE RECORDING SESSION",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F108727555n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Medicine for Nightmares",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3036 24th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4127251,
-            37.7527692
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44725158",
-      "title": "Plastic Disease",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040438538n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "DNA Lounge",
-          "layerType": "poi",
-          "metadata": {
-            "address": "375 11th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4127726,
-            37.7711099
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44311622",
-      "title": "Really Funny Comedians (Who Happen to Be Women) with Mary Houlihan",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44311622t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Cobb's Comedy Club",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94133"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.414217,
-            37.802909
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:43966073",
-      "title": "S. F. Comedy Showcase",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F43966073t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Punch Line Comedy Club - San Francisco",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94111"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4001336,
-            37.7955085
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44456929",
-      "title": "Sparkle Plenty: PUNKSGIVING",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F108897064n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Kilowatt Bar",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3160 16th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4232558,
-            37.7649719
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:43170634",
-      "title": "Super Sometimes",
-      "startAt": "2026-11-22T19:00:00-08:00",
-      "endAt": "2026-11-22T23:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F108435991n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "August Hall",
-          "layerType": "poi",
-          "metadata": {
-            "address": "420 Mason St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.409595,
-            37.7875662
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:43198674",
-      "title": "Ben Quad",
-      "startAt": "2026-11-22T19:30:00-08:00",
-      "endAt": "2026-11-22T23:30:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039128455n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "August Hall",
-          "layerType": "poi",
-          "metadata": {
-            "address": "420 Mason St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.409595,
-            37.7875662
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:43233493",
-      "title": "Boston Manor",
-      "startAt": "2026-11-22T19:30:00-08:00",
-      "endAt": "2026-11-22T23:30:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F43233493t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "August Hall",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94102"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.409598,
-            37.787571
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:45262805",
-      "title": "crashfaster",
-      "startAt": "2026-11-22T19:30:00-08:00",
-      "endAt": "2026-11-22T23:30:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040886111n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "DNA Lounge",
-          "layerType": "poi",
-          "metadata": {
-            "address": "375 11th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4127726,
-            37.7711099
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44287752",
-      "title": "DJ Tripp",
-      "startAt": "2026-11-22T19:30:00-08:00",
-      "endAt": "2026-11-22T23:30:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039826319n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "DNA Lounge",
-          "layerType": "poi",
-          "metadata": {
-            "address": "375 11th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4127726,
-            37.7711099
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:43580072",
-      "title": "gavn!",
-      "startAt": "2026-11-22T20:00:00-08:00",
-      "endAt": "2026-11-23T00:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039432442n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Cafe Du Nord",
-          "layerType": "poi",
-          "metadata": {
-            "address": "2174 Market St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4304184,
-            37.7666241
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44072220",
-      "title": "mark william lewis",
-      "startAt": "2026-11-22T20:00:00-08:00",
-      "endAt": "2026-11-23T00:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039747462n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "The Independent",
-          "layerType": "poi",
-          "metadata": {
-            "address": "628 Divisadero St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4376002,
-            37.7755318
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:43889073",
-      "title": "Mark William Lewis",
-      "startAt": "2026-11-22T20:00:00-08:00",
-      "endAt": "2026-11-23T00:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F43889073t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "The Independent",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94117"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4378,
-            37.7755
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44081298",
-      "title": "Qendresa",
-      "startAt": "2026-11-22T20:00:00-08:00",
-      "endAt": "2026-11-23T00:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039888432n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Rickshaw Stop",
-          "layerType": "poi",
-          "metadata": {
-            "address": "155 Fell St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4205138,
-            37.7761203
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44442506",
-      "title": "Qendresa",
-      "startAt": "2026-11-22T20:00:00-08:00",
-      "endAt": "2026-11-23T00:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44442506t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Rickshaw Stop",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94102"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.419502,
-            37.779499
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44381053",
-      "title": "TO VIOLENTLY VOMIT - EMBRYONIC DEVOURMENT - MUTATE - MORMON MINCERS - ONTOGENY",
-      "startAt": "2026-11-22T20:00:00-08:00",
-      "endAt": "2026-11-23T00:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F108865557n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Mabuhay Gardens",
-          "layerType": "poi",
-          "metadata": {
-            "address": "443 Broadway, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4045312,
-            37.7978148
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:45256012",
-      "title": "Sindustry Sundays w/ Duserock + Jeff Straw",
-      "startAt": "2026-11-22T21:00:00-08:00",
-      "endAt": "2026-11-23T01:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F109167745n"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Butter",
-          "layerType": "poi",
-          "metadata": {
-            "address": "354 11th St, San Francisco"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4132907,
-            37.7711094
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:162621-sfpl.org",
-      "title": "Activity: Monday Morning Play",
-      "startAt": "2026-11-23T18:00:00Z",
-      "endAt": "2026-11-23T20:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/activity-monday-morning-play"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "North Beach",
-          "layerType": "poi",
-          "metadata": {
-            "address": "850 Columbus Avenue San Francisco , CA 94133 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4139637,
-            37.8025809
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:168055-sfpl.org",
-      "title": "Social: Monday Fun Day Family Dance Party",
-      "startAt": "2026-11-23T18:00:00Z",
-      "endAt": "2026-11-23T19:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/social-monday-fun-day-family-dance-party"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Glen Park",
-          "layerType": "poi",
-          "metadata": {
-            "address": "2825 Diamond Street San Francisco , CA 94131 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.434,
-            37.734
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:136912-sfpl.org",
-      "title": "Storytime: For Babies",
-      "startAt": "2026-11-23T18:15:00Z",
-      "endAt": "2026-11-23T18:45:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/storytime-babies-0"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Visitacion Valley",
-          "layerType": "poi",
-          "metadata": {
-            "address": "201 Leland Avenue San Francisco , CA 94134 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.407839,
-            37.712466
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:150763-sfpl.org",
-      "title": "Storytime: For Families",
-      "startAt": "2026-11-23T18:15:00Z",
-      "endAt": "2026-11-23T18:45:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/storytime-families"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Western Addition",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1550 Scott Street San Francisco , CA 94115 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.437639,
-            37.784213
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:106405-sfpl.org",
-      "title": "Storytime: For Toddlers",
-      "startAt": "2026-11-23T18:15:00Z",
-      "endAt": "2026-11-23T18:45:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/storytime-toddlers"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Merced",
-          "layerType": "poi",
-          "metadata": {
-            "address": "155 Winston Drive San Francisco , CA 94132 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.4744806,
-            37.7267834
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:112127-sfpl.org",
-      "title": "Storytime: For Babies",
-      "startAt": "2026-11-23T18:30:00Z",
-      "endAt": "2026-11-23T19:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/storytime-babies"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Sunset",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1305 18th Avenue San Francisco , CA 94122 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.476292,
-            37.763385
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:139139-sfpl.org",
-      "title": "Storytime: For Babies",
-      "startAt": "2026-11-23T18:30:00Z",
-      "endAt": "2026-11-23T19:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/storytime-babies-1"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Main Library",
-          "layerType": "poi",
-          "metadata": {
-            "address": "100 Larkin Street San Francisco , CA 94102 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.415771,
-            37.779081
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:135658-sfpl.org",
-      "title": "Storytime: For Families",
-      "startAt": "2026-11-23T18:30:00Z",
-      "endAt": "2026-11-23T19:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/storytime-families-0"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Ortega",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3223 Ortega Street San Francisco , CA 94122 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.498025,
-            37.751258
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:163076-sfpl.org",
-      "title": "Storytime: For Toddlers",
-      "startAt": "2026-11-23T18:30:00Z",
-      "endAt": "2026-11-23T19:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/storytime-toddlers-2"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Portola",
-          "layerType": "poi",
-          "metadata": {
-            "address": "380 Bacon Street San Francisco , CA 94134 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.406516,
-            37.72706
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:162578-sfpl.org",
-      "title": "Early Learning: Family Playtime",
-      "startAt": "2026-11-23T19:00:00Z",
-      "endAt": "2026-11-23T20:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/early-learning-family-playtime"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Richmond/Senator Milton Marks",
-          "layerType": "poi",
-          "metadata": {
-            "address": "351 9th Avenue San Francisco , CA 94118 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.468155,
-            37.781883
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:144574-sfpl.org",
-      "title": "Storytime: For Toddlers",
-      "startAt": "2026-11-23T19:15:00Z",
-      "endAt": "2026-11-23T19:45:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/storytime-toddlers-1"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Noe Valley/Sally Brunn",
-          "layerType": "poi",
-          "metadata": {
-            "address": "451 Jersey Street San Francisco , CA 94114 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.435,
-            37.7502
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:166135-sfpl.org",
-      "title": "Storytime: For Toddlers",
-      "startAt": "2026-11-23T19:30:00Z",
-      "endAt": "2026-11-23T20:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/storytime-toddlers-3"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Ingleside",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1298 Ocean Avenue San Francisco , CA 94112 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.456314,
-            37.724226
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:163697-sfpl.org",
-      "title": "Workshop: TBBC Writer's Salon",
-      "startAt": "2026-11-23T20:00:00Z",
-      "endAt": "2026-11-23T21:30:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/workshop-tbbc-writers-salon"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Main Library",
-          "layerType": "poi",
-          "metadata": {
-            "address": "100 Larkin Street San Francisco , CA 94102 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.415771,
-            37.779081
-          ]
-        }
-      }
-    },
     {
       "id": "sfpl:161099-sfpl.org",
       "title": "Services: Bernal Heights Library Community Blood Drive",
@@ -3523,134 +687,6 @@
       }
     },
     {
-      "id": "sfpl:145669-sfpl.org",
-      "title": "Activity: Shut Up and Write",
-      "startAt": "2026-11-23T21:15:00Z",
-      "endAt": "2026-11-23T23:15:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/activity-shut-and-write"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Potrero",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1616 20th Street San Francisco , CA 94107 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.397635,
-            37.760072
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:132988-sfpl.org",
-      "title": "Activity: Beginners Tai Chi with Patrick Lau",
-      "startAt": "2026-11-23T21:30:00Z",
-      "endAt": "2026-11-23T22:15:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/activity-beginners-tai-chi-patrick-lau"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Presidio",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3150 Sacramento Street San Francisco , CA 94115 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.444881,
-            37.788882
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:137867-sfpl.org",
-      "title": "Tutorial: Drop-In eBook Help",
-      "startAt": "2026-11-23T22:00:00Z",
-      "endAt": "2026-11-23T23:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/tutorial-drop-ebook-help"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Mission Bay",
-          "layerType": "poi",
-          "metadata": {
-            "address": "960 4th Street San Francisco , CA 94158 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.393,
-            37.7753
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:133035-sfpl.org",
-      "title": "Activity: Advanced Tai Chi with Patrick Lau",
-      "startAt": "2026-11-23T22:15:00Z",
-      "endAt": "2026-11-23T23:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/activity-advanced-tai-chi-patrick-lau"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Presidio",
-          "layerType": "poi",
-          "metadata": {
-            "address": "3150 Sacramento Street San Francisco , CA 94115 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.444881,
-            37.788882
-          ]
-        }
-      }
-    },
-    {
       "id": "sfpl:157643-sfpl.org",
       "title": "Film: The Damned Don't Cry",
       "startAt": "2026-11-23T23:00:00Z",
@@ -3678,70 +714,6 @@
           "coordinates": [
             -122.429035,
             37.796852
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:161728-sfpl.org",
-      "title": "Workshop: Clay Pinch Pots",
-      "startAt": "2026-11-23T23:00:00Z",
-      "endAt": "2026-11-24T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/workshop-clay-pinch-pots"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Sunset",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1305 18th Avenue San Francisco , CA 94122 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.476292,
-            37.763385
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:131601-sfpl.org",
-      "title": "Storytime: For Toddlers",
-      "startAt": "2026-11-23T23:30:00Z",
-      "endAt": "2026-11-24T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/23/storytime-toddlers-0"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Park",
-          "layerType": "poi",
-          "metadata": {
-            "address": "1833 Page Street San Francisco , CA 94117 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.451027,
-            37.770173
           ]
         }
       }
@@ -6836,38 +3808,6 @@
           "coordinates": [
             -122.416054,
             37.738922
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:159914-sfpl.org",
-      "title": "Services: Department of Disability and Aging Services (DAS)",
-      "startAt": "2026-11-25T21:00:00Z",
-      "endAt": "2026-11-26T00:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/11/25/services-department-disability-and-aging-services-das"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Main Library",
-          "layerType": "poi",
-          "metadata": {
-            "address": "100 Larkin Street San Francisco , CA 94102 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.415771,
-            37.779081
           ]
         }
       }
@@ -12528,7 +9468,7 @@
       }
     },
     {
-      "id": "sf-chronicle:44721233",
+      "id": "sf-chronicle:44450488",
       "title": "Preacher Lawson",
       "startAt": "2026-11-28T19:00:00-08:00",
       "endAt": "2026-11-28T23:00:00-08:00",
@@ -12539,7 +9479,7 @@
       "source": {
         "id": "sf-chronicle",
         "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F108983821n"
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44450488t"
       },
       "curation": {
         "type": "Feature",
@@ -12547,7 +9487,7 @@
           "name": "Cobb's Comedy Club",
           "layerType": "poi",
           "metadata": {
-            "address": "915 Columbus Ave, San Francisco"
+            "address": "San Francisco, 94133"
           }
         },
         "geometry": {
@@ -17522,38 +14462,6 @@
       }
     },
     {
-      "id": "sfpl:131917-sfpl.org",
-      "title": "Storytime: For Toddlers",
-      "startAt": "2026-12-01T19:00:00Z",
-      "endAt": "2026-12-01T19:30:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/12/01/storytime-toddlers-1"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Glen Park",
-          "layerType": "poi",
-          "metadata": {
-            "address": "2825 Diamond Street San Francisco , CA 94131 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.434,
-            37.734
-          ]
-        }
-      }
-    },
-    {
       "id": "sfpl:150512-sfpl.org",
       "title": "Storytime: For Toddlers",
       "startAt": "2026-12-01T19:00:00Z",
@@ -18738,6 +15646,38 @@
       }
     },
     {
+      "id": "sf-chronicle:44312001",
+      "title": "Golden State Warriors vs. Utah Jazz",
+      "startAt": "2026-12-01T19:00:00-08:00",
+      "endAt": "2026-12-01T23:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44312001t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Chase Center",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94158"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.387464,
+            37.76797
+          ]
+        }
+      }
+    },
+    {
       "id": "mission-local:10042112",
       "title": "Verdi Club: Tuesday Night Lindy Hop and Balboa Classes",
       "startAt": "2026-12-01T19:00:00-08:00",
@@ -18990,38 +15930,6 @@
           "coordinates": [
             -122.415298,
             37.749599
-          ]
-        }
-      }
-    },
-    {
-      "id": "sf-chronicle:44312001",
-      "title": "Golden State Warriors vs. Utah Jazz",
-      "startAt": "2026-12-01T20:00:00-08:00",
-      "endAt": "2026-12-02T00:00:00-08:00",
-      "cost": {
-        "label": "Cost not listed",
-        "isFree": false
-      },
-      "source": {
-        "id": "sf-chronicle",
-        "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44312001t"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Chase Center",
-          "layerType": "poi",
-          "metadata": {
-            "address": "San Francisco, 94158"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.387464,
-            37.76797
           ]
         }
       }
@@ -21120,7 +18028,7 @@
       }
     },
     {
-      "id": "sf-chronicle:44570847",
+      "id": "sf-chronicle:44456694",
       "title": "Michelle Collins",
       "startAt": "2026-12-02T19:30:00-08:00",
       "endAt": "2026-12-02T23:30:00-08:00",
@@ -21131,7 +18039,7 @@
       "source": {
         "id": "sf-chronicle",
         "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040224843n"
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44456694t"
       },
       "curation": {
         "type": "Feature",
@@ -21139,7 +18047,7 @@
           "name": "Cobb's Comedy Club",
           "layerType": "poi",
           "metadata": {
-            "address": "915 Columbus Ave, San Francisco"
+            "address": "San Francisco, 94133"
           }
         },
         "geometry": {
@@ -26413,7 +23321,7 @@
       }
     },
     {
-      "id": "sf-chronicle:43649849",
+      "id": "sf-chronicle:43410664",
       "title": "Kyle Kinane",
       "startAt": "2026-12-04T19:00:00-08:00",
       "endAt": "2026-12-04T23:00:00-08:00",
@@ -26424,7 +23332,7 @@
       "source": {
         "id": "sf-chronicle",
         "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039321054n"
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F43410664t"
       },
       "curation": {
         "type": "Feature",
@@ -26432,7 +23340,7 @@
           "name": "Cobb's Comedy Club",
           "layerType": "poi",
           "metadata": {
-            "address": "915 Columbus Ave, San Francisco"
+            "address": "San Francisco, 94133"
           }
         },
         "geometry": {
@@ -33669,7 +30577,7 @@
       }
     },
     {
-      "id": "sf-chronicle:43410693",
+      "id": "sf-chronicle:43649851",
       "title": "Kyle Kinane",
       "startAt": "2026-12-05T21:15:00-08:00",
       "endAt": "2026-12-06T01:15:00-08:00",
@@ -33680,7 +30588,7 @@
       "source": {
         "id": "sf-chronicle",
         "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F43410693t"
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039320126n"
       },
       "curation": {
         "type": "Feature",
@@ -33688,7 +30596,7 @@
           "name": "Cobb's Comedy Club",
           "layerType": "poi",
           "metadata": {
-            "address": "San Francisco, 94133"
+            "address": "915 Columbus Ave, San Francisco"
           }
         },
         "geometry": {
@@ -36196,7 +33104,7 @@
       }
     },
     {
-      "id": "sf-chronicle:44437099",
+      "id": "sf-chronicle:44450699",
       "title": "Kev Adams",
       "startAt": "2026-12-06T19:00:00-08:00",
       "endAt": "2026-12-06T23:00:00-08:00",
@@ -36207,7 +33115,7 @@
       "source": {
         "id": "sf-chronicle",
         "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040224141n"
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44450699t"
       },
       "curation": {
         "type": "Feature",
@@ -36215,7 +33123,7 @@
           "name": "Cobb's Comedy Club",
           "layerType": "poi",
           "metadata": {
-            "address": "915 Columbus Ave, San Francisco"
+            "address": "San Francisco, 94133"
           }
         },
         "geometry": {
@@ -43579,7 +40487,7 @@
       }
     },
     {
-      "id": "sf-chronicle:44639508",
+      "id": "sf-chronicle:44616031",
       "title": "Chloe Radcliffe",
       "startAt": "2026-12-09T19:30:00-08:00",
       "endAt": "2026-12-09T23:30:00-08:00",
@@ -43590,7 +40498,7 @@
       "source": {
         "id": "sf-chronicle",
         "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44639508t"
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040376883n"
       },
       "curation": {
         "type": "Feature",
@@ -43598,7 +40506,7 @@
           "name": "Cobb's Comedy Club",
           "layerType": "poi",
           "metadata": {
-            "address": "San Francisco, 94133"
+            "address": "915 Columbus Ave, San Francisco"
           }
         },
         "geometry": {
@@ -48420,7 +45328,7 @@
       }
     },
     {
-      "id": "sf-chronicle:43965296",
+      "id": "sf-chronicle:43950328",
       "title": "Maz Jobrani",
       "startAt": "2026-12-11T19:00:00-08:00",
       "endAt": "2026-12-11T23:00:00-08:00",
@@ -48431,7 +45339,7 @@
       "source": {
         "id": "sf-chronicle",
         "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F43965296t"
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039806991n"
       },
       "curation": {
         "type": "Feature",
@@ -48439,7 +45347,7 @@
           "name": "Cobb's Comedy Club",
           "layerType": "poi",
           "metadata": {
-            "address": "San Francisco, 94133"
+            "address": "915 Columbus Ave, San Francisco"
           }
         },
         "geometry": {
@@ -52567,7 +49475,7 @@
       }
     },
     {
-      "id": "sf-chronicle:43965584",
+      "id": "sf-chronicle:43951973",
       "title": "Maz Jobrani",
       "startAt": "2026-12-12T19:00:00-08:00",
       "endAt": "2026-12-12T23:00:00-08:00",
@@ -52578,7 +49486,7 @@
       "source": {
         "id": "sf-chronicle",
         "name": "San Francisco Chronicle",
-        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F43965584t"
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1039809075n"
       },
       "curation": {
         "type": "Feature",
@@ -52586,7 +49494,7 @@
           "name": "Cobb's Comedy Club",
           "layerType": "poi",
           "metadata": {
-            "address": "San Francisco, 94133"
+            "address": "915 Columbus Ave, San Francisco"
           }
         },
         "geometry": {
@@ -55958,6 +52866,38 @@
           "coordinates": [
             -122.4376002,
             37.7755318
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:45329108",
+      "title": "Bay Area Bands Winter Showcase",
+      "startAt": "2026-12-13T19:00:00-08:00",
+      "endAt": "2026-12-13T23:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F45329108t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Brick and Mortar Music Hall",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94103"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.420282,
+            37.769739
           ]
         }
       }
@@ -59758,38 +56698,6 @@
         "id": "sfpl",
         "name": "San Francisco Public Library",
         "url": "https://sfpl.org/events/2026/12/15/workshop-recording-studio-orientation"
-      },
-      "curation": {
-        "type": "Feature",
-        "properties": {
-          "name": "Main Library",
-          "layerType": "poi",
-          "metadata": {
-            "address": "100 Larkin Street San Francisco , CA 94102 United States"
-          }
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -122.415771,
-            37.779081
-          ]
-        }
-      }
-    },
-    {
-      "id": "sfpl:148470-sfpl.org",
-      "title": "Workshop: Sewing Basics",
-      "startAt": "2026-12-16T01:00:00Z",
-      "endAt": "2026-12-16T02:00:00Z",
-      "cost": {
-        "label": "Free",
-        "isFree": true
-      },
-      "source": {
-        "id": "sfpl",
-        "name": "San Francisco Public Library",
-        "url": "https://sfpl.org/events/2026/12/15/workshop-sewing-basics"
       },
       "curation": {
         "type": "Feature",
@@ -76829,6 +73737,2222 @@
           "coordinates": [
             -122.4484231,
             37.8029308
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:162186-sfpl.org",
+      "title": "Tutorial: Meet One-on-One with a Financial Counselor",
+      "startAt": "2026-12-22T17:00:00Z",
+      "endAt": "2026-12-23T01:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/tutorial-meet-one-one-financial-counselor"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Main Library",
+          "layerType": "poi",
+          "metadata": {
+            "address": "100 Larkin Street San Francisco , CA 94102 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.415771,
+            37.779081
+          ]
+        }
+      }
+    },
+    {
+      "id": "market-ferry-plaza:ferry-plaza-2026-12-22-10-00",
+      "title": "Ferry Plaza Farmers Market",
+      "startAt": "2026-12-22T10:00:00-08:00",
+      "endAt": "2026-12-22T14:00:00-08:00",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "market-ferry-plaza",
+        "name": "Ferry Plaza Farmers Market — Foodwise",
+        "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/"
+      },
+      "curation": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3923704,
+            37.7952753
+          ]
+        },
+        "properties": {
+          "name": "Ferry Plaza Farmers Market",
+          "layerType": "poi",
+          "category": "farmers-market",
+          "metadata": {
+            "address": "Ferry Building, Embarcadero and Market Streets, San Francisco, CA",
+            "scheduleSource": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+            "scheduleReviewedAt": "2026-09-11",
+            "scheduleValidThrough": "2026-12-31",
+            "coordinateSource": "https://www.openstreetmap.org/node/10651024023"
+          }
+        }
+      },
+      "description": "Weekly farmers market. Free entry; food and other purchases cost extra. Usual operator schedule, checked against the official page; confirm holiday hours and short-notice cancellations before visiting."
+    },
+    {
+      "id": "sfpl:157154-sfpl.org",
+      "title": "Services: Aging and Disability Resources with the San Francisco Senior Center",
+      "startAt": "2026-12-22T18:00:00Z",
+      "endAt": "2026-12-22T20:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/services-aging-and-disability-resources-san-francisco-senior-center"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Main Library",
+          "layerType": "poi",
+          "metadata": {
+            "address": "100 Larkin Street San Francisco , CA 94102 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.415771,
+            37.779081
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:169030-sfpl.org",
+      "title": "Activity: Nutcracker Storytime",
+      "startAt": "2026-12-22T18:15:00Z",
+      "endAt": "2026-12-22T19:15:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/activity-nutcracker-storytime"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Merced",
+          "layerType": "poi",
+          "metadata": {
+            "address": "155 Winston Drive San Francisco , CA 94132 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4744806,
+            37.7267834
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:136594-sfpl.org",
+      "title": "Storytime: For Babies",
+      "startAt": "2026-12-22T18:15:00Z",
+      "endAt": "2026-12-22T18:45:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-babies-1"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Golden Gate Valley",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1801 Green Street San Francisco , CA 94123 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.429035,
+            37.796852
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:162893-sfpl.org",
+      "title": "Storytime: For Babies",
+      "startAt": "2026-12-22T18:15:00Z",
+      "endAt": "2026-12-22T18:45:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-babies-2"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "North Beach",
+          "layerType": "poi",
+          "metadata": {
+            "address": "850 Columbus Avenue San Francisco , CA 94133 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4139637,
+            37.8025809
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:163848-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T18:15:00Z",
+      "endAt": "2026-12-22T18:45:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-11"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Presidio",
+          "layerType": "poi",
+          "metadata": {
+            "address": "3150 Sacramento Street San Francisco , CA 94115 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.444881,
+            37.788882
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:169077-sfpl.org",
+      "title": "Storytime: For Toddlers in Spanish, en Español",
+      "startAt": "2026-12-22T18:15:00Z",
+      "endAt": "2026-12-22T18:45:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-spanish-en-espanol"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Mission",
+          "layerType": "poi",
+          "metadata": {
+            "address": "3359 24th St San Francisco , CA 94110 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.41984,
+            37.75216
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:110197-sfpl.org",
+      "title": "Storytime: For Families",
+      "startAt": "2026-12-22T18:30:00Z",
+      "endAt": "2026-12-22T19:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-families"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Marina",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1890 Chestnut Street San Francisco , CA 94123 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.434,
+            37.8013
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:163097-sfpl.org",
+      "title": "Storytime: For Preschoolers",
+      "startAt": "2026-12-22T18:30:00Z",
+      "endAt": "2026-12-22T19:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-preschoolers-2"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Portola",
+          "layerType": "poi",
+          "metadata": {
+            "address": "380 Bacon Street San Francisco , CA 94134 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.406516,
+            37.72706
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:112223-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T18:30:00Z",
+      "endAt": "2026-12-22T19:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-0"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Sunset",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1305 18th Avenue San Francisco , CA 94122 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.476292,
+            37.763385
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:135309-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T18:30:00Z",
+      "endAt": "2026-12-22T19:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-2"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Ocean View",
+          "layerType": "poi",
+          "metadata": {
+            "address": "345 Randolph Street San Francisco , CA 94132 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.465951,
+            37.71418
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:135497-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T18:30:00Z",
+      "endAt": "2026-12-22T19:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-3"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Ortega",
+          "layerType": "poi",
+          "metadata": {
+            "address": "3223 Ortega Street San Francisco , CA 94122 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.498025,
+            37.751258
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:138630-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T18:30:00Z",
+      "endAt": "2026-12-22T19:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-4"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Parkside",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1200 Taraval Street San Francisco , CA 94116 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.479389,
+            37.743191
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:144605-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T18:30:00Z",
+      "endAt": "2026-12-22T19:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-5"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Mission Bay",
+          "layerType": "poi",
+          "metadata": {
+            "address": "960 4th Street San Francisco , CA 94158 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.393,
+            37.7753
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:154729-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T18:30:00Z",
+      "endAt": "2026-12-22T19:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-8"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Excelsior",
+          "layerType": "poi",
+          "metadata": {
+            "address": "4400 Mission Street San Francisco , CA 94112 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.433221,
+            37.72714
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:171013-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T18:30:00Z",
+      "endAt": "2026-12-22T19:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-7"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Bernal Heights",
+          "layerType": "poi",
+          "metadata": {
+            "address": "500 Cortland Avenue San Francisco , CA 94110 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.416054,
+            37.738922
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:171086-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T18:30:00Z",
+      "endAt": "2026-12-22T19:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-12"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Potrero",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1616 20th Street San Francisco , CA 94107 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.397635,
+            37.760072
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:128688-sfpl.org",
+      "title": "Storytime: For Preschoolers",
+      "startAt": "2026-12-22T19:00:00Z",
+      "endAt": "2026-12-22T19:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-preschoolers"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "North Beach",
+          "layerType": "poi",
+          "metadata": {
+            "address": "850 Columbus Avenue San Francisco , CA 94133 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4139637,
+            37.8025809
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:138889-sfpl.org",
+      "title": "Storytime: For Preschoolers",
+      "startAt": "2026-12-22T19:00:00Z",
+      "endAt": "2026-12-22T19:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-preschoolers-1"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Bayview/Linda Brooks-Burton",
+          "layerType": "poi",
+          "metadata": {
+            "address": "5075 3rd Street San Francisco , CA 94124 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.39117,
+            37.732614
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:131920-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T19:00:00Z",
+      "endAt": "2026-12-22T19:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-1"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Glen Park",
+          "layerType": "poi",
+          "metadata": {
+            "address": "2825 Diamond Street San Francisco , CA 94131 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.434,
+            37.734
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:150515-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T19:00:00Z",
+      "endAt": "2026-12-22T19:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-6"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Eureka Valley/Harvey Milk Memorial",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1 Jose Sarria Court San Francisco , CA 94114 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4318162,
+            37.7640815
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:158041-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T19:00:00Z",
+      "endAt": "2026-12-22T19:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-9"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Western Addition",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1550 Scott Street San Francisco , CA 94115 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.437639,
+            37.784213
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:162552-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T19:00:00Z",
+      "endAt": "2026-12-22T20:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-10"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Richmond/Senator Milton Marks",
+          "layerType": "poi",
+          "metadata": {
+            "address": "351 9th Avenue San Francisco , CA 94118 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.468155,
+            37.781883
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:144631-sfpl.org",
+      "title": "Storytime: For Preschoolers",
+      "startAt": "2026-12-22T19:15:00Z",
+      "endAt": "2026-12-22T19:45:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-preschoolers-0"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Mission Bay",
+          "layerType": "poi",
+          "metadata": {
+            "address": "960 4th Street San Francisco , CA 94158 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.393,
+            37.7753
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:169133-sfpl.org",
+      "title": "Storytime: For Toddlers in Spanish, en Español",
+      "startAt": "2026-12-22T19:15:00Z",
+      "endAt": "2026-12-22T19:45:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers-spanish-en-espanol-0"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Mission",
+          "layerType": "poi",
+          "metadata": {
+            "address": "3359 24th St San Francisco , CA 94110 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.41984,
+            37.75216
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:103088-sfpl.org",
+      "title": "Storytime: For Toddlers",
+      "startAt": "2026-12-22T19:30:00Z",
+      "endAt": "2026-12-22T20:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-toddlers"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "West Portal",
+          "layerType": "poi",
+          "metadata": {
+            "address": "190 Lenox Way San Francisco , CA 94127 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.466195,
+            37.741362
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:158066-sfpl.org",
+      "title": "Storytime: For Babies",
+      "startAt": "2026-12-22T19:45:00Z",
+      "endAt": "2026-12-22T20:15:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-babies-3"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Western Addition",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1550 Scott Street San Francisco , CA 94115 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.437639,
+            37.784213
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:166362-sfpl.org",
+      "title": "Activity: Fit for Life",
+      "startAt": "2026-12-22T21:00:00Z",
+      "endAt": "2026-12-22T22:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/activity-fit-life"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "North Beach",
+          "layerType": "poi",
+          "metadata": {
+            "address": "850 Columbus Avenue San Francisco , CA 94133 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4139637,
+            37.8025809
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42619052",
+      "title": "Frosty's",
+      "startAt": "2026-12-22T13:00:00-08:00",
+      "endAt": "2026-12-22T17:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F42619052t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Frosty's",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4484231,
+            37.8029308
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:145203-sfpl.org",
+      "title": "Social: Knitting Circle",
+      "startAt": "2026-12-22T21:00:00Z",
+      "endAt": "2026-12-22T22:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/social-knitting-circle"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Glen Park",
+          "layerType": "poi",
+          "metadata": {
+            "address": "2825 Diamond Street San Francisco , CA 94131 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.434,
+            37.734
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:169603-sfpl.org",
+      "title": "Tutorial: Tech Tuesdays",
+      "startAt": "2026-12-22T21:00:00Z",
+      "endAt": "2026-12-22T23:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/tutorial-tech-tuesdays"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Bayview/Linda Brooks-Burton",
+          "layerType": "poi",
+          "metadata": {
+            "address": "5075 3rd Street San Francisco , CA 94124 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.39117,
+            37.732614
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:132502-sfpl.org",
+      "title": "Storytime: For Babies",
+      "startAt": "2026-12-22T21:15:00Z",
+      "endAt": "2026-12-22T21:45:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-babies-0"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Potrero",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1616 20th Street San Francisco , CA 94107 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.397635,
+            37.760072
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:151631-sfpl.org",
+      "title": "Storytime: For Babies",
+      "startAt": "2026-12-22T21:15:00Z",
+      "endAt": "2026-12-22T21:45:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/storytime-babies"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Ingleside",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1298 Ocean Avenue San Francisco , CA 94112 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.456314,
+            37.724226
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42619131",
+      "title": "Frosty's",
+      "startAt": "2026-12-22T14:00:00-08:00",
+      "endAt": "2026-12-22T18:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F42619131t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Frosty's",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4484231,
+            37.8029308
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:45267198",
+      "title": "San Francisco Ballet",
+      "startAt": "2026-12-22T14:00:00-08:00",
+      "endAt": "2026-12-22T18:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040878544n"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "War Memorial Opera House",
+          "layerType": "poi",
+          "metadata": {
+            "address": "301 Van Ness Ave, San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.42067,
+            37.77849
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:45191306",
+      "title": "San Francisco Ballet w/ The Nutcracker",
+      "startAt": "2026-12-22T14:00:00-08:00",
+      "endAt": "2026-12-22T18:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F45191306t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "War Memorial Opera House",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94102"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.419502,
+            37.779499
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42619057",
+      "title": "Frosty's",
+      "startAt": "2026-12-22T15:00:00-08:00",
+      "endAt": "2026-12-22T19:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F42619057t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Frosty's",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4484231,
+            37.8029308
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:174684-sfpl.org",
+      "title": "Film: The Grinch",
+      "startAt": "2026-12-22T23:30:00Z",
+      "endAt": "2026-12-23T01:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/film-grinch"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Bayview/Linda Brooks-Burton",
+          "layerType": "poi",
+          "metadata": {
+            "address": "5075 3rd Street San Francisco , CA 94124 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.39117,
+            37.732614
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:157804-sfpl.org",
+      "title": "Book Club: Visitacion Valley Readers",
+      "startAt": "2026-12-23T00:00:00Z",
+      "endAt": "2026-12-23T01:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/book-club-visitacion-valley-readers"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Visitacion Valley",
+          "layerType": "poi",
+          "metadata": {
+            "address": "201 Leland Avenue San Francisco , CA 94134 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.407839,
+            37.712466
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42619028",
+      "title": "Frosty's",
+      "startAt": "2026-12-22T16:00:00-08:00",
+      "endAt": "2026-12-22T20:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F42619028t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Frosty's",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4484231,
+            37.8029308
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:173480-sfpl.org",
+      "title": "Services: Engage Urban Tutoring",
+      "startAt": "2026-12-23T00:00:00Z",
+      "endAt": "2026-12-23T01:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/services-engage-urban-tutoring"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Ocean View",
+          "layerType": "poi",
+          "metadata": {
+            "address": "345 Randolph Street San Francisco , CA 94132 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.465951,
+            37.71418
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:160872-sfpl.org",
+      "title": "Activity: Peppermint Sugar Scrub",
+      "startAt": "2026-12-23T00:30:00Z",
+      "endAt": "2026-12-23T01:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/activity-peppermint-sugar-scrub"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Bernal Heights",
+          "layerType": "poi",
+          "metadata": {
+            "address": "500 Cortland Avenue San Francisco , CA 94110 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.416054,
+            37.738922
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:161804-sfpl.org",
+      "title": "Dialogue: ESL Conversation Club",
+      "startAt": "2026-12-23T01:00:00Z",
+      "endAt": "2026-12-23T02:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/dialogue-esl-conversation-club"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Excelsior",
+          "layerType": "poi",
+          "metadata": {
+            "address": "4400 Mission Street San Francisco , CA 94112 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.433221,
+            37.72714
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:169799-sfpl.org",
+      "title": "Film: My Man Godfrey, Screening and Discussion",
+      "startAt": "2026-12-23T01:00:00Z",
+      "endAt": "2026-12-23T03:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/film-my-man-godfrey-screening-and-discussion"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "North Beach",
+          "layerType": "poi",
+          "metadata": {
+            "address": "850 Columbus Avenue San Francisco , CA 94133 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4139637,
+            37.8025809
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42619132",
+      "title": "Frosty's",
+      "startAt": "2026-12-22T17:00:00-08:00",
+      "endAt": "2026-12-22T21:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F42619132t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Frosty's",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4484231,
+            37.8029308
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:161528-sfpl.org",
+      "title": "Workshop: Recording Studio Orientation",
+      "startAt": "2026-12-23T01:00:00Z",
+      "endAt": "2026-12-23T02:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/workshop-recording-studio-orientation"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Main Library",
+          "layerType": "poi",
+          "metadata": {
+            "address": "100 Larkin Street San Francisco , CA 94102 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.415771,
+            37.779081
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:148471-sfpl.org",
+      "title": "Workshop: Sewing Basics",
+      "startAt": "2026-12-23T01:00:00Z",
+      "endAt": "2026-12-23T02:00:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/workshop-sewing-basics"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Main Library",
+          "layerType": "poi",
+          "metadata": {
+            "address": "100 Larkin Street San Francisco , CA 94102 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.415771,
+            37.779081
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42619049",
+      "title": "Frosty's",
+      "startAt": "2026-12-22T18:00:00-08:00",
+      "endAt": "2026-12-22T22:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F42619049t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Frosty's",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4484231,
+            37.8029308
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:135946-sfpl.org",
+      "title": "Tutorial: Basic Tech Help",
+      "startAt": "2026-12-23T02:00:00Z",
+      "endAt": "2026-12-23T02:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/tutorial-basic-tech-help"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Excelsior",
+          "layerType": "poi",
+          "metadata": {
+            "address": "4400 Mission Street San Francisco , CA 94112 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.433221,
+            37.72714
+          ]
+        }
+      }
+    },
+    {
+      "id": "sfpl:157692-sfpl.org",
+      "title": "Book Club: Excelsior Reads",
+      "startAt": "2026-12-23T02:30:00Z",
+      "endAt": "2026-12-23T03:30:00Z",
+      "cost": {
+        "label": "Free",
+        "isFree": true
+      },
+      "source": {
+        "id": "sfpl",
+        "name": "San Francisco Public Library",
+        "url": "https://sfpl.org/events/2026/12/22/book-club-excelsior-reads"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Excelsior",
+          "layerType": "poi",
+          "metadata": {
+            "address": "4400 Mission Street San Francisco , CA 94112 United States"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.433221,
+            37.72714
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42451927",
+      "title": "Ali Wong",
+      "startAt": "2026-12-22T19:00:00-08:00",
+      "endAt": "2026-12-22T23:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1038395826n"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "The Masonic",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1111 California St, San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4129823,
+            37.791198
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42065197",
+      "title": "Ali Wong Live",
+      "startAt": "2026-12-22T19:00:00-08:00",
+      "endAt": "2026-12-22T23:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F42065197t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "The Masonic",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94108"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.413293,
+            37.791419
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42619121",
+      "title": "Frosty's",
+      "startAt": "2026-12-22T19:00:00-08:00",
+      "endAt": "2026-12-22T23:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F42619121t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Frosty's",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4484231,
+            37.8029308
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:45284171",
+      "title": "Sammy Obeid",
+      "startAt": "2026-12-22T19:00:00-08:00",
+      "endAt": "2026-12-22T23:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F45284171t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Cobb's Comedy Club",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94133"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.414217,
+            37.802909
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:45191315",
+      "title": "San Francisco Ballet w/ The Nutcracker",
+      "startAt": "2026-12-22T19:00:00-08:00",
+      "endAt": "2026-12-22T23:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F45191315t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "War Memorial Opera House",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94102"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.419502,
+            37.779499
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:44325133",
+      "title": "The Outsiders (Touring)",
+      "startAt": "2026-12-22T19:00:00-08:00",
+      "endAt": "2026-12-22T23:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44325133t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Orpheum Theatre-San Francisco",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94102"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.419502,
+            37.779499
+          ]
+        }
+      }
+    },
+    {
+      "id": "mission-local:10042115",
+      "title": "Verdi Club: Tuesday Night Lindy Hop and Balboa Classes",
+      "startAt": "2026-12-22T19:00:00-08:00",
+      "endAt": "2026-12-22T21:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "mission-local",
+        "name": "Mission Local",
+        "url": "https://missionlocal.org/event/verdi-club-tuesday-night-lindy-hop-and-balboa-classes-8/2026-12-22/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Verdi Club",
+          "layerType": "poi",
+          "metadata": {
+            "address": "2424 Mariposa Street, San Francisco, CA, 94110"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4079386,
+            37.7634058
+          ]
+        }
+      },
+      "imageUrl": "https://i0.wp.com/missionlocal.org/wp-content/uploads/2017/12/VerdiClublogo-e1511646454767.jpg?fit=300%2C199&ssl=1"
+    },
+    {
+      "id": "sf-chronicle:45207274",
+      "title": "FEMALE TROUBLE IN 35MM",
+      "startAt": "2026-12-22T19:30:00-08:00",
+      "endAt": "2026-12-22T23:30:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F45207274t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "The Castro Theatre",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94114"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.434677,
+            37.762009
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:44313151",
+      "title": "Golden State Warriors vs. Dallas Mavericks",
+      "startAt": "2026-12-22T19:30:00-08:00",
+      "endAt": "2026-12-22T23:30:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44313151t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Chase Center",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94158"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.387464,
+            37.76797
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:44706345",
+      "title": "Joe Klocek",
+      "startAt": "2026-12-22T19:30:00-08:00",
+      "endAt": "2026-12-22T23:30:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040456905n"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Punch Line Comedy Club",
+          "layerType": "poi",
+          "metadata": {
+            "address": "444 Battery St, San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.400329,
+            37.795553
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:44734923",
+      "title": "Joe Klocek & Friends",
+      "startAt": "2026-12-22T19:30:00-08:00",
+      "endAt": "2026-12-22T23:30:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F44734923t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Punch Line Comedy Club - San Francisco",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94111"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4001336,
+            37.7955085
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:43652909",
+      "title": "Tommy Dorsey Orchestra",
+      "startAt": "2026-12-22T19:30:00-08:00",
+      "endAt": "2026-12-22T23:30:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F108605651n"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Davies Symphony Hall",
+          "layerType": "poi",
+          "metadata": {
+            "address": "201 Van Ness Ave, San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4208088,
+            37.7779294
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42619035",
+      "title": "Frosty's",
+      "startAt": "2026-12-22T20:00:00-08:00",
+      "endAt": "2026-12-23T00:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F42619035t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Frosty's",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4484231,
+            37.8029308
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:45148675",
+      "title": "The Hooks",
+      "startAt": "2026-12-22T20:00:00-08:00",
+      "endAt": "2026-12-23T00:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040810845n"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Bottom Of the Hill",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1233 17th St, San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3964389,
+            37.7649778
+          ]
+        }
+      }
+    },
+    {
+      "id": "mission-local:10042078",
+      "title": "Theatre of Yugen at NOHspace: A Noh Christmas Carol",
+      "startAt": "2026-12-22T20:00:00-08:00",
+      "endAt": "2026-12-22T22:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "mission-local",
+        "name": "Mission Local",
+        "url": "https://missionlocal.org/event/theatre-of-yugen-at-nohspace-a-noh-christmas-carol/2026-12-22/"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Theatre of Yugen at NOHspace",
+          "layerType": "poi",
+          "metadata": {
+            "address": "2840 Mariposa Street, San Francisco, CA, 94110"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.411777,
+            37.7630854
+          ]
+        }
+      },
+      "imageUrl": "https://i0.wp.com/missionlocal.org/wp-content/uploads/2026/11/PostcardFront20261.jpg?fit=300%2C232&ssl=1"
+    },
+    {
+      "id": "sf-chronicle:45179503",
+      "title": "The Ultra Sounds",
+      "startAt": "2026-12-22T20:30:00-08:00",
+      "endAt": "2026-12-23T00:30:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F1040809560n"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Bottom Of the Hill",
+          "layerType": "poi",
+          "metadata": {
+            "address": "1233 17th St, San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3964389,
+            37.7649778
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:42619038",
+      "title": "Frosty's",
+      "startAt": "2026-12-22T21:00:00-08:00",
+      "endAt": "2026-12-23T01:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F42619038t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Frosty's",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4484231,
+            37.8029308
+          ]
+        }
+      }
+    },
+    {
+      "id": "sf-chronicle:43625435",
+      "title": "Karaoke Tuesday",
+      "startAt": "2026-12-22T21:00:00-08:00",
+      "endAt": "2026-12-23T01:00:00-08:00",
+      "cost": {
+        "label": "Cost not listed",
+        "isFree": false
+      },
+      "source": {
+        "id": "sf-chronicle",
+        "name": "San Francisco Chronicle",
+        "url": "https://www.sfchronicle.com/entertainment/events/?_evDiscoveryPath=%2Fevent%2F43625435t"
+      },
+      "curation": {
+        "type": "Feature",
+        "properties": {
+          "name": "Neck of the Woods",
+          "layerType": "poi",
+          "metadata": {
+            "address": "San Francisco, 94118"
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.463783,
+            37.78323
           ]
         }
       }
